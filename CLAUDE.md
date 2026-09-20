@@ -28,4 +28,18 @@ Load-bearing constraints from it:
 - Elevation: no box-shadows, ever. Depth comes from surface contrast and 1px hairlines.
 - Alignment: left. Never center the headline or the action cluster.
 
-The system is light-theme only; it defines no dark palette. Ticket 07 must decide what dark mode means here rather than inventing colors outside the system.
+The system is light-theme only; it defines no dark palette. Ticket 07 resolved this without
+leaving the system: the surface roles invert using tokens DESIGN.md already has — Void as
+ground, Obsidian as card, Pure Canvas as text, Signal Blue unchanged.
+
+#### 승인된 예외 — 벤더 현황판
+
+`web/index.html` 의 `.v-table` (모델 업데이트 섹션) 은 **의도적으로 DESIGN.md 밖에 있다.**
+사용자가 명시적으로 요청했다: "필요 이상으로 자리를 많이 차지한다. 회사 | 모델 | 일정처럼
+행 높이를 줄여달라. DESIGN.md 규칙을 무시해도 된다."
+
+벗어난 것: 28px 카드 대신 행, 본문 17px 대신 15px·13px, 카드 사이 간격 대신 1px 헤어라인 구분선.
+색·라운드는 그대로 시스템 토큰을 쓴다.
+
+이유: 회사 11곳을 카드로 쌓으면 화면 절반을 먹는데, 이 섹션에서 알고 싶은 것은
+"누가 언제 무엇을 냈나" 한 줄이 전부다. **규칙 위반으로 보고 되돌리지 말 것.**

@@ -316,6 +316,67 @@
     font-size: 17px;
   }
 
+  /* ── 벤더 현황판 ────────────────────────────────────────────────────────────
+     DESIGN.md 에서 의도적으로 벗어난 유일한 곳. 회사 11곳을 28px 카드로 쌓으면
+     화면의 절반을 먹는데, 여기서 알고 싶은 건 "누가 언제 무엇을 냈나" 한 줄이다.
+     카드 대신 행, 17px 대신 15px, 행 높이는 한 줄 높이까지 줄였다.
+     (예외는 CLAUDE.md 에 기록해 두었다 — 규칙 위반으로 보고 되돌리지 말 것.) */
+  .v-table {
+    background: var(--surface);
+    border-radius: var(--r-card);
+    padding: 6px 18px 10px;
+    overflow: hidden;
+  }
+  .v-row {
+    display: grid;
+    grid-template-columns: minmax(84px, 1fr) minmax(0, 2fr) auto;
+    gap: 12px;
+    align-items: baseline;
+    padding-block: 9px;
+    border-bottom: 1px solid var(--hairline);
+    font-size: 15px;
+    line-height: 1.3;
+  }
+  .v-row:last-child { border-bottom: 0; }
+  .v-head {
+    font-size: 13px;
+    color: var(--ink-mute);
+    padding-block: 8px 7px;
+    letter-spacing: 0.01em;
+  }
+  .v-co {
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .v-model {
+    color: var(--ink-soft);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .v-model a { color: var(--link); text-decoration: none; }
+  .v-when {
+    display: flex;
+    gap: 7px;
+    align-items: baseline;
+    justify-content: flex-end;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .v-when b { font-weight: 400; color: var(--ink-soft); }
+  .v-when i { font-style: normal; font-size: 13px; color: var(--ink-mute); min-width: 38px; text-align: right; }
+  .v-when i.v-fresh { color: var(--tint-green); }   /* 오늘·어제 나온 것 */
+  .v-when i.v-stale { color: var(--tint-orange); }  /* 석 달 넘게 조용한 곳 */
+  .v-none { color: var(--ink-mute); }
+
+  @media (max-width: 360px) {
+    .v-row { grid-template-columns: minmax(70px, 1fr) minmax(0, 1.6fr) auto; gap: 8px; }
+    .v-model { font-size: 14px; }
+  }
+
   /* ── 하단 ──────────────────────────────────────────────────────────────── */
   .foot { padding-block: 40px 0; border-top: 1px solid var(--hairline); margin-top: 40px; }
   .foot p { color: var(--ink-mute); font-size: 14px; margin: 0; }
@@ -564,15 +625,63 @@
     }
   }
 
+  // ── 벤더 현황판 ───────────────────────────────────────────────────────────
+  // 이 섹션만 카드가 아니라 표로 그린다. 11개 회사를 카드로 쌓으면 화면의 대부분을
+  // 먹는데, 여기서 알고 싶은 건 "누가 언제 무엇을 냈나" 한 줄이 전부다.
+  // DESIGN.md 의 28px 카드 언어에서 의도적으로 벗어난 곳이다 (CLAUDE.md 에 예외로 기록).
+  function isVendorCard(c) {
+    return c && (Object.prototype.hasOwnProperty.call(c, "days_since")
+                 || Object.prototype.hasOwnProperty.call(c, "open_weights"));
+  }
+
+  function fmtWhen(c) {
+    const d = c.updated_at;
+    if (!d) return { date: "—", rel: "소식 없음", quiet: true };
+    const [, m, day] = d.split("-");
+    const n = c.days_since;
+    let rel;
+    if (n === 0) rel = "오늘";
+    else if (n === 1) rel = "어제";
+    else if (n < 30) rel = n + "일";
+    else if (n < 365) rel = Math.floor(n / 30) + "개월";
+    else rel = (n / 365).toFixed(1) + "년";
+    return { date: `${m}/${day}`, rel, quiet: false, stale: n >= 90 };
+  }
+
+  function vendorTableHTML(cards) {
+    const rows = cards.map(c => {
+      const w = fmtWhen(c);
+      const model = c.model
+        ? (c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.model)}</a>`
+                 : esc(c.model))
+        : `<span class="v-none">—</span>`;
+      const relCls = w.quiet ? "v-none" : (w.stale ? "v-stale" : (c.days_since <= 1 ? "v-fresh" : ""));
+      return `<div class="v-row">
+        <span class="v-co">${esc(c.title || "")}</span>
+        <span class="v-model">${model}</span>
+        <span class="v-when"><b>${esc(w.date)}</b><i class="${relCls}">${esc(w.rel)}</i></span>
+      </div>`;
+    }).join("");
+    return `<div class="v-table">
+      <div class="v-row v-head"><span>회사</span><span>최신 모델</span><span>갱신</span></div>
+      ${rows}
+    </div>`;
+  }
+
   function sectionHTML(s) {
     const anchor = "s-" + esc(s.id || "");
     const briefing = Array.isArray(s.briefing_ko) && s.briefing_ko.length
       ? `<div class="briefing"><ul>${s.briefing_ko.map(b => `<li>${esc(b)}</li>`).join("")}</ul></div>`
       : "";
     const cards = Array.isArray(s.cards) ? s.cards : [];
-    const body = cards.length
-      ? `<div class="cards">${cards.map(cardHTML).join("")}</div>`
-      : `<div class="empty">${esc(s.empty_reason || "오늘은 비어 있습니다.")}</div>`;
+    let body;
+    if (!cards.length) {
+      body = `<div class="empty">${esc(s.empty_reason || "오늘은 비어 있습니다.")}</div>`;
+    } else if (cards.every(isVendorCard)) {
+      body = vendorTableHTML(cards);
+    } else {
+      body = `<div class="cards">${cards.map(cardHTML).join("")}</div>`;
+    }
     return `<section id="${anchor}"><h2>${esc(s.title || "")}</h2>${briefing}${body}</section>`;
   }
 

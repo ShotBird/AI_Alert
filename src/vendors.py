@@ -138,12 +138,15 @@ def vendor_status(items, now=None):
 
         if hit is None:
             rows.append(dict(vendor=vendor["name"], model=None, url=None,
-                             days=None, via=None, weights=bool(vendor["hf"])))
+                             days=None, at=None, via=None,
+                             weights=bool(vendor["hf"])))
             continue
 
         days = max(0, int((now - hit["at"]).total_seconds() // 86400))
+        # 경과일만 있으면 "19일 전"이 언제인지 매번 세어야 한다. 날짜도 같이 싣는다.
         rows.append(dict(vendor=vendor["name"], model=hit["name"], url=hit["url"],
-                         days=days, via=hit["via"], weights=bool(vendor["hf"])))
+                         days=days, at=hit["at"].date().isoformat(),
+                         via=hit["via"], weights=bool(vendor["hf"])))
 
     # 최근에 움직인 회사를 위로. 소식이 없는 회사는 맨 아래에 남긴다.
     rows.sort(key=lambda r: (r["days"] is None, r["days"] if r["days"] is not None else 0))

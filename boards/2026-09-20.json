@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "board_date": "2026-09-20",
-  "generated_at": "2026-09-20T14:18:52.425968Z",
+  "generated_at": "2026-09-20T14:22:20.133647Z",
   "status": "ok",
   "previous_board_date": "2026-09-20",
   "generator": {
@@ -13,12 +13,13 @@
       "published": 31
     },
     "api_budget": {
-      "github_core": "102/900",
-      "github_search": "14/30",
+      "github_core": "103/900",
+      "github_search": "16/30",
       "tranco": "38/40"
     },
     "notes": [
       "GitHub 토큰이 없어 후보 수를 줄였습니다 (무인증 core 시간당 60회).",
+      "GitHub 시간당 호출 한도(무인증 60회)를 다 써서 주간 증가분 대신 누적 스타로 줄을 세웠습니다. GH_READ_TOKEN 을 넣으면 5,000회로 늘어납니다.",
       "오늘 수집한 항목 중 다른 곳에서 커뮤니티를 가리킨 링크가 없음 (화제 유입량 0). 전체 트래픽 순위로만 줄을 세움",
       "화제 유입량은 오늘 수집한 항목이 가리키는 링크 기준이고, 전체 트래픽 순위(Tranco)는 AI 화제 전용 지표가 아니라 사이트 전체 규모다.",
       "모델 업데이트는 '현황'이지 '계획'이 아닙니다. 벤더가 출시 일정을 공표하지 않으므로 마지막 갱신 이후 경과일만 보여줍니다.",
@@ -121,21 +122,21 @@
         },
         {
           "id": "k_2026-09-20_002",
-          "keyword": "앤트로픽",
-          "keyword_ko": null,
-          "mentions": 8,
-          "source_count": 2,
-          "change": "continuing",
-          "dedup_key": "앤트로픽"
-        },
-        {
-          "id": "k_2026-09-20_003",
           "keyword": "오픈",
           "keyword_ko": null,
           "mentions": 8,
           "source_count": 2,
           "change": "continuing",
           "dedup_key": "오픈"
+        },
+        {
+          "id": "k_2026-09-20_003",
+          "keyword": "앤트로픽",
+          "keyword_ko": null,
+          "mentions": 8,
+          "source_count": 2,
+          "change": "continuing",
+          "dedup_key": "앤트로픽"
         },
         {
           "id": "k_2026-09-20_004",
@@ -169,6 +170,7 @@
           "model": "Qwen-Image-2.1-PE-I2I",
           "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-PE-I2I",
           "days_since": 0,
+          "updated_at": "2026-09-20",
           "via": "Hugging Face",
           "open_weights": true,
           "summary_ko": null,
@@ -189,6 +191,7 @@
           "model": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
           "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
           "days_since": 4,
+          "updated_at": "2026-09-15",
           "via": "Google",
           "open_weights": true,
           "summary_ko": null,
@@ -209,6 +212,7 @@
           "model": "Introducing ChatGPT for Financial Services",
           "url": "https://openai.com/index/introducing-chatgpt-financial-services",
           "days_since": 10,
+          "updated_at": "2026-09-10",
           "via": "OpenAI",
           "open_weights": false,
           "summary_ko": null,
@@ -229,6 +233,7 @@
           "model": "DeepSeek-V4.1-Flash",
           "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
           "days_since": 10,
+          "updated_at": "2026-09-10",
           "via": "Hugging Face",
           "open_weights": true,
           "summary_ko": null,
@@ -249,6 +254,7 @@
           "model": "Introducing Claude Fable 5.1 and Claude Mythos 5.1",
           "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
           "days_since": 19,
+          "updated_at": "2026-09-01",
           "via": "Anthropic",
           "open_weights": false,
           "summary_ko": null,
@@ -269,6 +275,7 @@
           "model": "GLM-5.3-Flash-BF16",
           "url": "https://huggingface.co/zai-org/GLM-5.3-Flash-BF16",
           "days_since": 26,
+          "updated_at": "2026-08-25",
           "via": "Hugging Face",
           "open_weights": true,
           "summary_ko": null,
@@ -289,6 +296,7 @@
           "model": "Solar-Open2-250B",
           "url": "https://huggingface.co/upstage/Solar-Open2-250B",
           "days_since": 60,
+          "updated_at": "2026-07-22",
           "via": "Hugging Face",
           "open_weights": true,
           "summary_ko": null,
@@ -309,6 +317,7 @@
           "model": "Shieldstral-1.0-3B",
           "url": "https://huggingface.co/mistralai/Shieldstral-1.0-3B",
           "days_since": 66,
+          "updated_at": "2026-07-16",
           "via": "Hugging Face",
           "open_weights": true,
           "summary_ko": null,
@@ -329,6 +338,7 @@
           "model": "Kimi-K3",
           "url": "https://huggingface.co/moonshotai/Kimi-K3",
           "days_since": 99,
+          "updated_at": "2026-06-13",
           "via": "Hugging Face",
           "open_weights": true,
           "summary_ko": null,
@@ -349,6 +359,7 @@
           "model": "Llama-Prompt-Guard-2-86M",
           "url": "https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-86M",
           "days_since": 510,
+          "updated_at": "2025-04-28",
           "via": "Hugging Face",
           "open_weights": true,
           "summary_ko": null,
@@ -369,6 +380,7 @@
           "model": null,
           "url": null,
           "days_since": null,
+          "updated_at": null,
           "via": null,
           "open_weights": false,
           "summary_ko": null,
@@ -393,10 +405,10 @@
       "cards": [
         {
           "id": "c_2026-09-20_017",
-          "title": "alibaba/open-code-review",
+          "title": "anthropics/skills",
           "summary_ko": null,
-          "url": "https://github.com/alibaba/open-code-review",
-          "heat": 12.57,
+          "url": "https://github.com/anthropics/skills",
+          "heat": 15.75,
           "source_count": 1,
           "sources": [
             {
@@ -404,79 +416,59 @@
             }
           ],
           "change": "new",
-          "dedup_key": "alibaba/open-code-review",
+          "dedup_key": "anthropics/skills",
           "published_at": null,
-          "repo": "alibaba/open-code-review",
-          "stars": 38181,
-          "stars_delta": 15470,
-          "category": "메모리·컨텍스트"
+          "repo": "anthropics/skills",
+          "stars": 177262,
+          "stars_delta": null,
+          "category": "기타"
         },
         {
           "id": "c_2026-09-20_018",
-          "title": "tt-a1i/archify",
-          "summary_ko": null,
-          "url": "https://github.com/tt-a1i/archify",
-          "heat": 11.74,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "tt-a1i/archify",
-          "published_at": null,
-          "repo": "tt-a1i/archify",
-          "stars": 67991,
-          "stars_delta": 8161,
-          "category": "디자인·비주얼"
-        },
-        {
-          "id": "c_2026-09-20_019",
           "title": "DietrichGebert/ponytail",
           "summary_ko": null,
           "url": "https://github.com/DietrichGebert/ponytail",
-          "heat": 11.39,
+          "heat": 15.46,
           "source_count": 1,
           "sources": [
             {
               "name": "GitHub"
             }
           ],
-          "change": "continuing",
+          "change": "new",
           "dedup_key": "DietrichGebert/ponytail",
           "published_at": null,
           "repo": "DietrichGebert/ponytail",
-          "stars": 142873,
-          "stars_delta": 6268,
+          "stars": 142876,
+          "stars_delta": null,
+          "category": "기타"
+        },
+        {
+          "id": "c_2026-09-20_019",
+          "title": "addyosmani/agent-skills",
+          "summary_ko": null,
+          "url": "https://github.com/addyosmani/agent-skills",
+          "heat": 14.97,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "addyosmani/agent-skills",
+          "published_at": null,
+          "repo": "addyosmani/agent-skills",
+          "stars": 97459,
+          "stars_delta": null,
           "category": "기타"
         },
         {
           "id": "c_2026-09-20_020",
-          "title": "addyosmani/agent-skills",
+          "title": "nexu-io/open-design",
           "summary_ko": null,
-          "url": "https://github.com/addyosmani/agent-skills",
-          "heat": 10.73,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "addyosmani/agent-skills",
-          "published_at": null,
-          "repo": "addyosmani/agent-skills",
-          "stars": 97456,
-          "stars_delta": 3774,
-          "category": "기타"
-        },
-        {
-          "id": "c_2026-09-20_021",
-          "title": "blader/humanizer",
-          "summary_ko": null,
-          "url": "https://github.com/blader/humanizer",
-          "heat": 10.49,
+          "url": "https://github.com/nexu-io/open-design",
+          "heat": 14.96,
           "source_count": 1,
           "sources": [
             {
@@ -484,12 +476,32 @@
             }
           ],
           "change": "new",
-          "dedup_key": "blader/humanizer",
+          "dedup_key": "nexu-io/open-design",
           "published_at": null,
-          "repo": "blader/humanizer",
-          "stars": 50504,
-          "stars_delta": 3147,
-          "category": "글쓰기·콘텐츠"
+          "repo": "nexu-io/open-design",
+          "stars": 97230,
+          "stars_delta": null,
+          "category": "디자인·비주얼"
+        },
+        {
+          "id": "c_2026-09-20_021",
+          "title": "tt-a1i/archify",
+          "summary_ko": null,
+          "url": "https://github.com/tt-a1i/archify",
+          "heat": 14.5,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "tt-a1i/archify",
+          "published_at": null,
+          "repo": "tt-a1i/archify",
+          "stars": 67992,
+          "stars_delta": null,
+          "category": "디자인·비주얼"
         }
       ]
     },
@@ -504,14 +516,14 @@
           "title": "6 days left to get ahead at TechCrunch Disrupt 2026",
           "summary_ko": null,
           "url": "https://techcrunch.com/2026/09/20/6-days-left-to-get-ahead-at-techcrunch-disrupt-2026/",
-          "heat": 2.97,
+          "heat": 2.96,
           "source_count": 1,
           "sources": [
             {
               "name": "TechCrunch"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "httpss://techcrunch.com/2026/09/20/6-days-left-to-get-ahead-at-techcrunch-disrupt-2026",
           "published_at": "2026-09-20T14:00:00Z"
         },
@@ -536,7 +548,7 @@
           "title": "“문장 생성 버렸다”…판단 전용 AI ‘제브’에 개발자 반응 폭발",
           "summary_ko": null,
           "url": "https://www.aitimes.com/news/articleView.html?idxno=215506",
-          "heat": 2.47,
+          "heat": 2.46,
           "source_count": 1,
           "sources": [
             {
@@ -552,7 +564,7 @@
           "title": "과기부, 연구자가 지켜야 할 ‘AI 활용’ 7대 권고사항 제시",
           "summary_ko": null,
           "url": "https://www.aitimes.com/news/articleView.html?idxno=215505",
-          "heat": 2.45,
+          "heat": 2.44,
           "source_count": 1,
           "sources": [
             {
