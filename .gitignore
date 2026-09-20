@@ -1,0 +1,39 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Secrets — never commit API keys
+.env
+.env.*
+!.env.example
+*.pem
+secrets/
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+.astro/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# Swift / Xcode
+.build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+
+# Local scratch (not the committed roadmap)
+.scratch/
