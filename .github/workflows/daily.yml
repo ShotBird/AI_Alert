@@ -84,8 +84,13 @@ jobs:
       #    막지 않게 하기 위함이다.
       #    (참고: 저장소가 비공개(private)라 GitHub Pages 무료 플랜을 쓸 수 없어서
       #    Cloudflare Pages 로 배포한다.)
+      #    (`if:` 안에서는 secrets 를 직접 읽을 수 없다. GitHub 이 워크플로 파싱
+      #     단계에서 거부한다. 그래서 env 로 한 번 옮겨 담은 뒤 그 값을 본다.)
       - name: Cloudflare Pages 배포
-        if: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        if: env.CF_TOKEN != '' && env.CF_ACCOUNT != ''
         continue-on-error: true
         uses: cloudflare/pages-action@v1
         with:
