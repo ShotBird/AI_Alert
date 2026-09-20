@@ -1,7 +1,7 @@
 # 11. 외부 서비스 준비 (Cloudflare + GitHub + Anthropic 키)
 
 Type: task
-Status: open
+Status: in-progress
 Blocked by: (없음)
 
 ## Question
@@ -45,17 +45,43 @@ GitHub Actions가 만든 보드를 Cloudflare에 올리려면 계정과 토큰�
 3. 발급한 값을 **GitHub Actions 시크릿**에 `ANTHROPIC_API_KEY` 로 등록
 4. 로컬에서도 시험하려면 `.env` 에도 같은 줄을 넣는다
 
-예상 비용은 **월 약 ₩2,650** (Sonnet 5, 하루 40장 요약 + 섹션 브리핑 기준).
+예상 비용은 **월 약 ₩5,000** (Sonnet 5). 처음 잡은 ₩2,650 은 요약+브리핑만 있을 때 값이고,
+지금은 뉴스 번역·스킬 해설·부문 분류·키워드까지 네 가지가 더 붙어 하루 호출이 ~9건이다
+(예산 상한 60건/일 안쪽). 카드 수가 늘어도 이 네 건은 하루 4건으로 고정이다.
 NCP 때와 달리 여기는 **콘솔에서 하드 상한을 걸 수 있다** — 그게 이 키가 상대적으로 안전한 이유다.
 
 ## 해결 조건
 
-- [ ] Cloudflare 가입이 카드를 요구하는지 확인: ______
-- [ ] Pages 프로젝트 생성됨
+- [x] Cloudflare 가입 완료 (2026-09-21, 사용자 보고). 카드 요구 여부는 사용자가 진행 중 막히지
+      않았으므로 무료 플랜은 카드 없이 통과한 것으로 본다 — 결제 화면을 봤다면 정정할 것.
+- [ ] Pages 프로젝트 생성됨 (`ai-alert`, 저장소 연결 없이 '직접 업로드')
 - [ ] `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`가 GitHub Actions 시크릿에 등록됨
 - [ ] `GH_READ_TOKEN` (공개 저장소 읽기 전용) 발급 후 Actions 시크릿에 등록
 - [ ] `ANTHROPIC_API_KEY` 발급 + 월 사용 한도 설정 + Actions 시크릿 등록
 
+## 지금 남은 것 — 사용자가 할 일
+
+가입은 끝났다. 순서대로 세 가지만 하면 CI 가 매일 아침 알아서 올린다.
+
+**A. Cloudflare Pages 프로젝트**
+1. `dash.cloudflare.com` → 왼쪽 **Compute (Workers & Pages)** → **Create** → **Pages** 탭
+2. **Upload assets** (저장소 연결 아님) → 프로젝트 이름 `ai-alert` → Create
+3. 첫 업로드를 요구하면 아무 파일이나 하나 올려서 프로젝트만 만들어 둔다. 이후는 CI 가 덮는다
+
+**B. 토큰 두 개**
+- Cloudflare: 우상단 계정 → **API 토큰** → **토큰 생성** → 템플릿 `Edit Cloudflare Workers`
+  → 생성된 값이 `CLOUDFLARE_API_TOKEN`
+- Cloudflare 계정 ID: 대시보드 우측 사이드바 또는 주소창 `dash.cloudflare.com/<여기가 계정ID>`
+  → `CLOUDFLARE_ACCOUNT_ID`
+- GitHub: Settings → Developer settings → **Fine-grained tokens** → 권한 **Public repositories (read-only)**
+  → `GH_READ_TOKEN`
+- Anthropic: `console.anthropic.com` → API keys → 새 키. **먼저 Limits 에서 월 $5 상한을 걸고** 발급
+  → `ANTHROPIC_API_KEY`
+
+**C. 넣는 곳 — 한 군데뿐이다**
+`github.com/hans10102-droid/AI_Alert` → Settings → Secrets and variables → **Actions** → New repository secret.
+위 네 개 이름을 그대로 쓴다. **채팅에 붙여넣지 말 것.**
+
 ## Answer
 
-(미해결)
+(미해결 — 가입만 완료)
