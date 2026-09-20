@@ -7,7 +7,6 @@
 """
 
 import json
-import math
 import os
 
 # 레포 → 한국어 한 줄. LLM 키가 없는 동안 쓰는 씨앗 캐시다.
@@ -45,9 +44,18 @@ PER_REGION = 4
 # 뉴스 5칸을 다 차지하는 일이 있었다 — 그건 보드가 아니라 그 매체의 목차다.
 MAX_PER_SOURCE = 2
 
+# 섹션 제목은 **여기 한 곳**에서만 정한다. summarize.py 의 자체 점검이 같은 문자열을
+# 따로 적어두는 바람에 두 곳이 갈라질 수 있었다 — 이제 그쪽이 이 상수를 import 한다.
+#
+# "급상승"을 버린 이유: 이 섹션은 이제 스킬 · MCP 서버 · 에이전트 프레임워크 ·
+# CLI·개발도구 네 종류를 함께 싣고, 무인증에서는 대부분의 줄이 주간 증가분이 아니라
+# 누적 스타 순이다. "급상승"은 둘 다에 대해 거짓말이 된다. 사용자가 쓴 말("Skill")을
+# 살리되 나머지 세 종류도 감추지 않는 이름으로 바꿨다.
+GITHUB_SECTION_TITLE = "GitHub 스킬·도구"
+
 SECTION_TITLES = {
     "model_updates": "모델 업데이트",
-    "github_skills": "GitHub 급상승",
+    "github_skills": GITHUB_SECTION_TITLE,
     "top_headlines": "뉴스",
     "communities": "AI 커뮤니티",
     "keywords": "오늘의 키워드",
@@ -104,9 +112,60 @@ def _card(cluster, seq, board_date, prev_keys):
     }
 
 
+# GitHub 카드는 **이 섹션만 스키마가 다르다.** 다른 섹션은 예전 그대로다.
+#
+# 이유는 크기 하나다. 칸(종류×부문)마다 20줄을 채우면 이 섹션만 카드 2천 장이
+# 되고, 휴대폰이 매일 아침 내려받는 latest.json 이 1MB 를 넘는다.
+# web/index.html 의 GitHub 렌더 경로가 실제로 읽는 필드는 이것뿐이다:
+#   repo · category · kind · stars · stars_delta · desc · note_ko · summary_ko ·
+#   updated_at · url   (+ summarize.py 가 카드를 되짚는 데 쓰는 id)
+# 나머지(heat · dedup_key · source_count · sources · published_at · change · title)는
+# 이 섹션에서 한 번도 읽히지 않는다. 카드당 180바이트씩, 2천 장이면 350KB 가
+# 아무도 안 보는 채로 전화기로 간다.
+#
+# 특히 title 은 1,160장 전부에서 repo 와 글자까지 같았다. 화면도 `c.repo || c.title`
+# 로 repo 를 먼저 본다. 같은 문자열을 두 번 싣지 않는다.
+#
+# summary_ko 는 값이 없어도 **키를 남긴다** — summarize.py 의 _summarizable_cards 가
+# `"summary_ko" in card` 로 요약 대상을 고른다. 키를 지우면 이 섹션이 조용히
+# 요약에서 빠진다.
+GITHUB_CARD_FIELDS = ("id", "repo", "url", "desc", "stars", "stars_delta",
+                      "category", "kind", "updated_at", "summary_ko", "note_ko")
+
+
+def _github_card(row, seq, board_date, notes_map):
+    return {
+        "id": f"c_{board_date}_{seq:03d}",
+        "repo": row["repo"],
+        "url": row["url"],
+        # 영어 원문 설명(github_skills 가 160자로 자른다).
+        # LLM 키가 생기면 summary_ko / note_ko 가 위에 붙는다.
+        "desc": row.get("desc") or None,
+        "stars": row["stars"],
+        "stars_delta": row["stars_delta"],
+        "category": row["category"],
+        "kind": row.get("kind", "스킬"),
+        "updated_at": row.get("pushed_at") or None,
+        "summary_ko": None,
+        "note_ko": notes_map.get(row["repo"]),
+    }
+
+
 def build(clusters_by_section, github_rows, sources_status, budget_report,
           boards_dir, now=None, notes=None, community_rows=None,
-          vendor_rows=None, keyword_rows=None, milestone=None):
+          vendor_rows=None, keyword_rows=None, milestone=None,
+          section_notes=None):
+    """`notes` 는 보드 전체용(generator.notes), `section_notes` 는 섹션별이다.
+
+    사고: 수집기마다 정직한 설명을 만들어 돌려주는데(github_skills 의 "부문 N곳이
+    20개를 못 채웠습니다", timeline 의 "최근 N건만 축에 올렸습니다" …) 받는 쪽에
+    섹션별 통로가 없어서 전부 generator.notes 한 자루에 들어갔다. generator.notes 를
+    그리는 화면은 없으므로, 사용자는 짧은 목록만 보고 이유는 못 봤다.
+    여기서 섹션마다 제 몫의 설명을 달아 내보낸다. 보드 전체용 notes 를 모든 섹션에
+    복사하지는 않는다 — "ANTHROPIC_API_KEY 없음"이 GitHub 섹션 밑에 붙으면
+    그것도 똑같이 엉뚱한 소리가 된다.
+    """
+    section_notes = section_notes or {}
     now = now or datetime.now(timezone.utc)
     board_date = now.astimezone().date().isoformat()
 
@@ -156,36 +215,7 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
         elif sid == "github_skills":
             for row in github_rows:
                 seq += 1
-                key = row["repo"]
-                cards.append({
-                    "id": f"c_{board_date}_{seq:03d}",
-                    "title": row["title"],
-                    "summary_ko": None,
-                    "url": row["url"],
-                    # 스타 증가분을 그대로 넣으면 뉴스 화제도(한 자릿수)와 자릿수가
-                    # 안 맞는다. 정렬 순서는 stars_delta 가 이미 정했으므로
-                    # heat 는 로그로 눌러 비슷한 눈금에 올린다.
-                    # 증가분을 못 구한 폴백에서는 None 이 온다. 그때는
-                    # 누적 스타로 줄을 세우되 자릿수는 같은 눈금에 올린다.
-                    "heat": round(math.log10(
-                        1 + (row["stars_delta"]
-                             if row["stars_delta"] is not None
-                             else (row.get("stars") or 0))) * 3, 2),
-                    "source_count": 1,
-                    "sources": [{"name": "GitHub"}],
-                    "change": "continuing" if key in prev_keys else "new",
-                    "dedup_key": key,
-                    "published_at": None,
-                    "repo": row["repo"],
-                    "stars": row["stars"],
-                    "stars_delta": row["stars_delta"],
-                    "category": row["category"],
-                    "kind": row.get("kind", "스킬"),
-                    "updated_at": row.get("pushed_at") or None,
-                    # 영어 원문 설명. LLM 키가 생기면 summary_ko 가 위에 붙는다.
-                    "desc": row.get("desc") or None,
-                    "note_ko": notes_map.get(row["repo"]),
-                })
+                cards.append(_github_card(row, seq, board_date, notes_map))
             if not cards:
                 empty_reason = "GitHub 응답이 없어 오늘은 비어 있습니다."
 
@@ -279,6 +309,9 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
             "title": SECTION_TITLES[sid],
             **extra,
             "briefing_ko": [],          # 섹션 브리핑도 LLM 몫
+            # 이 섹션이 왜 이 모양인지에 대한 수집기 본인의 설명. LLM 이 아니라
+            # 코드가 쓴 사실이라 briefing_ko 와 섞지 않는다(요약이 덮어쓴다).
+            "notes": [str(n) for n in (section_notes.get(sid) or []) if n],
             "empty_reason": empty_reason,
             "cards": cards,
         })

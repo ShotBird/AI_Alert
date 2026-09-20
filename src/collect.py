@@ -211,6 +211,9 @@ def collect(sources):
                 # 제목에는 미래형만 있고 날짜는 본문에 있다. 여기서 떨어뜨리면
                 # '다음 예정'이 볼 수 있는 글자가 제목뿐이 된다 — 실제로 그랬다.
                 summary=p.get("summary") or "",
+                # 미출시 전문 매체인가. "prepares/tests/is working on" 같은
+                # 현재형을 '아직 안 나왔다'로 읽어도 되는 곳인지 가른다.
+                rumor=bool(src.get("rumor")),
             ))
             good += 1
         status.append(dict(id=src["id"], ok=True, items=good))

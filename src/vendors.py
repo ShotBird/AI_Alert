@@ -276,6 +276,60 @@ def _read_when(title, today):
     return None
 
 
+# ── '개발 단계' 신호 ────────────────────────────────────────────────────────
+# 2026-09-21 실측: Gemini 를 언급한 39건 중 FORWARD_WORDS 에 걸린 것이 **1건**
+# 뿐이었는데, 정작 그 39건 안에는 이런 것들이 있었다.
+#
+#   Google **prepares** Gemini App for Avatars, Plugins, and **Gemini 4**
+#   Google **is working on** Plugins for Gemini Enterprise
+#   Google **tests** Computer Use on Gemini Desktop
+#   Google **develops** AI Rooms for Gemini Enterprise
+#
+# 미출시 소식을 다루는 매체는 미래형을 쓰지 않는다. **현재형으로 미출시를 말한다.**
+# "곧 나온다"가 아니라 "지금 만들고 있다"가 이 바닥의 문법이다.
+#
+# 이런 글에는 날짜가 없다. 그래서 날짜 대신 **단계**를 싣는다 —
+# 없는 날짜를 지어내는 대신, 아는 만큼만 "준비 중"이라고 적는다.
+_DEV_STAGES = (
+    (("준비 중", "준비중", "prepares", "preparing", "readying", "gearing up"), "준비 중"),
+    (("개발 중", "개발중", "is working on", "are working on", "develops",
+      "developing", "in development", "building a new", "구축 중"), "개발 중"),
+    (("테스트 중", "시험 중", "tests ", "testing ", "trials", "experimenting",
+      "internal testing", "a/b test"), "테스트 중"),
+    (("early look", "첫 공개", "사전 공개", "spotted", "appears in",
+      "발견됐다", "포착"), "사전 포착"),
+)
+
+
+def _dev_stage(blob):
+    """'아직 안 나왔고 만들고 있다'는 신호. 없으면 None."""
+    low = (blob or "").lower()
+    for words, label in _DEV_STAGES:
+        if any(w in low for w in words):
+            return label
+    return None
+
+
+# 계열명 바로 뒤에 버전이 오는 형태. "Gemini 4" 는 모델 얘기고
+# "Gemini Notebook" 은 기능 얘기다. MODEL_HINTS 만으로는 이 둘이 안 갈린다.
+_FAMILY_VER_CACHE = {}
+
+
+def _mentions_model(blob, vendor):
+    """이 글이 **모델** 얘기인가. 기능·앱 소식을 예정표에서 걷어내는 문지기."""
+    low = (blob or "").lower()
+    if any(w in low for w in MODEL_HINTS):
+        return True
+    for fam in (vendor.get("families") or []):
+        pat = _FAMILY_VER_CACHE.get(fam)
+        if pat is None:
+            pat = re.compile(re.escape(fam) + r"[\s\-_]?v?\d", re.I)
+            _FAMILY_VER_CACHE[fam] = pat
+        if pat.search(blob or ""):
+            return True
+    return False
+
+
 def _pick_when(title, now=None):
     """제목에서 **앞날의** 날짜·기간만 뽑는다. 지난 날짜는 예정이 아니다."""
     if not title:
@@ -316,11 +370,18 @@ def _next_expected(vendor, items, now=None):
         # 동안 이 칸은 구조적으로 채워질 수 없었다.
         blob = (title + " " + (item.get("summary") or "")).strip()
         low_blob = blob.lower()
-        if not any(w in low_blob for w in FORWARD_WORDS):
+        # 앞날을 가리키는 말이거나, **지금 만들고 있다**는 말이거나. 둘 중 하나는
+        # 있어야 한다. 미출시 전문 매체는 미래형을 거의 쓰지 않는다.
+        # 개발 단계 판정은 **미출시 전문 매체에만** 쓴다. 일반 매체가 쓰는
+        # "tests"·"building" 은 대개 다른 뜻이다 — 실제로 "Claude now leads a
+        # quarter of work **building** its…"(클로드가 코드를 짓는다)와
+        # "Third-party cyber evaluations"(평가)가 예정으로 올라왔다.
+        stage = _dev_stage(blob) if item.get("rumor") else None
+        if not stage and not any(w in low_blob for w in FORWARD_WORDS):
             continue
         # 모델 얘기여야 한다. 제품명만 보면 "ChatGPT Business 좌석" 같은
-        # 요금·기능 공지가 '다음 모델 예정'으로 올라온다.
-        if not any(w in low_blob for w in MODEL_HINTS):
+        # 요금·기능 공지가, "Gemini Notebook 도구" 같은 앱 소식이 예정표에 오른다.
+        if not _mentions_model(blob, vendor):
             continue
         # 요금·좌석·채용 얘기는 **제목으로** 거른다. 본문까지 보면 거의 모든
         # 기사가 어딘가에서 'plan' 이나 'business' 를 말하므로 다 걸린다.
@@ -329,28 +390,35 @@ def _next_expected(vendor, items, now=None):
         # 여러 회사가 든 업계 기사는 어느 한 곳의 예정이 아니다
         if _mentions_many(title):
             continue
-        # 언제인지 못 말하면 예정표에 적을 것이 없다
+        # 날짜를 집었으면 그 날짜를, 못 집었으면 **단계**를 적는다.
+        # 둘 다 없으면 예정표에 쓸 말이 없다.
         when = _pick_when(blob, now)
-        if when is None:
+        if when is None and stage is None:
             continue
         own_channel = (item.get("source_name") or "") == vendor["name"]
         cand = dict(
-            label=when["label"],             # 표에 들어갈 짧은 말: 10/15 · 4분기 · 연내
+            label=when["label"] if when else stage,   # 10/15 · 4분기 · 연내 · 준비 중
             headline=title,                  # 근거 헤드라인. 칸이 아니라 링크로 닿는다
             url=item.get("url"),
-            date=when["date"],
-            confidence="확정" if own_channel else "예정",
+            date=when["date"] if when else None,
+            # 회사 자기 채널이라도 **날짜를 말하지 않았으면 확정이 아니다.**
+            # "테스트 중"을 확정이라고 적으면 없는 약속을 만들어내는 것이다.
+            confidence="확정" if (own_channel and when is not None) else "예정",
+            dated=when is not None,
             at=at,
         )
-        # 확정이 예정을 이기고, 같은 등급이면 최신이 이긴다
-        if best is None:
-            best = cand
-        elif cand["confidence"] == "확정" and best["confidence"] != "확정":
-            best = cand
-        elif (cand["confidence"] == best["confidence"]
-                and cand["at"] and best["at"] and cand["at"] > best["at"]):
+        if best is None or _better_next(cand, best):
             best = cand
     return best
+
+
+def _better_next(a, b):
+    """예정 후보 우열. 확정 > 날짜 있는 예정 > 단계만 아는 예정, 같으면 최신."""
+    rank = lambda c: (c["confidence"] == "확정", bool(c.get("dated")))
+    ra, rb = rank(a), rank(b)
+    if ra != rb:
+        return ra > rb
+    return bool(a.get("at") and b.get("at") and a["at"] > b["at"])
 
 
 RELEASE_WORDS = ("introduc", "announc", "launch", "releas", "unveil",

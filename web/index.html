@@ -1207,7 +1207,12 @@
     const label = c.next_label || c.next_date;
     if (!label) return "";
     const fixed = c.next_confidence === "확정";
-    const tag = `<i class="${fixed ? "fix" : "exp"}">${fixed ? "확정" : "예정"}</i>`;
+    // 라벨이 날짜가 아니라 단계("준비 중")면 (예정) 꼬리표는 같은 말을 두 번
+    // 하는 것이다 — "다음 예정 준비 중 예정" 으로 읽힌다. 날짜일 때만 붙인다.
+    const dated = /\d/.test(label);
+    const tag = dated
+      ? `<i class="${fixed ? "fix" : "exp"}">${fixed ? "확정" : "예정"}</i>`
+      : "";
     const link = c.next_url
       ? ` <a class="v-src" href="${esc(c.next_url)}" target="_blank" rel="noopener" aria-label="근거 열기">↗</a>`
       : "";

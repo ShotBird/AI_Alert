@@ -1,10 +1,10 @@
 {
   "date": "2026-09-21",
   "counts": {
-    "github_search": 72,
-    "github_core": 5,
+    "github_search": 151,
+    "github_core": 65,
     "tranco": 14,
-    "discord": 12,
-    "benchmarks": 11
+    "discord": 25,
+    "benchmarks": 16
   }
 }

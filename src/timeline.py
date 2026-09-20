@@ -37,6 +37,57 @@ def _family_in(text, vendor):
     return None
 
 
+def _spread(points, max_points):
+    """1년 축에 올릴 것을 **연중 고르게** 고른다.
+
+    예전에는 그냥 최근 N건을 남겼다. 그런데 Qwen·Google 처럼 Hugging Face 에
+    자주 올리는 곳이 최근 두 달을 가득 채우는 바람에, 89건 중 40건을 남기면
+    **1~5월이 통째로 사라졌다.** "1년 마일스톤"이라 써 놓고 석 달만 보여준 셈이다.
+    OpenAI 의 2월 GPT-5.3-Codex 도 이 규칙에 밀려 축에 못 올랐다.
+
+    그래서 달마다 몫을 나눠 갖는다. 한 달 안에서는 **계열이 겹치지 않는 것**을
+    먼저 집는다 — 같은 계열의 변종 다섯 개보다 서로 다른 회사 다섯 줄이
+    "이 판이 어떻게 흘러왔나"에 가깝다.
+    """
+    if len(points) <= max_points:
+        return points
+
+    by_month = {}
+    for p in points:
+        by_month.setdefault(p["date"][:7], []).append(p)
+
+    quota = max(1, max_points // len(by_month))
+    picked = []
+    for month in sorted(by_month):
+        group = by_month[month]
+        seen, take = set(), []
+        for p in group:
+            key = (p["vendor"], p["family"])
+            if key in seen:
+                continue
+            seen.add(key)
+            take.append(p)
+            if len(take) >= quota:
+                break
+        if len(take) < quota:
+            rest = [p for p in group if p not in take]
+            take.extend(rest[:quota - len(take)])
+        picked.extend(take)
+
+    # 몫을 나누고 남은 자리는 최근 것으로 채운다 — 최근이 더 궁금한 건 맞다.
+    if len(picked) < max_points:
+        chosen = {id(p) for p in picked}
+        for p in reversed(points):
+            if len(picked) >= max_points:
+                break
+            if id(p) not in chosen:
+                picked.append(p)
+                chosen.add(id(p))
+
+    picked.sort(key=lambda p: p["date"])
+    return picked
+
+
 def _future_points(items, now, year_end):
     """찌라시·예고에서 읽은 **앞으로 나올 것**. 과거 점과 같은 축에 올린다.
 
@@ -46,7 +97,7 @@ def _future_points(items, now, year_end):
     날짜를 콕 집은 것은 그 날에, "4분기"처럼 기간만 말한 것은 **기간의 끝**에
     찍는다. 기간 한가운데에 찍으면 있지도 않은 정밀도를 주장하게 된다.
     """
-    out = []
+    out, undated = [], 0
     today = now.date()
     for vendor in vendors.VENDORS:
         nxt = vendors._next_expected(vendor, items, now)
@@ -55,6 +106,9 @@ def _future_points(items, now, year_end):
         headline = nxt.get("headline") or ""
         when = vendors._pick_when(headline, now)
         if not when:
+            # "준비 중"처럼 단계만 아는 예정이다. 현황판 표에는 실리지만
+            # **날짜 축에는 찍을 자리가 없다.** 못 찾은 것과 구별해서 센다.
+            undated += 1
             continue
         day = None
         if when.get("date"):
@@ -66,6 +120,7 @@ def _future_points(items, now, year_end):
             day = when.get("until")
         # 올해 축에 못 올리는 것(내년 얘기, 기간을 못 집는 말)은 싣지 않는다.
         if not isinstance(day, date) or not (today <= day <= year_end):
+            undated += 1
             continue
 
         fam = _family_in(headline, vendor)
@@ -85,7 +140,7 @@ def _future_points(items, now, year_end):
             future=True,
             confidence=nxt.get("confidence") or "예정",
         ))
-    return out
+    return out, undated
 
 
 def build(items, now=None, max_points=40):
@@ -145,20 +200,37 @@ def build(items, now=None, max_points=40):
     # 앞날은 따로 모은다. 과거는 '최근 N건'으로 잘리지만 **예정은 자르지 않는다** —
     # 몇 건 없을 뿐더러, 축에서 가장 궁금한 쪽이 오른쪽이다.
     year_end = date(now.year, 12, 31)
-    future = _future_points(items, now, year_end)
+    future, undated_future = _future_points(items, now, year_end)
 
-    # 축이 빽빽해지면 읽을 수 없다. 최근 것을 남긴다 — 올해 흐름은
-    # 연초보다 최근 몇 달이 더 궁금하다.
-    trimmed = points[-max_points:] if len(points) > max_points else points
+    trimmed = _spread(points, max_points)
 
     notes = []
     if len(points) > len(trimmed):
-        notes.append(f"올해 출시 {len(points)}건 중 최근 {len(trimmed)}건만 축에 올렸습니다.")
+        notes.append(f"올해 출시 {len(points)}건 중 {len(trimmed)}건을 "
+                     f"달마다 고르게 골라 축에 올렸습니다.")
     if not trimmed and not future:
         notes.append("올해 축에 올릴 모델 출시를 찾지 못했습니다.")
-    if not future:
+    if not future and undated_future:
+        notes.append(f"앞으로 나올 것 {undated_future}건을 찾았지만 날짜를 적은 글이 "
+                     f"없어 축에는 못 올렸습니다 — 아래 표의 '다음 예정'에 "
+                     f"단계로 적어 뒀습니다.")
+    elif not future:
         notes.append("앞으로의 출시 예정은 아직 찾지 못했습니다 — "
                      "수집한 글에 날짜를 적은 예고가 없었습니다.")
+
+    # 과거를 줄 소스가 없는 회사는 축이 비는데, 그건 "출시가 없었다"가 아니라
+    # "우리가 못 본다"이다. 둘을 구별해서 말한다 — Anthropic 은 Hugging Face 에
+    # 올리지 않고 자기 페이지 파서도 없어서, 뉴스 피드에 잡히는 며칠치가 전부다.
+    blind = []
+    for v in vendors.VENDORS:
+        if v.get("hf") or v.get("page"):
+            continue
+        mine = [p for p in points if p["vendor"] == v["name"]]
+        if len(mine) < 3:
+            blind.append(v["name"])
+    if blind:
+        notes.append(f"{', '.join(blind)} 은 과거 출시를 주는 소스가 없어 "
+                     f"최근 몇 건만 축에 있습니다.")
 
     trimmed = trimmed + future
 

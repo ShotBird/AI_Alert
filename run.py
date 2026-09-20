@@ -83,6 +83,18 @@ def main():
     env = load_env()
     now = datetime.now(timezone.utc)
     notes = []
+    # 섹션별 설명. 수집기가 돌려주는 notes 는 거의 전부 "그 섹션이 왜 이 모양인가"에
+    # 대한 것인데, 예전엔 전부 boardwide notes 한 자루(generator.notes)에 들어가고
+    # 화면에는 통로가 없어 그대로 버려졌다. 이제 제 섹션에도 같이 붙인다.
+    section_notes = {}
+
+    def add_notes(section_id, lines):
+        """보드 전체 목록과 해당 섹션 양쪽에 남긴다 (기존 메일·리포트 유지)."""
+        lines = [n for n in (lines or []) if n]
+        notes.extend(lines)
+        if section_id and lines:
+            section_notes.setdefault(section_id, []).extend(lines)
+        return lines
 
     try:
         budget = Budget(COUNTER)
@@ -169,14 +181,30 @@ def main():
     if not args.dry and not args.no_github:
         token = env.get("GH_READ_TOKEN") or env.get("GITHUB_TOKEN") or os.environ.get("GITHUB_TOKEN")
         if not token:
-            notes.append("GitHub 토큰이 없어 후보 수를 줄였습니다 (무인증 core 시간당 60회).")
+            add_notes("github_skills",
+                      ["GitHub 토큰이 없어 후보 수를 줄였습니다 "
+                       "(무인증 core 시간당 60회, search 분당 10회)."])
         try:
+            # candidates = 주간 증가분을 **재 볼** 최대 개수(core 호출 수)다.
+            # 무인증 core 는 시간당 60회가 전부라 그 안쪽으로 잡는다. 목록 자체는
+            # search 로 만들기 때문에 이 숫자가 카드 수를 줄이지는 않는다.
             github_rows, gh_notes = github_skills.top_rising(
-                token, budget, candidates=300 if token else 45)
-            notes.extend(gh_notes)
-            print(f"[GitHub] 급상승 {len(github_rows)}개")
+                token, budget, candidates=400 if token else 55)
+            add_notes("github_skills", gh_notes)
+            measured = sum(1 for r in github_rows
+                           if r.get("stars_delta") is not None)
+            # 칸(종류×부문)이 몇 개나 20줄을 채웠는지. 사용자가 두 번 말한 규칙이
+            # "칸마다 20개"라, 총 개수만 찍으면 어느 칸이 굶었는지 안 보인다.
+            _pairs = {}
+            for _r in github_rows:
+                _k = (_r.get("kind"), _r.get("category"))
+                _pairs[_k] = _pairs.get(_k, 0) + 1
+            _full = sum(1 for _n in _pairs.values() if _n >= 20)
+            print(f"[GitHub] 스킬·도구 {len(github_rows)}개 · "
+                  f"칸 {_full}/{len(_pairs)}개가 20줄 "
+                  f"(주간 증가분을 실제로 잰 것 {measured}개)")
         except Exception as exc:
-            notes.append(f"GitHub 섹션 실패: {type(exc).__name__}")
+            add_notes("github_skills", [f"GitHub 섹션 실패: {type(exc).__name__}"])
             print(f"[GitHub] 실패: {type(exc).__name__}")
 
     community_rows = []
@@ -184,10 +212,10 @@ def main():
         try:
             community_rows, com_notes = community_mod.top_communities(
                 items, budget, RANK_CACHE)
-            notes.extend(com_notes)
+            add_notes("communities", com_notes)
             print(f"[커뮤니티] {len(community_rows)}곳")
         except Exception as exc:
-            notes.append(f"커뮤니티 섹션 실패: {type(exc).__name__}")
+            add_notes("communities", [f"커뮤니티 섹션 실패: {type(exc).__name__}"])
             print(f"[커뮤니티] 실패: {type(exc).__name__}")
 
     vendor_rows = None
@@ -198,21 +226,21 @@ def main():
                         or looks_like_release(it["title"])):
                     it["is_release"] = True
             vendor_rows, v_notes = vendors.vendor_status(all_items, now)
-            notes.extend(v_notes)
+            add_notes("model_updates", v_notes)
             filled = sum(1 for r in vendor_rows if r["model"])
             print(f"[벤더] {filled}/{len(vendor_rows)}곳 현황 확인")
         except Exception as exc:
-            notes.append(f"벤더 현황 실패: {type(exc).__name__}")
+            add_notes("model_updates", [f"벤더 현황 실패: {type(exc).__name__}"])
             print(f"[벤더] 실패: {type(exc).__name__}")
 
     milestone = None
     if not args.dry:
         try:
             milestone, m_notes = timeline.build(all_items, now)
-            notes.extend(m_notes)
+            add_notes("model_updates", m_notes)
             print(f"[마일스톤] 올해 출시 {len(milestone['points'])}건")
         except Exception as exc:
-            notes.append(f"마일스톤 실패: {type(exc).__name__}")
+            add_notes("model_updates", [f"마일스톤 실패: {type(exc).__name__}"])
             print(f"[마일스톤] 실패: {type(exc).__name__}")
 
     # 벤치마크 점수. 별도 섹션이 아니라 벤더 행에 붙는 주석이다 —
@@ -220,16 +248,16 @@ def main():
     if vendor_rows and not args.dry:
         try:
             index, b_notes = benchmarks.load_scores(budget, BENCH_CACHE)
-            notes.extend(b_notes)
-            notes.extend(benchmarks.annotate(vendor_rows, index))
+            add_notes("model_updates", b_notes)
+            add_notes("model_updates", benchmarks.annotate(vendor_rows, index))
             hit = sum(1 for r in vendor_rows if r.get("benchmarks"))
             print(f"[벤치마크] {hit}/{len(vendor_rows)}개 모델에 점수")
         except Exception as exc:
-            notes.append(f"벤치마크 실패: {type(exc).__name__}")
+            add_notes("model_updates", [f"벤치마크 실패: {type(exc).__name__}"])
             print(f"[벤치마크] 실패: {type(exc).__name__}")
 
     keyword_rows, k_notes = keywords_mod.extract(items)
-    notes.extend(k_notes)
+    add_notes("keywords", k_notes)
     print(f"[키워드] {len(keyword_rows)}개")
 
     result = board_mod.build(by_section, github_rows, status,
@@ -237,7 +265,8 @@ def main():
                              community_rows=community_rows,
                              vendor_rows=vendor_rows,
                              keyword_rows=keyword_rows,
-                             milestone=milestone)
+                             milestone=milestone,
+                             section_notes=section_notes)
     # 요약. 키가 없으면 조용히 건너뛰고 카드는 제목만으로 완성돼 보인다.
     if not args.dry:
         try:
