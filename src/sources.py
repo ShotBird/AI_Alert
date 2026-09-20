@@ -59,7 +59,14 @@ PRODUCT_TERMS = [
     "qwen", "mistral", "sonnet", "opus", "haiku", "o3", "o4",
 ]
 
-# 모델 업데이트로 보기 위한 추가 단서. 제품명만으로는 논평까지 딸려온다.
+# "이건 모델 얘기다"를 알려주는 말. 고정된 제품명 목록만으로는
+# StepFun·Kimi·GLM 처럼 목록에 없는 벤더의 출시를 영원히 못 잡는다.
+MODEL_WORDS = [
+    "모델", "model", "llm", "preview", "weights", "가중치",
+    "checkpoint", "파라미터", "parameter", "-b ", "b 모델",
+]
+
+# 출시를 알리는 말. 제품명이나 모델 단어와 함께 나와야 인정한다.
 RELEASE_HINTS = [
     "introduc", "launch", "releas", "announc", "unveil", "ship",
     "now available", "available now", "출시", "공개", "발표",

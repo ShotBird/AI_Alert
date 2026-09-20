@@ -21,6 +21,7 @@ SECTION_TITLES = {
     "model_updates": "모델 업데이트",
     "github_skills": "GitHub 스킬",
     "top_headlines": "뉴스 Top5",
+    "communities": "AI 커뮤니티 Top5",
     "keywords": "오늘의 키워드",
 }
 
@@ -76,7 +77,7 @@ def _card(cluster, seq, board_date, prev_keys):
 
 
 def build(clusters_by_section, github_rows, sources_status, budget_report,
-          boards_dir, now=None, notes=None):
+          boards_dir, now=None, notes=None, community_rows=None):
     now = now or datetime.now(timezone.utc)
     board_date = now.astimezone().date().isoformat()
 
@@ -84,7 +85,8 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
     prev_keys = _previous_keys(prev)
 
     sections, seq = [], 0
-    for sid in ("model_updates", "github_skills", "top_headlines", "keywords"):
+    for sid in ("model_updates", "github_skills", "top_headlines",
+                "communities", "keywords"):
         cards, empty_reason = [], None
 
         if sid == "github_skills":
@@ -113,6 +115,31 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
             if not cards:
                 empty_reason = "GitHub 응답이 없어 오늘은 비어 있습니다."
 
+        elif sid == "communities":
+            # 두 숫자의 성격이 다르다. mentions 는 AI에 한정된 우리 측정치이고,
+            # rank 는 그 사이트 전체 규모다. 화면에서도 이 차이를 숨기지 않는다.
+            for row in (community_rows or []):
+                seq += 1
+                cards.append({
+                    "id": f"c_{board_date}_{seq:03d}",
+                    "title": row["name"],
+                    "summary_ko": None,
+                    "url": f"https://{row['domain']}",
+                    "heat": float(row.get("mentions") or 0),
+                    "source_count": 1,
+                    "sources": [{"name": "Tranco"}],
+                    "change": "continuing" if row["domain"] in prev_keys else "new",
+                    "dedup_key": row["domain"],
+                    "published_at": None,
+                    "domain": row["domain"],
+                    "mentions": row.get("mentions") or 0,
+                    "engagement": row.get("engagement") or 0,
+                    "global_rank": row.get("rank"),
+                    "rank_note": row.get("rank_note"),
+                })
+            if not cards:
+                empty_reason = "커뮤니티 신호를 수집하지 못했습니다."
+
         elif sid == "keywords":
             empty_reason = ("키워드 추출은 LLM 호출이 필요합니다. "
                             "ANTHROPIC_API_KEY가 설정되면 채워집니다.")
@@ -130,7 +157,9 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                 seq += 1
                 cards.append(_card(cluster, seq, board_date, prev_keys))
             if not cards:
-                empty_reason = "수집된 항목이 없습니다."
+                empty_reason = ("오늘은 새로 나온 모델이 없습니다."
+                                if sid == "model_updates"
+                                else "수집된 항목이 없습니다.")
 
         sections.append({
             "id": sid,

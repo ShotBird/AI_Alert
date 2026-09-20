@@ -1,0 +1,77 @@
+{
+  "reddit.com": {
+    "rank": 109,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "news.ycombinator.com": {
+    "rank": null,
+    "note": "Tranco 미등재",
+    "checked_at": "2026-09-20"
+  },
+  "x.com": {
+    "rank": 50,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "threads.com": {
+    "rank": 615,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "huggingface.co": {
+    "rank": 1129,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "discord.com": {
+    "rank": 168,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "lobste.rs": {
+    "rank": 44824,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "kaggle.com": {
+    "rank": 4576,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "news.hada.io": {
+    "rank": null,
+    "note": "Tranco 미등재",
+    "checked_at": "2026-09-20"
+  },
+  "arca.live": {
+    "rank": 1304,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "dcinside.com": {
+    "rank": 1205,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "clien.net": {
+    "rank": 19884,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "velog.io": {
+    "rank": 23221,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "zenn.dev": {
+    "rank": 30392,
+    "note": null,
+    "checked_at": "2026-09-20"
+  },
+  "qiita.com": {
+    "rank": 7477,
+    "note": null,
+    "checked_at": "2026-09-20"
+  }
+}

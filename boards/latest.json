@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "board_date": "2026-09-20",
-  "generated_at": "2026-09-20T13:56:40.737510Z",
+  "generated_at": "2026-09-20T14:06:55.088329Z",
   "status": "ok",
   "previous_board_date": "2026-09-20",
   "generator": {
@@ -9,15 +9,18 @@
     "model": null,
     "counts": {
       "collected": 1629,
-      "clustered": 228,
+      "clustered": 107,
       "published": 15
     },
     "api_budget": {
       "github_core": "60/900",
-      "github_search": "6/30"
+      "github_search": "6/30",
+      "tranco": "38/40"
     },
     "notes": [
-      "GitHub 토큰이 없어 후보 수를 줄였습니다 (무인증 core 시간당 60회)."
+      "오늘 수집한 항목 중 다른 곳에서 커뮤니티를 가리킨 링크가 없음 (화제 유입량 0). 전체 트래픽 순위로만 줄을 세움",
+      "화제 유입량은 오늘 수집한 항목이 가리키는 링크 기준이고, 전체 트래픽 순위(Tranco)는 AI 화제 전용 지표가 아니라 사이트 전체 규모다.",
+      "ANTHROPIC_API_KEY가 없어 요약을 건너뜁니다. 키가 생기면 자동으로 채워집니다."
     ]
   },
   "sources_status": [
@@ -109,12 +112,12 @@
           "title": "Qwen/Qwen-Image-2.1-PE-I2I",
           "summary_ko": null,
           "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-PE-I2I",
-          "heat": 5.47,
+          "heat": 5.52,
           "source_count": 1,
           "sources": [
             {
               "name": "Hugging Face",
-              "engagement": 10
+              "engagement": 13
             }
           ],
           "change": "continuing",
@@ -123,67 +126,67 @@
         },
         {
           "id": "c_2026-09-20_002",
-          "title": "Earn continuing education and college credits for AI educator training.",
+          "title": "StepFun, 차세대 플래그십 AI 모델 Step 5 Preview 공개",
           "summary_ko": null,
-          "url": "https://blog.google/products-and-platforms/products/education/college-credit-ai-educator-series/",
-          "heat": 0.61,
+          "url": "https://news.hada.io/topic?id=33999",
+          "heat": 5.39,
           "source_count": 1,
           "sources": [
             {
-              "name": "Google"
+              "name": "GeekNews"
             }
           ],
           "change": "continuing",
-          "dedup_key": "httpss://blog.google/products-and-platforms/products/education/college-credit-ai-educator-series",
-          "published_at": "2026-09-18T16:00:00Z"
+          "dedup_key": "httpss://news.hada.io/topic?id=33999",
+          "published_at": "2026-09-20T13:30:42Z"
         },
         {
           "id": "c_2026-09-20_003",
-          "title": "New experts join Google’s AI & Economy team",
+          "title": "Alibaba, 암을 포함한 약 150개 질환을 탐지하는 AI 모델 오픈소스로 공개",
           "summary_ko": null,
-          "url": "https://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench/",
-          "heat": 0.57,
+          "url": "https://news.hada.io/topic?id=33957",
+          "heat": 3.24,
           "source_count": 1,
           "sources": [
             {
-              "name": "Google"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "httpss://blog.google/innovation-and-ai/technology/ai/expanding-ai-economy-research-bench",
-          "published_at": "2026-09-18T14:00:00Z"
-        },
-        {
-          "id": "c_2026-09-20_004",
-          "title": "Introducing the Australian Youth Safety Blueprint",
-          "summary_ko": null,
-          "url": "https://openai.com/index/australian-youth-safety-blueprint",
-          "heat": 0.53,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "OpenAI"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "httpss://openai.com/index/australian-youth-safety-blueprint",
-          "published_at": "2026-09-18T12:00:00Z"
-        },
-        {
-          "id": "c_2026-09-20_005",
-          "title": "Partnering with Accenture on embedded evaluation",
-          "summary_ko": null,
-          "url": "https://www.anthropic.com/news/accenture-embedded-evaluation",
-          "heat": 0.35,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "Anthropic"
+              "name": "GeekNews"
             }
           ],
           "change": "new",
-          "dedup_key": "httpss://anthropic.com/news/accenture-embedded-evaluation",
-          "published_at": "2026-09-18T00:00:00Z"
+          "dedup_key": "httpss://news.hada.io/topic?id=33957",
+          "published_at": "2026-09-19T22:52:23Z"
+        },
+        {
+          "id": "c_2026-09-20_004",
+          "title": "오픈AI, 기업 시장 점유율 역전…앤트로픽, IPO전 신형 모델 출시 검토",
+          "summary_ko": null,
+          "url": "https://www.aitimes.com/news/articleView.html?idxno=215494",
+          "heat": 2.13,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "AI타임스"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "httpss://aitimes.com/news/articleView.html?idxno=215494",
+          "published_at": "2026-09-19T10:46:59Z"
+        },
+        {
+          "id": "c_2026-09-20_005",
+          "title": "\"낯선 가정서 집안일 척척\"...피규어 AI, 로봇 모델 '헬릭스 2.5' 공개",
+          "summary_ko": null,
+          "url": "https://www.aitimes.com/news/articleView.html?idxno=215470",
+          "heat": 0.87,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "AI타임스"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "httpss://aitimes.com/news/articleView.html?idxno=215470",
+          "published_at": "2026-09-18T08:49:22Z"
         }
       ]
     },
@@ -191,109 +194,8 @@
       "id": "github_skills",
       "title": "GitHub 스킬",
       "briefing_ko": [],
-      "empty_reason": null,
-      "cards": [
-        {
-          "id": "c_2026-09-20_006",
-          "title": "tt-a1i/archify",
-          "summary_ko": null,
-          "url": "https://github.com/tt-a1i/archify",
-          "heat": 11.73,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "tt-a1i/archify",
-          "published_at": null,
-          "repo": "tt-a1i/archify",
-          "stars": 67980,
-          "stars_delta": 8150,
-          "category": "디자인·비주얼"
-        },
-        {
-          "id": "c_2026-09-20_007",
-          "title": "DietrichGebert/ponytail",
-          "summary_ko": null,
-          "url": "https://github.com/DietrichGebert/ponytail",
-          "heat": 11.39,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "DietrichGebert/ponytail",
-          "published_at": null,
-          "repo": "DietrichGebert/ponytail",
-          "stars": 142863,
-          "stars_delta": 6258,
-          "category": "기타"
-        },
-        {
-          "id": "c_2026-09-20_008",
-          "title": "addyosmani/agent-skills",
-          "summary_ko": null,
-          "url": "https://github.com/addyosmani/agent-skills",
-          "heat": 10.72,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "addyosmani/agent-skills",
-          "published_at": null,
-          "repo": "addyosmani/agent-skills",
-          "stars": 97440,
-          "stars_delta": 3757,
-          "category": "기타"
-        },
-        {
-          "id": "c_2026-09-20_009",
-          "title": "blader/humanizer",
-          "summary_ko": null,
-          "url": "https://github.com/blader/humanizer",
-          "heat": 10.49,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "blader/humanizer",
-          "published_at": null,
-          "repo": "blader/humanizer",
-          "stars": 50496,
-          "stars_delta": 3139,
-          "category": "글쓰기·콘텐츠"
-        },
-        {
-          "id": "c_2026-09-20_010",
-          "title": "nexu-io/open-design",
-          "summary_ko": null,
-          "url": "https://github.com/nexu-io/open-design",
-          "heat": 9.52,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "new",
-          "dedup_key": "nexu-io/open-design",
-          "published_at": null,
-          "repo": "nexu-io/open-design",
-          "stars": 97228,
-          "stars_delta": 1486,
-          "category": "디자인·비주얼"
-        }
-      ]
+      "empty_reason": "GitHub 응답이 없어 오늘은 비어 있습니다.",
+      "cards": []
     },
     {
       "id": "top_headlines",
@@ -302,75 +204,27 @@
       "empty_reason": null,
       "cards": [
         {
-          "id": "c_2026-09-20_011",
-          "title": "다른 언어를 배우는 것이 뇌 건강을 유지하는 가장 좋은 방법 중 하나일 수 있음",
-          "summary_ko": null,
-          "url": "https://news.hada.io/topic?id=34001",
-          "heat": 2.98,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GeekNews"
-            }
-          ],
-          "change": "new",
-          "dedup_key": "httpss://news.hada.io/topic?id=34001",
-          "published_at": "2026-09-20T13:42:26Z"
-        },
-        {
-          "id": "c_2026-09-20_012",
-          "title": "AI와 창작 공유지의 파괴",
-          "summary_ko": null,
-          "url": "https://news.hada.io/topic?id=34000",
-          "heat": 2.98,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GeekNews"
-            }
-          ],
-          "change": "new",
-          "dedup_key": "httpss://news.hada.io/topic?id=34000",
-          "published_at": "2026-09-20T13:42:25Z"
-        },
-        {
-          "id": "c_2026-09-20_013",
-          "title": "An interview with Raspberry Pi CEO Eben Upton on the Raspberry Pi Foundation, his skepticism of AI evangelists, AI driving edge compute device demand, and more (John Thornhill/Financial Times)",
-          "summary_ko": null,
-          "url": "https://www.techmeme.com/260920/p7#a260920p7",
-          "heat": 2.81,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "Techmeme"
-            }
-          ],
-          "change": "new",
-          "dedup_key": "httpss://techmeme.com/260920/p7",
-          "published_at": "2026-09-20T12:05:07Z"
-        },
-        {
-          "id": "c_2026-09-20_014",
+          "id": "c_2026-09-20_006",
           "title": "US policy analysts, lawmakers, and others say several state-level AI chatbot safety bills included language that could provide loopholes for tech companies (Katie McQue/NPR)",
           "summary_ko": null,
           "url": "https://www.techmeme.com/260920/p6#a260920p6",
-          "heat": 2.53,
+          "heat": 2.52,
           "source_count": 1,
           "sources": [
             {
               "name": "Techmeme"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "httpss://techmeme.com/260920/p6",
           "published_at": "2026-09-20T09:05:02Z"
         },
         {
-          "id": "c_2026-09-20_015",
+          "id": "c_2026-09-20_007",
           "title": "“문장 생성 버렸다”…판단 전용 AI ‘제브’에 개발자 반응 폭발",
           "summary_ko": null,
           "url": "https://www.aitimes.com/news/articleView.html?idxno=215506",
-          "heat": 2.5,
+          "heat": 2.48,
           "source_count": 1,
           "sources": [
             {
@@ -380,6 +234,167 @@
           "change": "continuing",
           "dedup_key": "httpss://aitimes.com/news/articleView.html?idxno=215506",
           "published_at": "2026-09-20T08:40:45Z"
+        },
+        {
+          "id": "c_2026-09-20_008",
+          "title": "과기부, 연구자가 지켜야 할 ‘AI 활용’ 7대 권고사항 제시",
+          "summary_ko": null,
+          "url": "https://www.aitimes.com/news/articleView.html?idxno=215505",
+          "heat": 2.46,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "AI타임스"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "httpss://aitimes.com/news/articleView.html?idxno=215505",
+          "published_at": "2026-09-20T08:25:00Z"
+        },
+        {
+          "id": "c_2026-09-20_009",
+          "title": "[창간기획] AI가 바꾸는 현장 - 전자신문 기자들이 직접 만든 AI 뉴스 에이전트 'ETA 2.0' 고도화",
+          "summary_ko": null,
+          "url": "https://www.etnews.com/20260914000437",
+          "heat": 2.43,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "전자신문"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "httpss://etnews.com/20260914000437",
+          "published_at": "2026-09-20T08:00:00Z"
+        },
+        {
+          "id": "c_2026-09-20_010",
+          "title": "Cache-to-Cache: LLM 간 직접 의미 전달 (2025)",
+          "summary_ko": null,
+          "url": "https://news.hada.io/topic?id=33983",
+          "heat": 2.25,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GeekNews"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "httpss://news.hada.io/topic?id=33983",
+          "published_at": "2026-09-20T05:52:25Z"
+        }
+      ]
+    },
+    {
+      "id": "communities",
+      "title": "AI 커뮤니티 Top5",
+      "briefing_ko": [],
+      "empty_reason": null,
+      "cards": [
+        {
+          "id": "c_2026-09-20_011",
+          "title": "X(트위터)",
+          "summary_ko": null,
+          "url": "https://x.com",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "x.com",
+          "published_at": null,
+          "domain": "x.com",
+          "mentions": 0,
+          "engagement": 0,
+          "global_rank": 50,
+          "rank_note": null
+        },
+        {
+          "id": "c_2026-09-20_012",
+          "title": "Reddit",
+          "summary_ko": null,
+          "url": "https://reddit.com",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "reddit.com",
+          "published_at": null,
+          "domain": "reddit.com",
+          "mentions": 0,
+          "engagement": 0,
+          "global_rank": 109,
+          "rank_note": null
+        },
+        {
+          "id": "c_2026-09-20_013",
+          "title": "Discord",
+          "summary_ko": null,
+          "url": "https://discord.com",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "discord.com",
+          "published_at": null,
+          "domain": "discord.com",
+          "mentions": 0,
+          "engagement": 0,
+          "global_rank": 168,
+          "rank_note": null
+        },
+        {
+          "id": "c_2026-09-20_014",
+          "title": "Threads",
+          "summary_ko": null,
+          "url": "https://threads.com",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "threads.com",
+          "published_at": null,
+          "domain": "threads.com",
+          "mentions": 0,
+          "engagement": 0,
+          "global_rank": 615,
+          "rank_note": null
+        },
+        {
+          "id": "c_2026-09-20_015",
+          "title": "Hugging Face",
+          "summary_ko": null,
+          "url": "https://huggingface.co",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "huggingface.co",
+          "published_at": null,
+          "domain": "huggingface.co",
+          "mentions": 0,
+          "engagement": 0,
+          "global_rank": 1129,
+          "rank_note": null
         }
       ]
     },

@@ -16,14 +16,19 @@ sys.path.insert(0, HERE)
 
 from src import board as board_mod            # noqa: E402
 from src import collect as collect_mod        # noqa: E402
+from src import community as community_mod    # noqa: E402
 from src import github_skills                 # noqa: E402
+from src import relevance                     # noqa: E402
+from src import summarize                     # noqa: E402
 from src.budget import Budget, BudgetUnavailable   # noqa: E402
 from src.cluster import build_clusters        # noqa: E402
 from src.rank import rank                     # noqa: E402
-from src.sources import PRODUCT_TERMS, RELEASE_HINTS, SOURCES  # noqa: E402
+from src.sources import (MODEL_WORDS, PRODUCT_TERMS,  # noqa: E402
+                         RELEASE_HINTS, SOURCES)
 
 BOARDS = os.path.join(HERE, "boards")
 COUNTER = os.path.join(HERE, "state", "api-usage.json")
+RANK_CACHE = os.path.join(HERE, "state", "domain-ranks.json")
 
 
 def load_env(path=os.path.join(HERE, ".env")):
@@ -47,12 +52,17 @@ def looks_like_release(title):
     """모델 업데이트 섹션에 넣을 만한가.
 
     티켓 09의 발견: 회사명으로 걸면 소송·인사·정치가 딸려오고,
-    제품명으로 걸어야 실제 출시가 잡힌다. 그래서 제품명을 먼저 본다.
+    제품명으로 걸어야 실제 출시가 잡힌다.
+
+    다만 제품명 목록만으로는 목록에 없는 벤더를 영원히 놓친다. 실제로
+    "StepFun, 차세대 플래그십 AI 모델 Step 5 Preview 공개"가 그래서 빠졌다.
+    그래서 **출시를 알리는 말 + (아는 제품명 또는 모델을 가리키는 말)**로 본다.
     """
     low = title.lower()
-    if not any(term in low for term in PRODUCT_TERMS):
+    if not any(hint in low for hint in RELEASE_HINTS):
         return False
-    return any(hint in low for hint in RELEASE_HINTS)
+    return (any(term in low for term in PRODUCT_TERMS)
+            or any(word in low for word in MODEL_WORDS))
 
 
 def main():
@@ -98,6 +108,16 @@ def main():
         print(f"[기간] {args.days}일 밖 {stale_n}건 제외 · 남은 항목 {len(fresh)}개")
     items = fresh
 
+    # AI 관련성. GeekNews·Techmeme 는 일반 테크 피드라 "뇌 건강" 같은 기사가 섞인다.
+    # 이미 AI 카테고리로 거른 피드(TechCrunch AI 등)는 다시 따지지 않는다.
+    before = len(items)
+    items = [i for i in items
+             if i["section"] != "top_headlines"
+             or relevance.is_relevant(i["title"], i["source_id"])]
+    off_topic = before - len(items)
+    if off_topic:
+        print(f"[관련성] AI와 무관한 뉴스 {off_topic}건 제외")
+
     # 출시로 보이는 항목에 표시를 단다. 거르지는 않는다 —
     # 실제 출시는 하루 한두 건이라 걸러버리면 섹션이 빈다.
     # 대신 화제도에서 가점을 받아 위로 올라간다.
@@ -106,7 +126,27 @@ def main():
         if item["source_id"].startswith("hf_") or looks_like_release(item["title"]):
             item["is_release"] = True
             releases += 1
-    print(f"[선별] 출시로 보이는 항목 {releases}건에 가점")
+
+    # 출시 소식은 어느 소스로 들어오든 모델 업데이트다.
+    # 섹션을 소스로만 정하면 GeekNews 로 들어온 "Step 5 Preview 공개"가
+    # 뉴스에 갇힌다. 티켓 09 에서 "뉴스 커버리지가 벤더 발표를 대신한다"고
+    # 정했으므로, 내용이 출시면 섹션을 옮긴다.
+    moved = 0
+    for item in items:
+        if item.get("is_release") and item["section"] != "model_updates":
+            item["section"] = "model_updates"
+            moved += 1
+    if moved:
+        print(f"[재배치] 뉴스에서 들어온 출시 소식 {moved}건을 모델 업데이트로")
+
+    # 모델 업데이트 섹션은 출시로 보이는 것만 남긴다.
+    # 가점만으로는 출시가 없는 날 벤더 홍보글("교육 학점", "컨설팅사와 제휴")이
+    # 다섯 칸을 채운다. 그건 모델 업데이트가 아니라 그 회사 블로그 목차다.
+    # 실제 출시는 하루 한두 건이라 섹션이 짧아지지만, 짧은 게 정직하다.
+    before = len(items)
+    items = [i for i in items
+             if i["section"] != "model_updates" or i.get("is_release")]
+    print(f"[선별] 출시 {releases}건 · 벤더 홍보글 {before - len(items)}건 제외")
 
     clusters = rank(build_clusters(items), now)
     by_section = {}
@@ -128,8 +168,33 @@ def main():
             notes.append(f"GitHub 섹션 실패: {type(exc).__name__}")
             print(f"[GitHub] 실패: {type(exc).__name__}")
 
+    community_rows = []
+    if not args.dry:
+        try:
+            community_rows, com_notes = community_mod.top_communities(
+                items, budget, RANK_CACHE)
+            notes.extend(com_notes)
+            print(f"[커뮤니티] {len(community_rows)}곳")
+        except Exception as exc:
+            notes.append(f"커뮤니티 섹션 실패: {type(exc).__name__}")
+            print(f"[커뮤니티] 실패: {type(exc).__name__}")
+
     result = board_mod.build(by_section, github_rows, status,
-                             budget.report(), BOARDS, now, notes)
+                             budget.report(), BOARDS, now, notes,
+                             community_rows=community_rows)
+    # 요약. 키가 없으면 조용히 건너뛰고 카드는 제목만으로 완성돼 보인다.
+    if not args.dry:
+        try:
+            notes.extend(summarize.summarize_board(result, env, budget))
+            if result["generator"].get("model"):
+                print(f"[요약] {result['generator']['model']}")
+            else:
+                print("[요약] 건너뜀 (ANTHROPIC_API_KEY 없음)")
+        except Exception as exc:
+            notes.append(f"요약 실패: {type(exc).__name__}")
+            print(f"[요약] 실패: {type(exc).__name__}")
+        result["generator"]["notes"] = notes
+
     path = board_mod.write(result, BOARDS)
     budget.save()
 
