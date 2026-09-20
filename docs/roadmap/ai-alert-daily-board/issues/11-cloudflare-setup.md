@@ -10,7 +10,7 @@ Blocked by: (없음)
 GitHub Actions가 만든 보드를 Cloudflare에 올리려면 계정과 토큰이 필요한데, 에이전트가 대신 못 한다.
 
 1. `dash.cloudflare.com` 가입 (이메일만으로 가능한지 확인)
-2. **Pages 프로젝트 생성** — 이름은 `ai-alert` 정도. 저장소 연결 없이 직접 업로드 방식으로 만든다
+2. **Pages 프로젝트 생성** — 이름은 반드시 `ai-alert-board` (CI 가 이 이름으로 배포한다). 저장소 연결 없이 직접 업로드 방식으로 만든다
 3. **API 토큰 발급** — 계정 > API 토큰 > 템플릿에서 `Edit Cloudflare Workers` 또는
    Pages 편집 권한이 있는 커스텀 토큰. 필요한 최소 권한만 준다
 4. 토큰과 계정 ID를 **GitHub 리포의 Actions 시크릿**에 넣는다 (`.env`가 아니라 GitHub 쪽이다.
@@ -54,7 +54,7 @@ NCP 때와 달리 여기는 **콘솔에서 하드 상한을 걸 수 있다** —
 
 - [x] Cloudflare 가입 완료 (2026-09-21, 사용자 보고). 카드 요구 여부는 사용자가 진행 중 막히지
       않았으므로 무료 플랜은 카드 없이 통과한 것으로 본다 — 결제 화면을 봤다면 정정할 것.
-- [ ] Pages 프로젝트 생성됨 (`ai-alert`, 저장소 연결 없이 '직접 업로드')
+- [ ] Pages 프로젝트 생성됨 (`ai-alert-board`, 저장소 연결 없이 '직접 업로드')
 - [ ] `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`가 GitHub Actions 시크릿에 등록됨
 - [ ] `GH_READ_TOKEN` (공개 저장소 읽기 전용) 발급 후 Actions 시크릿에 등록
 - [ ] `ANTHROPIC_API_KEY` 발급 + 월 사용 한도 설정 + Actions 시크릿 등록
@@ -65,7 +65,7 @@ NCP 때와 달리 여기는 **콘솔에서 하드 상한을 걸 수 있다** —
 
 **A. Cloudflare Pages 프로젝트**
 1. `dash.cloudflare.com` → 왼쪽 **Compute (Workers & Pages)** → **Create** → **Pages** 탭
-2. **Upload assets** (저장소 연결 아님) → 프로젝트 이름 `ai-alert` → Create
+2. **Upload assets** (저장소 연결 아님) → 프로젝트 이름 **`ai-alert-board`** → Create  ← 철자까지 이대로
 3. 첫 업로드를 요구하면 아무 파일이나 하나 올려서 프로젝트만 만들어 둔다. 이후는 CI 가 덮는다
 
 **B. 토큰 두 개**

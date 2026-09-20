@@ -268,15 +268,32 @@ def _model_name(title, family):
         re.I)
     m = pat.search(title)
     if m:
-        name = m.group(0).strip(" .,:")
-        # "Introducing Gemini 3.8" 처럼 동사가 앞 토막으로 딸려온다. 떼어낸다.
-        for verb in ("introducing", "announcing", "launching", "meet",
-                     "presenting", "shipping"):
-            if name.lower().startswith(verb + " "):
-                name = name[len(verb) + 1:]
-        return name.strip()
-    # 계열이 안 보이면 원문이 낫다 — 지어내지 않는다.
-    return title
+        return _strip_noise(m.group(0).strip(" .,:"))
+    # 계열이 안 보이면 원문이 낫다 — 지어내지 않는다. 다만 원문 그대로 실으면
+    # `Qwen/Qwen-Image-2.1` 처럼 소유자 접두사가, `Introducing …` 처럼 동사가
+    # 표에 그대로 나온다. 지어내지 않으면서 군더더기만 떼는 건 별개다.
+    return _strip_noise(title)
+
+
+# 앞머리 동사. "Introducing Gemini 3.8" 에서 모델은 뒤쪽뿐이다.
+_LEAD_VERBS = ("introducing", "announcing", "launching", "meet", "presenting",
+               "shipping", "say hello to", "welcome", "bringing")
+
+
+def _strip_noise(name):
+    """모델 이름에서 표시용 군더더기만 뗀다. 없는 말을 만들지는 않는다."""
+    if not name:
+        return name
+    # Hugging Face 는 `소유자/모델` 로 온다. 회사 칸이 이미 소유자를 말하고 있으므로
+    # 표에서 접두사는 같은 말을 두 번 하는 것이고, 좁은 폰에서 모델명을 밀어낸다.
+    if "/" in name and " " not in name.split("/")[0]:
+        name = name.split("/", 1)[1]
+    low = name.lower()
+    for verb in _LEAD_VERBS:
+        if low.startswith(verb + " "):
+            name = name[len(verb) + 1:]
+            break
+    return name.strip(" .,:-")
 
 
 def _family_rows(vendor, candidates, now):

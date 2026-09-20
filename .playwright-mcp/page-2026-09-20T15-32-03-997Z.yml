@@ -1,0 +1,778 @@
+- generic [ref=f4e2]:
+  - banner [ref=f4e3]:
+    - paragraph [ref=f4e4]: 2026년 9월 21일 월요일 · 오전 12시 31분 생성
+    - heading "오늘의 AI 동향" [level=1] [ref=f4e5]
+    - generic [ref=f4e6]: 항목 95개 · 출처 16곳
+  - generic [ref=f4e8]:
+    - paragraph [ref=f4e9]: 오늘의 키워드
+    - generic [ref=f4e10]:
+      - button "Gemini 11회" [ref=f4e11] [cursor=pointer]:
+        - generic [ref=f4e12]: Gemini
+        - generic [ref=f4e13]: 11회
+      - button "hacked 10회" [ref=f4e14] [cursor=pointer]:
+        - generic [ref=f4e15]: hacked
+        - generic [ref=f4e16]: 10회
+      - button "used 8회" [ref=f4e17] [cursor=pointer]:
+        - generic [ref=f4e18]: used
+        - generic [ref=f4e19]: 8회
+      - button "Claude 8회" [ref=f4e20] [cursor=pointer]:
+        - generic [ref=f4e21]: Claude
+        - generic [ref=f4e22]: 8회
+      - button "hacked three 7회" [ref=f4e23] [cursor=pointer]:
+        - generic [ref=f4e24]: hacked three
+        - generic [ref=f4e25]: 7회
+  - navigation [ref=f4e26]:
+    - link "모델 업데이트" [ref=f4e27] [cursor=pointer]:
+      - /url: "#s-model_updates"
+    - link "GitHub 급상승" [ref=f4e28] [cursor=pointer]:
+      - /url: "#s-github_skills"
+    - link "뉴스" [ref=f4e29] [cursor=pointer]:
+      - /url: "#s-top_headlines"
+    - link "AI 커뮤니티" [ref=f4e30] [cursor=pointer]:
+      - /url: "#s-communities"
+  - main [ref=f4e31]:
+    - generic [ref=f4e32]:
+      - heading "모델 업데이트" [level=2] [ref=f4e33]
+      - generic [ref=f4e34]:
+        - paragraph [ref=f4e35]: 2026년 모델 출시 마일스톤 · 40건
+        - generic [ref=f4e36]:
+          - generic [ref=f4e39]: 1월
+          - text: ","
+          - generic [ref=f4e41]: 2월
+          - text: ","
+          - generic [ref=f4e43]: 3월
+          - text: ","
+          - generic [ref=f4e45]: 4월
+          - text: ","
+          - generic [ref=f4e47]: 5월
+          - text: ","
+          - generic [ref=f4e49]: 6월
+          - text: ","
+          - generic [ref=f4e51]: 7월
+          - text: ","
+          - generic [ref=f4e53]: 8월
+          - text: ","
+          - generic [ref=f4e55]: 9월
+          - text: ","
+          - generic [ref=f4e57]: 10월
+          - text: ","
+          - generic [ref=f4e59]: 11월
+          - text: ","
+          - generic [ref=f4e61]: 12월
+          - generic [ref=f4e62]: 오늘
+          - link "6/22 Qwen-AgentWorld-35B-A3B" [ref=f4e105] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B
+            - generic [ref=f4e106]: 6/22
+            - text: Qwen-AgentWorld-35B-A3B
+          - link "6/23 Mistral OCR 4" [ref=f4e108] [cursor=pointer]:
+            - /url: https://mistral.ai/news/ocr-4/
+            - generic [ref=f4e109]: 6/23
+            - text: Mistral OCR 4
+          - link "6/26 Qwen3-ForcedAligner-0.6B-hf" [ref=f4e111] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen3-ForcedAligner-0.6B-hf
+            - generic [ref=f4e112]: 6/26
+            - text: Qwen3-ForcedAligner-0.6B-hf
+          - link "6/26 Qwen3-ASR-0.6B-hf" [ref=f4e114] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen3-ASR-0.6B-hf
+            - generic [ref=f4e115]: 6/26
+            - text: Qwen3-ASR-0.6B-hf
+          - link "6/26 Qwen3-ASR-1.7B-hf" [ref=f4e117] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen3-ASR-1.7B-hf
+            - generic [ref=f4e118]: 6/26
+            - text: Qwen3-ASR-1.7B-hf
+          - link "6/27 DeepSeek-V4-Pro-DSpark" [ref=f4e120] [cursor=pointer]:
+            - /url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-DSpark
+            - generic [ref=f4e121]: 6/27
+            - text: DeepSeek-V4-Pro-DSpark
+          - link "6/27 DeepSeek-V4-Flash-DSpark" [ref=f4e123] [cursor=pointer]:
+            - /url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-DSpark
+            - generic [ref=f4e124]: 6/27
+            - text: DeepSeek-V4-Flash-DSpark
+          - link "7/16 Grok 4.5" [ref=f4e126] [cursor=pointer]:
+            - /url: https://x.ai/news/grok-4-5
+            - generic [ref=f4e127]: 7/16
+            - text: Grok 4.5
+          - link "7/22 Grok 4.5" [ref=f4e129] [cursor=pointer]:
+            - /url: https://x.ai/news/grok-4-5-everywhere
+            - generic [ref=f4e130]: 7/22
+            - text: Grok 4.5
+          - link "7/22 Solar-Open2-250B" [ref=f4e132] [cursor=pointer]:
+            - /url: https://huggingface.co/upstage/Solar-Open2-250B
+            - generic [ref=f4e133]: 7/22
+            - text: Solar-Open2-250B
+          - link "7/28 Grok 4.5" [ref=f4e135] [cursor=pointer]:
+            - /url: https://x.ai/news/grok-github-copilot
+            - generic [ref=f4e136]: 7/28
+            - text: Grok 4.5
+          - link "7/31 DeepSeek-V4-Flash-0731" [ref=f4e138] [cursor=pointer]:
+            - /url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731
+            - generic [ref=f4e139]: 7/31
+            - text: DeepSeek-V4-Flash-0731
+          - link "8/5 Qwen3.8-27B" [ref=f4e141] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen3.8-27B
+            - generic [ref=f4e142]: 8/5
+            - text: Qwen3.8-27B
+          - link "8/8 Qwen3.8-2.4T-A95B" [ref=f4e144] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B
+            - generic [ref=f4e145]: 8/8
+            - text: Qwen3.8-2.4T-A95B
+          - link "8/8 Qwen3.8-2.4T-A95B-FP8" [ref=f4e147] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B-FP8
+            - generic [ref=f4e148]: 8/8
+            - text: Qwen3.8-2.4T-A95B-FP8
+          - link "8/12 Grok 4.6" [ref=f4e150] [cursor=pointer]:
+            - /url: https://x.ai/news/grok-4-6
+            - generic [ref=f4e151]: 8/12
+            - text: Grok 4.6
+          - link "8/13 DeepSeek-V4-Pro-0813" [ref=f4e153] [cursor=pointer]:
+            - /url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro-0813
+            - generic [ref=f4e154]: 8/13
+            - text: DeepSeek-V4-Pro-0813
+          - link "8/13 Qwen3.8-27B-FP8" [ref=f4e156] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen3.8-27B-FP8
+            - generic [ref=f4e157]: 8/13
+            - text: Qwen3.8-27B-FP8
+          - link "8/14 Grok 4.6" [ref=f4e159] [cursor=pointer]:
+            - /url: https://x.ai/news/grok-4-6-github-copilot
+            - generic [ref=f4e160]: 8/14
+            - text: Grok 4.6
+          - link "8/19 Grok 4.6" [ref=f4e162] [cursor=pointer]:
+            - /url: https://x.ai/news/grok-4-6-amazon-bedrock
+            - generic [ref=f4e163]: 8/19
+            - text: Grok 4.6
+          - link "8/21 Grok 4.6" [ref=f4e165] [cursor=pointer]:
+            - /url: https://x.ai/news/grok-4-6-vertex-ai
+            - generic [ref=f4e166]: 8/21
+            - text: Grok 4.6
+          - link "8/24 Qwen3.8-Flash-Next-FP8" [ref=f4e168] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen3.8-Flash-Next-FP8
+            - generic [ref=f4e169]: 8/24
+            - text: Qwen3.8-Flash-Next-FP8
+          - link "8/24 Qwen3.8-Flash-Next" [ref=f4e171] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen3.8-Flash-Next
+            - generic [ref=f4e172]: 8/24
+            - text: Qwen3.8-Flash-Next
+          - link "8/25 GLM-5.3-Flash-BF16" [ref=f4e174] [cursor=pointer]:
+            - /url: https://huggingface.co/zai-org/GLM-5.3-Flash-BF16
+            - generic [ref=f4e175]: 8/25
+            - text: GLM-5.3-Flash-BF16
+          - link "8/25 GLM-5.3-BF16" [ref=f4e177] [cursor=pointer]:
+            - /url: https://huggingface.co/zai-org/GLM-5.3-BF16
+            - generic [ref=f4e178]: 8/25
+            - text: GLM-5.3-BF16
+          - link "8/25 GLM-5.3-Flash" [ref=f4e180] [cursor=pointer]:
+            - /url: https://huggingface.co/zai-org/GLM-5.3-Flash
+            - generic [ref=f4e181]: 8/25
+            - text: GLM-5.3-Flash
+          - link "8/25 GLM-5.3" [ref=f4e183] [cursor=pointer]:
+            - /url: https://huggingface.co/zai-org/GLM-5.3
+            - generic [ref=f4e184]: 8/25
+            - text: GLM-5.3
+          - link "8/26 Grok 4.6" [ref=f4e186] [cursor=pointer]:
+            - /url: https://x.ai/news/grok-4-6-microsoft-foundry
+            - generic [ref=f4e187]: 8/26
+            - text: Grok 4.6
+          - link "8/27 Qwen-Drive-1.0-4B" [ref=f4e189] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen-Drive-1.0-4B
+            - generic [ref=f4e190]: 8/27
+            - text: Qwen-Drive-1.0-4B
+          - link "8/31 DeepSeek-V4-Flash-Vision-Exp" [ref=f4e192] [cursor=pointer]:
+            - /url: https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-Vision-Exp
+            - generic [ref=f4e193]: 8/31
+            - text: DeepSeek-V4-Flash-Vision-Exp
+          - link "9/1 Claude Fable 5.1" [ref=f4e195] [cursor=pointer]:
+            - /url: https://www.anthropic.com/claude-fable-and-mythos-5-1
+            - generic [ref=f4e196]: 9/1
+            - text: Claude Fable 5.1
+          - link "9/1 Claude Mythos 5.1" [ref=f4e198] [cursor=pointer]:
+            - /url: https://www.anthropic.com/claude-fable-and-mythos-5-1
+            - generic [ref=f4e199]: 9/1
+            - text: Claude Mythos 5.1
+          - link "9/8 ChatGPT Images 2.5" [ref=f4e201] [cursor=pointer]:
+            - /url: https://openai.com/index/introducing-chatgpt-images-2-5
+            - generic [ref=f4e202]: 9/8
+            - text: ChatGPT Images 2.5
+          - link "9/10 DeepSeek-V4.1-Flash" [ref=f4e204] [cursor=pointer]:
+            - /url: https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash
+            - generic [ref=f4e205]: 9/10
+            - text: DeepSeek-V4.1-Flash
+          - link "9/14 Qwen-Image-2.1" [ref=f4e207] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen-Image-2.1
+            - generic [ref=f4e208]: 9/14
+            - text: Qwen-Image-2.1
+          - link "9/15 Gemini 3.8" [ref=f4e210] [cursor=pointer]:
+            - /url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/
+            - generic [ref=f4e211]: 9/15
+            - text: Gemini 3.8
+          - link "9/16 DeepSeek-V4.1-Flash" [ref=f4e213] [cursor=pointer]:
+            - /url: https://huggingface.co/papers/2609.19969
+            - generic [ref=f4e214]: 9/16
+            - text: DeepSeek-V4.1-Flash
+          - link "9/17 Releases Qwen3.8-Omni-Flash" [ref=f4e216] [cursor=pointer]:
+            - /url: https://tokenstead.ai/models/qwen3-8-omni-flash
+            - generic [ref=f4e217]: 9/17
+            - text: Releases Qwen3.8-Omni-Flash
+          - link "9/20 Qwen-Image-2.1-PE-I2I" [ref=f4e219] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen-Image-2.1-PE-I2I
+            - generic [ref=f4e220]: 9/20
+            - text: Qwen-Image-2.1-PE-I2I
+          - link "9/20 Qwen-Image-2.1-PE-T2I" [ref=f4e222] [cursor=pointer]:
+            - /url: https://huggingface.co/Qwen/Qwen-Image-2.1-PE-T2I
+            - generic [ref=f4e223]: 9/20
+            - text: Qwen-Image-2.1-PE-T2I
+      - generic [ref=f4e224]:
+        - generic [ref=f4e225]:
+          - generic [ref=f4e226]: 회사
+          - generic [ref=f4e227]: 최신 모델
+          - generic [ref=f4e228]: 갱신
+          - generic [ref=f4e229]: 다음 예정
+        - generic [ref=f4e230]:
+          - generic [ref=f4e231]: Alibaba Qwen
+          - generic [ref=f4e232]:
+            - text: Qwen-Image-2.1-PE-I2I
+            - link "근거 페이지 열기" [ref=f4e233] [cursor=pointer]:
+              - /url: https://huggingface.co/Qwen/Qwen-Image-2.1-PE-I2I
+              - text: ↗
+          - generic [ref=f4e234]:
+            - generic [ref=f4e235]: 09/20
+            - generic [ref=f4e236]: 오늘
+          - generic [ref=f4e237]: —
+        - generic [ref=f4e239]:
+          - generic [ref=f4e240]: DeepSeek
+          - generic [ref=f4e241]:
+            - text: DeepSeek-V4.1-Flash
+            - link "근거 페이지 열기" [ref=f4e242] [cursor=pointer]:
+              - /url: https://huggingface.co/papers/2609.19969
+              - text: ↗
+          - generic [ref=f4e243]:
+            - generic [ref=f4e244]: 09/16
+            - generic [ref=f4e245]: 3일
+          - generic [ref=f4e246]: —
+        - generic [ref=f4e248]:
+          - generic [ref=f4e249]: Google
+          - generic [ref=f4e250]:
+            - text: Gemini 3.8
+            - link "근거 페이지 열기" [ref=f4e251] [cursor=pointer]:
+              - /url: https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/
+              - text: ↗
+          - generic [ref=f4e252]:
+            - generic [ref=f4e253]: 09/15
+            - generic [ref=f4e254]: 4일
+          - generic [ref=f4e255]: —
+        - generic [ref=f4e257]:
+          - generic [ref=f4e258]: OpenAI
+          - generic [ref=f4e259]:
+            - text: ChatGPT Images 2.5
+            - link "근거 페이지 열기" [ref=f4e260] [cursor=pointer]:
+              - /url: https://openai.com/index/introducing-chatgpt-images-2-5
+              - text: ↗
+          - generic [ref=f4e261]:
+            - generic [ref=f4e262]: 09/08
+            - generic [ref=f4e263]: 12일
+          - generic [ref=f4e264]: —
+        - generic [ref=f4e266]:
+          - generic [ref=f4e267]: Anthropic
+          - generic [ref=f4e268]:
+            - text: Claude Fable 5.1
+            - link "근거 페이지 열기" [ref=f4e269] [cursor=pointer]:
+              - /url: https://www.anthropic.com/claude-fable-and-mythos-5-1
+              - text: ↗
+          - generic [ref=f4e270]:
+            - generic [ref=f4e271]: 09/01
+            - generic [ref=f4e272]: 19일
+          - generic [ref=f4e273]: —
+        - generic [ref=f4e275]:
+          - generic [ref=f4e276]: Anthropic
+          - generic [ref=f4e277]:
+            - text: Claude Mythos 5.1
+            - link "근거 페이지 열기" [ref=f4e278] [cursor=pointer]:
+              - /url: https://www.anthropic.com/claude-fable-and-mythos-5-1
+              - text: ↗
+          - generic [ref=f4e279]:
+            - generic [ref=f4e280]: 09/01
+            - generic [ref=f4e281]: 19일
+          - generic [ref=f4e282]: —
+        - generic [ref=f4e284]:
+          - generic [ref=f4e285]: xAI
+          - generic [ref=f4e286]:
+            - text: Grok 4.6
+            - link "근거 페이지 열기" [ref=f4e287] [cursor=pointer]:
+              - /url: https://x.ai/news/grok-4-6-microsoft-foundry
+              - text: ↗
+          - generic [ref=f4e288]:
+            - generic [ref=f4e289]: 08/26
+            - generic [ref=f4e290]: 25일
+          - generic [ref=f4e291]: —
+        - generic [ref=f4e293]:
+          - generic [ref=f4e294]: Z.ai (GLM)
+          - generic [ref=f4e295]:
+            - text: GLM-5.3-Flash-BF16
+            - link "근거 페이지 열기" [ref=f4e296] [cursor=pointer]:
+              - /url: https://huggingface.co/zai-org/GLM-5.3-Flash-BF16
+              - text: ↗
+          - generic [ref=f4e297]:
+            - generic [ref=f4e298]: 08/25
+            - generic [ref=f4e299]: 26일
+          - generic [ref=f4e300]: —
+        - generic [ref=f4e302]:
+          - generic [ref=f4e303]: Upstage
+          - generic [ref=f4e304]:
+            - text: Solar-Open2-250B
+            - link "근거 페이지 열기" [ref=f4e305] [cursor=pointer]:
+              - /url: https://huggingface.co/upstage/Solar-Open2-250B
+              - text: ↗
+          - generic [ref=f4e306]:
+            - generic [ref=f4e307]: 07/22
+            - generic [ref=f4e308]: 2개월
+          - generic [ref=f4e309]: —
+        - generic [ref=f4e311]:
+          - generic [ref=f4e312]: Mistral
+          - generic [ref=f4e313]:
+            - text: Mistral OCR 4
+            - link "근거 페이지 열기" [ref=f4e314] [cursor=pointer]:
+              - /url: https://mistral.ai/news/ocr-4/
+              - text: ↗
+          - generic [ref=f4e315]:
+            - generic [ref=f4e316]: 06/23
+            - generic [ref=f4e317]: 2개월
+          - generic [ref=f4e318]: —
+        - generic [ref=f4e320]:
+          - generic [ref=f4e321]: Moonshot
+          - generic [ref=f4e322]:
+            - text: Kimi-K3
+            - link "근거 페이지 열기" [ref=f4e323] [cursor=pointer]:
+              - /url: https://huggingface.co/moonshotai/Kimi-K3
+              - text: ↗
+          - generic [ref=f4e324]:
+            - generic [ref=f4e325]: 06/13
+            - generic [ref=f4e326]: 3개월
+          - generic [ref=f4e327]: —
+        - generic [ref=f4e329]:
+          - generic [ref=f4e330]: Google
+          - generic [ref=f4e331]:
+            - text: gemma-26B-A4B-it
+            - link "근거 페이지 열기" [ref=f4e332] [cursor=pointer]:
+              - /url: https://huggingface.co/google/diffusiongemma-26B-A4B-it
+              - text: ↗
+          - generic [ref=f4e333]:
+            - generic [ref=f4e334]: 06/09
+            - generic [ref=f4e335]: 3개월
+          - generic [ref=f4e336]: —
+        - generic [ref=f4e338]:
+          - generic [ref=f4e339]: Mistral
+          - generic [ref=f4e340]:
+            - text: Devstral 2
+            - link "근거 페이지 열기" [ref=f4e341] [cursor=pointer]:
+              - /url: https://mistral.ai/news/devstral-2-vibe-cli/
+              - text: ↗
+          - generic [ref=f4e342]:
+            - generic [ref=f4e343]: 25.12/09
+            - generic [ref=f4e344]: 9개월
+          - generic [ref=f4e345]: —
+        - generic [ref=f4e347]:
+          - generic [ref=f4e348]: Meta
+          - generic [ref=f4e349]:
+            - text: Llama-Guard-4-12B
+            - link "근거 페이지 열기" [ref=f4e350] [cursor=pointer]:
+              - /url: https://huggingface.co/meta-llama/Llama-Guard-4-12B
+              - text: ↗
+          - generic [ref=f4e351]:
+            - generic [ref=f4e352]: 25.04/23
+            - generic [ref=f4e353]: 1.4년
+          - generic [ref=f4e354]: —
+    - generic [ref=f4e356]:
+      - heading "GitHub 급상승" [level=2] [ref=f4e357]
+      - generic [ref=f4e358]:
+        - generic [ref=f4e359]:
+          - paragraph [ref=f4e360]: 종류
+          - group "종류 선택" [ref=f4e361]:
+            - button "전체 45" [pressed] [ref=f4e362] [cursor=pointer]:
+              - text: 전체
+              - generic [ref=f4e363]: "45"
+            - button "MCP 서버 11" [ref=f4e364] [cursor=pointer]:
+              - text: MCP 서버
+              - generic [ref=f4e365]: "11"
+            - button "에이전트 프레임워크 11" [ref=f4e366] [cursor=pointer]:
+              - text: 에이전트 프레임워크
+              - generic [ref=f4e367]: "11"
+            - button "스킬 12" [ref=f4e368] [cursor=pointer]:
+              - text: 스킬
+              - generic [ref=f4e369]: "12"
+            - button "CLI·개발도구 11" [ref=f4e370] [cursor=pointer]:
+              - text: CLI·개발도구
+              - generic [ref=f4e371]: "11"
+        - generic [ref=f4e372]:
+          - paragraph [ref=f4e373]: 부문
+          - group "부문 선택" [ref=f4e374]:
+            - button "전체 45" [pressed] [ref=f4e375] [cursor=pointer]:
+              - text: 전체
+              - generic [ref=f4e376]: "45"
+            - button "보안 1" [ref=f4e377] [cursor=pointer]:
+              - text: 보안
+              - generic [ref=f4e378]: "1"
+            - button "연구·논문 1" [ref=f4e379] [cursor=pointer]:
+              - text: 연구·논문
+              - generic [ref=f4e380]: "1"
+            - button "백엔드·API 4" [ref=f4e381] [cursor=pointer]:
+              - text: 백엔드·API
+              - generic [ref=f4e382]: "4"
+            - button "기타 11" [ref=f4e383] [cursor=pointer]:
+              - text: 기타
+              - generic [ref=f4e384]: "11"
+            - button "디자인·UI 3" [ref=f4e385] [cursor=pointer]:
+              - text: 디자인·UI
+              - generic [ref=f4e386]: "3"
+            - button "인프라·배포 1" [ref=f4e387] [cursor=pointer]:
+              - text: 인프라·배포
+              - generic [ref=f4e388]: "1"
+            - button "슬라이드·문서 5" [ref=f4e389] [cursor=pointer]:
+              - text: 슬라이드·문서
+              - generic [ref=f4e390]: "5"
+            - button "데이터·분석 2" [ref=f4e391] [cursor=pointer]:
+              - text: 데이터·분석
+              - generic [ref=f4e392]: "2"
+            - button "브라우저 자동화 4" [ref=f4e393] [cursor=pointer]:
+              - text: 브라우저 자동화
+              - generic [ref=f4e394]: "4"
+            - button "다이어그램 2" [ref=f4e395] [cursor=pointer]:
+              - text: 다이어그램
+              - generic [ref=f4e396]: "2"
+            - button "코드리뷰 2" [ref=f4e397] [cursor=pointer]:
+              - text: 코드리뷰
+              - generic [ref=f4e398]: "2"
+            - button "글쓰기 1" [ref=f4e399] [cursor=pointer]:
+              - text: 글쓰기
+              - generic [ref=f4e400]: "1"
+            - button "데이터베이스 1" [ref=f4e401] [cursor=pointer]:
+              - text: 데이터베이스
+              - generic [ref=f4e402]: "1"
+            - button "프론트엔드 2" [ref=f4e403] [cursor=pointer]:
+              - text: 프론트엔드
+              - generic [ref=f4e404]: "2"
+            - button "메모리·컨텍스트 2" [ref=f4e405] [cursor=pointer]:
+              - text: 메모리·컨텍스트
+              - generic [ref=f4e406]: "2"
+            - button "이미지·영상 1" [ref=f4e407] [cursor=pointer]:
+              - text: 이미지·영상
+              - generic [ref=f4e408]: "1"
+            - button "크롤링·수집 1" [ref=f4e409] [cursor=pointer]:
+              - text: 크롤링·수집
+              - generic [ref=f4e410]: "1"
+            - button "에이전트 운영 1" [ref=f4e411] [cursor=pointer]:
+              - text: 에이전트 운영
+              - generic [ref=f4e412]: "1"
+        - generic [ref=f4e413]:
+          - generic [ref=f4e414]:
+            - generic [ref=f4e415]:
+              - generic [ref=f4e416]: 레포
+              - generic [ref=f4e417]: 부문
+              - generic [ref=f4e418]: 누적 ★
+            - generic [ref=f4e419]:
+              - generic [ref=f4e420]:
+                - generic [ref=f4e421]:
+                  - link "ECC" [ref=f4e422] [cursor=pointer]:
+                    - /url: https://github.com/affaan-m/ECC
+                  - generic [ref=f4e423]: affaan-m
+                - generic [ref=f4e424]: 보안
+                - generic [ref=f4e425]:
+                  - generic [ref=f4e426]: 263,422
+                  - generic [ref=f4e427]: 누적
+              - generic [ref=f4e428]:
+                - generic [ref=f4e429]: 09/20
+                - generic [ref=f4e430]: The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.
+            - generic [ref=f4e431]:
+              - generic [ref=f4e432]:
+                - generic [ref=f4e433]:
+                  - link "hermes-agent" [ref=f4e434] [cursor=pointer]:
+                    - /url: https://github.com/NousResearch/hermes-agent
+                  - generic [ref=f4e435]: NousResearch
+                - generic [ref=f4e436]: 연구·논문
+                - generic [ref=f4e437]:
+                  - generic [ref=f4e438]: 247,385
+                  - generic [ref=f4e439]: 누적
+              - generic [ref=f4e440]:
+                - generic [ref=f4e441]: 09/20
+                - generic [ref=f4e442]: The agent that grows with you
+            - generic [ref=f4e443]:
+              - generic [ref=f4e444]:
+                - generic [ref=f4e445]:
+                  - link "n8n" [ref=f4e446] [cursor=pointer]:
+                    - /url: https://github.com/n8n-io/n8n
+                  - generic [ref=f4e447]: n8n-io
+                - generic [ref=f4e448]: 백엔드·API
+                - generic [ref=f4e449]:
+                  - generic [ref=f4e450]: 205,449
+                  - generic [ref=f4e451]: 누적
+              - generic [ref=f4e452]:
+                - generic [ref=f4e453]: 09/20
+                - generic [ref=f4e454]: Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.
+            - generic [ref=f4e455]:
+              - generic [ref=f4e456]:
+                - generic [ref=f4e457]:
+                  - link "skills" [ref=f4e458] [cursor=pointer]:
+                    - /url: https://github.com/anthropics/skills
+                  - generic [ref=f4e459]: anthropics
+                - generic [ref=f4e460]: 기타
+                - generic [ref=f4e461]:
+                  - generic [ref=f4e462]: 177,273
+                  - generic [ref=f4e463]: 누적
+              - generic [ref=f4e464]:
+                - generic [ref=f4e465]: 09/10
+                - generic [ref=f4e466]: Anthropic 공식 예제 스킬 모음. 스킬을 처음 만들 때 형식을 참고하는 곳.
+            - generic [ref=f4e467]:
+              - generic [ref=f4e468]:
+                - generic [ref=f4e469]:
+                  - link "JavaGuide" [ref=f4e470] [cursor=pointer]:
+                    - /url: https://github.com/Snailclimb/JavaGuide
+                  - generic [ref=f4e471]: Snailclimb
+                - generic [ref=f4e472]: 디자인·UI
+                - generic [ref=f4e473]:
+                  - generic [ref=f4e474]: 158,732
+                  - generic [ref=f4e475]: 누적
+              - generic [ref=f4e476]:
+                - generic [ref=f4e477]: 09/20
+                - generic [ref=f4e478]: Java 面试 & 后端通用面试指南，覆盖计算机基础、数据库、分布式、高并发、系统设计与 AI 应用开发
+          - button "더보기 (15개 더)" [ref=f4e479] [cursor=pointer]
+    - generic [ref=f4e480]:
+      - heading "뉴스" [level=2] [ref=f4e481]
+      - generic [ref=f4e482]:
+        - paragraph [ref=f4e483]: 해외
+        - generic [ref=f4e484]:
+          - generic [ref=f4e485]:
+            - 'link "Qwen-Image-2.1: Compact, efficient, and unified image creation" [ref=f4e486] [cursor=pointer]':
+              - /url: https://qwen.ai/blog?id=qwen-image-2.1
+            - generic [ref=f4e487]:
+              - text: Hacker News
+              - generic [ref=f4e488]: ·
+              - text: 2시간
+          - generic [ref=f4e489]:
+            - link "Migrating the GitHub Copilot Runtime to Rust, Using Copilot" [ref=f4e490] [cursor=pointer]:
+              - /url: https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/
+            - generic [ref=f4e491]:
+              - text: Hacker News
+              - generic [ref=f4e492]: ·
+              - text: 3시간
+          - generic [ref=f4e493]:
+            - link "OpenAI and Microsoft knew they were starting a 'doom loop' for the web" [ref=f4e494] [cursor=pointer]:
+              - /url: https://www.theverge.com/ai-artificial-intelligence/997633/openai-microsoft-chatgpt-ai-new-york-times-doom-loop-theft-google-zero
+            - generic [ref=f4e495]:
+              - text: Hacker News · The Verge
+              - generic [ref=f4e496]: ·
+              - generic [ref=f4e497]: 출처 2곳
+              - generic [ref=f4e498]: ·
+              - text: 23시간
+          - generic [ref=f4e499]:
+            - link "미국 주별 AI 챗봇 안전법에 빠져나갈 구멍이 있다는 지적" [ref=f4e500] [cursor=pointer]:
+              - /url: https://www.techmeme.com/260920/p6#a260920p6
+            - button "원문" [ref=f4e501] [cursor=pointer]
+            - paragraph [ref=f4e502]: 여러 주가 내놓은 법안 문구가 기술기업에 예외를 열어준다는 분석. 규제가 생겨도 실효가 없을 수 있다는 쪽.
+            - generic [ref=f4e503]:
+              - text: Techmeme
+              - generic [ref=f4e504]: ·
+              - text: 6시간
+      - generic [ref=f4e505]:
+        - paragraph [ref=f4e506]: 국내
+        - generic [ref=f4e507]:
+          - generic [ref=f4e508]:
+            - link "“AI 속도조절은 담합”…앤트로픽·오픈AI 등 4곳 피소" [ref=f4e509] [cursor=pointer]:
+              - /url: https://www.etnews.com/20260920000077
+            - generic [ref=f4e510]:
+              - text: AI타임스 · 전자신문
+              - generic [ref=f4e511]: ·
+              - generic [ref=f4e512]: 출처 2곳
+              - generic [ref=f4e513]: ·
+              - text: 13시간
+          - generic [ref=f4e514]:
+            - 'link "Show GN: AutoRAG Agent - 컴퓨터에 있는 모든 것을 검색해주는 에이전트 (파일, 메신저 대화 기록, 이메일, 노션..." [ref=f4e515] [cursor=pointer]':
+              - /url: https://news.hada.io/topic?id=34003
+            - generic [ref=f4e516]:
+              - text: GeekNews
+              - generic [ref=f4e517]: ·
+              - text: 방금
+          - generic [ref=f4e518]:
+            - link "“문장 생성 버렸다”…판단 전용 AI ‘제브’에 개발자 반응 폭발" [ref=f4e519] [cursor=pointer]:
+              - /url: https://www.aitimes.com/news/articleView.html?idxno=215506
+            - generic [ref=f4e520]:
+              - text: AI타임스
+              - generic [ref=f4e521]: ·
+              - text: 6시간
+          - generic [ref=f4e522]:
+            - link "[창간기획] AI가 바꾸는 현장 - 전자신문 기자들이 직접 만든 AI 뉴스 에이전트 'ETA 2.0' 고도화" [ref=f4e523] [cursor=pointer]:
+              - /url: https://www.etnews.com/20260914000437
+            - generic [ref=f4e524]:
+              - text: 전자신문
+              - generic [ref=f4e525]: ·
+              - text: 7시간
+    - generic [ref=f4e526]:
+      - heading "AI 커뮤니티" [level=2] [ref=f4e527]
+      - generic [ref=f4e528]:
+        - paragraph [ref=f4e529]: 해외
+        - generic [ref=f4e530]:
+          - generic [ref=f4e531]:
+            - generic [ref=f4e532]: 커뮤니티
+            - generic [ref=f4e533]: 활동 신호
+          - generic [ref=f4e534]:
+            - link "Midjourney Discord" [ref=f4e536] [cursor=pointer]:
+              - /url: https://discord.gg/midjourney
+            - generic [ref=f4e537]: 온라인 761,751명
+            - generic [ref=f4e538]:
+              - generic [ref=f4e539]: 18,571,392
+              - generic [ref=f4e540]: 회원수
+          - generic [ref=f4e541]:
+            - link "OpenAI Discord" [ref=f4e543] [cursor=pointer]:
+              - /url: https://discord.gg/openai
+            - generic [ref=f4e544]: 온라인 83,964명
+            - generic [ref=f4e545]:
+              - generic [ref=f4e546]: 857,033
+              - generic [ref=f4e547]: 회원수
+          - generic [ref=f4e548]:
+            - link "Stable Diffusion Discord" [ref=f4e550] [cursor=pointer]:
+              - /url: https://discord.gg/stablediffusion
+            - generic [ref=f4e551]: 온라인 23,123명
+            - generic [ref=f4e552]:
+              - generic [ref=f4e553]: 321,582
+              - generic [ref=f4e554]: 회원수
+          - generic [ref=f4e555]:
+            - link "Hugging Face Discord" [ref=f4e557] [cursor=pointer]:
+              - /url: https://discord.gg/JfAtkvEtRb
+            - generic [ref=f4e558]: 온라인 15,713명
+            - generic [ref=f4e559]:
+              - generic [ref=f4e560]: 238,401
+              - generic [ref=f4e561]: 회원수
+          - generic [ref=f4e562]:
+            - link "Learn AI Together Discord" [ref=f4e564] [cursor=pointer]:
+              - /url: https://discord.gg/learnaitogether
+            - generic [ref=f4e565]: 온라인 6,225명
+            - generic [ref=f4e566]:
+              - generic [ref=f4e567]: 101,775
+              - generic [ref=f4e568]: 회원수
+          - generic [ref=f4e569]:
+            - link "EleutherAI Discord" [ref=f4e571] [cursor=pointer]:
+              - /url: https://discord.gg/eleutherai
+            - generic [ref=f4e572]: 온라인 4,410명
+            - generic [ref=f4e573]:
+              - generic [ref=f4e574]: 39,418
+              - generic [ref=f4e575]: 회원수
+          - generic [ref=f4e576]:
+            - link "Hacker News" [ref=f4e578] [cursor=pointer]:
+              - /url: https://news.ycombinator.com/
+            - generic [ref=f4e579]: 오늘 수집한 HN 항목 1건의 포인트 합
+            - generic [ref=f4e580]:
+              - generic [ref=f4e581]: "2"
+              - generic [ref=f4e582]: 오늘 포인트 합
+          - generic [ref=f4e583]:
+            - link "Reddit r/artificial" [ref=f4e585] [cursor=pointer]:
+              - /url: https://www.reddit.com/r/artificial/
+            - generic [ref=f4e586]: "레딧은 비로그인 조회가 전부 403 이고 robots.txt 가 Disallow: / 다. 숫자를 긁지 않는다."
+            - generic [ref=f4e587]:
+              - generic [ref=f4e588]: —
+              - generic [ref=f4e589]: 측정 불가
+              - generic [ref=f4e590]: 유입 1
+          - generic [ref=f4e591]:
+            - link "X(트위터)" [ref=f4e593] [cursor=pointer]:
+              - /url: https://x.com/
+            - generic [ref=f4e594]: robots.txt 가 자동 수집을 명시적으로 금지하고 AI 크롤러를 이름으로 지목한다.
+            - generic [ref=f4e595]:
+              - generic [ref=f4e596]: —
+              - generic [ref=f4e597]: 측정 불가
+              - generic [ref=f4e598]: 유입 1
+          - generic [ref=f4e599]:
+            - link "Reddit r/ChatGPT" [ref=f4e601] [cursor=pointer]:
+              - /url: https://www.reddit.com/r/ChatGPT/
+            - generic [ref=f4e602]: "레딧은 비로그인 조회가 전부 403 이고 robots.txt 가 Disallow: / 다. 숫자를 긁지 않는다."
+            - generic [ref=f4e603]:
+              - generic [ref=f4e604]: —
+              - generic [ref=f4e605]: 측정 불가
+          - generic [ref=f4e606]:
+            - link "Reddit r/LocalLLaMA" [ref=f4e608] [cursor=pointer]:
+              - /url: https://www.reddit.com/r/LocalLLaMA/
+            - generic [ref=f4e609]: "레딧은 비로그인 조회가 전부 403 이고 robots.txt 가 Disallow: / 다. 숫자를 긁지 않는다."
+            - generic [ref=f4e610]:
+              - generic [ref=f4e611]: —
+              - generic [ref=f4e612]: 측정 불가
+          - generic [ref=f4e613]:
+            - link "Reddit r/MachineLearning" [ref=f4e615] [cursor=pointer]:
+              - /url: https://www.reddit.com/r/MachineLearning/
+            - generic [ref=f4e616]: "레딧은 비로그인 조회가 전부 403 이고 robots.txt 가 Disallow: / 다. 숫자를 긁지 않는다."
+            - generic [ref=f4e617]:
+              - generic [ref=f4e618]: —
+              - generic [ref=f4e619]: 측정 불가
+          - generic [ref=f4e620]:
+            - link "Reddit r/StableDiffusion" [ref=f4e622] [cursor=pointer]:
+              - /url: https://www.reddit.com/r/StableDiffusion/
+            - generic [ref=f4e623]: "레딧은 비로그인 조회가 전부 403 이고 robots.txt 가 Disallow: / 다. 숫자를 긁지 않는다."
+            - generic [ref=f4e624]:
+              - generic [ref=f4e625]: —
+              - generic [ref=f4e626]: 측정 불가
+          - generic [ref=f4e627]:
+            - link "Threads" [ref=f4e629] [cursor=pointer]:
+              - /url: https://www.threads.com/
+            - generic [ref=f4e630]: robots.txt 가 자동 수집을 명시적으로 금지하고 AI 크롤러를 이름으로 지목한다.
+            - generic [ref=f4e631]:
+              - generic [ref=f4e632]: —
+              - generic [ref=f4e633]: 측정 불가
+      - generic [ref=f4e634]:
+        - paragraph [ref=f4e635]: 국내
+        - generic [ref=f4e636]:
+          - generic [ref=f4e637]:
+            - generic [ref=f4e638]: 커뮤니티
+            - generic [ref=f4e639]: 활동 신호
+          - generic [ref=f4e640]:
+            - link "아카라이브 AI 그림 채널" [ref=f4e642] [cursor=pointer]:
+              - /url: https://arca.live/b/aiart
+            - generic [ref=f4e643]:
+              - generic [ref=f4e644]: 106,988
+              - generic [ref=f4e645]: 구독자
+          - generic [ref=f4e646]:
+            - link "아카라이브 캐릭터AI 채널" [ref=f4e648] [cursor=pointer]:
+              - /url: https://arca.live/b/characterai
+            - generic [ref=f4e649]:
+              - generic [ref=f4e650]: 31,859
+              - generic [ref=f4e651]: 구독자
+          - generic [ref=f4e652]:
+            - link "아카라이브 AI 영상 채널" [ref=f4e654] [cursor=pointer]:
+              - /url: https://arca.live/b/aivideo
+            - generic [ref=f4e655]:
+              - generic [ref=f4e656]: 1,973
+              - generic [ref=f4e657]: 구독자
+          - generic [ref=f4e658]:
+            - link "아카라이브 노벨AI 채널" [ref=f4e660] [cursor=pointer]:
+              - /url: https://arca.live/b/novelai
+            - generic [ref=f4e661]:
+              - generic [ref=f4e662]: "0"
+              - generic [ref=f4e663]: 구독자
+          - generic [ref=f4e664]:
+            - link "아카라이브 챗지피티 채널" [ref=f4e666] [cursor=pointer]:
+              - /url: https://arca.live/b/chatgpt
+            - generic [ref=f4e667]:
+              - generic [ref=f4e668]: "0"
+              - generic [ref=f4e669]: 구독자
+          - generic [ref=f4e670]:
+            - link "디시인사이드 AI 그림 갤러리" [ref=f4e672] [cursor=pointer]:
+              - /url: https://gall.dcinside.com/mgallery/board/lists?id=aiart
+            - generic [ref=f4e673]: robots.txt 가 이름 붙은 AI 크롤러를 차단하고, '구독자' 개념이 없다(추천수만 있음).
+            - generic [ref=f4e674]:
+              - generic [ref=f4e675]: —
+              - generic [ref=f4e676]: 측정 불가
+          - generic [ref=f4e677]:
+            - link "디시인사이드 미드저니 갤러리" [ref=f4e679] [cursor=pointer]:
+              - /url: https://gall.dcinside.com/mgallery/board/lists?id=midjourney
+            - generic [ref=f4e680]: robots.txt 가 이름 붙은 AI 크롤러를 차단하고, '구독자' 개념이 없다(추천수만 있음).
+            - generic [ref=f4e681]:
+              - generic [ref=f4e682]: —
+              - generic [ref=f4e683]: 측정 불가
+          - generic [ref=f4e684]:
+            - link "디시인사이드 스테이블디퓨전 갤러리" [ref=f4e686] [cursor=pointer]:
+              - /url: https://gall.dcinside.com/mgallery/board/lists?id=stablediffusion
+            - generic [ref=f4e687]: robots.txt 가 이름 붙은 AI 크롤러를 차단하고, '구독자' 개념이 없다(추천수만 있음).
+            - generic [ref=f4e688]:
+              - generic [ref=f4e689]: —
+              - generic [ref=f4e690]: 측정 불가
+          - generic [ref=f4e691]:
+            - link "디시인사이드 챗지피티 갤러리" [ref=f4e693] [cursor=pointer]:
+              - /url: https://gall.dcinside.com/mgallery/board/lists?id=chatgpt
+            - generic [ref=f4e694]: robots.txt 가 이름 붙은 AI 크롤러를 차단하고, '구독자' 개념이 없다(추천수만 있음).
+            - generic [ref=f4e695]:
+              - generic [ref=f4e696]: —
+              - generic [ref=f4e697]: 측정 불가
+  - paragraph [ref=f4e699]: 이 페이지를 홈 화면에 추가하면 앱처럼 열립니다. 새 보드는 매일 아침 자동으로 갱신됩니다.
