@@ -37,3 +37,7 @@ xcuserdata/
 
 # Local scratch (not the committed roadmap)
 .scratch/
+
+# 브라우저 점검 산출물 — 저장소에 남길 이유가 없다
+.playwright-mcp/
+board-*.png
