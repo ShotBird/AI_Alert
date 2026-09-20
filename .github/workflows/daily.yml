@@ -1,0 +1,98 @@
+# AI Alert — 매일 아침 보드를 만들어 커밋하고 배포한다.
+#
+# 비개발자를 위한 요약: 이 파일은 "언제, 무엇을" 자동으로 실행할지 정하는 설정이다.
+# 각 단계(step)마다 한국어 주석으로 "이게 무엇을 하는지"와 "필요한 비밀 값이 없으면
+# 어떻게 되는지"를 적어 뒀다. 비밀 값(시크릿)은 GitHub 저장소 Settings > Secrets에
+# 등록하는 값으로, 이 파일에는 이름만 나오고 실제 값은 절대 적히지 않는다.
+
+name: Daily Board
+
+on:
+  schedule:
+    # 매일 한국 시간(KST, UTC+9) 오전 3시에 실행한다.
+    # KST 03:00 = UTC 전날 18:00 이므로 cron 은 "0 18 * * *" 로 쓴다.
+    # (KST는 서머타임이 없어 이 오프셋은 연중 항상 9시간으로 고정이다.)
+    - cron: "0 18 * * *"
+  # 수동으로도 바로 실행할 수 있게 한다 (GitHub 저장소 > Actions 탭 > Run workflow).
+  workflow_dispatch: {}
+
+# 이 저장소에 커밋을 다시 푸시해야 하므로 쓰기 권한이 필요하다.
+permissions:
+  contents: write
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      # 1) 저장소 코드를 내려받는다. 이게 없으면 run.py 도, boards/ 폴더도 없다.
+      - name: 저장소 코드 가져오기
+        uses: actions/checkout@v4
+
+      # 2) 파이썬 3.13을 설치한다. pip install 은 하지 않는다 — 이 파이프라인은
+      #    표준 라이브러리만 쓰도록 설계됐다 (의존성이 없어야 매일 조용히 돈다).
+      - name: 파이썬 3.13 설치
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      # 3) 오늘의 보드를 만든다. run.py 는 각 API 키가 없으면 그 부분만 건너뛰고
+      #    계속 진행하도록 이미 설계돼 있다 (예: ANTHROPIC_API_KEY 가 없으면
+      #    요약 없이, GH_READ_TOKEN 이 없으면 GitHub 무인증 한도로 돈다).
+      #    그래서 아래 시크릿 중 어느 것이 비어 있어도 이 단계는 실패하지 않는다.
+      - name: 보드 생성 (python run.py)
+        env:
+          GH_READ_TOKEN: ${{ secrets.GH_READ_TOKEN }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          NAVER_API_HUB_CLIENT_ID: ${{ secrets.NAVER_API_HUB_CLIENT_ID }}
+          NAVER_API_HUB_CLIENT_SECRET: ${{ secrets.NAVER_API_HUB_CLIENT_SECRET }}
+          KAKAO_REST_API_KEY: ${{ secrets.KAKAO_REST_API_KEY }}
+        run: python run.py
+
+      # 4) 새로 만들어진 boards/ (오늘 보드 + latest.json + index.json) 와
+      #    state/ (API 사용량 카운터)를 저장소에 커밋해 되돌려 넣는다.
+      #    바뀐 파일이 없으면 그냥 넘어간다 (예: --dry 로 돌았거나 완전히 실패한 날).
+      #
+      #    주의: 이 커밋은 GITHUB_TOKEN(기본 제공 토큰)으로 푸시하는데, 이 토큰으로
+      #    만든 푸시는 다른 워크플로를 다시 트리거하지 않는다 (GitHub의 공식 동작이며
+      #    직접 확인됨). 그래서 "커밋 → 스케줄 재실행 → 또 커밋" 같은 무한 루프를
+      #    막는 별도 장치가 필요 없다.
+      - name: boards/ · state/ 커밋해서 저장소에 반영
+        run: |
+          git config user.name "ai-alert-bot"
+          git config user.email "ai-alert-bot@users.noreply.github.com"
+          git add boards/ state/
+          if git diff --cached --quiet; then
+            echo "변경된 파일이 없습니다 — 커밋을 건너뜁니다."
+          else
+            git commit -m "chore: 일일 보드 갱신 ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+      # 5) Cloudflare Pages 배포용 폴더를 준비한다. index.html 은 같은 폴더에서
+      #    ./latest.json 을 읽으므로, web/ 폴더 안에 오늘 보드 사본을 복사해 넣는다.
+      #    (저장소에는 커밋하지 않는다 — 실행기(러너) 안에서만 임시로 만드는 폴더다.)
+      - name: 배포용 폴더 준비 (web/ + latest.json)
+        run: |
+          mkdir -p _deploy
+          cp -r web/. _deploy/
+          cp boards/latest.json _deploy/latest.json
+
+      # 6) Cloudflare Pages로 배포한다. CLOUDFLARE_API_TOKEN 과 CLOUDFLARE_ACCOUNT_ID
+      #    시크릿이 아직 등록되지 않았다면 이 단계는 조건(if)에 걸려 아예 실행되지
+      #    않는다. 혹시 등록됐는데 배포가 실패하더라도 continue-on-error 덕분에
+      #    이 잡(job) 전체는 계속 성공으로 끝난다 — 배포 실패가 보드 생성/커밋을
+      #    막지 않게 하기 위함이다.
+      #    (참고: 저장소가 비공개(private)라 GitHub Pages 무료 플랜을 쓸 수 없어서
+      #    Cloudflare Pages 로 배포한다.)
+      - name: Cloudflare Pages 배포
+        if: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
+        continue-on-error: true
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          # Cloudflare Pages 대시보드에서 만든 프로젝트 이름으로 바꿔야 한다.
+          # (Pages > Create a project 에서 이름을 정하면 그 이름을 여기 적는다.)
+          projectName: ai-alert-board
+          directory: _deploy
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

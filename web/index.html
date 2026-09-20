@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Alert — 오늘의 AI 동향</title>
+<meta name="description" content="매일 아침 생성되는 AI 동향 보드 — 모델 업데이트, GitHub 스킬, 뉴스, 키워드를 한 화면에서 봅니다.">
+
+<!-- 홈 화면 설치용: 매니페스트는 파일을 늘리지 않으려고 data: URI로 인라인했다. -->
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiQUkgQWxlcnQg7Jik64qY7J2YIEFJIOuPme2WpSIsInNob3J0X25hbWUiOiJBSSBBbGVydCIsImRlc2NyaXB0aW9uIjoi66ek7J28IOyVhOy5qCDsg53shLHrkJjripQgQUkg64+Z7ZalIOuztOuTnCIsInN0YXJ0X3VybCI6Ii4vaW5kZXguaHRtbCIsInNjb3BlIjoiLi8iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsIm9yaWVudGF0aW9uIjoicG9ydHJhaXQiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2Y1ZjVmNyIsInRoZW1lX2NvbG9yIjoiI2Y1ZjVmNyIsImxhbmciOiJrbyIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQUlBQUFEZHZ2dFFBQUFCdFVsRVFWUjQydTNTUVEwQU1BZ0VRWXlRYWtSempkUkRmOEFrYStBdUU1bEgraTVjSUlBRWtBQVNRQkpBQWtnQUNTQUpJQUVrZ0FTUUJKQUFFa0FDU0FKSUFBa2dBU1NBSklBRWtBQVNRQkpBQWtnQUNTQUpJQUVrZ0FTUUJKQUFFa0FDU0FCSkFBa2dBU1NBSklBRWtBQVNRQkpBQWtnQUNTQUpJQUVrZ0FTUUJKQUFFa0FDU0FCSkFBa2dBU1NBZWd5bzJ6cUFBQUlJSUlBQUFnZ2dnQUFDQ0NDQUFBSUlJSUFBQWdnZ2dBQUNDQ0NBQUFJSUlJQUFBZ2dnZ0FBQ0NDQ0FBQUlJSUlBQUFnZ2dnQUFDQ0NDQUFBSUlJSUFBQWdnZ2dBQUNDQ0NBQUFJSUlJQUFBZ2dnZ0FBQ0NDQ0FBQUlJSUlBQUFnZ2dnQUFDQ0NDQUFBSUlJSUFBQWdnZ2dBQUNDQ0NBQUFJSUlJQUFBZ2dnZ0FBQ0NDQ0FBQUlJSUlBQUFnZ2dnQUFDQ0NDQUFBSUlJSUFBQWdnZ2dBRFMvQUFTUUFKSUFBa2dDU0FCSklBRWtBU1FBQkpBQWtnQ1NBQUpJQUVrQVNTQUJKQUFFa0FTUUFKSUFBa2dDU0FCSklBRWtBU1FBQkpBQWtnQ1NBQUpJQUVrZ0NTQUJKQUFFa0FTUUFKSUFBa2dDU0FCSklBRWtnQ1NBQkpBQTBwSWVTS1REMEx5MExmMEFBQUFBU1VWT1JLNUNZSUk9Iiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3BuZyIsInB1cnBvc2UiOiJhbnkifSx7InNyYyI6ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBZ0FBQUFJQUNBSUFBQUI3R2tPdEFBQUhYRWxFUVZSNDJ1M1ZRUTBBTUFnRVFZd1FORll6Um5EQm8wd3lDcTZoRzVrRndFRmhBZ0FCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFCc0FLQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFnQUFBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FDQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFnQUFBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FDQUFGZ0JRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBRUFBQUJBQUFBUUJBQUFBUUFINTUvdGNjNXdvRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBVEFEMkFDQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQjhQeCtRQUZ3Q0FLQUFDQUFDQUFDZ0FBZ0FBZ0FBb0FBSUFBSUFBS0FBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFvQUFJQUFJQUFLQUFDQUFDQUFDZ0FBZ0FBZ0FBb0FBSUFBSUFBS0FBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFpQUFWaEFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBQjhBTUtnRU1RQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUFiQ0NBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFvQUFJQUFJQUFLQUFDQUFDQUFDZ0FBZ0FBZ0FBb0FBSUFBSUFBS0FBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFvQUFJQUFJQUFLQUFDQUFDQUFDZ0FBZ0FBZ0FBb0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFvQUFJQUFJQUFLQUFDQUFDQUFDZ0FBZ0FBZ0FBb0FBSUFBSUFBS0FBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFvQUFJQUFJQUFLQUFBZ0FBb0FBSUFBSUFBS0FBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNBSUFBQUNBQUFBZ0FBQUlBZ0FBQUlBQUFDQUFBQWdDQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBZ0FBQUlBQUFDQUFBQWdDQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBZ0FBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBZ0FBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBZ0FBQUNJQUpBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQVRBQ2dBQ0FJQUFBQ0FBQUFnQUFBSUFnQUFBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQURyQmtReGFheVI0c01CQUFBQUFFbEZUa1N1UW1DQyIsInNpemVzIjoiNTEyeDUxMiIsInR5cGUiOiJpbWFnZS9wbmciLCJwdXJwb3NlIjoiYW55In1dfQ==">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="AI Alert">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAABjklEQVR42u3SwQkAMAgEQRsRa0zNaSQN+BOEwMAWcBwTmSW1hQsEh+AQHIJDcAgOwSE4BIfgkOAQHIJDcAgOwSE4BIfgEBwSHIJDcAgOwSE4BIfgEByCQ4JDcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ3AIDsEhwSE4BIfgEByCQ3AIjs3R534XHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQccgkNwCA7BITgEhwsEh+AQHIJDcAgOwSE4BIfgkOAQHIJDcAgOwSE4BIfgEBwSHIJDcAgOwSE4BIfgEByCQ4JDcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ3AIDsEhwSE4NOgBMRbNGHDXY8AAAAAASUVORK5CYII=">
+
+<meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+
+<style>
+  /* ── 토큰: DESIGN.md (Apple España) 그대로. 새 색을 만들지 않는다. ───────── */
+  :root {
+    --canvas:      #f5f5f7;  /* Pure Canvas */
+    --surface:     #ffffff;  /* Paper White */
+    --ink:         #1d1d1f;  /* Obsidian    */
+    --ink-soft:    #474747;  /* Slate       */
+    --ink-mute:    #707070;  /* Iron Gray   */
+    --hairline:    #d6d6d6;  /* Fog         */
+    --mist:        #e2e2e5;  /* Mist        */
+    --action:      #0071e3;  /* Signal Blue */
+    --link:        #0066cc;  /* Deep Link Blue */
+    --tint-green:  #03aa49;  /* Pulse Green */
+    --tint-violet: #8668ff;  /* Ultraviolet */
+    --tint-orange: #ed6300;  /* Ember Orange */
+    --tint-teal:   #00a1b3;  /* Lagoon Teal */
+
+    --r-card: 28px;
+    --r-pill: 980px;
+    --r-chip: 10px;
+
+    /* 웹폰트 CDN 없이 시스템 폰트만 쓴다 — 애플 기기에서는 이게 SF Pro 그 자체다. */
+    --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+    --font-text:    -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  /* 다크: 새 색을 도입하지 않고 시스템 안의 역할만 뒤집는다.
+     Void(#000000)가 바탕, Obsidian(#1d1d1f)이 카드, Pure Canvas(#f5f5f7)가 글자. */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --canvas:   #000000;
+      --surface:  #1d1d1f;
+      --ink:      #f5f5f7;
+      --ink-soft: #d6d6d6;
+      --ink-mute: #707070;
+      --hairline: #333336;
+      --mist:     #333336;
+    }
+  }
+  :root[data-theme="dark"] {
+    --canvas:   #000000;
+    --surface:  #1d1d1f;
+    --ink:      #f5f5f7;
+    --ink-soft: #d6d6d6;
+    --ink-mute: #707070;
+    --hairline: #333336;
+    --mist:     #333336;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-text);
+    font-size: 17px;          /* 본문은 17px 하나뿐 */
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 0 64px;
+  }
+
+  /* ── 헤더 ──────────────────────────────────────────────────────────────── */
+  header.board {
+    padding-block: 36px 8px;
+  }
+  .date-line {
+    font-size: 14px;
+    color: var(--ink-mute);
+    letter-spacing: 0.01em;
+    margin: 0 0 6px;
+    min-height: 1.4em;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 39px;
+    line-height: 1.07;
+    letter-spacing: -0.005em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  h1 .tint { color: var(--tint-green); }
+
+  .status-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 4px;
+    min-height: 30px;
+  }
+  .chip {
+    font-size: 14px;
+    padding: 5px 12px;
+    border-radius: var(--r-pill);
+    background: var(--mist);
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .chip.warn   { color: var(--tint-orange); }
+  .chip.stale  { color: var(--tint-orange); }
+
+  /* ── 오늘의 키워드 스트립: 헤더 바로 아래, 구획 바로가기보다 위. 일반 카드 섹션과
+     의도적으로 다른, 작고 가로 스크롤되는 한 줄짜리 특수 레이아웃. ───────────────── */
+  .kw-strip { padding-block: 2px 4px; }
+  .kw-strip:empty { display: none; }
+  .kw-strip-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 8px;
+  }
+  .kw-row {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-block: 0 4px;
+    scrollbar-width: none;
+  }
+  .kw-row::-webkit-scrollbar { display: none; }
+  .kw-pill {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--r-pill);
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+    /* 그림자 없음. */
+  }
+  .kw-pill:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+  .kw-pill[aria-expanded="true"] { background: var(--mist); }
+  .kw-word.new { color: var(--tint-green); }
+  .kw-n {
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
+  }
+  .kw-empty {
+    font-size: 14px;
+    color: var(--ink-mute);
+    margin: 0;
+  }
+  #kwDetail:not(:empty) { margin-top: 10px; }
+  #kwDetail .cards { display: grid; gap: 12px; }
+
+  /* ── 섹션 바로가기 (풀 필 버튼 언어) ──────────────────────────────────── */
+  nav.jump {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-block: 18px 6px;
+    scrollbar-width: none;
+  }
+  nav.jump:empty { padding: 0; }
+  nav.jump::-webkit-scrollbar { display: none; }
+  nav.jump a {
+    flex: 0 0 auto;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: var(--r-pill);
+    background: var(--mist);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* ── 섹션 ──────────────────────────────────────────────────────────────── */
+  section { padding-block: 34px 0; scroll-margin-top: 16px; }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.14;
+    letter-spacing: 0.007em;
+    margin: 0 0 14px;
+  }
+
+  .briefing {
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    padding-block: 14px;
+    margin-bottom: 20px;
+  }
+  .briefing ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+  .briefing li { color: var(--ink-soft); font-size: 17px; }
+  .briefing li::before {
+    content: "—";
+    color: var(--ink-mute);
+    margin-right: 8px;
+  }
+
+  .cards { display: grid; gap: 12px; }
+
+  article.card {
+    background: var(--surface);
+    border-radius: var(--r-card);
+    padding: 22px 24px;
+    /* 그림자 없음. 깊이는 표면 대비로만. */
+  }
+
+  .card-top {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+  .badge {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge.new  { color: var(--tint-green); }
+  .badge.cont { color: var(--ink-mute); }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.33;
+    letter-spacing: 0.011em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .title a { color: var(--ink); text-decoration: none; }
+  .title a:hover { color: var(--link); }
+
+  .summary {
+    margin: 8px 0 0;
+    color: var(--ink-soft);
+  }
+
+  .meta {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--hairline);
+    font-size: 14px;
+    color: var(--ink-mute);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    font-variant-numeric: tabular-nums;
+  }
+  .meta:empty { display: none; }
+  .meta .strong { color: var(--ink-soft); }
+
+  /* ── 키워드 카드 ───────────────────────────────────────────────────────── */
+  .kw-head { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+  .kw-term {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 0.009em;
+    margin: 0;
+  }
+  .kw-ko { color: var(--ink-mute); font-size: 17px; }
+
+  .reaction {
+    margin-top: 14px;
+    display: grid;
+    gap: 8px;
+  }
+  .rbar { display: grid; grid-template-columns: 90px 1fr auto; gap: 10px; align-items: center; font-size: 14px; }
+  .rbar .lab { color: var(--ink-mute); }
+  .rbar .track { height: 3px; background: var(--mist); border-radius: var(--r-pill); overflow: hidden; }
+  .rbar .fill  { height: 100%; background: var(--ink-soft); }
+  .rbar .num   { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+  .picks { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hairline); display: grid; gap: 8px; }
+  .picks a { color: var(--link); text-decoration: none; font-size: 14px; border-bottom: 1px solid var(--link); }
+  .picks .src { color: var(--ink-mute); font-size: 14px; }
+
+  /* ── 빈 섹션 ───────────────────────────────────────────────────────────── */
+  .empty {
+    background: var(--surface);
+    border-radius: var(--r-card);
+    padding: 22px 24px;
+    color: var(--ink-mute);
+    font-size: 17px;
+  }
+
+  /* ── 하단 ──────────────────────────────────────────────────────────────── */
+  .foot { padding-block: 40px 0; border-top: 1px solid var(--hairline); margin-top: 40px; }
+  .foot p { color: var(--ink-mute); font-size: 14px; margin: 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="board">
+    <p class="date-line" id="dateLine">불러오는 중…</p>
+    <h1>오늘의 <span class="tint">AI</span> 동향</h1>
+    <div class="status-row" id="statusRow"></div>
+  </header>
+
+  <div class="kw-strip" id="kwStrip"></div>
+
+  <nav class="jump" id="jumpNav"></nav>
+
+  <main id="board">
+    <div class="empty">보드를 불러오는 중입니다…</div>
+  </main>
+
+  <div class="foot">
+    <p>이 페이지를 홈 화면에 추가하면 앱처럼 열립니다. 새 보드는 매일 아침 자동으로 갱신됩니다.</p>
+  </div>
+</div>
+
+<script>
+  // ── 실제 보드 계약: docs/roadmap/ai-alert-daily-board/issues/05-daily-board-schema.md ──
+  const FETCH_URL = "./latest.json";
+  const CACHE_KEY = "ai_alert_board_cache_v1";
+
+  const el = {
+    dateLine: document.getElementById("dateLine"),
+    statusRow: document.getElementById("statusRow"),
+    jumpNav: document.getElementById("jumpNav"),
+    board: document.getElementById("board"),
+    kwStrip: document.getElementById("kwStrip"),
+  };
+
+  // 키워드 스트립 상태: 어떤 필이 펼쳐져 있는지만 기억한다.
+  const kwState = { cards: [], openIndex: -1 };
+
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+  const N = n => (typeof n === "number" ? n.toLocaleString("ko-KR") : n);
+
+  // 기기 시간대와 무관하게 "오늘"은 항상 한국 기준으로 판정한다 — 보드가 KST 03:00에 만들어지기 때문.
+  function todayKST() {
+    return new Intl.DateTimeFormat("en-CA", {
+      timeZone: "Asia/Seoul", year: "numeric", month: "2-digit", day: "2-digit",
+    }).format(new Date());
+  }
+
+  function formatGeneratedAt(iso) {
+    if (!iso) return "";
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return "";
+    const parts = new Intl.DateTimeFormat("ko-KR", {
+      timeZone: "Asia/Seoul", year: "numeric", month: "numeric", day: "numeric",
+      weekday: "long", hour: "numeric", minute: "2-digit", hour12: true,
+    }).formatToParts(d);
+    const get = t => (parts.find(p => p.type === t) || {}).value || "";
+    return `${get("year")}년 ${get("month")}월 ${get("day")}일 ${get("weekday")} · `
+         + `${get("dayPeriod")} ${get("hour")}시 ${get("minute")}분 생성`;
+  }
+
+  function formatBoardDateShort(dateStr) {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(dateStr || ""));
+    if (!m) return String(dateStr || "");
+    return `${Number(m[2])}월 ${Number(m[3])}일`;
+  }
+
+  // ── 데이터 로딩. 실패하면 이전에 성공했을 때 저장해 둔 사본으로 물러난다 ──
+  async function loadBoard() {
+    let board = null;
+    let fetchFailed = false;
+    try {
+      const res = await fetch(FETCH_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      if (!data || !Array.isArray(data.sections)) throw new Error("형식이 올바르지 않습니다");
+      board = data;
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify(board)); } catch (_) { /* 저장 실패는 무시 */ }
+    } catch (err) {
+      fetchFailed = true;
+      try {
+        const cached = localStorage.getItem(CACHE_KEY);
+        if (cached) board = JSON.parse(cached);
+      } catch (_) { /* 캐시도 없으면 board 는 null 로 남는다 */ }
+    }
+    return { board, fetchFailed };
+  }
+
+  // ── 카드 렌더링: 필드로 종류를 가른다. 새 섹션이 추가돼도 이 규칙만으로 처리된다 ──
+  function badge(change) {
+    const isNew = change === "new";
+    return `<span class="badge ${isNew ? "new" : "cont"}">${isNew ? "신규" : "지속"}</span>`;
+  }
+
+  function isGithubCard(c) {
+    return c && (c.repo !== undefined || c.stars_delta !== undefined || c.category !== undefined);
+  }
+  function isKeywordCard(c) {
+    return c && (c.keyword !== undefined || c.korea !== undefined);
+  }
+
+  function plainMeta(c) {
+    const bits = [];
+    if (typeof c.source_count === "number") bits.push(`<span class="strong">출처 ${c.source_count}곳</span>`);
+    if (Array.isArray(c.sources) && c.sources.length) {
+      const names = c.sources.map(s => s && s.name).filter(Boolean);
+      if (names.length) bits.push(`<span>${esc(names.join(" · "))}</span>`);
+    }
+    if (typeof c.heat === "number") bits.push(`<span>화제도 ${c.heat.toFixed(1)}</span>`);
+    return bits.join("");
+  }
+
+  function plainCardHTML(c) {
+    const summary = c.summary_ko ? `<p class="summary">${esc(c.summary_ko)}</p>` : "";
+    const href = c.url ? esc(c.url) : "#";
+    return `<article class="card">
+      <div class="card-top">${badge(c.change)}</div>
+      <p class="title"><a href="${href}" target="_blank" rel="noopener noreferrer">${esc(c.title || "")}</a></p>
+      ${summary}
+      <div class="meta">${plainMeta(c)}</div>
+    </article>`;
+  }
+
+  function githubCardHTML(c) {
+    const summary = c.summary_ko ? `<p class="summary">${esc(c.summary_ko)}</p>` : "";
+    const href = c.url ? esc(c.url) : "#";
+    const bits = [];
+    if (c.category) bits.push(`<span class="strong">${esc(c.category)}</span>`);
+    if (typeof c.stars === "number") {
+      const delta = typeof c.stars_delta === "number" && c.stars_delta > 0 ? ` (+${N(c.stars_delta)})` : "";
+      bits.push(`<span>★ ${N(c.stars)}${delta}</span>`);
+    }
+    if (typeof c.heat === "number") bits.push(`<span>화제도 ${c.heat.toFixed(1)}</span>`);
+    return `<article class="card">
+      <div class="card-top">${badge(c.change)}</div>
+      <p class="title"><a href="${href}" target="_blank" rel="noopener noreferrer">${esc(c.repo || c.title || "")}</a></p>
+      ${summary}
+      <div class="meta">${bits.join("")}</div>
+    </article>`;
+  }
+
+  function reactionBar(label, value, peak) {
+    if (typeof value !== "number" || !peak) return "";
+    const pct = Math.max(2, Math.round((value / peak) * 100));
+    return `<div class="rbar">
+      <span class="lab">${esc(label)}</span>
+      <span class="track"><span class="fill" style="width:${pct}%"></span></span>
+      <span class="num">${N(value)}</span>
+    </div>`;
+  }
+
+  function keywordCardHTML(c) {
+    const korea = c.korea || {};
+    const naver = korea.naver || {};
+    const kakao = korea.kakao || {};
+    const rows = [
+      ["네이버 카페", naver.cafe], ["네이버 블로그", naver.blog], ["네이버 뉴스", naver.news],
+      ["다음 웹", kakao.web], ["다음 블로그", kakao.blog], ["다음 카페", kakao.cafe],
+    ].filter(([, v]) => typeof v === "number");
+    const peak = rows.reduce((m, [, v]) => Math.max(m, v), 0);
+    const bars = rows.map(([lab, v]) => reactionBar(lab, v, peak)).join("");
+    const picks = Array.isArray(korea.picks) ? korea.picks : [];
+    const mentions = typeof c.mentions === "number"
+      ? `<p class="summary">오늘 ${c.mentions}개 항목에서 언급됐습니다.</p>` : "";
+    return `<article class="card">
+      <div class="card-top">${badge(c.change)}</div>
+      <div class="kw-head">
+        <h3 class="kw-term">${esc(c.keyword || "")}</h3>
+        ${c.keyword_ko ? `<span class="kw-ko">${esc(c.keyword_ko)}</span>` : ""}
+      </div>
+      ${mentions}
+      ${bars ? `<div class="reaction">${bars}</div>` : ""}
+      ${picks.length ? `<div class="picks">${picks.map(p => `<div><a href="${p && p.url ? esc(p.url) : "#"}" target="_blank" rel="noopener noreferrer">${esc((p && p.title) || "")}</a> <span class="src">${esc((p && p.source) || "")}</span></div>`).join("")}</div>` : ""}
+    </article>`;
+  }
+
+  function cardHTML(c) {
+    if (isGithubCard(c)) return githubCardHTML(c);
+    if (isKeywordCard(c)) return keywordCardHTML(c);
+    return plainCardHTML(c);
+  }
+
+  // ── 오늘의 키워드 스트립: 일반 흐름에서 빼내 헤더 바로 아래, 구획 바로가기보다
+  // 위에 그린다. 필을 탭하면 같은 keywordCardHTML() 카드를 아래에 펼쳐 보여준다 ──
+  function keywordPillHTML(c, i) {
+    const term = esc(c.keyword || c.keyword_ko || "");
+    const isNew = c.change === "new";
+    const mentions = typeof c.mentions === "number"
+      ? `<span class="kw-n">${N(c.mentions)}회</span>` : "";
+    return `<button type="button" class="kw-pill" id="kwPill-${i}" aria-expanded="false" aria-controls="kwDetail" data-idx="${i}">
+      <span class="kw-word${isNew ? " new" : ""}">${term}</span>${mentions}
+    </button>`;
+  }
+
+  function toggleKwDetail(idx) {
+    const detail = document.getElementById("kwDetail");
+    if (!detail) return;
+    const buttons = el.kwStrip.querySelectorAll(".kw-pill");
+    const opening = kwState.openIndex !== idx;
+    buttons.forEach(b => b.setAttribute("aria-expanded", "false"));
+    if (!opening) {
+      kwState.openIndex = -1;
+      detail.innerHTML = "";
+      return;
+    }
+    kwState.openIndex = idx;
+    const btn = document.getElementById("kwPill-" + idx);
+    if (btn) btn.setAttribute("aria-expanded", "true");
+    const card = kwState.cards[idx];
+    detail.innerHTML = card ? `<div class="cards">${keywordCardHTML(card)}</div>` : "";
+  }
+
+  function renderKeywordStrip(section) {
+    kwState.cards = [];
+    kwState.openIndex = -1;
+    if (!section) { el.kwStrip.innerHTML = ""; return; }
+    const cards = Array.isArray(section.cards) ? section.cards : [];
+    const label = esc(section.title || "오늘의 키워드");
+    if (!cards.length) {
+      const msg = esc(section.empty_reason || "오늘은 키워드가 없습니다.");
+      el.kwStrip.innerHTML = `<p class="kw-strip-label">${label}</p><p class="kw-empty">${msg}</p>`;
+      return;
+    }
+    kwState.cards = cards;
+    el.kwStrip.innerHTML = `
+      <p class="kw-strip-label">${label}</p>
+      <div class="kw-row" id="kwRow">${cards.map(keywordPillHTML).join("")}</div>
+      <div id="kwDetail"></div>
+    `;
+    const row = document.getElementById("kwRow");
+    if (row) {
+      row.addEventListener("click", e => {
+        const btn = e.target.closest(".kw-pill");
+        if (!btn) return;
+        toggleKwDetail(Number(btn.dataset.idx));
+      });
+    }
+  }
+
+  function sectionHTML(s) {
+    const anchor = "s-" + esc(s.id || "");
+    const briefing = Array.isArray(s.briefing_ko) && s.briefing_ko.length
+      ? `<div class="briefing"><ul>${s.briefing_ko.map(b => `<li>${esc(b)}</li>`).join("")}</ul></div>`
+      : "";
+    const cards = Array.isArray(s.cards) ? s.cards : [];
+    const body = cards.length
+      ? `<div class="cards">${cards.map(cardHTML).join("")}</div>`
+      : `<div class="empty">${esc(s.empty_reason || "오늘은 비어 있습니다.")}</div>`;
+    return `<section id="${anchor}"><h2>${esc(s.title || "")}</h2>${briefing}${body}</section>`;
+  }
+
+  // ── 상태/헤더 렌더링 ──────────────────────────────────────────────────────
+  function renderStatus(board, stale) {
+    const chips = [];
+    if (stale) {
+      chips.push(`<span class="chip stale">${esc(formatBoardDateShort(board.board_date))} 기준 · 오늘 보드가 아직 없습니다</span>`);
+    }
+    if (board.status && board.status !== "ok") {
+      const label = board.status === "degraded" ? "수집량이 평소보다 적음" : "일부 소스 실패";
+      chips.push(`<span class="chip warn">${esc(label)}</span>`);
+    }
+    const sections = Array.isArray(board.sections) ? board.sections : [];
+    const cardCount = sections.reduce((n, s) => n + (Array.isArray(s.cards) ? s.cards.length : 0), 0);
+    const countBits = [`항목 ${cardCount}개`];
+    if (Array.isArray(board.sources_status)) {
+      const okCount = board.sources_status.filter(s => s && s.ok).length;
+      countBits.push(`출처 ${okCount}곳`);
+    }
+    chips.push(`<span class="chip">${esc(countBits.join(" · "))}</span>`);
+    el.statusRow.innerHTML = chips.join("");
+  }
+
+  function renderNav(sections) {
+    el.jumpNav.innerHTML = sections
+      .map(s => `<a href="#s-${esc(s.id || "")}">${esc(s.title || "")}</a>`)
+      .join("");
+  }
+
+  function renderBoard(board, stale) {
+    el.dateLine.textContent = formatGeneratedAt(board.generated_at);
+    renderStatus(board, stale);
+    const allSections = Array.isArray(board.sections) ? board.sections : [];
+    // "keywords" 섹션은 일반 흐름에서 빼내 헤더 바로 아래 전용 스트립으로 그린다.
+    // 나머지 섹션은 여전히 JSON 순서 그대로, 하드코딩 없이 일반 규칙으로 그린다.
+    const keywordSection = allSections.find(s => s && s.id === "keywords");
+    const otherSections = allSections.filter(s => !(s && s.id === "keywords"));
+    renderKeywordStrip(keywordSection);
+    renderNav(otherSections);
+    el.board.innerHTML = otherSections.map(sectionHTML).join("");
+  }
+
+  function renderFatalError() {
+    el.dateLine.textContent = "";
+    el.statusRow.innerHTML = `<span class="chip stale">불러오기 실패</span>`;
+    el.kwStrip.innerHTML = "";
+    el.jumpNav.innerHTML = "";
+    el.board.innerHTML = `<div class="empty">오늘 보드를 불러오지 못했습니다. 네트워크를 확인한 뒤 새로고침해 주세요.</div>`;
+  }
+
+  (async function init() {
+    const { board, fetchFailed } = await loadBoard();
+    if (!board) {
+      renderFatalError();
+      return;
+    }
+    const stale = fetchFailed || (typeof board.board_date === "string" && board.board_date !== todayKST());
+    renderBoard(board, stale);
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,699 @@
+{
+  "schema_version": "1.0",
+  "board_date": "2026-09-20",
+  "generated_at": "2026-09-20T14:14:12.844316Z",
+  "status": "ok",
+  "previous_board_date": "2026-09-20",
+  "generator": {
+    "pipeline_version": "0.1.0",
+    "model": null,
+    "counts": {
+      "collected": 1629,
+      "clustered": 107,
+      "published": 31
+    },
+    "api_budget": {
+      "github_core": "82/900",
+      "github_search": "12/30",
+      "tranco": "38/40"
+    },
+    "notes": [
+      "GitHub 토큰이 없어 후보 수를 줄였습니다 (무인증 core 시간당 60회).",
+      "GitHub 시간당 호출 한도(무인증 60회)를 다 써서 주간 증가분 대신 누적 스타로 줄을 세웠습니다. GH_READ_TOKEN 을 넣으면 5,000회로 늘어납니다.",
+      "오늘 수집한 항목 중 다른 곳에서 커뮤니티를 가리킨 링크가 없음 (화제 유입량 0). 전체 트래픽 순위로만 줄을 세움",
+      "화제 유입량은 오늘 수집한 항목이 가리키는 링크 기준이고, 전체 트래픽 순위(Tranco)는 AI 화제 전용 지표가 아니라 사이트 전체 규모다.",
+      "모델 업데이트는 '현황'이지 '계획'이 아닙니다. 벤더가 출시 일정을 공표하지 않으므로 마지막 갱신 이후 경과일만 보여줍니다.",
+      "오늘의 키워드는 제목 빈도로 뽑은 임시값입니다. ANTHROPIC_API_KEY 를 넣으면 표기가 다른 같은 주제를 하나로 묶고 한국어 이름을 붙입니다.",
+      "ANTHROPIC_API_KEY가 없어 요약을 건너뜁니다. 키가 생기면 자동으로 채워집니다."
+    ]
+  },
+  "sources_status": [
+    {
+      "id": "openai",
+      "ok": true,
+      "items": 1210
+    },
+    {
+      "id": "google_blog",
+      "ok": true,
+      "items": 20
+    },
+    {
+      "id": "mistral",
+      "ok": true,
+      "items": 87
+    },
+    {
+      "id": "anthropic_mirror",
+      "ok": true,
+      "items": 13
+    },
+    {
+      "id": "hf_deepseek",
+      "ok": true,
+      "items": 8
+    },
+    {
+      "id": "hf_qwen",
+      "ok": true,
+      "items": 8
+    },
+    {
+      "id": "hf_meta",
+      "ok": true,
+      "items": 8
+    },
+    {
+      "id": "techcrunch_ai",
+      "ok": true,
+      "items": 20
+    },
+    {
+      "id": "verge_ai",
+      "ok": true,
+      "items": 10
+    },
+    {
+      "id": "ars_ai",
+      "ok": true,
+      "items": 20
+    },
+    {
+      "id": "techmeme",
+      "ok": true,
+      "items": 15
+    },
+    {
+      "id": "hn",
+      "ok": true,
+      "items": 60
+    },
+    {
+      "id": "geeknews",
+      "ok": true,
+      "items": 50
+    },
+    {
+      "id": "etnews_ai",
+      "ok": true,
+      "items": 50
+    },
+    {
+      "id": "aitimes",
+      "ok": true,
+      "items": 50
+    }
+  ],
+  "sections": [
+    {
+      "id": "keywords",
+      "title": "오늘의 키워드",
+      "briefing_ko": [],
+      "empty_reason": null,
+      "cards": [
+        {
+          "id": "k_2026-09-20_001",
+          "keyword": "에이전트",
+          "keyword_ko": null,
+          "mentions": 8,
+          "source_count": 3,
+          "change": "continuing",
+          "dedup_key": "에이전트"
+        },
+        {
+          "id": "k_2026-09-20_002",
+          "keyword": "오픈",
+          "keyword_ko": null,
+          "mentions": 8,
+          "source_count": 2,
+          "change": "continuing",
+          "dedup_key": "오픈"
+        },
+        {
+          "id": "k_2026-09-20_003",
+          "keyword": "앤트로픽",
+          "keyword_ko": null,
+          "mentions": 8,
+          "source_count": 2,
+          "change": "continuing",
+          "dedup_key": "앤트로픽"
+        },
+        {
+          "id": "k_2026-09-20_004",
+          "keyword": "OpenAI",
+          "keyword_ko": null,
+          "mentions": 6,
+          "source_count": 4,
+          "change": "continuing",
+          "dedup_key": "openai"
+        },
+        {
+          "id": "k_2026-09-20_005",
+          "keyword": "companies",
+          "keyword_ko": null,
+          "mentions": 5,
+          "source_count": 3,
+          "change": "continuing",
+          "dedup_key": "companies"
+        }
+      ]
+    },
+    {
+      "id": "model_updates",
+      "title": "모델 업데이트",
+      "briefing_ko": [],
+      "empty_reason": null,
+      "cards": [
+        {
+          "id": "v_2026-09-20_006",
+          "title": "Alibaba Qwen",
+          "model": "Qwen-Image-2.1-PE-I2I",
+          "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-PE-I2I",
+          "days_since": 0,
+          "via": "Hugging Face",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Hugging Face"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Alibaba Qwen",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_007",
+          "title": "Google",
+          "model": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
+          "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
+          "days_since": 4,
+          "via": "Google",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -4.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Google"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Google",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_008",
+          "title": "OpenAI",
+          "model": "Introducing ChatGPT for Financial Services",
+          "url": "https://openai.com/index/introducing-chatgpt-financial-services",
+          "days_since": 10,
+          "via": "OpenAI",
+          "open_weights": false,
+          "summary_ko": null,
+          "heat": -10.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "OpenAI"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:OpenAI",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_009",
+          "title": "DeepSeek",
+          "model": "DeepSeek-V4.1-Flash",
+          "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
+          "days_since": 10,
+          "via": "Hugging Face",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -10.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Hugging Face"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:DeepSeek",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_010",
+          "title": "Anthropic",
+          "model": "Introducing Claude Fable 5.1 and Claude Mythos 5.1",
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+          "days_since": 19,
+          "via": "Anthropic",
+          "open_weights": false,
+          "summary_ko": null,
+          "heat": -19.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Anthropic"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Anthropic",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_011",
+          "title": "Z.ai (GLM)",
+          "model": "GLM-5.3-Flash-BF16",
+          "url": "https://huggingface.co/zai-org/GLM-5.3-Flash-BF16",
+          "days_since": 26,
+          "via": "Hugging Face",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -26.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Hugging Face"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Z.ai (GLM)",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_012",
+          "title": "Upstage",
+          "model": "Solar-Open2-250B",
+          "url": "https://huggingface.co/upstage/Solar-Open2-250B",
+          "days_since": 60,
+          "via": "Hugging Face",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -60.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Hugging Face"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Upstage",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_013",
+          "title": "Mistral",
+          "model": "Shieldstral-1.0-3B",
+          "url": "https://huggingface.co/mistralai/Shieldstral-1.0-3B",
+          "days_since": 66,
+          "via": "Hugging Face",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -66.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Hugging Face"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Mistral",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_014",
+          "title": "Moonshot",
+          "model": "Kimi-K3",
+          "url": "https://huggingface.co/moonshotai/Kimi-K3",
+          "days_since": 99,
+          "via": "Hugging Face",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -99.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Hugging Face"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Moonshot",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_015",
+          "title": "Meta",
+          "model": "Llama-Prompt-Guard-2-86M",
+          "url": "https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-86M",
+          "days_since": 510,
+          "via": "Hugging Face",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -510.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Hugging Face"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Meta",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_016",
+          "title": "xAI",
+          "model": null,
+          "url": null,
+          "days_since": null,
+          "via": null,
+          "open_weights": false,
+          "summary_ko": null,
+          "heat": -999.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "-"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:xAI",
+          "published_at": null
+        }
+      ]
+    },
+    {
+      "id": "github_skills",
+      "title": "GitHub 스킬",
+      "briefing_ko": [],
+      "empty_reason": null,
+      "cards": [
+        {
+          "id": "c_2026-09-20_017",
+          "title": "anthropics/skills",
+          "summary_ko": null,
+          "url": "https://github.com/anthropics/skills",
+          "heat": 15.75,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "anthropics/skills",
+          "published_at": null,
+          "repo": "anthropics/skills",
+          "stars": 177260,
+          "stars_delta": null,
+          "category": "기타"
+        },
+        {
+          "id": "c_2026-09-20_018",
+          "title": "DietrichGebert/ponytail",
+          "summary_ko": null,
+          "url": "https://github.com/DietrichGebert/ponytail",
+          "heat": 15.46,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "DietrichGebert/ponytail",
+          "published_at": null,
+          "repo": "DietrichGebert/ponytail",
+          "stars": 142870,
+          "stars_delta": null,
+          "category": "기타"
+        },
+        {
+          "id": "c_2026-09-20_019",
+          "title": "addyosmani/agent-skills",
+          "summary_ko": null,
+          "url": "https://github.com/addyosmani/agent-skills",
+          "heat": 14.97,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "addyosmani/agent-skills",
+          "published_at": null,
+          "repo": "addyosmani/agent-skills",
+          "stars": 97452,
+          "stars_delta": null,
+          "category": "기타"
+        },
+        {
+          "id": "c_2026-09-20_020",
+          "title": "nexu-io/open-design",
+          "summary_ko": null,
+          "url": "https://github.com/nexu-io/open-design",
+          "heat": 14.96,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "nexu-io/open-design",
+          "published_at": null,
+          "repo": "nexu-io/open-design",
+          "stars": 97228,
+          "stars_delta": null,
+          "category": "디자인·비주얼"
+        },
+        {
+          "id": "c_2026-09-20_021",
+          "title": "tt-a1i/archify",
+          "summary_ko": null,
+          "url": "https://github.com/tt-a1i/archify",
+          "heat": 14.5,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "tt-a1i/archify",
+          "published_at": null,
+          "repo": "tt-a1i/archify",
+          "stars": 67988,
+          "stars_delta": null,
+          "category": "디자인·비주얼"
+        }
+      ]
+    },
+    {
+      "id": "top_headlines",
+      "title": "뉴스 Top5",
+      "briefing_ko": [],
+      "empty_reason": null,
+      "cards": [
+        {
+          "id": "c_2026-09-20_022",
+          "title": "US policy analysts, lawmakers, and others say several state-level AI chatbot safety bills included language that could provide loopholes for tech companies (Katie McQue/NPR)",
+          "summary_ko": null,
+          "url": "https://www.techmeme.com/260920/p6#a260920p6",
+          "heat": 2.51,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Techmeme"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "httpss://techmeme.com/260920/p6",
+          "published_at": "2026-09-20T09:05:02Z"
+        },
+        {
+          "id": "c_2026-09-20_023",
+          "title": "“문장 생성 버렸다”…판단 전용 AI ‘제브’에 개발자 반응 폭발",
+          "summary_ko": null,
+          "url": "https://www.aitimes.com/news/articleView.html?idxno=215506",
+          "heat": 2.47,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "AI타임스"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "httpss://aitimes.com/news/articleView.html?idxno=215506",
+          "published_at": "2026-09-20T08:40:45Z"
+        },
+        {
+          "id": "c_2026-09-20_024",
+          "title": "과기부, 연구자가 지켜야 할 ‘AI 활용’ 7대 권고사항 제시",
+          "summary_ko": null,
+          "url": "https://www.aitimes.com/news/articleView.html?idxno=215505",
+          "heat": 2.45,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "AI타임스"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "httpss://aitimes.com/news/articleView.html?idxno=215505",
+          "published_at": "2026-09-20T08:25:00Z"
+        },
+        {
+          "id": "c_2026-09-20_025",
+          "title": "[창간기획] AI가 바꾸는 현장 - 전자신문 기자들이 직접 만든 AI 뉴스 에이전트 'ETA 2.0' 고도화",
+          "summary_ko": null,
+          "url": "https://www.etnews.com/20260914000437",
+          "heat": 2.42,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "전자신문"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "httpss://etnews.com/20260914000437",
+          "published_at": "2026-09-20T08:00:00Z"
+        },
+        {
+          "id": "c_2026-09-20_026",
+          "title": "Cache-to-Cache: LLM 간 직접 의미 전달 (2025)",
+          "summary_ko": null,
+          "url": "https://news.hada.io/topic?id=33983",
+          "heat": 2.25,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GeekNews"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "httpss://news.hada.io/topic?id=33983",
+          "published_at": "2026-09-20T05:52:25Z"
+        }
+      ]
+    },
+    {
+      "id": "communities",
+      "title": "AI 커뮤니티 Top5",
+      "briefing_ko": [],
+      "empty_reason": null,
+      "cards": [
+        {
+          "id": "c_2026-09-20_027",
+          "title": "X(트위터)",
+          "summary_ko": null,
+          "url": "https://x.com",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "x.com",
+          "published_at": null,
+          "domain": "x.com",
+          "mentions": 0,
+          "engagement": 0,
+          "global_rank": 50,
+          "rank_note": null
+        },
+        {
+          "id": "c_2026-09-20_028",
+          "title": "Reddit",
+          "summary_ko": null,
+          "url": "https://reddit.com",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "reddit.com",
+          "published_at": null,
+          "domain": "reddit.com",
+          "mentions": 0,
+          "engagement": 0,
+          "global_rank": 109,
+          "rank_note": null
+        },
+        {
+          "id": "c_2026-09-20_029",
+          "title": "Discord",
+          "summary_ko": null,
+          "url": "https://discord.com",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "discord.com",
+          "published_at": null,
+          "domain": "discord.com",
+          "mentions": 0,
+          "engagement": 0,
+          "global_rank": 168,
+          "rank_note": null
+        },
+        {
+          "id": "c_2026-09-20_030",
+          "title": "Threads",
+          "summary_ko": null,
+          "url": "https://threads.com",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "threads.com",
+          "published_at": null,
+          "domain": "threads.com",
+          "mentions": 0,
+          "engagement": 0,
+          "global_rank": 615,
+          "rank_note": null
+        },
+        {
+          "id": "c_2026-09-20_031",
+          "title": "Hugging Face",
+          "summary_ko": null,
+          "url": "https://huggingface.co",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "huggingface.co",
+          "published_at": null,
+          "domain": "huggingface.co",
+          "mentions": 0,
+          "engagement": 0,
+          "global_rank": 1129,
+          "rank_note": null
+        }
+      ]
+    }
+  ]
+}

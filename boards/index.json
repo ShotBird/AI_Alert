@@ -1,0 +1,11 @@
+[
+  {
+    "date": "2026-09-20",
+    "status": "ok",
+    "counts": {
+      "collected": 1629,
+      "clustered": 107,
+      "published": 31
+    }
+  }
+]
