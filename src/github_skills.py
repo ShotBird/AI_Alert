@@ -142,31 +142,37 @@ def top_rising(token, budget, candidates=60, want=20, cache=None):
     """부문 배지가 달린 상위 급상승 스킬."""
     pool, seen, notes = [], set(), []
 
+    # 부문마다 20개를 채우려면 후보가 많아야 한다. 토픽당 여러 쪽을 받는다.
+    pages = 3 if token else 1
     for topic in TOPICS:
-        try:
-            budget.check("github_search")
-        except BudgetExceeded:
-            break
-        url = (f"{API}/search/repositories?q=topic:{topic}"
-               f"&sort=stars&order=desc&per_page=50")
-        try:
-            data = _get(url, token)
-        except (urllib.error.HTTPError, urllib.error.URLError, ValueError) as exc:
-            notes.append(f"{topic}: {type(exc).__name__}")
-            continue
-        finally:
-            budget.spend("github_search")
+        for page in range(1, pages + 1):
+            try:
+                budget.check("github_search")
+            except BudgetExceeded:
+                break
+            url = (f"{API}/search/repositories?q=topic:{topic}"
+                   f"&sort=stars&order=desc&per_page=100&page={page}")
+            try:
+                data = _get(url, token)
+            except (urllib.error.HTTPError, urllib.error.URLError, ValueError) as exc:
+                notes.append(f"{topic}: {type(exc).__name__}")
+                break
+            finally:
+                budget.spend("github_search")
 
-        for repo in data.get("items", []):
-            name = repo.get("full_name")
-            if not name or name in seen:
-                continue
-            seen.add(name)
-            ok, _why = _usable(repo)
-            if ok:
-                pool.append(repo)
+            items = data.get("items", [])
+            for repo in items:
+                name = repo.get("full_name")
+                if not name or name in seen:
+                    continue
+                seen.add(name)
+                ok, _why = _usable(repo)
+                if ok:
+                    pool.append(repo)
+            if len(items) < 100:
+                break
 
-    # 후보를 너무 많이 잡으면 core 예산을 태운다. 누적 스타 상위부터 본다.
+    # 후보마다 core 를 한 번씩 쓴다. 무인증은 시간당 60회뿐이라 여기서 끊긴다.
     pool = pool[:candidates]
 
     def row(repo, delta):
@@ -205,7 +211,7 @@ def top_rising(token, budget, candidates=60, want=20, cache=None):
                      "GH_READ_TOKEN 을 넣으면 5,000회로 늘어납니다.")
         seen_repos = {r["repo"] for r in rows}
         for repo in pool:
-            if len(rows) >= want:
+            if len(rows) >= want * 4:
                 break
             if repo["full_name"] in seen_repos:
                 continue
@@ -214,4 +220,21 @@ def top_rising(token, budget, candidates=60, want=20, cache=None):
     rows.sort(key=lambda r: (r["stars_delta"] is None,
                              -(r["stars_delta"] or 0),
                              -(r["stars"] or 0)))
-    return rows[:want], notes
+
+    # 부문마다 상위 want 개까지 남긴다. 화면의 "전체" 는 이 합집합을 다시
+    # 증가분으로 줄 세워 20개를 보여주고, 부문을 누르면 그 부문 안에서 20개를 본다.
+    per_cat, kept = {}, []
+    for r in rows:
+        cat = r["category"]
+        if per_cat.get(cat, 0) >= want:
+            continue
+        per_cat[cat] = per_cat.get(cat, 0) + 1
+        kept.append(r)
+
+    thin = [c for c, n in per_cat.items() if n < want]
+    if thin:
+        notes.append(
+            f"부문 {len(thin)}곳이 {want}개를 못 채웠습니다 "
+            f"(후보 {len(pool)}개 중 증가분을 구한 것 {len(rows)}개). "
+            "GH_READ_TOKEN 을 넣으면 시간당 60회가 5,000회가 되어 다 채워집니다.")
+    return kept, notes

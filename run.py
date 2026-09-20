@@ -169,7 +169,7 @@ def main():
             notes.append("GitHub 토큰이 없어 후보 수를 줄였습니다 (무인증 core 시간당 60회).")
         try:
             github_rows, gh_notes = github_skills.top_rising(
-                token, budget, candidates=60 if token else 24)
+                token, budget, candidates=300 if token else 45)
             notes.extend(gh_notes)
             print(f"[GitHub] 급상승 {len(github_rows)}개")
         except Exception as exc:

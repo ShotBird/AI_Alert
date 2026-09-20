@@ -1,0 +1,23 @@
+{
+  "_comment": "레포 → 한국어 한 줄. LLM 키가 없는 동안 쓰는 씨앗 캐시다. summarize.py 가 켜지면 summary_ko 가 우선한다. 영어 설명을 옮긴 게 아니라 '뭘 하는 스킬이고 왜 쓰나'를 적는다.",
+  "alibaba/open-code-review": "알리바바가 사내에서 쓰던 코드리뷰 도구를 공개한 것. 규모를 견뎠다는 점이 셀링포인트다.",
+  "tt-a1i/archify": "아키텍처·워크플로·시퀀스를 검증된 HTML 다이어그램으로 뽑아준다. 이 프로젝트 구조도도 이걸로 그렸다.",
+  "DietrichGebert/ponytail": "에이전트가 '가장 게으른 시니어 개발자'처럼 굴게 만든다. 안 짜도 되는 코드는 안 짜게 하는 쪽.",
+  "addyosmani/agent-skills": "AI 코딩 에이전트용 실무 엔지니어링 스킬 묶음. 구글 크롬 팀 addyosmani 가 만들었다.",
+  "blader/humanizer": "AI 가 쓴 티가 나는 문장을 걷어낸다. 번역투·과한 접속사 같은 흔적을 지우는 용도.",
+  "cathrynlavery/diagram-design": "다이어그램을 편집디자인 수준으로 그린다. 그림자도 Mermaid 도 안 쓰고 SVG 로 직접 만든다.",
+  "nexu-io/open-design": "로컬에서 도는 디자인 도구. Claude Design 의 오픈소스 대안을 표방한다.",
+  "anthropics/skills": "Anthropic 공식 예제 스킬 모음. 스킬을 처음 만들 때 형식을 참고하는 곳.",
+  "virgiliojr94/book-to-skill": "기술서적 PDF 를 스킬로 바꾼다. 읽을 시간이 없는 책을 에이전트가 참고하게 만드는 방식.",
+  "K-Dense-AI/scientific-agent-skills": "에이전트를 연구자처럼 굴리는 과학 분야 스킬 라이브러리. 19만 명이 쓴다고 표방한다.",
+  "NVIDIA/SkillSpector": "에이전트 스킬의 보안 취약점을 검사한다. 남의 스킬을 설치하기 전에 돌려볼 만하다.",
+  "reactive-resume/reactive-resume": "개인정보를 서버에 안 남기는 이력서 빌더. 스킬이라기보다 완성된 웹앱에 가깝다.",
+  "citrolabs/ego-lite": "에이전트 전용 브라우저. 로그인 상태를 공유해 자동화하는 데 초점이 있다.",
+  "CherryHQ/cherry-studio": "여러 모델을 한 창에서 쓰는 데스크톱 클라이언트. 어시스턴트 300종을 묶어 판다.",
+  "microsoft/SkillOpt": "스킬 문장 자체를 자동으로 다듬어 성능을 올린다. 모델은 그대로 두고 프롬프트만 학습시키는 접근.",
+  "pascalorg/editor": "오픈소스 3D 건축 에디터. CLI 와 MCP 로 에이전트가 직접 도면을 만지게 한다.",
+  "agentskills/agentskills": "에이전트 스킬 규격 문서. 어떤 형식이 표준인지 정하려는 시도다.",
+  "titanwings/distilly": "잘하는 사람의 작업 방식을 뽑아 재사용 가능한 스킬로 만든다.",
+  "AgriciDaniel/claude-obsidian": "옵시디언을 에이전트의 제2의 뇌로 쓴다. 자료를 넣으면 알아서 읽고 링크를 건다.",
+  "topoteretes/cognee": "에이전트에게 장기 기억을 붙이는 오픈소스 플랫폼. 대화가 끊겨도 맥락이 남는다."
+}
