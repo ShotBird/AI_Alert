@@ -1,81 +1,62 @@
 {
-  "huggingface.co": {
-    "rank": 1129,
-    "note": null,
-    "checked_at": "2026-09-20"
-  },
-  "reddit.com": {
-    "rank": 109,
-    "note": null,
-    "checked_at": "2026-09-20"
-  },
-  "news.ycombinator.com": {
-    "rank": null,
-    "note": "Tranco 미등재",
+  "discord_midjourney": {
+    "value": 18571392,
+    "note": "온라인 761,751명",
+    "dropped": false,
     "checked_at": "2026-09-21"
   },
-  "x.com": {
-    "rank": 50,
-    "note": null,
+  "discord_openai": {
+    "value": 857033,
+    "note": "온라인 83,964명",
+    "dropped": false,
     "checked_at": "2026-09-21"
   },
-  "threads.com": {
-    "rank": 615,
-    "note": null,
+  "discord_stablediffusion": {
+    "value": 321582,
+    "note": "온라인 23,123명",
+    "dropped": false,
     "checked_at": "2026-09-21"
   },
-  "discord.com": {
-    "rank": 168,
-    "note": null,
+  "discord_huggingface": {
+    "value": 238401,
+    "note": "온라인 15,713명",
+    "dropped": false,
     "checked_at": "2026-09-21"
   },
-  "lobste.rs": {
-    "rank": 44824,
-    "note": null,
+  "discord_learnaitogether": {
+    "value": 101775,
+    "note": "온라인 6,225명",
+    "dropped": false,
     "checked_at": "2026-09-21"
   },
-  "kaggle.com": {
-    "rank": 4576,
-    "note": null,
+  "discord_eleutherai": {
+    "value": 39418,
+    "note": "온라인 4,410명",
+    "dropped": false,
     "checked_at": "2026-09-21"
   },
-  "zenn.dev": {
-    "rank": 30392,
+  "arca_aiart": {
+    "value": 106988,
     "note": null,
     "checked_at": "2026-09-21"
   },
-  "qiita.com": {
-    "rank": 7477,
+  "arca_chatgpt": {
+    "value": 0,
     "note": null,
     "checked_at": "2026-09-21"
   },
-  "news.hada.io": {
-    "rank": null,
-    "note": "Tranco 미등재",
-    "checked_at": "2026-09-21"
-  },
-  "arca.live": {
-    "rank": 1304,
+  "arca_characterai": {
+    "value": 31859,
     "note": null,
     "checked_at": "2026-09-21"
   },
-  "dcinside.com": {
-    "rank": 1205,
+  "arca_aivideo": {
+    "value": 1973,
     "note": null,
     "checked_at": "2026-09-21"
   },
-  "clien.net": {
-    "rank": 19884,
-    "note": null,
-    "checked_at": "2026-09-21"
-  },
-  "velog.io": {
-    "rank": 23221,
-    "note": null,
-    "checked_at": "2026-09-21"
-  },
-  "okky.kr": {
-    "rank": 514557,
+  "arca_novelai": {
+    "value": 0,
     "note": null,
     "checked_at": "2026-09-21"
   }

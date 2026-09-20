@@ -6,8 +6,9 @@
 <title>AI Alert — 오늘의 AI 동향</title>
 <meta name="description" content="매일 아침 생성되는 AI 동향 보드 — 모델 업데이트, GitHub 스킬, 뉴스, 키워드를 한 화면에서 봅니다.">
 
-<!-- 홈 화면 설치용: 매니페스트는 파일을 늘리지 않으려고 data: URI로 인라인했다. -->
-<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiQUkgQWxlcnQg7Jik64qY7J2YIEFJIOuPme2WpSIsInNob3J0X25hbWUiOiJBSSBBbGVydCIsImRlc2NyaXB0aW9uIjoi66ek7J28IOyVhOy5qCDsg53shLHrkJjripQgQUkg64+Z7ZalIOuztOuTnCIsInN0YXJ0X3VybCI6Ii4vaW5kZXguaHRtbCIsInNjb3BlIjoiLi8iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsIm9yaWVudGF0aW9uIjoicG9ydHJhaXQiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiI2Y1ZjVmNyIsInRoZW1lX2NvbG9yIjoiI2Y1ZjVmNyIsImxhbmciOiJrbyIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQU1BQUFBREFDQUlBQUFEZHZ2dFFBQUFCdFVsRVFWUjQydTNTUVEwQU1BZ0VRWXlRYWtSempkUkRmOEFrYStBdUU1bEgraTVjSUlBRWtBQVNRQkpBQWtnQUNTQUpJQUVrZ0FTUUJKQUFFa0FDU0FKSUFBa2dBU1NBSklBRWtBQVNRQkpBQWtnQUNTQUpJQUVrZ0FTUUJKQUFFa0FDU0FCSkFBa2dBU1NBSklBRWtBQVNRQkpBQWtnQUNTQUpJQUVrZ0FTUUJKQUFFa0FDU0FCSkFBa2dBU1NBZWd5bzJ6cUFBQUlJSUlBQUFnZ2dnQUFDQ0NDQUFBSUlJSUFBQWdnZ2dBQUNDQ0NBQUFJSUlJQUFBZ2dnZ0FBQ0NDQ0FBQUlJSUlBQUFnZ2dnQUFDQ0NDQUFBSUlJSUFBQWdnZ2dBQUNDQ0NBQUFJSUlJQUFBZ2dnZ0FBQ0NDQ0FBQUlJSUlBQUFnZ2dnQUFDQ0NDQUFBSUlJSUFBQWdnZ2dBQUNDQ0NBQUFJSUlJQUFBZ2dnZ0FBQ0NDQ0FBQUlJSUlBQUFnZ2dnQUFDQ0NDQUFBSUlJSUFBQWdnZ2dBRFMvQUFTUUFKSUFBa2dDU0FCSklBRWtBU1FBQkpBQWtnQ1NBQUpJQUVrQVNTQUJKQUFFa0FTUUFKSUFBa2dDU0FCSklBRWtBU1FBQkpBQWtnQ1NBQUpJQUVrZ0NTQUJKQUFFa0FTUUFKSUFBa2dDU0FCSklBRWtnQ1NBQkpBQTBwSWVTS1REMEx5MExmMEFBQUFBU1VWT1JLNUNZSUk9Iiwic2l6ZXMiOiIxOTJ4MTkyIiwidHlwZSI6ImltYWdlL3BuZyIsInB1cnBvc2UiOiJhbnkifSx7InNyYyI6ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBZ0FBQUFJQUNBSUFBQUI3R2tPdEFBQUhYRWxFUVZSNDJ1M1ZRUTBBTUFnRVFZd1FORll6Um5EQm8wd3lDcTZoRzVrRndFRmhBZ0FCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFCc0FLQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFnQUFBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FDQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFnQUFBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FDQUFGZ0JRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFRQUFBRUFBQUJBQUFBUUJBQUFBUUFBQUVBQUFCQUVBQUFCQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBRUFBQUJBQUFBUUJBQUFBUUFINTUvdGNjNXdvRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBVEFEMkFDQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQjhQeCtRQUZ3Q0FLQUFDQUFDQUFDZ0FBZ0FBZ0FBb0FBSUFBSUFBS0FBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFvQUFJQUFJQUFLQUFDQUFDQUFDZ0FBZ0FBZ0FBb0FBSUFBSUFBS0FBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFpQUFWaEFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBQjhBTUtnRU1RQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUJBQUJRQUFRQUFRQUFVQUFFQUFFQUFGQUFCQUFCQUFCUUFBUUFBUUFBVUFBRUFBRUFBRkFBQkFBQkFBQlFBQVFBQVFBQVVBQUVBQUVBQUZBQUJBQUFiQ0NBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFvQUFJQUFJQUFLQUFDQUFDQUFDZ0FBZ0FBZ0FBb0FBSUFBSUFBS0FBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFvQUFJQUFJQUFLQUFDQUFDQUFDZ0FBZ0FBZ0FBb0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFvQUFJQUFJQUFLQUFDQUFDQUFDZ0FBZ0FBZ0FBb0FBSUFBSUFBS0FBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNnQUFnQUFnQUFvQUFJQUFJQUFLQUFBZ0FBb0FBSUFBSUFBS0FBQ0FBQ0FBQ2dBQWdBQWdBQW9BQUlBQUlBQUtBQUNBQUNBQUNBSUFBQUNBQUFBZ0FBQUlBZ0FBQUlBQUFDQUFBQWdDQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBZ0FBQUlBQUFDQUFBQWdDQUFBQWdBQUFJQUFBQ0FJQUFBQ0FBQUFnQUFBSUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBZ0FBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBZ0FBQUNBQUFBZ0NBQUFBZ0FBQUlBQUFDQUlBQUFDQUFBQWdBQUFJQWdBQUFJQUFBQ0FBQUFnQ0FBQUFnQUFBSUFBQUNBSUFBQUNBQUFBZ0FBQUlBZ0FBQUNJQUpBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQVFBQUFFQVFBQUFFQUFBQkFBQUFRQkFBQUFRQUFBRUFBQUJBRUFBQUJBQUFBUUFBQUVBUUFBQUVBQUFCQUFBQVFCQUFBQVFBQUFFQUFBQkFFQUFBQVRBQ2dBQ0FJQUFBQ0FBQUFnQUFBSUFnQUFBSUFBQUNBQUFBZ0NBQUFBZ0FBQUlBQURyQmtReGFheVI0c01CQUFBQUFFbEZUa1N1UW1DQyIsInNpemVzIjoiNTEyeDUxMiIsInR5cGUiOiJpbWFnZS9wbmciLCJwdXJwb3NlIjoiYW55In1dfQ==">
+<!-- 홈 화면 설치용: 매니페스트는 같은 출처의 실제 파일로 분리했다 — iOS의 data: URI
+     매니페스트 지원은 애플이 문서화하지 않은 미검증 동작이라, 동일 출처 파일이 안전하다. -->
+<link rel="manifest" href="./manifest.webmanifest">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -352,6 +353,26 @@
     line-height: 1.3;
   }
   .v-row:last-child { border-bottom: 0; }
+
+  /* 벤치마크 줄이 있는 행만 감싼다 — 감싸는 이유는 한 행 밑에 두 번째 줄을 붙이면서도
+     하이라인 경계는 여전히 "회사 한 곳당 하나"로 유지하기 위해서다. 벤치마크가 없으면
+     .v-row 자체가 곧 그 회사의 전부이고 자리도 늘지 않는다. */
+  .v-item { border-bottom: 1px solid var(--hairline); }
+  .v-item:last-child { border-bottom: 0; }
+  .v-item .v-row { border-bottom: 0; }
+  .v-item.has-bench .v-row { padding-bottom: 2px; }
+  .v-bench {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 6px 10px;
+    padding: 0 0 9px;
+    font-size: 12px;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
+  }
+  .v-bench-fig b { font-weight: 600; color: var(--ink-soft); margin-right: 3px; }
+  .v-bench-src::before { content: "· 출처 "; }
   .v-head {
     font-size: 13px;
     color: var(--ink-mute);
@@ -394,7 +415,11 @@
   .v-none { color: var(--ink-mute); }
 
   /* GitHub 스킬 부문 칩: kw-pill과 같은 각진 칩 언어, 더 작게 */
-  .gh-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  /* 종류(gh-axis 1개) 위, 부문(gh-axis 2개) 아래 — 두 축을 같은 칩 언어로 쌓되
+     라벨로만 구분한다. kw-strip-label과 같은 작은 라벨 언어. */
+  .gh-axis { margin-bottom: 12px; }
+  .gh-axis-label { font-size: 12px; font-weight: 600; color: var(--ink-mute); letter-spacing: 0.02em; margin: 0 0 8px; }
+  .gh-chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .gh-chip {
     flex: 0 0 auto;
     display: inline-flex;
@@ -495,6 +520,25 @@
     line-height: 1.38;
     font-weight: 600;
   }
+  .n-orig-btn {
+    flex: 0 0 auto;
+    display: inline-flex;
+    margin-left: 6px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 2px 8px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-chip);
+    background: transparent;
+    color: var(--ink-mute);
+    cursor: pointer;
+    vertical-align: middle;
+  }
+  .n-orig-btn:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+  .n-orig-btn[aria-expanded="true"] { border-color: var(--ink); color: var(--ink-soft); background: var(--mist); }
+  .n-orig { margin: 4px 0 0; font-size: 13px; line-height: 1.4; color: var(--ink-mute); }
   .n-sum { margin: 4px 0 0; font-size: 14px; line-height: 1.4; color: var(--ink-soft); }
   .n-meta {
     margin-top: 5px;
@@ -663,9 +707,22 @@
   // 안쪽 여백을 걷어내 그 아래 메타를 한 줄로 붙인다.
   // 해외(global) 기사만 한국어 분석(note_ko, 없으면 summary_ko)을 제목 아래 덧붙인다 —
   // 국내 기사는 이미 한국어라 번역 줄이 필요 없다.
+  // 해외 기사에 title_ko가 있으면 그걸 헤드라인으로 쓰고, 원문 제목은 "원문" 버튼
+  // 뒤에 숨긴다 — title_ko가 없으면 오늘처럼 원문 그대로, 버튼도 없다.
+  let newsRowSeq = 0;
   function newsRowHTML(c) {
     const href = c.url ? esc(c.url) : "#";
-    const note = c.region === "global" ? (c.note_ko || c.summary_ko || "") : "";
+    const isGlobal = c.region === "global";
+    const hasTitleKo = isGlobal && !!c.title_ko;
+    const headline = hasTitleKo ? c.title_ko : (c.title || "");
+    const origId = "n-orig-" + esc(c.id || String(++newsRowSeq));
+    const origToggle = hasTitleKo
+      ? `<button type="button" class="n-orig-btn" aria-expanded="false" aria-controls="${origId}" data-orig-toggle="${origId}">원문</button>`
+      : "";
+    const origBlock = hasTitleKo
+      ? `<p class="n-orig" id="${origId}" hidden>${esc(c.title || "")}</p>`
+      : "";
+    const note = isGlobal ? (c.note_ko || c.summary_ko || "") : "";
     const summary = note ? `<p class="n-sum">${esc(note)}</p>` : "";
     const names = (Array.isArray(c.sources) ? c.sources : [])
       .map(s => s && s.name).filter(Boolean);
@@ -678,13 +735,15 @@
     const when = ago(c.published_at);
     if (when) bits.push(when);
     return `<div class="n-row">
-      <a class="n-title" href="${href}" target="_blank" rel="noopener noreferrer">${esc(c.title || "")}</a>
+      <a class="n-title" href="${href}" target="_blank" rel="noopener noreferrer">${esc(headline)}</a>${origToggle}
+      ${origBlock}
       ${summary}
       <div class="n-meta">${bits.join('<span class="n-dot">·</span>')}</div>
     </div>`;
   }
 
   // ── GitHub 스킬: 레포 | 부문 | 증가 + 설명 한 줄 ─────────────────────────
+  function ghKind(c) { return (c && c.kind) || "기타"; }
   function ghCategory(c) { return (c && c.category) || "기타"; }
 
   function githubRowHTML(c) {
@@ -730,31 +789,52 @@
     </div>`;
   }
 
-  // ── GitHub 스킬: 부문 칩 + Top 20 + 더보기 ────────────────────────────────
-  // 20장을 한 번에 쏟아내면 스크롤이 끝없어진다. 부문별로 걸러 보고, 5개만
-  // 먼저 보여주다 더보기로 나머지(최대 20개)를 편다. 상태는 이 섹션 전용으로
-  // 모듈 스코프에 두고, 칩/더보기를 누르면 #ghWrap 안쪽만 다시 그린다.
-  const ghState = { cards: [], category: "all", expanded: false };
+  // ── GitHub 스킬: 종류 축 + 부문 칩 + Top 20 + 더보기 ──────────────────────
+  // 종류(스킬/MCP 서버/에이전트 프레임워크/CLI·개발도구)가 부문 위의 상위 축이다.
+  // 종류를 고르면 부문 칩은 "그 종류에 속한 카드"만으로 다시 세어 그린다 —
+  // 부문이 상위 필터를 무시하고 항상 전체에서 세면 숫자가 선택과 안 맞아 보인다.
+  // 20장을 한 번에 쏟아내면 스크롤이 끝없어진다. 5개만 먼저 보여주다 더보기로
+  // 나머지(현재 종류+부문 선택 안에서 최대 20개)를 편다. 상태는 이 섹션 전용으로
+  // 모듈 스코프에 두고, 축/더보기를 누르면 #ghWrap 안쪽만 다시 그린다.
+  const ghState = { cards: [], kind: "all", category: "all", expanded: false };
 
-  function ghCategoryCounts(cards) {
+  function ghCountsBy(cards, keyFn) {
     const counts = new Map();
     cards.forEach(c => {
-      const cat = ghCategory(c);
-      counts.set(cat, (counts.get(cat) || 0) + 1);
+      const key = keyFn(c);
+      counts.set(key, (counts.get(key) || 0) + 1);
     });
     return Array.from(counts.entries());
   }
 
+  function ghKindCounts(cards) { return ghCountsBy(cards, ghKind); }
+  function ghCategoryCounts(cards) { return ghCountsBy(cards, ghCategory); }
+
+  function ghKindFilteredCards() {
+    if (ghState.kind === "all") return ghState.cards;
+    return ghState.cards.filter(c => ghKind(c) === ghState.kind);
+  }
+
   function ghFilteredCards() {
-    if (ghState.category === "all") return ghState.cards;
-    return ghState.cards.filter(c => ghCategory(c) === ghState.category);
+    const byKind = ghKindFilteredCards();
+    if (ghState.category === "all") return byKind;
+    return byKind.filter(c => ghCategory(c) === ghState.category);
+  }
+
+  function ghKindChipsHTML() {
+    const kinds = ghKindCounts(ghState.cards);
+    const allBtn = `<button type="button" class="gh-chip" data-kind="all" aria-pressed="${ghState.kind === "all"}">전체<span class="gh-chip-n">${ghState.cards.length}</span></button>`;
+    const kindBtns = kinds.map(([kind, n]) => `<button type="button" class="gh-chip" data-kind="${esc(kind)}" aria-pressed="${ghState.kind === kind}">${esc(kind)}<span class="gh-chip-n">${n}</span></button>`).join("");
+    return `<div class="gh-axis"><p class="gh-axis-label">종류</p><div class="gh-chips" role="group" aria-label="종류 선택">${allBtn}${kindBtns}</div></div>`;
   }
 
   function ghChipsHTML() {
-    const cats = ghCategoryCounts(ghState.cards);
-    const allBtn = `<button type="button" class="gh-chip" data-cat="all" aria-pressed="${ghState.category === "all"}">전체<span class="gh-chip-n">${ghState.cards.length}</span></button>`;
+    // 부문은 종류로 거른 카드 기준으로 다시 세어, 선택된 종류 안에서만 부문이 보이게 한다.
+    const basis = ghKindFilteredCards();
+    const cats = ghCategoryCounts(basis);
+    const allBtn = `<button type="button" class="gh-chip" data-cat="all" aria-pressed="${ghState.category === "all"}">전체<span class="gh-chip-n">${basis.length}</span></button>`;
     const catBtns = cats.map(([cat, n]) => `<button type="button" class="gh-chip" data-cat="${esc(cat)}" aria-pressed="${ghState.category === cat}">${esc(cat)}<span class="gh-chip-n">${n}</span></button>`).join("");
-    return `<div class="gh-chips" role="group" aria-label="부문 선택">${allBtn}${catBtns}</div>`;
+    return `<div class="gh-axis"><p class="gh-axis-label">부문</p><div class="gh-chips" role="group" aria-label="부문 선택">${allBtn}${catBtns}</div></div>`;
   }
 
   function ghBodyHTML() {
@@ -763,7 +843,7 @@
     const visible = filtered.slice(0, ghState.expanded ? cap : Math.min(5, cap));
     const table = filtered.length
       ? githubTableHTML(visible, filtered)
-      : `<div class="empty">이 부문에는 항목이 없습니다.</div>`;
+      : `<div class="empty">이 선택에는 항목이 없습니다.</div>`;
     const canExpand = cap > 5;
     const moreBtn = canExpand
       ? `<button type="button" class="gh-more" id="ghMoreBtn" aria-expanded="${ghState.expanded}">${ghState.expanded ? "접기" : `더보기 (${cap - 5}개 더)`}</button>`
@@ -772,13 +852,16 @@
   }
 
   function ghWrapInnerHTML() {
-    return `${ghChipsHTML()}<div id="ghBody">${ghBodyHTML()}</div>`;
+    return `${ghKindChipsHTML()}${ghChipsHTML()}<div id="ghBody">${ghBodyHTML()}</div>`;
   }
 
   function renderGithubSection(cards) {
     ghState.cards = cards;
     ghState.expanded = false;
-    const cats = new Set(ghCategoryCounts(cards).map(([c]) => c));
+    const kinds = new Set(ghKindCounts(cards).map(([k]) => k));
+    if (ghState.kind !== "all" && !kinds.has(ghState.kind)) ghState.kind = "all";
+    const basis = ghState.kind === "all" ? cards : cards.filter(c => ghKind(c) === ghState.kind);
+    const cats = new Set(ghCategoryCounts(basis).map(([c]) => c));
     if (ghState.category !== "all" && !cats.has(ghState.category)) ghState.category = "all";
     return `<div id="ghWrap">${ghWrapInnerHTML()}</div>`;
   }
@@ -788,12 +871,32 @@
     if (wrap) wrap.innerHTML = ghWrapInnerHTML();
   }
 
+  // ── 원문 토글: 해외 뉴스에서 title_ko가 헤드라인일 때 "원문" 버튼으로 원제를 펼친다 ──
+  function toggleNewsOriginal(btn) {
+    const targetId = btn.dataset.origToggle;
+    const target = targetId && document.getElementById(targetId);
+    if (!target) return;
+    const willShow = target.hasAttribute("hidden");
+    if (willShow) target.removeAttribute("hidden");
+    else target.setAttribute("hidden", "");
+    btn.setAttribute("aria-expanded", String(willShow));
+  }
+
   // 이벤트 위임: el.board 자체는 교체되지 않으므로(innerHTML만 바뀐다) 한 번만 건다.
-  function bindGithubEvents() {
+  // GitHub 종류/부문 칩·더보기와 뉴스 "원문" 토글을 여기 한곳에서 함께 처리한다.
+  function bindBoardEvents() {
     el.board.addEventListener("click", e => {
-      const chip = e.target.closest(".gh-chip");
-      if (chip) {
-        ghState.category = chip.dataset.cat;
+      const kindChip = e.target.closest("[data-kind]");
+      if (kindChip) {
+        ghState.kind = kindChip.dataset.kind;
+        ghState.category = "all";
+        ghState.expanded = false;
+        updateGithubDOM();
+        return;
+      }
+      const catChip = e.target.closest("[data-cat]");
+      if (catChip) {
+        ghState.category = catChip.dataset.cat;
         ghState.expanded = false;
         updateGithubDOM();
         return;
@@ -802,182 +905,35 @@
       if (more) {
         ghState.expanded = !ghState.expanded;
         updateGithubDOM();
+        return;
+      }
+      const origBtn = e.target.closest(".n-orig-btn");
+      if (origBtn) {
+        toggleNewsOriginal(origBtn);
       }
     });
   }
 
   // ── 커뮤니티: 커뮤니티 | 전체 순위 | 유입 ──────────────────────────────────
   function communityTableHTML(cards) {
+    // 전체 트래픽 순위를 버리고 각 커뮤니티가 실제로 공개하는 숫자를 쓴다.
+    // 단위가 제각각(회원수·구독자·점수)이라 숫자만 적으면 비교가 되는 것처럼 보인다.
+    // 그래서 **단위를 항상 함께** 적고, 못 재는 곳은 못 잰다고 적는다.
     const rows = cards.map(c => {
-      const rank = typeof c.global_rank === "number"
-        ? `<b>${N(c.global_rank)}위</b>`
-        : `<b class="v-none">—</b>`;
-      const gravity = c.mentions ? `<i class="v-fresh">유입 ${N(c.mentions)}</i>` : `<i>—</i>`;
+      const has = typeof c.signal_value === "number";
+      const val = has
+        ? `<b>${N(c.signal_value)}</b><i>${esc(c.signal_kind || "")}</i>`
+        : `<b class="v-none">—</b><i class="v-none">${esc(c.signal_kind || "측정 불가")}</i>`;
+      const grav = c.mentions ? `<i class="v-fresh">유입 ${N(c.mentions)}</i>` : "";
       const href = c.url ? esc(c.url) : "#";
       return `<div class="v-row c-row">
         <span class="v-co"><a href="${href}" target="_blank" rel="noopener noreferrer">${esc(c.title || "")}</a></span>
-        <span class="c-dom">${esc(c.domain || "")}</span>
-        <span class="v-when">${rank}${gravity}</span>
+        <span class="c-dom">${esc(c.note || "")}</span>
+        <span class="v-when">${val}${grav}</span>
       </div>`;
     }).join("");
     return `<div class="v-table">
-      <div class="v-row c-row v-head"><span>커뮤니티</span><span>도메인</span><span>전체 순위</span></div>
-      ${rows}
-    </div>`;
-  }
-
-  function reactionBar(label, value, peak) {
-    if (typeof value !== "number" || !peak) return "";
-    const pct = Math.max(2, Math.round((value / peak) * 100));
-    return `<div class="rbar">
-      <span class="lab">${esc(label)}</span>
-      <span class="track"><span class="fill" style="width:${pct}%"></span></span>
-      <span class="num">${N(value)}</span>
-    </div>`;
-  }
-
-  function keywordCardHTML(c) {
-    // "8개 항목에서 언급됐습니다" 만 있으면 그 8개가 무엇인지 볼 방법이 없었다.
-    // 이제 항목 자체를 펼쳐 보여준다 — 숫자보다 제목이 알고 싶은 것이다.
-    const items = Array.isArray(c.items) ? c.items : [];
-    const n = typeof c.mentions === "number" ? c.mentions : items.length;
-    const ko = c.keyword_ko ? ` <span class="kw-ko">${esc(c.keyword_ko)}</span>` : "";
-    const src = typeof c.source_count === "number" && c.source_count > 1
-      ? ` · 출처 ${c.source_count}곳` : "";
-    const head = `<p class="kwd-head"><b>${esc(c.keyword || "")}</b>${ko} — 오늘 ${n}개 항목${src}</p>`;
-
-    const list = items.length
-      ? `<div class="kwd-list">${items.map(it => `<div class="kwd-item">
-          <span class="kwd-src">${esc((it && it.source) || "")}</span>
-          <a href="${it && it.url ? esc(it.url) : "#"}" target="_blank" rel="noopener noreferrer">${esc((it && it.title) || "")}</a>
-        </div>`).join("")}</div>`
-      : `<p class="kw-empty">이 키워드가 걸린 항목을 실어 보내지 못했습니다.</p>`;
-
-    // 한국 반응(네이버·카카오)은 데이터가 있을 때만 덧붙인다.
-    const korea = c.korea || {};
-    const naver = korea.naver || {};
-    const kakao = korea.kakao || {};
-    const rows = [
-      ["네이버 카페", naver.cafe], ["네이버 블로그", naver.blog], ["네이버 뉴스", naver.news],
-      ["다음 웹", kakao.web], ["다음 블로그", kakao.blog], ["다음 카페", kakao.cafe],
-    ].filter(([, v]) => typeof v === "number");
-    const peak = rows.reduce((m, [, v]) => Math.max(m, v), 0);
-    const bars = rows.map(([lab, v]) => reactionBar(lab, v, peak)).join("");
-
-    return `${head}${list}${bars ? `<div class="reaction">${bars}</div>` : ""}`;
-  }
-
-  function cardHTML(c) {
-    if (isGithubCard(c)) return newsRowHTML(c);
-    if (isKeywordCard(c)) return keywordCardHTML(c);
-    return plainCardHTML(c);
-  }
-
-  // ── 오늘의 키워드 스트립: 일반 흐름에서 빼내 헤더 바로 아래, 구획 바로가기보다
-  // 위에 그린다. 필을 탭하면 같은 keywordCardHTML() 카드를 아래에 펼쳐 보여준다 ──
-  function keywordPillHTML(c, i) {
-    const term = esc(c.keyword || c.keyword_ko || "");
-    const isNew = c.change === "new";
-    const mentions = typeof c.mentions === "number"
-      ? `<span class="kw-n">${N(c.mentions)}회</span>` : "";
-    return `<button type="button" class="kw-pill" id="kwPill-${i}" aria-expanded="false" aria-controls="kwDetail" data-idx="${i}">
-      <span class="kw-word${isNew ? " new" : ""}">${term}</span>${mentions}
-    </button>`;
-  }
-
-  function toggleKwDetail(idx) {
-    const detail = document.getElementById("kwDetail");
-    if (!detail) return;
-    const buttons = el.kwStrip.querySelectorAll(".kw-pill");
-    const opening = kwState.openIndex !== idx;
-    buttons.forEach(b => b.setAttribute("aria-expanded", "false"));
-    if (!opening) {
-      kwState.openIndex = -1;
-      detail.innerHTML = "";
-      return;
-    }
-    kwState.openIndex = idx;
-    const btn = document.getElementById("kwPill-" + idx);
-    if (btn) btn.setAttribute("aria-expanded", "true");
-    const card = kwState.cards[idx];
-    detail.innerHTML = card ? keywordCardHTML(card) : "";
-  }
-
-  function renderKeywordStrip(section) {
-    kwState.cards = [];
-    kwState.openIndex = -1;
-    if (!section) { el.kwStrip.innerHTML = ""; return; }
-    const cards = Array.isArray(section.cards) ? section.cards : [];
-    const label = esc(section.title || "오늘의 키워드");
-    if (!cards.length) {
-      const msg = esc(section.empty_reason || "오늘은 키워드가 없습니다.");
-      el.kwStrip.innerHTML = `<p class="kw-strip-label">${label}</p><p class="kw-empty">${msg}</p>`;
-      return;
-    }
-    kwState.cards = cards;
-    el.kwStrip.innerHTML = `
-      <p class="kw-strip-label">${label}</p>
-      <div class="kw-row" id="kwRow">${cards.map(keywordPillHTML).join("")}</div>
-      <div id="kwDetail"></div>
-    `;
-    const row = document.getElementById("kwRow");
-    if (row) {
-      row.addEventListener("click", e => {
-        const btn = e.target.closest(".kw-pill");
-        if (!btn) return;
-        toggleKwDetail(Number(btn.dataset.idx));
-      });
-    }
-  }
-
-  // ── 벤더 현황판 ───────────────────────────────────────────────────────────
-  // 이 섹션만 카드가 아니라 표로 그린다. 11개 회사를 카드로 쌓으면 화면의 대부분을
-  // 먹는데, 여기서 알고 싶은 건 "누가 언제 무엇을 냈나" 한 줄이 전부다.
-  // DESIGN.md 의 28px 카드 언어에서 의도적으로 벗어난 곳이다 (CLAUDE.md 에 예외로 기록).
-  function isVendorCard(c) {
-    return c && (Object.prototype.hasOwnProperty.call(c, "days_since")
-                 || Object.prototype.hasOwnProperty.call(c, "open_weights"));
-  }
-
-  function fmtWhen(c) {
-    const d = c.updated_at;
-    if (!d) return { date: "—", rel: "소식 없음", quiet: true };
-    const [y, m, day] = d.split("-");
-    const thisYear = String(new Date().getFullYear());
-    const n = c.days_since;
-    let rel;
-    if (n === 0) rel = "오늘";
-    else if (n === 1) rel = "어제";
-    else if (n < 30) rel = n + "일";
-    else if (n < 365) rel = Math.floor(n / 30) + "개월";
-    else rel = (n / 365).toFixed(1) + "년";
-    // 올해가 아니면 년도까지 적는다. 같은 해면 월일만 — 자릿수가 짧을수록 읽기 쉽다.
-    const date = y === thisYear ? `${m}/${day}` : `${y.slice(2)}.${m}/${day}`;
-    return { date, rel, quiet: false, stale: n >= 90 };
-  }
-
-  function vendorTableHTML(cards) {
-    const rows = cards.map(c => {
-      const w = fmtWhen(c);
-      // 모델 이름은 글자만 두고, 근거 페이지는 아이콘 하나로 접는다.
-      // 제목 전체를 링크로 깔면 줄이 길어져 표가 읽히지 않는다.
-      const link = c.url
-        ? ` <a class="v-src" href="${esc(c.url)}" target="_blank" rel="noopener"
-              title="${esc(c.headline || c.model || "")} — ${esc(c.via || "출처")}"
-              aria-label="근거 페이지 열기">↗</a>`
-        : "";
-      const model = c.model
-        ? `<span class="v-name">${esc(c.model)}</span>${link}`
-        : `<span class="v-none">—</span>`;
-      const relCls = w.quiet ? "v-none" : (w.stale ? "v-stale" : (c.days_since <= 1 ? "v-fresh" : ""));
-      return `<div class="v-row">
-        <span class="v-co">${esc(c.title || "")}</span>
-        <span class="v-model">${model}</span>
-        <span class="v-when"><b>${esc(w.date)}</b><i class="${relCls}">${esc(w.rel)}</i></span>
-      </div>`;
-    }).join("");
-    return `<div class="v-table">
-      <div class="v-row v-head"><span>회사</span><span>최신 모델</span><span>갱신</span></div>
+      <div class="v-row c-row v-head"><span>커뮤니티</span><span></span><span>활동 신호</span></div>
       ${rows}
     </div>`;
   }
@@ -1054,7 +1010,7 @@
   }
 
   (async function init() {
-    bindGithubEvents();
+    bindBoardEvents();
     const { board, fetchFailed } = await loadBoard();
     if (!board) {
       renderFatalError();
@@ -1063,6 +1019,14 @@
     const stale = fetchFailed || (typeof board.board_date === "string" && board.board_date !== todayKST());
     renderBoard(board, stale);
   })();
+
+  // ── 서비스 워커: 셸은 캐시 우선, latest.json은 네트워크 우선 + 캐시 대체.
+  // localStorage 캐시(위의 CACHE_KEY)를 대체하는 게 아니라 그 위에 얹는 2번째 층이다.
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js").catch(() => { /* 등록 실패해도 페이지는 그대로 동작한다 */ });
+    });
+  }
 </script>
 </body>
 </html>

@@ -1,27 +1,36 @@
 {
   "schema_version": "1.0",
   "board_date": "2026-09-21",
-  "generated_at": "2026-09-20T15:10:00.119565Z",
+  "generated_at": "2026-09-20T15:15:25.780097Z",
   "status": "ok",
   "previous_board_date": "2026-09-21",
   "generator": {
     "pipeline_version": "0.1.0",
     "model": null,
     "counts": {
-      "collected": 1659,
-      "clustered": 122,
-      "published": 30
+      "collected": 2099,
+      "clustered": 155,
+      "published": 95
     },
     "api_budget": {
-      "github_core": "2/1200",
-      "github_search": "36/200",
-      "tranco": "14/40"
+      "github_core": "3/1200",
+      "github_search": "48/200",
+      "tranco": "14/40",
+      "discord": "12/60",
+      "benchmarks": "6/20"
     },
     "notes": [
-      "오늘 수집한 항목 중 다른 곳에서 커뮤니티를 가리킨 링크가 없음 (화제 유입량 0). 전체 트래픽 순위로만 줄을 세움",
-      "화제 유입량은 오늘 수집한 항목이 가리키는 링크 기준이고, 전체 트래픽 순위(Tranco)는 AI 화제 전용 지표가 아니라 사이트 전체 규모다.",
+      "GitHub 토큰이 없어 후보 수를 줄였습니다 (무인증 core 시간당 60회).",
+      "llm-tools: HTTPError",
+      "ai-coding: HTTPError",
+      "GitHub 시간당 호출 한도(무인증 60회)를 다 써서 주간 증가분 대신 누적 스타로 줄을 세웠습니다. GH_READ_TOKEN 을 넣으면 5,000회로 늘어납니다.",
+      "부문 30곳이 20개를 못 채웠습니다 (후보 45개 중 증가분을 구한 것 45개). GH_READ_TOKEN 을 넣으면 시간당 60회가 5,000회가 되어 다 채워집니다.",
+      "커뮤니티마다 신호의 종류(회원수·구독자·오늘 포인트 합)가 다르다 — 숫자가 있는 곳부터 값 기준으로 나열하되, 종류가 다른 숫자를 하나의 순위로 합치지 않는다. 숫자가 없는 곳은 '측정 불가' 사유와 함께 그대로 남긴다.",
       "모델 업데이트는 '현황'이지 '계획'이 아닙니다. 벤더가 출시 일정을 공표하지 않으므로 마지막 갱신 이후 경과일만 보여줍니다.",
-      "올해 출시 92건 중 최근 40건만 축에 올렸습니다.",
+      "올해 출시 93건 중 최근 40건만 축에 올렸습니다.",
+      "벤치마크 색인 567개 모델 (EpochAI 262 · LMArena 380, 둘 다 CC BY 4.0).",
+      "벤치마크 매칭 3/14행 (21%) — 나머지는 공개 점수가 없거나(신모델·클로즈드) 계열이 달라 보류.",
+      "미매칭: Qwen/Qwen-Image-2.1-PE-I2I, DeepSeek-V4.1-Flash, Gemini 3.8, Introducing ChatGPT Images 2.5, Claude Mythos 5.1 외 6건",
       "오늘의 키워드는 제목 빈도로 뽑은 임시값입니다. ANTHROPIC_API_KEY 를 넣으면 표기가 다른 같은 주제를 하나로 묶고 한국어 이름을 붙입니다.",
       "ANTHROPIC_API_KEY가 없어 요약을 건너뜁니다. 키가 생기면 자동으로 채워집니다."
     ]
@@ -85,7 +94,7 @@
     {
       "id": "hn",
       "ok": true,
-      "items": 60
+      "items": 500
     },
     {
       "id": "geeknews",
@@ -119,8 +128,8 @@
           "id": "k_2026-09-21_001",
           "keyword": "Gemini",
           "keyword_ko": null,
-          "mentions": 3,
-          "source_count": 3,
+          "mentions": 11,
+          "source_count": 4,
           "items": [
             {
               "title": "Google’s Gemini is the latest AI model to hack other companies",
@@ -136,6 +145,21 @@
               "title": "Google says it didn't consider Gemini's hacks worthy of disclosure because Gemini acted \"appropriately\" and stopped after determining it hacked real companies (Terrence O'Brien/The Verge)",
               "url": "https://www.techmeme.com/260919/p9#a260919p9",
               "source": "Techmeme"
+            },
+            {
+              "title": "Gemini hacked three companies in first known breakout by Google's AI",
+              "url": "https://www.cnn.com/2026/09/19/business/gemini-ai-hack-internet",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Gemini AI hacked three other companies during a test",
+              "url": "https://news.sky.com/story/googles-gemini-ai-hacks-three-other-companies-during-security-test-13589551",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Google says its Gemini AI model hacked three other companies",
+              "url": "https://www.theguardian.com/technology/2026/sep/18/google-gemini-ai-hack",
+              "source": "Hacker News"
             }
           ],
           "change": "continuing",
@@ -143,10 +167,92 @@
         },
         {
           "id": "k_2026-09-21_002",
+          "keyword": "hacked",
+          "keyword_ko": null,
+          "mentions": 10,
+          "source_count": 3,
+          "items": [
+            {
+              "title": "Gemini went rogue, hacked three companies, and Google hid it",
+              "url": "https://www.theverge.com/ai-artificial-intelligence/997795/google-gemini-rogue-ai-hack",
+              "source": "The Verge"
+            },
+            {
+              "title": "Google says it didn't consider Gemini's hacks worthy of disclosure because Gemini acted \"appropriately\" and stopped after determining it hacked real companies (Terrence O'Brien/The Verge)",
+              "url": "https://www.techmeme.com/260919/p9#a260919p9",
+              "source": "Techmeme"
+            },
+            {
+              "title": "Gemini hacked three companies in first known breakout by Google's AI",
+              "url": "https://www.cnn.com/2026/09/19/business/gemini-ai-hack-internet",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Gemini AI hacked three other companies during a test",
+              "url": "https://news.sky.com/story/googles-gemini-ai-hacks-three-other-companies-during-security-test-13589551",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Google says its Gemini AI model hacked three other companies",
+              "url": "https://www.theguardian.com/technology/2026/sep/18/google-gemini-ai-hack",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Google's Gemini AI hacked three companies in security test",
+              "url": "https://www.bbc.co.uk/news/articles/c607l0k72rlvo",
+              "source": "Hacker News"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "hacked"
+        },
+        {
+          "id": "k_2026-09-21_003",
+          "keyword": "used",
+          "keyword_ko": null,
+          "mentions": 8,
+          "source_count": 3,
+          "items": [
+            {
+              "title": "Security researchers used Claude to help them hack into OpenAI",
+              "url": "https://www.theverge.com/ai-artificial-intelligence/997444/openai-hack-claude-heif-heist",
+              "source": "The Verge"
+            },
+            {
+              "title": "US government website used Chinese model the FBI called \"malicious\"",
+              "url": "https://arstechnica.com/tech-policy/2026/09/us-government-website-used-chinese-model-the-fbi-called-malicious/",
+              "source": "Ars Technica"
+            },
+            {
+              "title": "Researchers used Claude to hack OpenAI",
+              "url": "https://arstechnica.com/ai/2026/09/researchers-used-claude-to-hack-openai/",
+              "source": "Ars Technica"
+            },
+            {
+              "title": "LLMs respond differently to harmful prompts when AI watermarking is used",
+              "url": "https://arstechnica.com/security/2026/09/ai-text-watermarking-can-make-models-more-vulnerable-to-adversarial-prompts/",
+              "source": "Ars Technica"
+            },
+            {
+              "title": "US gov website used AI search tool from China that FBI said copied Anthropic",
+              "url": "https://www.reuters.com/legal/litigation/us-government-website-used-ai-search-tool-china-that-fbi-said-copied-anthropic-2026-09-17/",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Hackers Used Anthropic's Claude to Break into OpenAI",
+              "url": "https://www.wsj.com/tech/ai/hackers-used-anthropics-claude-to-break-into-openai-b40ba883",
+              "source": "Hacker News"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "used"
+        },
+        {
+          "id": "k_2026-09-21_004",
           "keyword": "Claude",
           "keyword_ko": null,
-          "mentions": 3,
-          "source_count": 3,
+          "mentions": 8,
+          "source_count": 4,
           "items": [
             {
               "title": "Security researchers used Claude to help them hack into OpenAI",
@@ -159,13 +265,69 @@
               "source": "Ars Technica"
             },
             {
-              "title": "Show GN: Daijin - ESP32 음성 장치에 Claude를 두뇌로 붙여 집과 원격 장치를 제어하는 음성 에이전트",
-              "url": "https://news.hada.io/topic?id=33977",
-              "source": "GeekNews"
+              "title": "Hackers Used Anthropic's Claude to Break into OpenAI",
+              "url": "https://www.wsj.com/tech/ai/hackers-used-anthropics-claude-to-break-into-openai-b40ba883",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Researchers used Claude to hack OpenAI",
+              "url": "https://arstechnica.com/ai/2026/09/researchers-used-claude-to-hack-openai/",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Anthropic says its model Claude is helping to build the next version of itself",
+              "url": "https://apnews.com/article/anthropic-claude-ai-model-self-improvement-4d3a7430f57cbc7c39e1c5f2b7d7e132",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Hackers Used Anthropic's Claude to Break into OpenAI",
+              "url": "https://www.wsj.com/tech/ai/hackers-used-anthropics-claude-to-break-into-openai-b40ba883",
+              "source": "Hacker News"
             }
           ],
           "change": "continuing",
           "dedup_key": "claude"
+        },
+        {
+          "id": "k_2026-09-21_005",
+          "keyword": "hacked three",
+          "keyword_ko": null,
+          "mentions": 7,
+          "source_count": 2,
+          "items": [
+            {
+              "title": "Gemini went rogue, hacked three companies, and Google hid it",
+              "url": "https://www.theverge.com/ai-artificial-intelligence/997795/google-gemini-rogue-ai-hack",
+              "source": "The Verge"
+            },
+            {
+              "title": "Gemini hacked three companies in first known breakout by Google's AI",
+              "url": "https://www.cnn.com/2026/09/19/business/gemini-ai-hack-internet",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Gemini AI hacked three other companies during a test",
+              "url": "https://news.sky.com/story/googles-gemini-ai-hacks-three-other-companies-during-security-test-13589551",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Google says its Gemini AI model hacked three other companies",
+              "url": "https://www.theguardian.com/technology/2026/sep/18/google-gemini-ai-hack",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Google's Gemini AI hacked three companies in security test",
+              "url": "https://www.bbc.co.uk/news/articles/c607l0k72rlvo",
+              "source": "Hacker News"
+            },
+            {
+              "title": "Gemini hacked three companies in first known breakout by Google's AI",
+              "url": "https://www.reuters.com/business/gemini-hacked-three-companies-first-known-breakout-by-google-ai-wsj-reports-2026-09-18/",
+              "source": "Hacker News"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "hacked three"
         }
       ]
     },
@@ -177,15 +339,6 @@
         "today_day_of_year": 263,
         "total_days": 365,
         "points": [
-          {
-            "vendor": "Z.ai (GLM)",
-            "family": "GLM",
-            "model": "GLM-5.2-FP8",
-            "date": "2026-06-16",
-            "label": "6/16",
-            "url": "https://huggingface.co/zai-org/GLM-5.2-FP8",
-            "day_of_year": 167
-          },
           {
             "vendor": "Alibaba Qwen",
             "family": "Qwen",
@@ -522,6 +675,15 @@
           {
             "vendor": "Alibaba Qwen",
             "family": "Qwen",
+            "model": "Releases Qwen3.8-Omni-Flash",
+            "date": "2026-09-17",
+            "label": "9/17",
+            "url": "https://tokenstead.ai/models/qwen3-8-omni-flash",
+            "day_of_year": 260
+          },
+          {
+            "vendor": "Alibaba Qwen",
+            "family": "Qwen",
             "model": "Qwen-Image-2.1-PE-I2I",
             "date": "2026-09-20",
             "label": "9/20",
@@ -543,7 +705,7 @@
       "empty_reason": null,
       "cards": [
         {
-          "id": "v_2026-09-21_003",
+          "id": "v_2026-09-21_006",
           "title": "Alibaba Qwen",
           "family": "Qwen",
           "headline": "Qwen/Qwen-Image-2.1-PE-I2I",
@@ -570,7 +732,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_004",
+          "id": "v_2026-09-21_007",
           "title": "DeepSeek",
           "family": "DeepSeek-V",
           "headline": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
@@ -597,7 +759,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_005",
+          "id": "v_2026-09-21_008",
           "title": "Google",
           "family": "Gemini",
           "headline": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
@@ -624,7 +786,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_006",
+          "id": "v_2026-09-21_009",
           "title": "OpenAI",
           "family": "GPT",
           "headline": "Introducing ChatGPT Images 2.5",
@@ -651,7 +813,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_007",
+          "id": "v_2026-09-21_010",
           "title": "Anthropic",
           "family": "Fable",
           "headline": "Introducing Claude Fable 5.1 and Claude Mythos 5.1",
@@ -678,7 +840,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_008",
+          "id": "v_2026-09-21_011",
           "title": "Anthropic",
           "family": "Mythos",
           "headline": "Introducing Claude Fable 5.1 and Claude Mythos 5.1",
@@ -705,7 +867,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_009",
+          "id": "v_2026-09-21_012",
           "title": "xAI",
           "family": "Grok",
           "headline": "Grok 4.6 on Microsoft Foundry",
@@ -732,7 +894,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_010",
+          "id": "v_2026-09-21_013",
           "title": "Z.ai (GLM)",
           "family": "GLM",
           "headline": "GLM-5.3-Flash-BF16",
@@ -759,7 +921,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_011",
+          "id": "v_2026-09-21_014",
           "title": "Upstage",
           "family": "Solar",
           "headline": "Solar-Open2-250B",
@@ -786,7 +948,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_012",
+          "id": "v_2026-09-21_015",
           "title": "Mistral",
           "family": "Mistral",
           "headline": "Introducing Mistral OCR 4",
@@ -813,7 +975,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_013",
+          "id": "v_2026-09-21_016",
           "title": "Moonshot",
           "family": "Kimi",
           "headline": "Kimi-K3",
@@ -840,7 +1002,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_014",
+          "id": "v_2026-09-21_017",
           "title": "Google",
           "family": "Gemma",
           "headline": "diffusiongemma-26B-A4B-it",
@@ -867,7 +1029,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_015",
+          "id": "v_2026-09-21_018",
           "title": "Mistral",
           "family": "Devstral",
           "headline": "Introducing: Devstral 2 and Mistral Vibe CLI.",
@@ -894,7 +1056,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-21_016",
+          "id": "v_2026-09-21_019",
           "title": "Meta",
           "family": "Llama",
           "headline": "meta-llama/Llama-Guard-4-12B",
@@ -926,8 +1088,1089 @@
       "id": "github_skills",
       "title": "GitHub 급상승",
       "briefing_ko": [],
-      "empty_reason": "GitHub 응답이 없어 오늘은 비어 있습니다.",
-      "cards": []
+      "empty_reason": null,
+      "cards": [
+        {
+          "id": "c_2026-09-21_020",
+          "title": "affaan-m/ECC",
+          "summary_ko": null,
+          "url": "https://github.com/affaan-m/ECC",
+          "heat": 16.26,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "affaan-m/ECC",
+          "published_at": null,
+          "repo": "affaan-m/ECC",
+          "stars": 263414,
+          "stars_delta": null,
+          "category": "보안",
+          "kind": "MCP 서버",
+          "updated_at": "2026-09-20",
+          "desc": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_021",
+          "title": "NousResearch/hermes-agent",
+          "summary_ko": null,
+          "url": "https://github.com/NousResearch/hermes-agent",
+          "heat": 16.18,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "NousResearch/hermes-agent",
+          "published_at": null,
+          "repo": "NousResearch/hermes-agent",
+          "stars": 247383,
+          "stars_delta": null,
+          "category": "연구·논문",
+          "kind": "에이전트 프레임워크",
+          "updated_at": "2026-09-20",
+          "desc": "The agent that grows with you",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_022",
+          "title": "n8n-io/n8n",
+          "summary_ko": null,
+          "url": "https://github.com/n8n-io/n8n",
+          "heat": 15.94,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "n8n-io/n8n",
+          "published_at": null,
+          "repo": "n8n-io/n8n",
+          "stars": 205447,
+          "stars_delta": null,
+          "category": "백엔드·API",
+          "kind": "MCP 서버",
+          "updated_at": "2026-09-20",
+          "desc": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_023",
+          "title": "anthropics/skills",
+          "summary_ko": null,
+          "url": "https://github.com/anthropics/skills",
+          "heat": 15.75,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "anthropics/skills",
+          "published_at": null,
+          "repo": "anthropics/skills",
+          "stars": 177271,
+          "stars_delta": null,
+          "category": "기타",
+          "kind": "스킬",
+          "updated_at": "2026-09-10",
+          "desc": "Public repository for Agent Skills",
+          "note_ko": "Anthropic 공식 예제 스킬 모음. 스킬을 처음 만들 때 형식을 참고하는 곳."
+        },
+        {
+          "id": "c_2026-09-21_024",
+          "title": "Snailclimb/JavaGuide",
+          "summary_ko": null,
+          "url": "https://github.com/Snailclimb/JavaGuide",
+          "heat": 15.6,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "Snailclimb/JavaGuide",
+          "published_at": null,
+          "repo": "Snailclimb/JavaGuide",
+          "stars": 158732,
+          "stars_delta": null,
+          "category": "디자인·UI",
+          "kind": "MCP 서버",
+          "updated_at": "2026-09-20",
+          "desc": "Java 面试 & 后端通用面试指南，覆盖计算机基础、数据库、分布式、高并发、系统设计与 AI 应用开发",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_025",
+          "title": "langgenius/dify",
+          "summary_ko": null,
+          "url": "https://github.com/langgenius/dify",
+          "heat": 15.58,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "langgenius/dify",
+          "published_at": null,
+          "repo": "langgenius/dify",
+          "stars": 156585,
+          "stars_delta": null,
+          "category": "인프라·배포",
+          "kind": "MCP 서버",
+          "updated_at": "2026-09-20",
+          "desc": "Build Agentic workflows, RAG pipelines, with rich AI model and tool support on one collaborative workspace. Deploy on cloud, VPC, or self-hosted, so teams move from prototype to production without rebuilding the stack.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_026",
+          "title": "open-webui/open-webui",
+          "summary_ko": null,
+          "url": "https://github.com/open-webui/open-webui",
+          "heat": 15.55,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "open-webui/open-webui",
+          "published_at": null,
+          "repo": "open-webui/open-webui",
+          "stars": 152610,
+          "stars_delta": null,
+          "category": "백엔드·API",
+          "kind": "MCP 서버",
+          "updated_at": "2026-09-19",
+          "desc": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_027",
+          "title": "DietrichGebert/ponytail",
+          "summary_ko": null,
+          "url": "https://github.com/DietrichGebert/ponytail",
+          "heat": 15.47,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "DietrichGebert/ponytail",
+          "published_at": null,
+          "repo": "DietrichGebert/ponytail",
+          "stars": 142902,
+          "stars_delta": null,
+          "category": "기타",
+          "kind": "스킬",
+          "updated_at": "2026-09-14",
+          "desc": "Makes your AI agent think like the laziest senior dev in the room. The best code is the code you never wrote.",
+          "note_ko": "에이전트가 '가장 게으른 시니어 개발자'처럼 굴게 만든다. 안 짜도 되는 코드는 안 짜게 하는 쪽."
+        },
+        {
+          "id": "c_2026-09-21_028",
+          "title": "farion1231/cc-switch",
+          "summary_ko": null,
+          "url": "https://github.com/farion1231/cc-switch",
+          "heat": 15.38,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "farion1231/cc-switch",
+          "published_at": null,
+          "repo": "farion1231/cc-switch",
+          "stars": 133811,
+          "stars_delta": null,
+          "category": "기타",
+          "kind": "MCP 서버",
+          "updated_at": "2026-09-20",
+          "desc": "A cross-platform desktop All-in-One assistant for Claude Code, Codex, OpenCode, OpenClaw, Grok Build & Hermes Agent. Only official website: ccswitch.io",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_029",
+          "title": "Graphify-Labs/graphify",
+          "summary_ko": null,
+          "url": "https://github.com/Graphify-Labs/graphify",
+          "heat": 15.24,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "Graphify-Labs/graphify",
+          "published_at": null,
+          "repo": "Graphify-Labs/graphify",
+          "stars": 119793,
+          "stars_delta": null,
+          "category": "슬라이드·문서",
+          "kind": "MCP 서버",
+          "updated_at": "2026-09-18",
+          "desc": "Turn any codebase, with its docs, SQL schemas, configs, and PDFs, into a queryable knowledge graph. A /graphify skill for Claude Code, Cursor, Codex, and Gemini CLI: local deterministic AST parsing, every edge explained, no vector store.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_030",
+          "title": "addyosmani/agent-skills",
+          "summary_ko": null,
+          "url": "https://github.com/addyosmani/agent-skills",
+          "heat": 14.97,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "addyosmani/agent-skills",
+          "published_at": null,
+          "repo": "addyosmani/agent-skills",
+          "stars": 97486,
+          "stars_delta": null,
+          "category": "기타",
+          "kind": "스킬",
+          "updated_at": "2026-09-18",
+          "desc": "Production-grade engineering skills for AI coding agents.",
+          "note_ko": "AI 코딩 에이전트용 실무 엔지니어링 스킬 묶음. 구글 크롬 팀 addyosmani 가 만들었다."
+        },
+        {
+          "id": "c_2026-09-21_031",
+          "title": "nexu-io/open-design",
+          "summary_ko": null,
+          "url": "https://github.com/nexu-io/open-design",
+          "heat": 14.96,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "nexu-io/open-design",
+          "published_at": null,
+          "repo": "nexu-io/open-design",
+          "stars": 97241,
+          "stars_delta": null,
+          "category": "디자인·UI",
+          "kind": "스킬",
+          "updated_at": "2026-09-20",
+          "desc": "🎨 Best DeepSeek Harness Design Plugin. The open-source Claude Design alternative. 🖥️ Local-first desktop app. 🖼️ Your coding agent becomes the design engine: prototypes, landing pages, dashboards, slides, images & video — real files, HTML/PDF/PPTX/MP4 export. 🤖 Claude Code / Codex / Cursor / DeepSeek Harness / OpenCode & 20+ CLIs via BYOK.",
+          "note_ko": "로컬에서 도는 디자인 도구. Claude Design 의 오픈소스 대안을 표방한다."
+        },
+        {
+          "id": "c_2026-09-21_032",
+          "title": "koala73/worldmonitor",
+          "summary_ko": null,
+          "url": "https://github.com/koala73/worldmonitor",
+          "heat": 14.82,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "koala73/worldmonitor",
+          "published_at": null,
+          "repo": "koala73/worldmonitor",
+          "stars": 87079,
+          "stars_delta": null,
+          "category": "데이터·분석",
+          "kind": "MCP 서버",
+          "updated_at": "2026-09-20",
+          "desc": "Real-time global intelligence dashboard. AI-powered news aggregation, geopolitical monitoring, and infrastructure tracking in a unified situational awareness interface",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_033",
+          "title": "Panniantong/Agent-Reach",
+          "summary_ko": null,
+          "url": "https://github.com/Panniantong/Agent-Reach",
+          "heat": 14.77,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "Panniantong/Agent-Reach",
+          "published_at": null,
+          "repo": "Panniantong/Agent-Reach",
+          "stars": 83734,
+          "stars_delta": null,
+          "category": "백엔드·API",
+          "kind": "MCP 서버",
+          "updated_at": "2026-09-15",
+          "desc": "Give your AI agent eyes to see the entire internet. Read & search Twitter, Reddit, YouTube, GitHub, Bilibili, XiaoHongShu — one CLI, zero API fees.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_034",
+          "title": "lobehub/lobehub",
+          "summary_ko": null,
+          "url": "https://github.com/lobehub/lobehub",
+          "heat": 14.75,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "lobehub/lobehub",
+          "published_at": null,
+          "repo": "lobehub/lobehub",
+          "stars": 82673,
+          "stars_delta": null,
+          "category": "슬라이드·문서",
+          "kind": "MCP 서버",
+          "updated_at": "2026-09-20",
+          "desc": "🤯 LobeHub is your Chief Agent Operator, organizing your agents into 7×24 operations by hiring, scheduling, and reporting on your entire AI team.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_035",
+          "title": "D4Vinci/Scrapling",
+          "summary_ko": null,
+          "url": "https://github.com/D4Vinci/Scrapling",
+          "heat": 14.75,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "D4Vinci/Scrapling",
+          "published_at": null,
+          "repo": "D4Vinci/Scrapling",
+          "stars": 82573,
+          "stars_delta": null,
+          "category": "브라우저 자동화",
+          "kind": "MCP 서버",
+          "updated_at": "2026-09-19",
+          "desc": "🕷️ An adaptive Web Scraping framework that handles everything from a single request to a full-scale crawl! Don't be shy, join here: https://discord.gg/EMgGbDceNQ",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_036",
+          "title": "shareAI-lab/learn-claude-code",
+          "summary_ko": null,
+          "url": "https://github.com/shareAI-lab/learn-claude-code",
+          "heat": 14.66,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "shareAI-lab/learn-claude-code",
+          "published_at": null,
+          "repo": "shareAI-lab/learn-claude-code",
+          "stars": 77261,
+          "stars_delta": null,
+          "category": "기타",
+          "kind": "에이전트 프레임워크",
+          "updated_at": "2026-08-26",
+          "desc": "Bash is all you need -  A nano claude code–like 「agent harness」, built from 0 to 1",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_037",
+          "title": "thedaviddias/Front-End-Checklist",
+          "summary_ko": null,
+          "url": "https://github.com/thedaviddias/Front-End-Checklist",
+          "heat": 14.61,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "thedaviddias/Front-End-Checklist",
+          "published_at": null,
+          "repo": "thedaviddias/Front-End-Checklist",
+          "stars": 74210,
+          "stars_delta": null,
+          "category": "디자인·UI",
+          "kind": "에이전트 프레임워크",
+          "updated_at": "2026-08-14",
+          "desc": "🗂 The essential checklist for modern web development, for humans and AI agents",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_038",
+          "title": "career-ops-hq/career-ops",
+          "summary_ko": null,
+          "url": "https://github.com/career-ops-hq/career-ops",
+          "heat": 14.58,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "career-ops-hq/career-ops",
+          "published_at": null,
+          "repo": "career-ops-hq/career-ops",
+          "stars": 72233,
+          "stars_delta": null,
+          "category": "슬라이드·문서",
+          "kind": "에이전트 프레임워크",
+          "updated_at": "2026-09-19",
+          "desc": "Open-source AI job search: scan job portals, evaluate listings into a structured A-H report with a global 1-5 score, tailor your CV, track applications — runs locally in your AI coding CLI (Claude Code, Codex, OpenCode, Antigravity…)",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_039",
+          "title": "tt-a1i/archify",
+          "summary_ko": null,
+          "url": "https://github.com/tt-a1i/archify",
+          "heat": 14.5,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "tt-a1i/archify",
+          "published_at": null,
+          "repo": "tt-a1i/archify",
+          "stars": 68033,
+          "stars_delta": null,
+          "category": "다이어그램",
+          "kind": "스킬",
+          "updated_at": "2026-09-20",
+          "desc": "Agent skill for beautiful, verifiable architecture, workflow, sequence, data-flow, and lifecycle diagrams—self-contained HTML with motion and crisp export.",
+          "note_ko": "아키텍처·워크플로·시퀀스를 검증된 HTML 다이어그램으로 뽑아준다. 이 프로젝트 구조도도 이걸로 그렸다."
+        },
+        {
+          "id": "c_2026-09-21_040",
+          "title": "ZhuLinsen/daily_stock_analysis",
+          "summary_ko": null,
+          "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+          "heat": 14.45,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "ZhuLinsen/daily_stock_analysis",
+          "published_at": null,
+          "repo": "ZhuLinsen/daily_stock_analysis",
+          "stars": 65378,
+          "stars_delta": null,
+          "category": "데이터·분석",
+          "kind": "에이전트 프레임워크",
+          "updated_at": "2026-09-19",
+          "desc": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。  LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_041",
+          "title": "hugohe3/ppt-master",
+          "summary_ko": null,
+          "url": "https://github.com/hugohe3/ppt-master",
+          "heat": 14.23,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "hugohe3/ppt-master",
+          "published_at": null,
+          "repo": "hugohe3/ppt-master",
+          "stars": 55527,
+          "stars_delta": null,
+          "category": "슬라이드·문서",
+          "kind": "에이전트 프레임워크",
+          "updated_at": "2026-09-20",
+          "desc": "AI turns documents or topics into real, native PowerPoint decks—with native shapes, transitions and animations, data-backed charts and tables on demand, audio narration from speaker notes, and support for your own .pptx templates. · by Hugo He",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_042",
+          "title": "CherryHQ/cherry-studio",
+          "summary_ko": null,
+          "url": "https://github.com/CherryHQ/cherry-studio",
+          "heat": 14.15,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "CherryHQ/cherry-studio",
+          "published_at": null,
+          "repo": "CherryHQ/cherry-studio",
+          "stars": 52021,
+          "stars_delta": null,
+          "category": "코드리뷰",
+          "kind": "스킬",
+          "updated_at": "2026-09-20",
+          "desc": "AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs",
+          "note_ko": "여러 모델을 한 창에서 쓰는 데스크톱 클라이언트. 어시스턴트 300종을 묶어 판다."
+        },
+        {
+          "id": "c_2026-09-21_043",
+          "title": "blader/humanizer",
+          "summary_ko": null,
+          "url": "https://github.com/blader/humanizer",
+          "heat": 14.11,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "blader/humanizer",
+          "published_at": null,
+          "repo": "blader/humanizer",
+          "stars": 50525,
+          "stars_delta": null,
+          "category": "글쓰기",
+          "kind": "스킬",
+          "updated_at": "2026-09-06",
+          "desc": "Agent skill that removes signs of AI-generated writing from text",
+          "note_ko": "AI 가 쓴 티가 나는 문장을 걷어낸다. 번역투·과한 접속사 같은 흔적을 지우는 용도."
+        },
+        {
+          "id": "c_2026-09-21_044",
+          "title": "K-Dense-AI/scientific-agent-skills",
+          "summary_ko": null,
+          "url": "https://github.com/K-Dense-AI/scientific-agent-skills",
+          "heat": 13.98,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "K-Dense-AI/scientific-agent-skills",
+          "published_at": null,
+          "repo": "K-Dense-AI/scientific-agent-skills",
+          "stars": 45744,
+          "stars_delta": null,
+          "category": "데이터베이스",
+          "kind": "스킬",
+          "updated_at": "2026-09-14",
+          "desc": "Turn any AI agent into an AI Scientist. The #1 Agent Skills library for science, used by 190,000+ scientists worldwide. 165 ready-to-use validated skills plus 100+ scientific databases covering biology, chemistry, medicine, and drug discovery. Compatible with Cursor, Claude Code, Codex, Pi, Antigravity, and the open Agent Skills standard.",
+          "note_ko": "에이전트를 연구자처럼 굴리는 과학 분야 스킬 라이브러리. 19만 명이 쓴다고 표방한다."
+        },
+        {
+          "id": "c_2026-09-21_045",
+          "title": "reactive-resume/reactive-resume",
+          "summary_ko": null,
+          "url": "https://github.com/reactive-resume/reactive-resume",
+          "heat": 13.91,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "reactive-resume/reactive-resume",
+          "published_at": null,
+          "repo": "reactive-resume/reactive-resume",
+          "stars": 43223,
+          "stars_delta": null,
+          "category": "프론트엔드",
+          "kind": "스킬",
+          "updated_at": "2026-09-19",
+          "desc": "A one-of-a-kind resume builder that keeps your privacy in mind. Completely secure, customizable, portable, open-source and free forever. Try it out today!",
+          "note_ko": "개인정보를 서버에 안 남기는 이력서 빌더. 스킬이라기보다 완성된 웹앱에 가깝다."
+        },
+        {
+          "id": "c_2026-09-21_046",
+          "title": "cathrynlavery/diagram-design",
+          "summary_ko": null,
+          "url": "https://github.com/cathrynlavery/diagram-design",
+          "heat": 13.85,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "cathrynlavery/diagram-design",
+          "published_at": null,
+          "repo": "cathrynlavery/diagram-design",
+          "stars": 41493,
+          "stars_delta": null,
+          "category": "다이어그램",
+          "kind": "스킬",
+          "updated_at": "2026-09-19",
+          "desc": "Editorial diagram design for Claude Code, Codex, and Pi. Self-contained HTML + SVG. No shadows. No Mermaid slop.",
+          "note_ko": "다이어그램을 편집디자인 수준으로 그린다. 그림자도 Mermaid 도 안 쓰고 SVG 로 직접 만든다."
+        },
+        {
+          "id": "c_2026-09-21_047",
+          "title": "alibaba/open-code-review",
+          "summary_ko": null,
+          "url": "https://github.com/alibaba/open-code-review",
+          "heat": 13.75,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "alibaba/open-code-review",
+          "published_at": null,
+          "repo": "alibaba/open-code-review",
+          "stars": 38211,
+          "stars_delta": null,
+          "category": "코드리뷰",
+          "kind": "스킬",
+          "updated_at": "2026-09-20",
+          "desc": "Secure, fast, efficient, battle-tested at Alibaba's scale. Hybrid architecture code review tool: deterministic pipelines + LLM Agent, precise line-level comments, built-in multi-language ruleset (NPE, thread-safety, XSS, SQL injection), OpenAI & Anthropic compatible.",
+          "note_ko": "알리바바가 사내에서 쓰던 코드리뷰 도구를 공개한 것. 규모를 견뎠다는 점이 셀링포인트다."
+        },
+        {
+          "id": "c_2026-09-21_048",
+          "title": "CopilotKit/CopilotKit",
+          "summary_ko": null,
+          "url": "https://github.com/CopilotKit/CopilotKit",
+          "heat": 13.72,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "CopilotKit/CopilotKit",
+          "published_at": null,
+          "repo": "CopilotKit/CopilotKit",
+          "stars": 37430,
+          "stars_delta": null,
+          "category": "프론트엔드",
+          "kind": "에이전트 프레임워크",
+          "updated_at": "2026-09-20",
+          "desc": "The Frontend Stack for Agents & Generative UI. React, Angular, Mobile, Slack, and more.  Makers of the AG-UI Protocol",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_049",
+          "title": "esengine/DeepSeek-Reasonix",
+          "summary_ko": null,
+          "url": "https://github.com/esengine/DeepSeek-Reasonix",
+          "heat": 13.66,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "esengine/DeepSeek-Reasonix",
+          "published_at": null,
+          "repo": "esengine/DeepSeek-Reasonix",
+          "stars": 35641,
+          "stars_delta": null,
+          "category": "기타",
+          "kind": "에이전트 프레임워크",
+          "updated_at": "2026-09-20",
+          "desc": "DeepSeek-native AI coding agent for your terminal. Engineered around prefix-cache stability — leave it running.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_050",
+          "title": "Gitlawb/openclaude",
+          "summary_ko": null,
+          "url": "https://github.com/Gitlawb/openclaude",
+          "heat": 13.57,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "Gitlawb/openclaude",
+          "published_at": null,
+          "repo": "Gitlawb/openclaude",
+          "stars": 33449,
+          "stars_delta": null,
+          "category": "기타",
+          "kind": "에이전트 프레임워크",
+          "updated_at": "2026-09-15",
+          "desc": "runs anywhere. uses anything",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_051",
+          "title": "iOfficeAI/AionUi",
+          "summary_ko": null,
+          "url": "https://github.com/iOfficeAI/AionUi",
+          "heat": 13.55,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "iOfficeAI/AionUi",
+          "published_at": null,
+          "repo": "iOfficeAI/AionUi",
+          "stars": 32982,
+          "stars_delta": null,
+          "category": "기타",
+          "kind": "에이전트 프레임워크",
+          "updated_at": "2026-09-09",
+          "desc": "Open-source 24/7 Cowork app for OpenClaw, Hermes, Claude Code, Codex, OpenCode and 20+ more CLI Agent | Customize your assistants | Team them up｜Star if you like it!",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_052",
+          "title": "feder-cr/AIHawk",
+          "summary_ko": null,
+          "url": "https://github.com/feder-cr/AIHawk",
+          "heat": 13.5,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "feder-cr/AIHawk",
+          "published_at": null,
+          "repo": "feder-cr/AIHawk",
+          "stars": 31602,
+          "stars_delta": null,
+          "category": "브라우저 자동화",
+          "kind": "에이전트 프레임워크",
+          "updated_at": "2026-09-18",
+          "desc": "Anti detect browser and web browsing agent: an open-source MCP server for undetected browsing, AI web scraping and computer use agents. No captchas.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_053",
+          "title": "virgiliojr94/book-to-skill",
+          "summary_ko": null,
+          "url": "https://github.com/virgiliojr94/book-to-skill",
+          "heat": 13.5,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "virgiliojr94/book-to-skill",
+          "published_at": null,
+          "repo": "virgiliojr94/book-to-skill",
+          "stars": 31583,
+          "stars_delta": null,
+          "category": "슬라이드·문서",
+          "kind": "스킬",
+          "updated_at": "2026-09-18",
+          "desc": "Turn any technical book PDF into a Claude Code skill — ready to study, reference, and use while you work.",
+          "note_ko": "기술서적 PDF 를 스킬로 바꾼다. 읽을 시간이 없는 책을 에이전트가 참고하게 만드는 방식."
+        },
+        {
+          "id": "c_2026-09-21_054",
+          "title": "Kuddev/pebrel",
+          "summary_ko": null,
+          "url": "https://github.com/Kuddev/pebrel",
+          "heat": 9.87,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "Kuddev/pebrel",
+          "published_at": null,
+          "repo": "Kuddev/pebrel",
+          "stars": 1951,
+          "stars_delta": null,
+          "category": "메모리·컨텍스트",
+          "kind": "CLI·개발도구",
+          "updated_at": "2026-09-20",
+          "desc": "AI-native, GPU-accelerated terminal emulator for Windows with SSH, persistent sessions, split panes, and first-class AI CLI workflows.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_055",
+          "title": "dark-hxx/CLI-Manager",
+          "summary_ko": null,
+          "url": "https://github.com/dark-hxx/CLI-Manager",
+          "heat": 8.66,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "dark-hxx/CLI-Manager",
+          "published_at": null,
+          "repo": "dark-hxx/CLI-Manager",
+          "stars": 770,
+          "stars_delta": null,
+          "category": "기타",
+          "kind": "CLI·개발도구",
+          "updated_at": "2026-09-20",
+          "desc": "A multi-project AI CLI workspace for local terminals, SSH hosts, and mobile-assisted workflows",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_056",
+          "title": "modelstudioai/cli",
+          "summary_ko": null,
+          "url": "https://github.com/modelstudioai/cli",
+          "heat": 7.57,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "modelstudioai/cli",
+          "published_at": null,
+          "repo": "modelstudioai/cli",
+          "stars": 333,
+          "stars_delta": null,
+          "category": "이미지·영상",
+          "kind": "CLI·개발도구",
+          "updated_at": "2026-09-20",
+          "desc": "Official Model Studio CLI（阿里云百炼 CLI）built for AI Agent frameworks, exposing models, search, multimodal, and workflow capabilities as structured tool calls.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_057",
+          "title": "Spielewoy/multi-cli",
+          "summary_ko": null,
+          "url": "https://github.com/Spielewoy/multi-cli",
+          "heat": 7.17,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "Spielewoy/multi-cli",
+          "published_at": null,
+          "repo": "Spielewoy/multi-cli",
+          "stars": 245,
+          "stars_delta": null,
+          "category": "기타",
+          "kind": "CLI·개발도구",
+          "updated_at": "2026-08-19",
+          "desc": "Run multiple AI coding accounts at the same time.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_058",
+          "title": "claudioemmanuel/squeez",
+          "summary_ko": null,
+          "url": "https://github.com/claudioemmanuel/squeez",
+          "heat": 6.96,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "claudioemmanuel/squeez",
+          "published_at": null,
+          "repo": "claudioemmanuel/squeez",
+          "stars": 208,
+          "stars_delta": null,
+          "category": "크롤링·수집",
+          "kind": "CLI·개발도구",
+          "updated_at": "2026-09-11",
+          "desc": "Hook-based token compressor for 7 AI CLI hosts (Claude Code, Copilot CLI, OpenCode, Gemini CLI, Codex CLI, Pi, Hermes). Up to 95% bash compression, signature-mode for code reads, cross-call dedup, MCP server, self-teaching protocol. Zero runtime deps.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_059",
+          "title": "Soulmate-Halo/qiling-soulmate",
+          "summary_ko": null,
+          "url": "https://github.com/Soulmate-Halo/qiling-soulmate",
+          "heat": 6.16,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "Soulmate-Halo/qiling-soulmate",
+          "published_at": null,
+          "repo": "Soulmate-Halo/qiling-soulmate",
+          "stars": 112,
+          "stars_delta": null,
+          "category": "에이전트 운영",
+          "kind": "CLI·개발도구",
+          "updated_at": "2026-09-11",
+          "desc": "器灵 Soulmate — 多 AI CLI 编排与社区运营入口",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_060",
+          "title": "vibheksoni/t3router",
+          "summary_ko": null,
+          "url": "https://github.com/vibheksoni/t3router",
+          "heat": 5.63,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "vibheksoni/t3router",
+          "published_at": null,
+          "repo": "vibheksoni/t3router",
+          "stars": 74,
+          "stars_delta": null,
+          "category": "백엔드·API",
+          "kind": "CLI·개발도구",
+          "updated_at": "2026-07-25",
+          "desc": "Rust client for t3.chat  access Claude Fable-5, GPT-5.6, Gemini 3.5, Grok 4.3, DeepSeek V4 & 50+ frontier AI models from your terminal. TLS impersonation, credit tracking, usage billing.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_061",
+          "title": "Linked-API/linkedin-cli",
+          "summary_ko": null,
+          "url": "https://github.com/Linked-API/linkedin-cli",
+          "heat": 5.36,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "Linked-API/linkedin-cli",
+          "published_at": null,
+          "repo": "Linked-API/linkedin-cli",
+          "stars": 60,
+          "stars_delta": null,
+          "category": "브라우저 자동화",
+          "kind": "CLI·개발도구",
+          "updated_at": "2026-09-16",
+          "desc": "AI-agent-friendly CLI for controlling LinkedIn accounts and retrieving real-time data.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_062",
+          "title": "Digital-Threads/aimux",
+          "summary_ko": null,
+          "url": "https://github.com/Digital-Threads/aimux",
+          "heat": 4.39,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "Digital-Threads/aimux",
+          "published_at": null,
+          "repo": "Digital-Threads/aimux",
+          "stars": 28,
+          "stars_delta": null,
+          "category": "메모리·컨텍스트",
+          "kind": "CLI·개발도구",
+          "updated_at": "2026-09-13",
+          "desc": "Run multiple Claude Code, Codex and Gemini subscriptions side by side — shared skills/agents/memory, isolated logins, live 5h/7d limits in one view",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_063",
+          "title": "lacymorrow/lacy",
+          "summary_ko": null,
+          "url": "https://github.com/lacymorrow/lacy",
+          "heat": 4.14,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "lacymorrow/lacy",
+          "published_at": null,
+          "repo": "lacymorrow/lacy",
+          "stars": 23,
+          "stars_delta": null,
+          "category": "기타",
+          "kind": "CLI·개발도구",
+          "updated_at": "2026-09-16",
+          "desc": "Talk to your shell — commands run, questions go to AI. No prefixes.",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-21_064",
+          "title": "IRISX-AI/IRIS-Mini",
+          "summary_ko": null,
+          "url": "https://github.com/IRISX-AI/IRIS-Mini",
+          "heat": 3.97,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GitHub"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "IRISX-AI/IRIS-Mini",
+          "published_at": null,
+          "repo": "IRISX-AI/IRIS-Mini",
+          "stars": 20,
+          "stars_delta": null,
+          "category": "브라우저 자동화",
+          "kind": "CLI·개발도구",
+          "updated_at": "2026-09-19",
+          "desc": "IRIS Mini ⚡ — The agentic CLI heartbeat. Scaffolds code 🏗️, commands the local filesystem 📂, and automates your developer workflow directly from the terminal 🚀. Pure execution, zero friction, local-first intelligence 🧠💻.",
+          "note_ko": null
+        }
+      ]
     },
     {
       "id": "top_headlines",
@@ -936,11 +2179,75 @@
       "empty_reason": null,
       "cards": [
         {
-          "id": "c_2026-09-21_017",
+          "id": "c_2026-09-21_065",
+          "title": "Qwen-Image-2.1: Compact, efficient, and unified image creation",
+          "summary_ko": null,
+          "url": "https://qwen.ai/blog?id=qwen-image-2.1",
+          "heat": 5.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Hacker News",
+              "engagement": 136
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "https://qwen.ai/blog?id=qwen-image-2.1",
+          "published_at": "2026-09-20T13:09:25Z",
+          "region": "global",
+          "note_ko": null,
+          "title_ko": null
+        },
+        {
+          "id": "c_2026-09-21_066",
+          "title": "Migrating the GitHub Copilot Runtime to Rust, Using Copilot",
+          "summary_ko": null,
+          "url": "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/",
+          "heat": 3.26,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Hacker News",
+              "engagement": 3
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot",
+          "published_at": "2026-09-20T12:21:38Z",
+          "region": "global",
+          "note_ko": null,
+          "title_ko": null
+        },
+        {
+          "id": "c_2026-09-21_067",
+          "title": "OpenAI and Microsoft knew they were starting a 'doom loop' for the web",
+          "summary_ko": null,
+          "url": "https://www.theverge.com/ai-artificial-intelligence/997633/openai-microsoft-chatgpt-ai-new-york-times-doom-loop-theft-google-zero",
+          "heat": 2.81,
+          "source_count": 2,
+          "sources": [
+            {
+              "name": "Hacker News",
+              "engagement": 27
+            },
+            {
+              "name": "The Verge",
+              "engagement": 27
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "https://theverge.com/ai-artificial-intelligence/997633/openai-microsoft-chatgpt-ai-new-york-times-doom-loop-theft-google-zero",
+          "published_at": "2026-09-19T16:18:50Z",
+          "region": "global",
+          "note_ko": null,
+          "title_ko": null
+        },
+        {
+          "id": "c_2026-09-21_068",
           "title": "US policy analysts, lawmakers, and others say several state-level AI chatbot safety bills included language that could provide loopholes for tech companies (Katie McQue/NPR)",
           "summary_ko": null,
           "url": "https://www.techmeme.com/260920/p6#a260920p6",
-          "heat": 2.43,
+          "heat": 2.42,
           "source_count": 1,
           "sources": [
             {
@@ -955,68 +2262,32 @@
           "title_ko": "미국 주별 AI 챗봇 안전법에 빠져나갈 구멍이 있다는 지적"
         },
         {
-          "id": "c_2026-09-21_018",
-          "title": "Flock reportedly tries to shrink workforce with employee buyouts",
+          "id": "c_2026-09-21_069",
+          "title": "“AI 속도조절은 담합”…앤트로픽·오픈AI 등 4곳 피소",
           "summary_ko": null,
-          "url": "https://techcrunch.com/2026/09/19/flock-reportedly-tries-to-shrink-workforce-with-employee-buyouts/",
-          "heat": 1.58,
-          "source_count": 1,
+          "url": "https://www.etnews.com/20260920000077",
+          "heat": 3.02,
+          "source_count": 2,
           "sources": [
             {
-              "name": "TechCrunch"
+              "name": "AI타임스"
+            },
+            {
+              "name": "전자신문"
             }
           ],
           "change": "continuing",
-          "dedup_key": "https://techcrunch.com/2026/09/19/flock-reportedly-tries-to-shrink-workforce-with-employee-buyouts",
-          "published_at": "2026-09-19T20:39:13Z",
-          "region": "global",
-          "note_ko": "감시 카메라 업체 Flock 이 자발적 퇴직 형태로 규모를 줄이려 한다는 보도.",
-          "title_ko": "Flock, 희망퇴직으로 인력 감축 추진 보도"
+          "dedup_key": "https://etnews.com/20260920000077",
+          "published_at": "2026-09-20T02:09:22Z",
+          "region": "kr",
+          "note_ko": null
         },
         {
-          "id": "c_2026-09-21_019",
-          "title": "Meta’s Muse is creepy, but maybe not for the reasons you think",
-          "summary_ko": null,
-          "url": "https://www.theverge.com/ai-artificial-intelligence/997833/meta-muse-creepy",
-          "heat": 1.58,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "The Verge"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "https://theverge.com/ai-artificial-intelligence/997833/meta-muse-creepy",
-          "published_at": "2026-09-19T20:44:40Z",
-          "region": "global",
-          "note_ko": "메타의 개인용 AI 에이전트 Muse 평가. 기술 자체보다 어디까지 들여다보는지가 문제라는 지적.",
-          "title_ko": "메타의 Muse 가 섬뜩한 이유는 생각과 다르다"
-        },
-        {
-          "id": "c_2026-09-21_020",
-          "title": "Humans, not rogue AI, are still the biggest cybersecurity risk to energy systems",
-          "summary_ko": null,
-          "url": "https://www.theverge.com/science/997834/ai-cyberattack-energy-critical-infrastructure",
-          "heat": 1.57,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "The Verge"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "https://theverge.com/science/997834/ai-cyberattack-energy-critical-infrastructure",
-          "published_at": "2026-09-19T20:28:15Z",
-          "region": "global",
-          "note_ko": "전력망 공격 사례를 보면 자율적인 AI 공격보다 사람의 실수와 내부자가 여전히 주된 경로라는 분석.",
-          "title_ko": "에너지 인프라의 최대 보안 위협은 AI 가 아니라 여전히 사람"
-        },
-        {
-          "id": "c_2026-09-21_021",
+          "id": "c_2026-09-21_070",
           "title": "Show GN: AutoRAG Agent - 컴퓨터에 있는 모든 것을 검색해주는 에이전트 (파일, 메신저 대화 기록, 이메일, 노션...",
           "summary_ko": null,
           "url": "https://news.hada.io/topic?id=34003",
-          "heat": 2.99,
+          "heat": 2.98,
           "source_count": 1,
           "sources": [
             {
@@ -1030,11 +2301,11 @@
           "note_ko": null
         },
         {
-          "id": "c_2026-09-21_022",
+          "id": "c_2026-09-21_071",
           "title": "“문장 생성 버렸다”…판단 전용 AI ‘제브’에 개발자 반응 폭발",
           "summary_ko": null,
           "url": "https://www.aitimes.com/news/articleView.html?idxno=215506",
-          "heat": 2.4,
+          "heat": 2.39,
           "source_count": 1,
           "sources": [
             {
@@ -1048,29 +2319,11 @@
           "note_ko": null
         },
         {
-          "id": "c_2026-09-21_023",
-          "title": "과기부, 연구자가 지켜야 할 ‘AI 활용’ 7대 권고사항 제시",
-          "summary_ko": null,
-          "url": "https://www.aitimes.com/news/articleView.html?idxno=215505",
-          "heat": 2.37,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "AI타임스"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "https://aitimes.com/news/articleView.html?idxno=215505",
-          "published_at": "2026-09-20T08:25:00Z",
-          "region": "kr",
-          "note_ko": null
-        },
-        {
-          "id": "c_2026-09-21_024",
+          "id": "c_2026-09-21_072",
           "title": "[창간기획] AI가 바꾸는 현장 - 전자신문 기자들이 직접 만든 AI 뉴스 에이전트 'ETA 2.0' 고도화",
           "summary_ko": null,
           "url": "https://www.etnews.com/20260914000437",
-          "heat": 2.34,
+          "heat": 2.33,
           "source_count": 1,
           "sources": [
             {
@@ -1092,10 +2345,217 @@
       "empty_reason": null,
       "cards": [
         {
-          "id": "c_2026-09-21_025",
+          "id": "c_2026-09-21_073",
+          "title": "Midjourney Discord",
+          "summary_ko": null,
+          "url": "https://discord.gg/midjourney",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "discord.gg/midjourney",
+          "published_at": null,
+          "domain": "discord.gg/midjourney",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "global",
+          "signal_kind": "회원수",
+          "signal_value": 18571392,
+          "note": "온라인 761,751명"
+        },
+        {
+          "id": "c_2026-09-21_074",
+          "title": "OpenAI Discord",
+          "summary_ko": null,
+          "url": "https://discord.gg/openai",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "discord.gg/openai",
+          "published_at": null,
+          "domain": "discord.gg/openai",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "global",
+          "signal_kind": "회원수",
+          "signal_value": 857033,
+          "note": "온라인 83,964명"
+        },
+        {
+          "id": "c_2026-09-21_075",
+          "title": "Stable Diffusion Discord",
+          "summary_ko": null,
+          "url": "https://discord.gg/stablediffusion",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "discord.gg/stablediffusion",
+          "published_at": null,
+          "domain": "discord.gg/stablediffusion",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "global",
+          "signal_kind": "회원수",
+          "signal_value": 321582,
+          "note": "온라인 23,123명"
+        },
+        {
+          "id": "c_2026-09-21_076",
+          "title": "Hugging Face Discord",
+          "summary_ko": null,
+          "url": "https://discord.gg/JfAtkvEtRb",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "discord.gg/JfAtkvEtRb",
+          "published_at": null,
+          "domain": "discord.gg/JfAtkvEtRb",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "global",
+          "signal_kind": "회원수",
+          "signal_value": 238401,
+          "note": "온라인 15,713명"
+        },
+        {
+          "id": "c_2026-09-21_077",
+          "title": "Learn AI Together Discord",
+          "summary_ko": null,
+          "url": "https://discord.gg/learnaitogether",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "discord.gg/learnaitogether",
+          "published_at": null,
+          "domain": "discord.gg/learnaitogether",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "global",
+          "signal_kind": "회원수",
+          "signal_value": 101775,
+          "note": "온라인 6,225명"
+        },
+        {
+          "id": "c_2026-09-21_078",
+          "title": "EleutherAI Discord",
+          "summary_ko": null,
+          "url": "https://discord.gg/eleutherai",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "discord.gg/eleutherai",
+          "published_at": null,
+          "domain": "discord.gg/eleutherai",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "global",
+          "signal_kind": "회원수",
+          "signal_value": 39418,
+          "note": "온라인 4,410명"
+        },
+        {
+          "id": "c_2026-09-21_079",
+          "title": "Hacker News",
+          "summary_ko": null,
+          "url": "https://news.ycombinator.com/",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "news.ycombinator.com/",
+          "published_at": null,
+          "domain": "news.ycombinator.com/",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "global",
+          "signal_kind": "오늘 포인트 합",
+          "signal_value": 2,
+          "note": "오늘 수집한 HN 항목 1건의 포인트 합"
+        },
+        {
+          "id": "c_2026-09-21_080",
+          "title": "Reddit r/artificial",
+          "summary_ko": null,
+          "url": "https://www.reddit.com/r/artificial/",
+          "heat": 1.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "www.reddit.com/r/artificial/",
+          "published_at": null,
+          "domain": "www.reddit.com/r/artificial/",
+          "mentions": 1,
+          "engagement": 0,
+          "region": "global",
+          "signal_kind": "측정 불가",
+          "signal_value": null,
+          "note": "레딧은 비로그인 조회가 전부 403 이고 robots.txt 가 Disallow: / 다. 숫자를 긁지 않는다."
+        },
+        {
+          "id": "c_2026-09-21_081",
           "title": "X(트위터)",
           "summary_ko": null,
-          "url": "https://x.com",
+          "url": "https://x.com/",
+          "heat": 1.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "x.com/",
+          "published_at": null,
+          "domain": "x.com/",
+          "mentions": 1,
+          "engagement": 0,
+          "region": "global",
+          "signal_kind": "측정 불가",
+          "signal_value": null,
+          "note": "robots.txt 가 자동 수집을 명시적으로 금지하고 AI 크롤러를 이름으로 지목한다."
+        },
+        {
+          "id": "c_2026-09-21_082",
+          "title": "Reddit r/ChatGPT",
+          "summary_ko": null,
+          "url": "https://www.reddit.com/r/ChatGPT/",
           "heat": 0.0,
           "source_count": 1,
           "sources": [
@@ -1104,20 +2564,21 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "x.com",
+          "dedup_key": "www.reddit.com/r/ChatGPT/",
           "published_at": null,
-          "domain": "x.com",
+          "domain": "www.reddit.com/r/ChatGPT/",
           "mentions": 0,
           "engagement": 0,
           "region": "global",
-          "global_rank": 50,
-          "rank_note": null
+          "signal_kind": "측정 불가",
+          "signal_value": null,
+          "note": "레딧은 비로그인 조회가 전부 403 이고 robots.txt 가 Disallow: / 다. 숫자를 긁지 않는다."
         },
         {
-          "id": "c_2026-09-21_026",
-          "title": "Reddit",
+          "id": "c_2026-09-21_083",
+          "title": "Reddit r/LocalLLaMA",
           "summary_ko": null,
-          "url": "https://reddit.com",
+          "url": "https://www.reddit.com/r/LocalLLaMA/",
           "heat": 0.0,
           "source_count": 1,
           "sources": [
@@ -1126,20 +2587,21 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "reddit.com",
+          "dedup_key": "www.reddit.com/r/LocalLLaMA/",
           "published_at": null,
-          "domain": "reddit.com",
+          "domain": "www.reddit.com/r/LocalLLaMA/",
           "mentions": 0,
           "engagement": 0,
           "region": "global",
-          "global_rank": 109,
-          "rank_note": null
+          "signal_kind": "측정 불가",
+          "signal_value": null,
+          "note": "레딧은 비로그인 조회가 전부 403 이고 robots.txt 가 Disallow: / 다. 숫자를 긁지 않는다."
         },
         {
-          "id": "c_2026-09-21_027",
-          "title": "Discord",
+          "id": "c_2026-09-21_084",
+          "title": "Reddit r/MachineLearning",
           "summary_ko": null,
-          "url": "https://discord.com",
+          "url": "https://www.reddit.com/r/MachineLearning/",
           "heat": 0.0,
           "source_count": 1,
           "sources": [
@@ -1148,20 +2610,21 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "discord.com",
+          "dedup_key": "www.reddit.com/r/MachineLearning/",
           "published_at": null,
-          "domain": "discord.com",
+          "domain": "www.reddit.com/r/MachineLearning/",
           "mentions": 0,
           "engagement": 0,
           "region": "global",
-          "global_rank": 168,
-          "rank_note": null
+          "signal_kind": "측정 불가",
+          "signal_value": null,
+          "note": "레딧은 비로그인 조회가 전부 403 이고 robots.txt 가 Disallow: / 다. 숫자를 긁지 않는다."
         },
         {
-          "id": "c_2026-09-21_028",
-          "title": "디시인사이드",
+          "id": "c_2026-09-21_085",
+          "title": "Reddit r/StableDiffusion",
           "summary_ko": null,
-          "url": "https://dcinside.com",
+          "url": "https://www.reddit.com/r/StableDiffusion/",
           "heat": 0.0,
           "source_count": 1,
           "sources": [
@@ -1170,20 +2633,21 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "dcinside.com",
+          "dedup_key": "www.reddit.com/r/StableDiffusion/",
           "published_at": null,
-          "domain": "dcinside.com",
+          "domain": "www.reddit.com/r/StableDiffusion/",
           "mentions": 0,
           "engagement": 0,
-          "region": "kr",
-          "global_rank": 1205,
-          "rank_note": null
+          "region": "global",
+          "signal_kind": "측정 불가",
+          "signal_value": null,
+          "note": "레딧은 비로그인 조회가 전부 403 이고 robots.txt 가 Disallow: / 다. 숫자를 긁지 않는다."
         },
         {
-          "id": "c_2026-09-21_029",
-          "title": "아카라이브",
+          "id": "c_2026-09-21_086",
+          "title": "Threads",
           "summary_ko": null,
-          "url": "https://arca.live",
+          "url": "https://www.threads.com/",
           "heat": 0.0,
           "source_count": 1,
           "sources": [
@@ -1192,20 +2656,21 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "arca.live",
+          "dedup_key": "www.threads.com/",
           "published_at": null,
-          "domain": "arca.live",
+          "domain": "www.threads.com/",
           "mentions": 0,
           "engagement": 0,
-          "region": "kr",
-          "global_rank": 1304,
-          "rank_note": null
+          "region": "global",
+          "signal_kind": "측정 불가",
+          "signal_value": null,
+          "note": "robots.txt 가 자동 수집을 명시적으로 금지하고 AI 크롤러를 이름으로 지목한다."
         },
         {
-          "id": "c_2026-09-21_030",
-          "title": "클리앙",
+          "id": "c_2026-09-21_087",
+          "title": "아카라이브 AI 그림 채널",
           "summary_ko": null,
-          "url": "https://clien.net",
+          "url": "https://arca.live/b/aiart",
           "heat": 0.0,
           "source_count": 1,
           "sources": [
@@ -1214,14 +2679,199 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "clien.net",
+          "dedup_key": "arca.live/b/aiart",
           "published_at": null,
-          "domain": "clien.net",
+          "domain": "arca.live/b/aiart",
           "mentions": 0,
           "engagement": 0,
           "region": "kr",
-          "global_rank": 19884,
-          "rank_note": null
+          "signal_kind": "구독자",
+          "signal_value": 106988,
+          "note": null
+        },
+        {
+          "id": "c_2026-09-21_088",
+          "title": "아카라이브 캐릭터AI 채널",
+          "summary_ko": null,
+          "url": "https://arca.live/b/characterai",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "arca.live/b/characterai",
+          "published_at": null,
+          "domain": "arca.live/b/characterai",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "kr",
+          "signal_kind": "구독자",
+          "signal_value": 31859,
+          "note": null
+        },
+        {
+          "id": "c_2026-09-21_089",
+          "title": "아카라이브 AI 영상 채널",
+          "summary_ko": null,
+          "url": "https://arca.live/b/aivideo",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "arca.live/b/aivideo",
+          "published_at": null,
+          "domain": "arca.live/b/aivideo",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "kr",
+          "signal_kind": "구독자",
+          "signal_value": 1973,
+          "note": null
+        },
+        {
+          "id": "c_2026-09-21_090",
+          "title": "아카라이브 노벨AI 채널",
+          "summary_ko": null,
+          "url": "https://arca.live/b/novelai",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "arca.live/b/novelai",
+          "published_at": null,
+          "domain": "arca.live/b/novelai",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "kr",
+          "signal_kind": "구독자",
+          "signal_value": 0,
+          "note": null
+        },
+        {
+          "id": "c_2026-09-21_091",
+          "title": "아카라이브 챗지피티 채널",
+          "summary_ko": null,
+          "url": "https://arca.live/b/chatgpt",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "arca.live/b/chatgpt",
+          "published_at": null,
+          "domain": "arca.live/b/chatgpt",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "kr",
+          "signal_kind": "구독자",
+          "signal_value": 0,
+          "note": null
+        },
+        {
+          "id": "c_2026-09-21_092",
+          "title": "디시인사이드 AI 그림 갤러리",
+          "summary_ko": null,
+          "url": "https://gall.dcinside.com/mgallery/board/lists?id=aiart",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "gall.dcinside.com/mgallery/board/lists?id=aiart",
+          "published_at": null,
+          "domain": "gall.dcinside.com/mgallery/board/lists?id=aiart",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "kr",
+          "signal_kind": "측정 불가",
+          "signal_value": null,
+          "note": "robots.txt 가 이름 붙은 AI 크롤러를 차단하고, '구독자' 개념이 없다(추천수만 있음)."
+        },
+        {
+          "id": "c_2026-09-21_093",
+          "title": "디시인사이드 미드저니 갤러리",
+          "summary_ko": null,
+          "url": "https://gall.dcinside.com/mgallery/board/lists?id=midjourney",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "gall.dcinside.com/mgallery/board/lists?id=midjourney",
+          "published_at": null,
+          "domain": "gall.dcinside.com/mgallery/board/lists?id=midjourney",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "kr",
+          "signal_kind": "측정 불가",
+          "signal_value": null,
+          "note": "robots.txt 가 이름 붙은 AI 크롤러를 차단하고, '구독자' 개념이 없다(추천수만 있음)."
+        },
+        {
+          "id": "c_2026-09-21_094",
+          "title": "디시인사이드 스테이블디퓨전 갤러리",
+          "summary_ko": null,
+          "url": "https://gall.dcinside.com/mgallery/board/lists?id=stablediffusion",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "gall.dcinside.com/mgallery/board/lists?id=stablediffusion",
+          "published_at": null,
+          "domain": "gall.dcinside.com/mgallery/board/lists?id=stablediffusion",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "kr",
+          "signal_kind": "측정 불가",
+          "signal_value": null,
+          "note": "robots.txt 가 이름 붙은 AI 크롤러를 차단하고, '구독자' 개념이 없다(추천수만 있음)."
+        },
+        {
+          "id": "c_2026-09-21_095",
+          "title": "디시인사이드 챗지피티 갤러리",
+          "summary_ko": null,
+          "url": "https://gall.dcinside.com/mgallery/board/lists?id=chatgpt",
+          "heat": 0.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Tranco"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "gall.dcinside.com/mgallery/board/lists?id=chatgpt",
+          "published_at": null,
+          "domain": "gall.dcinside.com/mgallery/board/lists?id=chatgpt",
+          "mentions": 0,
+          "engagement": 0,
+          "region": "kr",
+          "signal_kind": "측정 불가",
+          "signal_value": null,
+          "note": "robots.txt 가 이름 붙은 AI 크롤러를 차단하고, '구독자' 개념이 없다(추천수만 있음)."
         }
       ]
     }

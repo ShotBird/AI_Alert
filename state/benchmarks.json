@@ -1,0 +1,5530 @@
+{
+  "epoch": {
+    "fingerprint": "\"af05eb5921629d1611ad4dbfbc39474c\"",
+    "fetched_at": "2026-09-20T15:13:47.176043+00:00",
+    "entries": {
+      "gpt 6 astra": {
+        "display_name": "GPT-6 Astra",
+        "eci": 166.31,
+        "eci_date": "2026-09-03",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "fable 5 1": {
+        "display_name": "Claude Fable 5.1",
+        "eci": 164.47,
+        "eci_date": "2026-09-01",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "fable 5": {
+        "display_name": "Claude Fable 5",
+        "eci": 163.27,
+        "eci_date": "2026-06-09",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "opus 5": {
+        "display_name": "Claude Opus 5",
+        "eci": 162.3,
+        "eci_date": "2026-07-24",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 5 pro": {
+        "display_name": "GPT-5.5 Pro",
+        "eci": 162.25,
+        "eci_date": "2026-04-23",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 6 sol": {
+        "display_name": "GPT-5.6 Sol",
+        "eci": 161.81,
+        "eci_date": "2026-07-09",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 6 terra": {
+        "display_name": "GPT-5.6 Terra",
+        "eci": 159.14,
+        "eci_date": "2026-07-09",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 5": {
+        "display_name": "GPT-5.5 Instant",
+        "eci": 142.5,
+        "eci_date": "2026-05-05",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 4 pro": {
+        "display_name": "GPT-5.4 Pro",
+        "eci": 158.95,
+        "eci_date": "2026-03-05",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 8": {
+        "display_name": "Claude Opus 4.8",
+        "eci": 158.3,
+        "eci_date": "2026-05-28",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k3": {
+        "display_name": "Kimi K3",
+        "eci": 157.63,
+        "eci_date": "2026-07-16",
+        "organization": "Moonshot",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 7 flash": {
+        "display_name": "Gemini 3.7 Flash",
+        "eci": 157.44,
+        "eci_date": "2026-08-13",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 4": {
+        "display_name": "GPT-5.4",
+        "eci": 156.86,
+        "eci_date": "2026-03-05",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen 3 8 max": {
+        "display_name": "Qwen 3.8 Max",
+        "eci": 156.62,
+        "eci_date": "2026-08-02",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 3 codex": {
+        "display_name": "GPT-5.3 Codex",
+        "eci": 156.58,
+        "eci_date": "2026-02-05",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 8 flash": {
+        "display_name": "Gemini 3.8 Flash",
+        "eci": 156.54,
+        "eci_date": "2026-09-02",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 6": {
+        "display_name": "Grok 4.6",
+        "eci": 156.35,
+        "eci_date": "2026-08-12",
+        "organization": "xAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 7": {
+        "display_name": "Claude Opus 4.7",
+        "eci": 156.34,
+        "eci_date": "2026-04-16",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 6 luna": {
+        "display_name": "GPT-5.6 Luna",
+        "eci": 156.31,
+        "eci_date": "2026-07-09",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "sonnet 5": {
+        "display_name": "Claude Sonnet 5",
+        "eci": 156.22,
+        "eci_date": "2026-06-30",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "muse spark 1 2": {
+        "display_name": "Muse Spark 1.2",
+        "eci": 155.48,
+        "eci_date": "2026-08-05",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v4 pro 0813": {
+        "display_name": "DeepSeek V4 Pro 0813",
+        "eci": 155.47,
+        "eci_date": "2026-08-13",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 2 pro": {
+        "display_name": "GPT-5.2 Pro",
+        "eci": 155.38,
+        "eci_date": "2025-12-11",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 6": {
+        "display_name": "Claude Opus 4.6",
+        "eci": 155.34,
+        "eci_date": "2026-02-05",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "glm 5 3": {
+        "display_name": "GLM-5.3",
+        "eci": 155.25,
+        "eci_date": "2026-08-14",
+        "organization": "Z.ai (Zhipu AI)",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 8 max 0902": {
+        "display_name": "Qwen3.8 Max (0902)",
+        "eci": 155.22,
+        "eci_date": "2026-09-01",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 1 pro": {
+        "display_name": "Gemini 3.1 Pro",
+        "eci": 155.0,
+        "eci_date": "2026-02-19",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 5 flash": {
+        "display_name": "Gemini 3.5 Flash",
+        "eci": 154.69,
+        "eci_date": "2026-05-19",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "muse spark 1 1": {
+        "display_name": "Muse Spark 1.1",
+        "eci": 154.62,
+        "eci_date": "2026-07-09",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v4 flash 0731": {
+        "display_name": "DeepSeek V4 Flash 0731",
+        "eci": 154.49,
+        "eci_date": "2026-07-31",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 6 flash": {
+        "display_name": "Gemini 3.6 Flash",
+        "eci": 154.33,
+        "eci_date": "2026-07-21",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 5": {
+        "display_name": "Grok 4.5",
+        "eci": 153.92,
+        "eci_date": "2026-07-08",
+        "organization": "xAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 7 max": {
+        "display_name": "Qwen3.7-Max",
+        "eci": 153.73,
+        "eci_date": "2026-05-19",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 2": {
+        "display_name": "GPT-5.2",
+        "eci": 153.51,
+        "eci_date": "2025-12-11",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 pro": {
+        "display_name": "Gemini 3 Pro",
+        "eci": 153.0,
+        "eci_date": "2025-11-18",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "sonnet 4 6": {
+        "display_name": "Claude Sonnet 4.6",
+        "eci": 152.25,
+        "eci_date": "2026-02-17",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "muse spark": {
+        "display_name": "Muse Spark",
+        "eci": 152.12,
+        "eci_date": "2026-04-08",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 20": {
+        "display_name": "Grok 4.20",
+        "eci": 152.03,
+        "eci_date": "2026-02-17",
+        "organization": "xAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "glm 5 2": {
+        "display_name": "GLM-5.2",
+        "eci": 151.86,
+        "eci_date": "2026-06-16",
+        "organization": "Z.ai (Zhipu AI)",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 flash": {
+        "display_name": "Gemini 3 Flash",
+        "eci": 151.84,
+        "eci_date": "2025-12-17",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "glm 5 3 flash": {
+        "display_name": "GLM-5.3-Flash",
+        "eci": 151.45,
+        "eci_date": "2026-08-20",
+        "organization": "Z.ai (Zhipu AI)",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k2 6": {
+        "display_name": "Kimi K2.6",
+        "eci": 151.0,
+        "eci_date": "2026-04-20",
+        "organization": "Moonshot",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 pro": {
+        "display_name": "GPT-5 Pro",
+        "eci": 150.29,
+        "eci_date": "2025-10-07",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "inkling small": {
+        "display_name": "Inkling-Small",
+        "eci": 150.15,
+        "eci_date": "2026-07-15",
+        "organization": "Thinking Machines",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 5": {
+        "display_name": "Claude Opus 4.5",
+        "eci": 150.11,
+        "eci_date": "2025-11-24",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k2 7 code": {
+        "display_name": "Kimi K2.7 Code",
+        "eci": 150.07,
+        "eci_date": "2026-06-12",
+        "organization": "Moonshot",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5": {
+        "display_name": "GPT-5",
+        "eci": 150.0,
+        "eci_date": "2025-08-07",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "glm 5 1": {
+        "display_name": "GLM-5.1",
+        "eci": 149.71,
+        "eci_date": "2026-04-07",
+        "organization": "Z.ai (Zhipu AI)",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 1": {
+        "display_name": "GPT-5.1",
+        "eci": 149.64,
+        "eci_date": "2025-11-13",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen 3 6 max": {
+        "display_name": "Qwen 3.6 Max (Preview)",
+        "eci": 149.27,
+        "eci_date": "2026-04-20",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 3": {
+        "display_name": "Grok 4.3 Beta",
+        "eci": 149.17,
+        "eci_date": "2026-04-17",
+        "organization": "xAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v4 pro": {
+        "display_name": "DeepSeek-V4-Pro",
+        "eci": 149.09,
+        "eci_date": "2026-04-24",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 4 mini": {
+        "display_name": "GPT-5.4 Mini",
+        "eci": 148.96,
+        "eci_date": "2026-03-17",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "inkling": {
+        "display_name": "Inkling",
+        "eci": 148.64,
+        "eci_date": "2026-07-15",
+        "organization": "Thinking Machines",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k2 5": {
+        "display_name": "Kimi K2.5",
+        "eci": 148.01,
+        "eci_date": "2026-01-27",
+        "organization": "Moonshot",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen 3 6 plus": {
+        "display_name": "Qwen 3.6 Plus",
+        "eci": 147.67,
+        "eci_date": "2026-03-31",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "o3 pro": {
+        "display_name": "o3-pro",
+        "eci": 147.45,
+        "eci_date": "2025-06-10",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 7 plus": {
+        "display_name": "Qwen3.7-Plus",
+        "eci": 147.41,
+        "eci_date": "2026-06-02",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 5 397b a17b": {
+        "display_name": "Qwen3.5 397B-A17B",
+        "eci": 146.96,
+        "eci_date": "2026-02-13",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "o3": {
+        "display_name": "o3",
+        "eci": 146.91,
+        "eci_date": "2025-04-16",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "sonnet 4 5": {
+        "display_name": "Claude Sonnet 4.5",
+        "eci": 146.84,
+        "eci_date": "2025-09-29",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen 3 5 plus hosted 397b a17b": {
+        "display_name": "Qwen 3.5 Plus (hosted 397B-A17B)",
+        "eci": 146.73,
+        "eci_date": "2026-02-16",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "minimax m2 5": {
+        "display_name": "MiniMax-M2.5",
+        "eci": 146.51,
+        "eci_date": "2026-02-12",
+        "organization": "MiniMax",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 6 27b": {
+        "display_name": "Qwen3.6 27B",
+        "eci": 146.49,
+        "eci_date": "2026-04-22",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "minimax m3": {
+        "display_name": "MiniMax-M3",
+        "eci": 146.47,
+        "eci_date": "2026-06-01",
+        "organization": "MiniMax",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4": {
+        "display_name": "Grok 4",
+        "eci": 146.45,
+        "eci_date": "2025-07-09",
+        "organization": "xAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "nemotron 3 ultra": {
+        "display_name": "Nemotron 3 Ultra",
+        "eci": 146.27,
+        "eci_date": "2026-06-04",
+        "organization": "NVIDIA",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v3 2": {
+        "display_name": "DeepSeek-V3.2-Exp",
+        "eci": 145.02,
+        "eci_date": "2025-09-29",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v4 flash": {
+        "display_name": "DeepSeek-V4-Flash",
+        "eci": 146.11,
+        "eci_date": "2026-04-24",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "glm 5": {
+        "display_name": "GLM-5",
+        "eci": 145.85,
+        "eci_date": "2026-02-11",
+        "organization": "Z.ai (Zhipu AI)",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 4 nano": {
+        "display_name": "GPT-5.4 Nano",
+        "eci": 145.85,
+        "eci_date": "2026-03-17",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "minimax m2 7": {
+        "display_name": "MiniMax-M2.7",
+        "eci": 145.8,
+        "eci_date": "2026-03-18",
+        "organization": "MiniMax",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k2": {
+        "display_name": "Kimi K2 Thinking",
+        "eci": 145.76,
+        "eci_date": "2025-11-06",
+        "organization": "Moonshot",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "o4 mini": {
+        "display_name": "o4-mini",
+        "eci": 145.65,
+        "eci_date": "2025-04-16",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 mini": {
+        "display_name": "GPT-5 mini",
+        "eci": 145.52,
+        "eci_date": "2025-08-07",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 pro jun 2025": {
+        "display_name": "Gemini 2.5 Pro (Jun 2025)",
+        "eci": 145.26,
+        "eci_date": "2025-06-05",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 5 flash lite": {
+        "display_name": "Gemini 3.5 Flash-Lite",
+        "eci": 145.13,
+        "eci_date": "2026-07-21",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 7 flash": {
+        "display_name": "Qwen3.7 Flash",
+        "eci": 144.63,
+        "eci_date": "2026-07-27",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 1 flash lite": {
+        "display_name": "Gemini 3.1 Flash-Lite",
+        "eci": 144.49,
+        "eci_date": "2026-03-03",
+        "organization": "Google",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 fast": {
+        "display_name": "Grok 4 Fast",
+        "eci": 144.21,
+        "eci_date": "2025-09-19",
+        "organization": "xAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 pro mar 2025": {
+        "display_name": "Gemini 2.5 Pro (Mar 2025)",
+        "eci": 144.16,
+        "eci_date": "2025-03-31",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 1": {
+        "display_name": "Claude Opus 4.1",
+        "eci": 144.11,
+        "eci_date": "2025-08-05",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen 3 5 flash hosted 35b a3b": {
+        "display_name": "Qwen 3.5 Flash (hosted 35B-A3B)",
+        "eci": 144.0,
+        "eci_date": "2026-02-25",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 235b a22b thinking jul 2025": {
+        "display_name": "Qwen3-235B-A22B-Thinking (Jul 2025)",
+        "eci": 143.88,
+        "eci_date": "2025-07-25",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen 3 6 35b a3b": {
+        "display_name": "Qwen 3.6 35B-A3B",
+        "eci": 143.86,
+        "eci_date": "2026-04-14",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 7": {
+        "display_name": "GLM-4.7",
+        "eci": 143.46,
+        "eci_date": "2025-12-22",
+        "organization": "Z.ai (Zhipu AI)",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen 3 6 flash": {
+        "display_name": "Qwen 3.6 Flash",
+        "eci": 143.27,
+        "eci_date": "2026-04-27",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 flash sep 2025": {
+        "display_name": "Gemini 2.5 Flash (Sep 2025)",
+        "eci": 142.99,
+        "eci_date": "2025-09-25",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4": {
+        "display_name": "Claude Opus 4",
+        "eci": 142.68,
+        "eci_date": "2025-05-22",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 4 31b it": {
+        "display_name": "Gemma 4 31B IT",
+        "eci": 142.66,
+        "eci_date": "2026-04-02",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 5 35b a3b": {
+        "display_name": "Qwen3.5-35B-A3B",
+        "eci": 142.53,
+        "eci_date": "2026-02-24",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 pro may 2025": {
+        "display_name": "Gemini 2.5 Pro (May 2025)",
+        "eci": 142.47,
+        "eci_date": "2025-05-06",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 max": {
+        "display_name": "Qwen3-Max",
+        "eci": 142.43,
+        "eci_date": "2025-09-24",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "haiku 4 5": {
+        "display_name": "Claude Haiku 4.5",
+        "eci": 142.37,
+        "eci_date": "2025-10-15",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "o1": {
+        "display_name": "o1-preview",
+        "eci": 134.78,
+        "eci_date": "2024-09-12",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 4 26b a4b": {
+        "display_name": "Gemma 4 26B A4B",
+        "eci": 141.86,
+        "eci_date": "2026-04-02",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "sonnet 4": {
+        "display_name": "Claude Sonnet 4",
+        "eci": 141.69,
+        "eci_date": "2025-05-22",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 flash may 2025": {
+        "display_name": "Gemini 2.5 Flash (May 2025)",
+        "eci": 141.54,
+        "eci_date": "2025-05-20",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek r1 may 2025": {
+        "display_name": "DeepSeek-R1 (May 2025)",
+        "eci": 141.29,
+        "eci_date": "2025-05-28",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mistral medium 3 5": {
+        "display_name": "Mistral Medium 3.5",
+        "eci": 141.28,
+        "eci_date": "2026-04-28",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "3 7 sonnet": {
+        "display_name": "Claude 3.7 Sonnet",
+        "eci": 141.16,
+        "eci_date": "2025-02-24",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 6": {
+        "display_name": "GLM-4.6",
+        "eci": 140.78,
+        "eci_date": "2025-09-30",
+        "organization": "Z.ai (Zhipu AI),Tsinghua University",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 flash jun 2025": {
+        "display_name": "Gemini 2.5 Flash (Jun 2025)",
+        "eci": 140.53,
+        "eci_date": "2025-06-17",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "o3 mini": {
+        "display_name": "o3-mini",
+        "eci": 140.35,
+        "eci_date": "2025-01-31",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "grok 3 mini": {
+        "display_name": "Grok-3 mini",
+        "eci": 140.35,
+        "eci_date": "2025-06-24",
+        "organization": "xAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k2 jul 2025": {
+        "display_name": "Kimi K2 (Jul 2025)",
+        "eci": 140.11,
+        "eci_date": "2025-07-12",
+        "organization": "Moonshot",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt oss 120b": {
+        "display_name": "gpt-oss-120b",
+        "eci": 140.1,
+        "eci_date": "2025-08-05",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 flash apr 2025": {
+        "display_name": "Gemini 2.5 Flash (Apr 2025)",
+        "eci": 139.97,
+        "eci_date": "2025-04-17",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v3 1": {
+        "display_name": "DeepSeek-V3.1",
+        "eci": 139.92,
+        "eci_date": "2025-08-21",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 30b a3b thinking jul 2025": {
+        "display_name": "Qwen3-30B-A3B-Thinking (Jul 2025)",
+        "eci": 139.64,
+        "eci_date": "2025-07-30",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 5 9b": {
+        "display_name": "Qwen3.5-9B",
+        "eci": 139.44,
+        "eci_date": "2026-02-24",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 nano": {
+        "display_name": "GPT-5 nano",
+        "eci": 139.39,
+        "eci_date": "2025-08-07",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 235b a22b": {
+        "display_name": "Qwen3-235B-A22B",
+        "eci": 139.35,
+        "eci_date": "2025-04-28",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek r1": {
+        "display_name": "DeepSeek-R1",
+        "eci": 138.97,
+        "eci_date": "2025-01-20",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 235b a22b instruct jul 2025": {
+        "display_name": "Qwen3-235B-A22B-Instruct (Jul 2025)",
+        "eci": 138.92,
+        "eci_date": "2025-07-25",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 32b": {
+        "display_name": "Qwen3-32B",
+        "eci": 138.51,
+        "eci_date": "2025-04-29",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "grok 3": {
+        "display_name": "Grok 3",
+        "eci": 138.3,
+        "eci_date": "2025-04-09",
+        "organization": "xAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 14b": {
+        "display_name": "Qwen3-14B",
+        "eci": 138.24,
+        "eci_date": "2025-04-29",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt oss 20b": {
+        "display_name": "gpt-oss-20b",
+        "eci": 137.8,
+        "eci_date": "2025-08-05",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwq 32b": {
+        "display_name": "QwQ-32B",
+        "eci": 137.6,
+        "eci_date": "2025-03-05",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek r1 distill qwen 32b": {
+        "display_name": "DeepSeek-R1-Distill-Qwen-32B",
+        "eci": 137.42,
+        "eci_date": "2025-01-20",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 30b a3b instruct jul 2025": {
+        "display_name": "Qwen3-30B-A3B-Instruct (Jul 2025)",
+        "eci": 137.42,
+        "eci_date": "2025-07-29",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 1": {
+        "display_name": "GPT-4.1",
+        "eci": 136.8,
+        "eci_date": "2025-04-14",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 5": {
+        "display_name": "GPT-4.5",
+        "eci": 136.75,
+        "eci_date": "2025-02-27",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 30b a3b": {
+        "display_name": "Qwen3-30B-A3B",
+        "eci": 136.19,
+        "eci_date": "2025-04-29",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 8b": {
+        "display_name": "Qwen3-8B",
+        "eci": 136.18,
+        "eci_date": "2025-04-28",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v3 mar 2025": {
+        "display_name": "DeepSeek-V3 (Mar 2025)",
+        "eci": 135.95,
+        "eci_date": "2025-03-24",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "o1 mini": {
+        "display_name": "o1-mini",
+        "eci": 135.82,
+        "eci_date": "2024-09-12",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek r1 distill qwen 14b": {
+        "display_name": "DeepSeek-R1-Distill-Qwen-14B",
+        "eci": 135.43,
+        "eci_date": "2025-01-20",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 0 flash thinking jan 2025": {
+        "display_name": "Gemini 2.0 Flash Thinking (Jan 2025)",
+        "eci": 135.37,
+        "eci_date": "2025-01-21",
+        "organization": "Google DeepMind,Google",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 0 pro": {
+        "display_name": "Gemini 2.0 Pro",
+        "eci": 135.06,
+        "eci_date": "2025-02-05",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 1 mini": {
+        "display_name": "GPT-4.1 mini",
+        "eci": 135.02,
+        "eci_date": "2025-04-14",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 0 flash dec 2024": {
+        "display_name": "Gemini 2.0 Flash (Dec 2024)",
+        "eci": 134.71,
+        "eci_date": "2024-12-11",
+        "organization": "Google DeepMind,Google",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 0 flash feb 2025": {
+        "display_name": "Gemini 2.0 Flash (Feb 2025)",
+        "eci": 134.69,
+        "eci_date": "2025-02-05",
+        "organization": "Google DeepMind,Google",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mistral medium 3": {
+        "display_name": "Mistral Medium 3",
+        "eci": 134.07,
+        "eci_date": "2025-05-07",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 flash lite jun 2025": {
+        "display_name": "Gemini 2.5 Flash-Lite (Jun 2025)",
+        "eci": 133.93,
+        "eci_date": "2025-06-17",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "3 5 sonnet october 2024": {
+        "display_name": "Claude 3.5 Sonnet (October 2024)",
+        "eci": 133.55,
+        "eci_date": "2024-10-22",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "magistral small 1 0": {
+        "display_name": "Magistral Small 1.0",
+        "eci": 133.19,
+        "eci_date": "2025-06-10",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 max": {
+        "display_name": "Qwen2.5-Max",
+        "eci": 132.53,
+        "eci_date": "2025-01-25",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v3": {
+        "display_name": "DeepSeek-V3",
+        "eci": 132.35,
+        "eci_date": "2024-12-26",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 4 maverick": {
+        "display_name": "Llama 4 Maverick",
+        "eci": 132.2,
+        "eci_date": "2025-04-06",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mistral small 3 2": {
+        "display_name": "Mistral Small 3.2",
+        "eci": 131.74,
+        "eci_date": "2025-06-20",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 1 5 pro sept 2024": {
+        "display_name": "Gemini 1.5 Pro (Sept 2024)",
+        "eci": 131.73,
+        "eci_date": "2024-09-24",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "magistral small 1 2": {
+        "display_name": "Magistral Small 1.2",
+        "eci": 131.41,
+        "eci_date": "2025-09-18",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "grok 2 dec 2024": {
+        "display_name": "Grok-2 (Dec 2024)",
+        "eci": 130.48,
+        "eci_date": "2024-12-12",
+        "organization": "xAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "phi 4": {
+        "display_name": "Phi-4",
+        "eci": 130.42,
+        "eci_date": "2024-12-12",
+        "organization": "Microsoft Research",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 3 27b": {
+        "display_name": "Gemma 3 27B",
+        "eci": 130.03,
+        "eci_date": "2025-03-12",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "3 5 sonnet": {
+        "display_name": "Claude 3.5 Sonnet",
+        "eci": 130.0,
+        "eci_date": "2024-06-20",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 4 scout": {
+        "display_name": "Llama 4 Scout",
+        "eci": 129.64,
+        "eci_date": "2025-04-05",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 1 nano": {
+        "display_name": "GPT-4.1 nano",
+        "eci": 129.63,
+        "eci_date": "2025-04-14",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 1 5 flash sep 2024": {
+        "display_name": "Gemini 1.5 Flash (Sep 2024)",
+        "eci": 129.36,
+        "eci_date": "2024-09-24",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 72b": {
+        "display_name": "Qwen2.5-72B",
+        "eci": 129.0,
+        "eci_date": "2024-09-19",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4o may 2024": {
+        "display_name": "GPT-4o (May 2024)",
+        "eci": 128.97,
+        "eci_date": "2024-05-13",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4o nov 2024": {
+        "display_name": "GPT-4o (Nov 2024)",
+        "eci": 128.81,
+        "eci_date": "2024-11-20",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4o aug 2024": {
+        "display_name": "GPT-4o (Aug 2024)",
+        "eci": 128.77,
+        "eci_date": "2024-08-06",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 405b": {
+        "display_name": "Llama 3.1-405B",
+        "eci": 128.75,
+        "eci_date": "2024-07-23",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 32b": {
+        "display_name": "Qwen2.5-32B",
+        "eci": 128.52,
+        "eci_date": "2024-09-17",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mistral large 2 nov 2024": {
+        "display_name": "Mistral Large 2 (Nov 2024)",
+        "eci": 128.52,
+        "eci_date": "2024-11-18",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mistral large 2 jul 2024": {
+        "display_name": "Mistral Large 2 (Jul 2024)",
+        "eci": 127.54,
+        "eci_date": "2024-07-24",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mistral small 3 1": {
+        "display_name": "Mistral Small 3.1",
+        "eci": 127.48,
+        "eci_date": "2025-03-17",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 3 70b": {
+        "display_name": "Llama 3.3 70B",
+        "eci": 127.32,
+        "eci_date": "2024-12-06",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 turbo apr 2024": {
+        "display_name": "GPT-4 Turbo (Apr 2024)",
+        "eci": 127.25,
+        "eci_date": "2024-04-09",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "3 5 haiku": {
+        "display_name": "Claude 3.5 Haiku",
+        "eci": 127.15,
+        "eci_date": "2024-10-22",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mistral small 3": {
+        "display_name": "Mistral Small 3",
+        "eci": 127.07,
+        "eci_date": "2025-01-30",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "3 opus": {
+        "display_name": "Claude 3 Opus",
+        "eci": 126.91,
+        "eci_date": "2024-02-29",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 1 5 pro may 2024": {
+        "display_name": "Gemini 1.5 Pro (May 2024)",
+        "eci": 126.9,
+        "eci_date": "2024-05-14",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4o mini": {
+        "display_name": "GPT-4o mini",
+        "eci": 126.56,
+        "eci_date": "2024-07-18",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 turbo nov 2023": {
+        "display_name": "GPT-4 Turbo (Nov 2023)",
+        "eci": 126.45,
+        "eci_date": "2024-01-25",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 70b": {
+        "display_name": "Llama 3.1-70B",
+        "eci": 125.91,
+        "eci_date": "2024-07-23",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 mar 2023": {
+        "display_name": "GPT-4 (Mar 2023)",
+        "eci": 125.89,
+        "eci_date": "2023-03-14",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 2 90b": {
+        "display_name": "Llama 3.2 90B",
+        "eci": 125.5,
+        "eci_date": "2024-09-24",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 72b": {
+        "display_name": "Qwen2-72B",
+        "eci": 125.27,
+        "eci_date": "2024-06-07",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v2 moe 236b may 2024": {
+        "display_name": "DeepSeek-V2 (MoE-236B, May 2024)",
+        "eci": 124.77,
+        "eci_date": "2024-05-07",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "amazon nova pro": {
+        "display_name": "Amazon Nova Pro",
+        "eci": 123.77,
+        "eci_date": "2024-12-03",
+        "organization": "Amazon",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 3 12b": {
+        "display_name": "Gemma 3 12B",
+        "eci": 123.46,
+        "eci_date": "2025-03-12",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 jun 2023": {
+        "display_name": "GPT-4 (Jun 2023)",
+        "eci": 123.1,
+        "eci_date": "2023-06-13",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 70b": {
+        "display_name": "Llama 3-70B",
+        "eci": 122.91,
+        "eci_date": "2024-04-18",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 1 5 flash may 2024": {
+        "display_name": "Gemini 1.5 Flash (May 2024)",
+        "eci": 122.57,
+        "eci_date": "2024-05-23",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 2 27b": {
+        "display_name": "Gemma 2 27B",
+        "eci": 122.05,
+        "eci_date": "2024-06-24",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mixtral 8x22b": {
+        "display_name": "Mixtral 8x22B",
+        "eci": 122.0,
+        "eci_date": "2024-04-17",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mistral large": {
+        "display_name": "Mistral Large",
+        "eci": 122.0,
+        "eci_date": "2024-02-26",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "phi 3 small 7 4b": {
+        "display_name": "phi-3-small 7.4B",
+        "eci": 121.8,
+        "eci_date": "2024-04-23",
+        "organization": "Microsoft",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "phi 3 medium 14b": {
+        "display_name": "phi-3-medium 14B",
+        "eci": 121.19,
+        "eci_date": "2024-04-23",
+        "organization": "Microsoft",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "3 sonnet": {
+        "display_name": "Claude 3 Sonnet",
+        "eci": 120.68,
+        "eci_date": "2024-02-29",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "2": {
+        "display_name": "Claude 2",
+        "eci": 120.09,
+        "eci_date": "2023-07-11",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 2 9b": {
+        "display_name": "Gemma 2 9B",
+        "eci": 119.79,
+        "eci_date": "2024-06-24",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 coder 32b": {
+        "display_name": "Qwen2.5-Coder-32B",
+        "eci": 119.42,
+        "eci_date": "2024-09-18",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "command r": {
+        "display_name": "Command R+",
+        "eci": 119.25,
+        "eci_date": "2024-08-30",
+        "organization": "Cohere,Cohere Labs (formerly Cohere for AI)",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "2 1": {
+        "display_name": "Claude 2.1",
+        "eci": 119.22,
+        "eci_date": "2023-11-21",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mistral nemo": {
+        "display_name": "Mistral NeMo",
+        "eci": 118.64,
+        "eci_date": "2024-07-18",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 3 5 turbo nov 2023": {
+        "display_name": "GPT-3.5 Turbo (Nov 2023)",
+        "eci": 118.49,
+        "eci_date": "2023-11-06",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 7b": {
+        "display_name": "Qwen2.5-7B",
+        "eci": 118.44,
+        "eci_date": "2024-09-19",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mixtral 8x7b": {
+        "display_name": "Mixtral 8x7B",
+        "eci": 118.4,
+        "eci_date": "2023-12-11",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "3 haiku": {
+        "display_name": "Claude 3 Haiku",
+        "eci": 118.3,
+        "eci_date": "2024-03-07",
+        "organization": "Anthropic",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "ministral 3b": {
+        "display_name": "Ministral 3B",
+        "eci": 118.06,
+        "eci_date": "2024-10-16",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "yi 34b": {
+        "display_name": "Yi-34B",
+        "eci": 117.3,
+        "eci_date": "2023-11-02",
+        "organization": "01.AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "phi 3 mini 3 8b": {
+        "display_name": "phi-3-mini 3.8B",
+        "eci": 117.25,
+        "eci_date": "2024-04-23",
+        "organization": "Microsoft",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "stable beluga 2": {
+        "display_name": "Stable Beluga 2",
+        "eci": 117.0,
+        "eci_date": "2023-07-20",
+        "organization": "Stability AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 1 0 pro": {
+        "display_name": "Gemini 1.0 Pro",
+        "eci": 116.97,
+        "eci_date": "2023-12-13",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 8b": {
+        "display_name": "Llama 3.1-8B",
+        "eci": 116.5,
+        "eci_date": "2024-07-23",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 8b": {
+        "display_name": "Llama 3-8B",
+        "eci": 116.35,
+        "eci_date": "2024-04-18",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 coder 14b": {
+        "display_name": "Qwen2.5-Coder-14B",
+        "eci": 116.28,
+        "eci_date": "2024-09-18",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 3 4b": {
+        "display_name": "Gemma 3 4B",
+        "eci": 115.97,
+        "eci_date": "2025-03-12",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 3 5 turbo jan 2024": {
+        "display_name": "GPT-3.5 Turbo (Jan 2024)",
+        "eci": 115.61,
+        "eci_date": "2024-01-25",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "palm 2 l": {
+        "display_name": "PaLM 2-L",
+        "eci": 114.88,
+        "eci_date": "2023-05-17",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 2 70b": {
+        "display_name": "Llama 2-70B",
+        "eci": 113.63,
+        "eci_date": "2023-07-18",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 3 5 turbo jun 2023": {
+        "display_name": "GPT-3.5 Turbo (Jun 2023)",
+        "eci": 113.19,
+        "eci_date": "2023-06-13",
+        "organization": "OpenAI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 coder 7b": {
+        "display_name": "Qwen2.5-Coder (7B)",
+        "eci": 112.97,
+        "eci_date": "2024-09-18",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen 14b": {
+        "display_name": "Qwen-14B",
+        "eci": 112.85,
+        "eci_date": "2023-09-24",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mistral 7b v0 1": {
+        "display_name": "Mistral 7B v0.1",
+        "eci": 112.02,
+        "eci_date": "2023-09-27",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "falcon 180b": {
+        "display_name": "Falcon-180B",
+        "eci": 111.94,
+        "eci_date": "2023-09-06",
+        "organization": "Technology Innovation Institute",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "internlm 20b": {
+        "display_name": "internlm-20b",
+        "eci": 111.89,
+        "eci_date": "2023-09-18",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 7b": {
+        "display_name": "Gemma 7B",
+        "eci": 111.79,
+        "eci_date": "2024-02-21",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek llm 67b": {
+        "display_name": "DeepSeek LLM 67B",
+        "eci": 110.56,
+        "eci_date": "2023-11-29",
+        "organization": "DeepSeek",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 65b": {
+        "display_name": "LLaMA-65B",
+        "eci": 109.94,
+        "eci_date": "2023-02-24",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "falcon 2 11b": {
+        "display_name": "Falcon 2 11B",
+        "eci": 109.32,
+        "eci_date": "2024-05-09",
+        "organization": "Technology Innovation Institute",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mistral 7b v0 3": {
+        "display_name": "Mistral 7B v0.3",
+        "eci": 108.78,
+        "eci_date": "2024-05-27",
+        "organization": "Mistral AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek coder v2 lite base": {
+        "display_name": "DeepSeek-Coder-V2-Lite-Base",
+        "eci": 108.64,
+        "eci_date": "2024-06-13",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "palm 2 m": {
+        "display_name": "PaLM 2-M",
+        "eci": 108.04,
+        "eci_date": "2023-05-17",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "phi 2": {
+        "display_name": "Phi-2",
+        "eci": 107.69,
+        "eci_date": "2023-12-12",
+        "organization": "Microsoft",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 coder 3b": {
+        "display_name": "Qwen2.5-Coder-3B",
+        "eci": 107.48,
+        "eci_date": "2024-09-18",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "nemotron 4 15b": {
+        "display_name": "Nemotron-4 15B",
+        "eci": 107.45,
+        "eci_date": "2024-02-26",
+        "organization": "NVIDIA",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "yi 9b": {
+        "display_name": "Yi-9B",
+        "eci": 107.35,
+        "eci_date": "2024-03-01",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 33b": {
+        "display_name": "LLaMA-33B",
+        "eci": 107.14,
+        "eci_date": "2023-02-24",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen 7b": {
+        "display_name": "Qwen-7B",
+        "eci": 106.55,
+        "eci_date": "2023-09-28",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 2 13b": {
+        "display_name": "Llama 2-13B",
+        "eci": 105.88,
+        "eci_date": "2023-07-18",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "palm 2 s": {
+        "display_name": "PaLM 2-S",
+        "eci": 105.88,
+        "eci_date": "2023-05-17",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 2 34b": {
+        "display_name": "Llama 2-34B",
+        "eci": 104.9,
+        "eci_date": "2023-07-18",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "starcoder 2 15b": {
+        "display_name": "StarCoder 2 15B",
+        "eci": 104.7,
+        "eci_date": "2024-02-20",
+        "organization": "Hugging Face,ServiceNow,NVIDIA,BigCode",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "yi 6b": {
+        "display_name": "Yi 6B",
+        "eci": 104.46,
+        "eci_date": "2023-11-22",
+        "organization": "01.AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "falcon 40b": {
+        "display_name": "Falcon-40B",
+        "eci": 104.13,
+        "eci_date": "2023-05-25",
+        "organization": "Technology Innovation Institute",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "baichuan2 13b": {
+        "display_name": "Baichuan2-13B",
+        "eci": 102.86,
+        "eci_date": "2023-09-06",
+        "organization": "Baichuan",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 coder 1 5b": {
+        "display_name": "Qwen2.5-Coder (1.5B)",
+        "eci": 102.66,
+        "eci_date": "2024-09-18",
+        "organization": "Alibaba",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "internlm 7b": {
+        "display_name": "internlm-7b",
+        "eci": 102.53,
+        "eci_date": "2023-07-05",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 2 1b": {
+        "display_name": "Llama 3.2 1B",
+        "eci": 102.43,
+        "eci_date": "2024-09-24",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "intellect 1": {
+        "display_name": "INTELLECT-1",
+        "eci": 100.49,
+        "eci_date": "2024-11-29",
+        "organization": "Prime Intellect,Hugging Face,Arcee AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mpt 30b": {
+        "display_name": "MPT-30B",
+        "eci": 100.28,
+        "eci_date": "2023-06-22",
+        "organization": "MosaicML",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 13b": {
+        "display_name": "LLaMA-13B",
+        "eci": 100.2,
+        "eci_date": "2023-02-24",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 2 7b": {
+        "display_name": "Llama 2-7B",
+        "eci": 98.66,
+        "eci_date": "2023-07-18",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "chatglm2 6b": {
+        "display_name": "chatglm2-6b",
+        "eci": 98.53,
+        "eci_date": "2023-06-24",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "llama 7b": {
+        "display_name": "LLaMA-7B",
+        "eci": 96.25,
+        "eci_date": "2023-02-24",
+        "organization": "Meta AI",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "baichuan 2 7b": {
+        "display_name": "Baichuan 2-7B",
+        "eci": 95.88,
+        "eci_date": "2023-09-20",
+        "organization": "Baichuan",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek coder 33b": {
+        "display_name": "DeepSeek Coder 33B",
+        "eci": 95.87,
+        "eci_date": "2023-11-02",
+        "organization": "DeepSeek,Peking University",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "falcon 7b": {
+        "display_name": "Falcon-7B",
+        "eci": 94.63,
+        "eci_date": "2023-04-24",
+        "organization": "Technology Innovation Institute",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "codeqwen1 5 7b": {
+        "display_name": "CodeQwen1.5-7B",
+        "eci": 94.38,
+        "eci_date": "2024-04-15",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "vicuna 13b v1 1": {
+        "display_name": "vicuna-13b-v1.1",
+        "eci": 94.19,
+        "eci_date": "2023-04-12",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "mpt 7b": {
+        "display_name": "MPT-7B",
+        "eci": 94.11,
+        "eci_date": "2023-05-05",
+        "organization": "MosaicML",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 2b": {
+        "display_name": "Gemma 2B",
+        "eci": 93.72,
+        "eci_date": "2024-02-21",
+        "organization": "Google DeepMind",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "starcoder 2 7b": {
+        "display_name": "StarCoder 2 7B",
+        "eci": 93.06,
+        "eci_date": "2024-02-20",
+        "organization": "Hugging Face,ServiceNow,NVIDIA,BigCode",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "xgen 7b": {
+        "display_name": "XGen-7B",
+        "eci": 92.9,
+        "eci_date": "2023-06-27",
+        "organization": "Salesforce",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen 1 8b": {
+        "display_name": "Qwen-1_8B",
+        "eci": 92.43,
+        "eci_date": "2023-11-30",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "open llama 7b": {
+        "display_name": "open_llama_7b",
+        "eci": 91.12,
+        "eci_date": "2023-06-07",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "phi 1 5": {
+        "display_name": "Phi-1.5",
+        "eci": 90.99,
+        "eci_date": "2023-09-11",
+        "organization": "Microsoft",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "baichuan1 7b": {
+        "display_name": "Baichuan1-7B",
+        "eci": 89.92,
+        "eci_date": "2023-06-01",
+        "organization": "Baichuan",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "redpajama incite 7b base": {
+        "display_name": "RedPajama-INCITE-7B-Base",
+        "eci": 89.87,
+        "eci_date": "2023-05-04",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "dolly 2 0 12b": {
+        "display_name": "Dolly 2.0-12b",
+        "eci": 89.11,
+        "eci_date": "2023-04-11",
+        "organization": "Databricks",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek coder 6 7b": {
+        "display_name": "DeepSeek Coder 6.7B",
+        "eci": 89.05,
+        "eci_date": "2023-11-02",
+        "organization": "DeepSeek,Peking University",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "starcoder 2 3b": {
+        "display_name": "StarCoder 2 3B",
+        "eci": 88.18,
+        "eci_date": "2024-02-22",
+        "organization": "Hugging Face,ServiceNow,NVIDIA,BigCode",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 coder 0 5b": {
+        "display_name": "Qwen2.5-Coder-0.5B",
+        "eci": 87.56,
+        "eci_date": "2024-09-18",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "cerebras gpt 13b": {
+        "display_name": "Cerebras-GPT-13B",
+        "eci": 82.57,
+        "eci_date": "2023-03-20",
+        "organization": "Cerebras Systems",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek coder 1 3b": {
+        "display_name": "DeepSeek Coder 1.3B",
+        "eci": 62.54,
+        "eci_date": "2023-11-02",
+        "organization": "DeepSeek,Peking University",
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      },
+      "stablelm tuned alpha 7b": {
+        "display_name": "stablelm-tuned-alpha-7b",
+        "eci": 54.64,
+        "eci_date": "2023-04-19",
+        "organization": null,
+        "source": "EpochAI",
+        "licence": "CC BY 4.0"
+      }
+    }
+  },
+  "lmarena": {
+    "fingerprint": "d25aabda0010d1986a11988e5cb0a748053ce02b",
+    "fetched_at": "2026-09-20T15:13:49.519808+00:00",
+    "entries": {
+      "fable 5 1 max": {
+        "display_name": "claude-fable-5.1-max",
+        "arena_score": 1507.5817496991563,
+        "arena_rank": 1.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "opus 5 max": {
+        "display_name": "claude-opus-5-max",
+        "arena_score": 1504.959276878543,
+        "arena_rank": 2.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "opus 5": {
+        "display_name": "claude-opus-5-high",
+        "arena_score": 1504.9163367198241,
+        "arena_rank": 3.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 6": {
+        "display_name": "claude-opus-4-6",
+        "arena_score": 1497.5435229763495,
+        "arena_rank": 5.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 8 flash": {
+        "display_name": "gemini-3.8-flash-high",
+        "arena_score": 1494.673989980363,
+        "arena_rank": 6.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "fable 5": {
+        "display_name": "claude-fable-5",
+        "arena_score": 1492.62585065081,
+        "arena_rank": 7.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 7 flash": {
+        "display_name": "gemini-3.7-flash-high",
+        "arena_score": 1490.4920154663198,
+        "arena_rank": 8.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 7": {
+        "display_name": "claude-opus-4-7",
+        "arena_score": 1483.3559792964222,
+        "arena_rank": 12.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "muse spark 1 3 max": {
+        "display_name": "muse-spark-1.3-max",
+        "arena_score": 1489.7405893263447,
+        "arena_rank": 10.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "muse spark 1 2": {
+        "display_name": "muse-spark-1.2 (xHigh)",
+        "arena_score": 1489.4388916567375,
+        "arena_rank": 11.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 5 flash": {
+        "display_name": "gemini-3.5-flash-medium",
+        "arena_score": 1475.7232572853893,
+        "arena_rank": 19.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 8 max": {
+        "display_name": "qwen3.8-max",
+        "arena_score": 1480.5544386003721,
+        "arena_rank": 14.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "muse spark 1 1": {
+        "display_name": "muse-spark-1.1",
+        "arena_score": 1480.1726777600436,
+        "arena_rank": 15.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 1 pro": {
+        "display_name": "gemini-3.1-pro-preview",
+        "arena_score": 1480.0754473378818,
+        "arena_rank": 16.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 pro": {
+        "display_name": "gemini-3-pro",
+        "arena_score": 1479.4701898730532,
+        "arena_rank": 17.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 6 flash": {
+        "display_name": "gemini-3.6-flash-high",
+        "arena_score": 1476.1426227567108,
+        "arena_rank": 18.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 5 3 max": {
+        "display_name": "glm-5.3-max",
+        "arena_score": 1475.0836598142798,
+        "arena_rank": 20.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 7 max": {
+        "display_name": "qwen3.7-max-preview",
+        "arena_score": 1473.9515440559937,
+        "arena_rank": 21.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "muse spark": {
+        "display_name": "muse-spark",
+        "arena_score": 1473.3254184714117,
+        "arena_rank": 22.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k3 max": {
+        "display_name": "kimi-k3-max",
+        "arena_score": 1472.272610174843,
+        "arena_rank": 23.0,
+        "arena_date": "2026-09-13",
+        "organization": "moonshot",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 5 3 flash": {
+        "display_name": "glm-5.3-flash",
+        "arena_score": 1471.894735379718,
+        "arena_rank": 24.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 5 max": {
+        "display_name": "qwen3.5-max-preview",
+        "arena_score": 1470.9317068152347,
+        "arena_rank": 25.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 5": {
+        "display_name": "gpt-5.5-instant",
+        "arena_score": 1419.745975030899,
+        "arena_rank": 109.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 4": {
+        "display_name": "gpt-5.4",
+        "arena_score": 1452.6407533203474,
+        "arena_rank": 41.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "ernie 5 1": {
+        "display_name": "ernie-5.1",
+        "arena_score": 1468.1952692602167,
+        "arena_rank": 28.0,
+        "arena_date": "2026-09-13",
+        "organization": "baidu",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 5 2 max": {
+        "display_name": "glm-5.2-max",
+        "arena_score": 1466.9328617073902,
+        "arena_rank": 29.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 flash": {
+        "display_name": "gemini-3-flash",
+        "arena_score": 1466.7007384512058,
+        "arena_rank": 30.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mimo v2 5 pro": {
+        "display_name": "mimo-v2.5-pro",
+        "arena_score": 1464.7490308676067,
+        "arena_rank": 32.0,
+        "arena_date": "2026-09-13",
+        "organization": "xiaomi",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 5 1": {
+        "display_name": "glm-5.1",
+        "arena_score": 1462.3752156419596,
+        "arena_rank": 33.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 8": {
+        "display_name": "claude-opus-4-8",
+        "arena_score": 1452.6615389407498,
+        "arena_rank": 40.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "sonnet 4 6": {
+        "display_name": "claude-sonnet-4-6",
+        "arena_score": 1458.263082118117,
+        "arena_rank": 35.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 pro": {
+        "display_name": "gemini-2.5-pro",
+        "arena_score": 1457.7717092041273,
+        "arena_rank": 36.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 6 sol": {
+        "display_name": "gpt-5.6-sol-xhigh",
+        "arena_score": 1455.0457372771807,
+        "arena_rank": 37.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k2 6": {
+        "display_name": "kimi-k2.6",
+        "arena_score": 1454.9198580085667,
+        "arena_rank": 38.0,
+        "arena_date": "2026-09-13",
+        "organization": "moonshot",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 7 plus": {
+        "display_name": "qwen3.7-plus",
+        "arena_score": 1454.1959977558622,
+        "arena_rank": 39.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 20 beta 0309 reasoning": {
+        "display_name": "grok-4.20-beta-0309-reasoning",
+        "arena_score": 1450.7395914359724,
+        "arena_rank": 42.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v4 pro": {
+        "display_name": "deepseek-v4-pro-high-preview",
+        "arena_score": 1444.7541503628017,
+        "arena_rank": 54.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 5 20251101": {
+        "display_name": "claude-opus-4-5-20251101",
+        "arena_score": 1450.4590546195989,
+        "arena_rank": 44.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 5": {
+        "display_name": "grok-4.5",
+        "arena_score": 1450.1299788088197,
+        "arena_rank": 45.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 20 multi agent beta 0309": {
+        "display_name": "grok-4.20-multi-agent-beta-0309",
+        "arena_score": 1449.9392941401013,
+        "arena_rank": 46.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "amazon nova experimental chat 26 02 10": {
+        "display_name": "amazon-nova-experimental-chat-26-02-10",
+        "arena_score": 1447.9054811338794,
+        "arena_rank": 47.0,
+        "arena_date": "2026-09-13",
+        "organization": "amazon",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "dola seed 2 0 pro": {
+        "display_name": "dola-seed-2.0-pro",
+        "arena_score": 1447.5910219281939,
+        "arena_rank": 48.0,
+        "arena_date": "2026-09-13",
+        "organization": "bytedance",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 5 20251101 high 32k": {
+        "display_name": "claude-opus-4-5-20251101-high-32k",
+        "arena_score": 1447.0818203958963,
+        "arena_rank": 49.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 6 max": {
+        "display_name": "qwen3.6-max-preview",
+        "arena_score": 1446.331797785251,
+        "arena_rank": 50.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 5": {
+        "display_name": "glm-5",
+        "arena_score": 1446.2715082160585,
+        "arena_rank": 51.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 6 terra": {
+        "display_name": "gpt-5.6-terra-xhigh",
+        "arena_score": 1446.2198901916286,
+        "arena_rank": 52.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k2 5": {
+        "display_name": "kimi-k2.5-instant",
+        "arena_score": 1420.309091475017,
+        "arena_rank": 105.0,
+        "arena_date": "2026-09-13",
+        "organization": "moonshot",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "nvidia nemotron 3 ultra 550b a55b nvfp4": {
+        "display_name": "nvidia-nemotron-3-ultra-550b-a55b-nvfp4",
+        "arena_score": 1444.6640265122355,
+        "arena_rank": 55.0,
+        "arena_date": "2026-09-13",
+        "organization": "nvidia",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "ernie 5 0 0110": {
+        "display_name": "ernie-5.0-0110",
+        "arena_score": 1444.4941963433394,
+        "arena_rank": 56.0,
+        "arena_date": "2026-09-13",
+        "organization": "baidu",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 20 beta1": {
+        "display_name": "grok-4.20-beta1",
+        "arena_score": 1444.3375916713178,
+        "arena_rank": 57.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v4 pro high 20260813": {
+        "display_name": "deepseek-v4-pro-high-20260813",
+        "arena_score": 1443.9463526493378,
+        "arena_rank": 58.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 6 astra max": {
+        "display_name": "gpt-6-astra-max",
+        "arena_score": 1443.7243904445113,
+        "arena_rank": 59.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "ernie 5 0 preview 1203": {
+        "display_name": "ernie-5.0-preview-1203",
+        "arena_score": 1442.5408821080998,
+        "arena_rank": 60.0,
+        "arena_date": "2026-09-13",
+        "organization": "baidu",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 flash thinking minimal": {
+        "display_name": "gemini-3-flash (thinking-minimal)",
+        "arena_score": 1442.3994046988937,
+        "arena_rank": 61.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "sonnet 5": {
+        "display_name": "claude-sonnet-5-high",
+        "arena_score": 1442.1464894477058,
+        "arena_rank": 62.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 1": {
+        "display_name": "gpt-5.1",
+        "arena_score": 1422.5730995952028,
+        "arena_rank": 100.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 4 31b": {
+        "display_name": "gemma-4-31b",
+        "arena_score": 1441.680670089327,
+        "arena_rank": 64.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "hy3": {
+        "display_name": "hy3",
+        "arena_score": 1440.584592681439,
+        "arena_rank": 65.0,
+        "arena_date": "2026-09-13",
+        "organization": "tencent",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 6": {
+        "display_name": "glm-4.6",
+        "arena_score": 1440.478518588064,
+        "arena_rank": 66.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "inkling": {
+        "display_name": "inkling",
+        "arena_score": 1439.675758817386,
+        "arena_rank": 67.0,
+        "arena_date": "2026-09-13",
+        "organization": "thinky",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 8 27b": {
+        "display_name": "qwen3.8-27b",
+        "arena_score": 1439.2697603936188,
+        "arena_rank": 68.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 max": {
+        "display_name": "qwen3-max-preview",
+        "arena_score": 1439.1655434251022,
+        "arena_rank": 69.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 2 chat latest 20260210": {
+        "display_name": "gpt-5.2-chat-latest-20260210",
+        "arena_score": 1438.898118607211,
+        "arena_rank": 70.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 5 397b a17b": {
+        "display_name": "qwen3.5-397b-a17b",
+        "arena_score": 1438.2629148058554,
+        "arena_rank": 71.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "sonnet 4 5 20250929": {
+        "display_name": "claude-sonnet-4-5-20250929",
+        "arena_score": 1438.2469788453327,
+        "arena_rank": 72.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 1": {
+        "display_name": "grok-4.1",
+        "arena_score": 1436.2364786930038,
+        "arena_rank": 77.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 6 plus": {
+        "display_name": "qwen3.6-plus",
+        "arena_score": 1436.7371645331768,
+        "arena_rank": 74.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mimo v2 pro": {
+        "display_name": "mimo-v2-pro",
+        "arena_score": 1436.4913822407943,
+        "arena_rank": 75.0,
+        "arena_date": "2026-09-13",
+        "organization": "xiaomi",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 5v turbo": {
+        "display_name": "glm-5v-turbo",
+        "arena_score": 1436.4899071922214,
+        "arena_rank": 76.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 7": {
+        "display_name": "glm-4.7",
+        "arena_score": 1435.8941412270676,
+        "arena_rank": 78.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 5 flash lite": {
+        "display_name": "gemini-3.5-flash-lite",
+        "arena_score": 1435.5426509480046,
+        "arena_rank": 79.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 4 26b a4b": {
+        "display_name": "gemma-4-26b-a4b",
+        "arena_score": 1434.473302772797,
+        "arena_rank": 80.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "sonnet 4 5 20250929 high 32k": {
+        "display_name": "claude-sonnet-4-5-20250929-high-32k",
+        "arena_score": 1433.9444221972358,
+        "arena_rank": 81.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "minimax m3": {
+        "display_name": "minimax-m3",
+        "arena_score": 1433.499392232071,
+        "arena_rank": 82.0,
+        "arena_date": "2026-09-13",
+        "organization": "minimax",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v4 flash": {
+        "display_name": "deepseek-v4-flash-high-preview",
+        "arena_score": 1423.747665551525,
+        "arena_rank": 97.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "ernie 5 0 preview 1022": {
+        "display_name": "ernie-5.0-preview-1022",
+        "arena_score": 1430.4072331555146,
+        "arena_rank": 84.0,
+        "arena_date": "2026-09-13",
+        "organization": "baidu",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 5": {
+        "display_name": "glm-4.5",
+        "arena_score": 1430.204671916151,
+        "arena_rank": 85.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 6 luna": {
+        "display_name": "gpt-5.6-luna-xhigh",
+        "arena_score": 1429.8880619280424,
+        "arena_rank": 86.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 6": {
+        "display_name": "grok-4.6-high",
+        "arena_score": 1429.8648410703747,
+        "arena_rank": 87.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "chatgpt 4o latest 20250326": {
+        "display_name": "chatgpt-4o-latest-20250326",
+        "arena_score": 1428.7834891954988,
+        "arena_rank": 88.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek r1 0528": {
+        "display_name": "deepseek-r1-0528",
+        "arena_score": 1427.525758137932,
+        "arena_rank": 89.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mimo v2 5": {
+        "display_name": "mimo-v2.5",
+        "arena_score": 1427.4171267973738,
+        "arena_rank": 90.0,
+        "arena_date": "2026-09-13",
+        "organization": "xiaomi",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral large 3": {
+        "display_name": "mistral-large-3",
+        "arena_score": 1427.0440267157855,
+        "arena_rank": 91.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "longcat flash chat 2602": {
+        "display_name": "longcat-flash-chat-2602-exp",
+        "arena_score": 1425.846610238856,
+        "arena_rank": 92.0,
+        "arena_date": "2026-09-13",
+        "organization": "meituan",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 3 preview 02 24": {
+        "display_name": "grok-3-preview-02-24",
+        "arena_score": 1425.4839227590574,
+        "arena_rank": 93.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v3 2": {
+        "display_name": "deepseek-v3.2-thinking",
+        "arena_score": 1419.8087035382666,
+        "arena_rank": 107.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral medium 2508": {
+        "display_name": "mistral-medium-2508",
+        "arena_score": 1424.811183646475,
+        "arena_rank": 95.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "longcat flash chat": {
+        "display_name": "longcat-flash-chat",
+        "arena_score": 1422.9086673412612,
+        "arena_rank": 98.0,
+        "arena_date": "2026-09-13",
+        "organization": "meituan",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mimo v2 omni": {
+        "display_name": "mimo-v2-omni",
+        "arena_score": 1422.1922421417541,
+        "arena_rank": 101.0,
+        "arena_date": "2026-09-13",
+        "organization": "xiaomi",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "amazon nova experimental chat 12 10": {
+        "display_name": "amazon-nova-experimental-chat-12-10",
+        "arena_score": 1421.1210013886691,
+        "arena_rank": 102.0,
+        "arena_date": "2026-09-13",
+        "organization": "amazon",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 vl 235b a22b instruct": {
+        "display_name": "qwen3-vl-235b-a22b-instruct",
+        "arena_score": 1420.608553906872,
+        "arena_rank": 103.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral medium 3 5": {
+        "display_name": "mistral-medium-3.5",
+        "arena_score": 1420.579205033804,
+        "arena_rank": 104.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v3 1 terminus": {
+        "display_name": "deepseek-v3.1-terminus",
+        "arena_score": 1416.905764340594,
+        "arena_rank": 117.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 235b a22b instruct 2507": {
+        "display_name": "qwen3-235b-a22b-instruct-2507",
+        "arena_score": 1419.78995501221,
+        "arena_rank": 108.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v3 1": {
+        "display_name": "deepseek-v3.1-thinking",
+        "arena_score": 1416.6458274620377,
+        "arena_rank": 118.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 1 20250805 thinking 16k": {
+        "display_name": "claude-opus-4-1-20250805-thinking-16k",
+        "arena_score": 1419.1516567254375,
+        "arena_rank": 111.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 1 20250805": {
+        "display_name": "claude-opus-4-1-20250805",
+        "arena_score": 1418.0927370682243,
+        "arena_rank": 112.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 5 122b a10b": {
+        "display_name": "qwen3.5-122b-a10b",
+        "arena_score": 1417.8520045655569,
+        "arena_rank": 113.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 next 80b a3b instruct": {
+        "display_name": "qwen3-next-80b-a3b-instruct",
+        "arena_score": 1417.547212592872,
+        "arena_rank": 114.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 5 preview 2025 02 27": {
+        "display_name": "gpt-4.5-preview-2025-02-27",
+        "arena_score": 1417.2977025280304,
+        "arena_rank": 115.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 flash": {
+        "display_name": "gemini-2.5-flash",
+        "arena_score": 1417.2705574952797,
+        "arena_rank": 116.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 2": {
+        "display_name": "gpt-5.2",
+        "arena_score": 1412.4322666959479,
+        "arena_rank": 125.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "amazon nova experimental chat 11 10": {
+        "display_name": "amazon-nova-experimental-chat-11-10",
+        "arena_score": 1415.8295080756652,
+        "arena_rank": 120.0,
+        "arena_date": "2026-09-13",
+        "organization": "amazon",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 3 1 flash lite": {
+        "display_name": "gemini-3.1-flash-lite-preview",
+        "arena_score": 1415.279948462245,
+        "arena_rank": 121.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 235b a22b thinking 2507": {
+        "display_name": "qwen3-235b-a22b-thinking-2507",
+        "arena_score": 1415.0912391012268,
+        "arena_rank": 122.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k2 thinking turbo": {
+        "display_name": "kimi-k2-thinking-turbo",
+        "arena_score": 1414.4654567742755,
+        "arena_rank": 123.0,
+        "arena_date": "2026-09-13",
+        "organization": "moonshot",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 max 2025 09 23": {
+        "display_name": "qwen3-max-2025-09-23",
+        "arena_score": 1413.0841863194241,
+        "arena_rank": 124.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "inkling small": {
+        "display_name": "Inkling Small",
+        "arena_score": 1412.2580987955253,
+        "arena_rank": 126.0,
+        "arena_date": "2026-09-13",
+        "organization": "thinky",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 4 mini": {
+        "display_name": "gpt-5.4-mini-high",
+        "arena_score": 1412.1104022499223,
+        "arena_rank": 127.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 0709": {
+        "display_name": "grok-4-0709",
+        "arena_score": 1411.5315280105817,
+        "arena_rank": 128.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mimo v2 flash non": {
+        "display_name": "mimo-v2-flash (non-thinking)",
+        "arena_score": 1411.0914275958132,
+        "arena_rank": 129.0,
+        "arena_date": "2026-09-13",
+        "organization": "xiaomi",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "o3 2025 04 16": {
+        "display_name": "o3-2025-04-16",
+        "arena_score": 1409.8759907518565,
+        "arena_rank": 130.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 5 27b": {
+        "display_name": "qwen3.5-27b",
+        "arena_score": 1408.0744738922174,
+        "arena_rank": 131.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 1 fast reasoning": {
+        "display_name": "grok-4-1-fast-reasoning",
+        "arena_score": 1407.92148991376,
+        "arena_rank": 132.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 flash preview 09 2025": {
+        "display_name": "gemini-2.5-flash-preview-09-2025",
+        "arena_score": 1406.931509475791,
+        "arena_rank": 133.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 fast chat": {
+        "display_name": "grok-4-fast-chat",
+        "arena_score": 1406.7157288032279,
+        "arena_rank": 134.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "hunyuan vision 1 5": {
+        "display_name": "hunyuan-vision-1.5-thinking",
+        "arena_score": 1406.488396436124,
+        "arena_rank": 135.0,
+        "arena_date": "2026-09-13",
+        "organization": "tencent",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5": {
+        "display_name": "gpt-5-high",
+        "arena_score": 1406.0627276186394,
+        "arena_rank": 136.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "hunyuan hy3": {
+        "display_name": "hunyuan-hy3-preview",
+        "arena_score": 1405.001249006279,
+        "arena_rank": 137.0,
+        "arena_date": "2026-09-13",
+        "organization": "tencent",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "minimax m2 7": {
+        "display_name": "minimax-m2.7",
+        "arena_score": 1404.6134212005488,
+        "arena_rank": 138.0,
+        "arena_date": "2026-09-13",
+        "organization": "minimax",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 chat": {
+        "display_name": "gpt-5-chat",
+        "arena_score": 1403.680141619309,
+        "arena_rank": 139.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "step 3 5 flash": {
+        "display_name": "step-3.5-flash",
+        "arena_score": 1403.676140842388,
+        "arena_rank": 140.0,
+        "arena_date": "2026-09-13",
+        "organization": "stepfun",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 vl 235b a22b": {
+        "display_name": "qwen3-vl-235b-a22b-thinking",
+        "arena_score": 1400.7638483088406,
+        "arena_rank": 141.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "hunyuan t1 20250711": {
+        "display_name": "hunyuan-t1-20250711",
+        "arena_score": 1400.7533305269121,
+        "arena_rank": 142.0,
+        "arena_date": "2026-09-13",
+        "organization": "tencent",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 fast reasoning": {
+        "display_name": "grok-4-fast-reasoning",
+        "arena_score": 1398.7894645755377,
+        "arena_rank": 143.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "amazon nova experimental chat 26 01 10": {
+        "display_name": "amazon-nova-experimental-chat-26-01-10",
+        "arena_score": 1397.8980689824932,
+        "arena_rank": 144.0,
+        "arena_date": "2026-09-13",
+        "organization": "amazon",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 4 3": {
+        "display_name": "grok-4.3",
+        "arena_score": 1397.7328480746648,
+        "arena_rank": 145.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 5 flash": {
+        "display_name": "qwen3.5-flash",
+        "arena_score": 1397.6510085029963,
+        "arena_rank": 146.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "haiku 4 5 20251001": {
+        "display_name": "claude-haiku-4-5-20251001",
+        "arena_score": 1396.6367998746723,
+        "arena_rank": 147.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 5 35b a3b": {
+        "display_name": "qwen3.5-35b-a3b",
+        "arena_score": 1395.4961499786593,
+        "arena_rank": 148.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "amazon nova experimental chat 10 20": {
+        "display_name": "amazon-nova-experimental-chat-10-20",
+        "arena_score": 1394.8667262656968,
+        "arena_rank": 149.0,
+        "arena_date": "2026-09-13",
+        "organization": "amazon",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mimo v2 flash": {
+        "display_name": "mimo-v2-flash (thinking)",
+        "arena_score": 1394.4843166600351,
+        "arena_rank": 150.0,
+        "arena_date": "2026-09-13",
+        "organization": "xiaomi",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 235b a22b no": {
+        "display_name": "qwen3-235b-a22b-no-thinking",
+        "arena_score": 1393.686555756128,
+        "arena_rank": 151.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "muse glimmer": {
+        "display_name": "muse-glimmer",
+        "arena_score": 1391.8323970990027,
+        "arena_rank": 152.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "minimax m2 1": {
+        "display_name": "minimax-m2.1-preview",
+        "arena_score": 1391.2999154166498,
+        "arena_rank": 153.0,
+        "arena_date": "2026-09-13",
+        "organization": "minimax",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 3 chat": {
+        "display_name": "gpt-5.3-chat-latest",
+        "arena_score": 1387.9561607181126,
+        "arena_rank": 154.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 5 air": {
+        "display_name": "glm-4.5-air",
+        "arena_score": 1383.6488856899614,
+        "arena_rank": 155.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 30b a3b instruct 2507": {
+        "display_name": "qwen3-30b-a3b-instruct-2507",
+        "arena_score": 1383.6334267808575,
+        "arena_rank": 156.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 1 2025 04 14": {
+        "display_name": "gpt-4.1-2025-04-14",
+        "arena_score": 1382.7668907539003,
+        "arena_rank": 157.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k2 0905": {
+        "display_name": "kimi-k2-0905-preview",
+        "arena_score": 1379.5185656414435,
+        "arena_rank": 158.0,
+        "arena_date": "2026-09-13",
+        "organization": "moonshot",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 flash lite preview 09 2025 no": {
+        "display_name": "gemini-2.5-flash-lite-preview-09-2025-no-thinking",
+        "arena_score": 1379.4264546844843,
+        "arena_rank": 159.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "nvidia nemotron 3 super 120b a12b": {
+        "display_name": "nvidia-nemotron-3-super-120b-a12b",
+        "arena_score": 1377.8861132898535,
+        "arena_rank": 160.0,
+        "arena_date": "2026-09-13",
+        "organization": "nvidia",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "solar pro4": {
+        "display_name": "solar-pro4",
+        "arena_score": 1377.2778113965023,
+        "arena_rank": 161.0,
+        "arena_date": "2026-09-13",
+        "organization": "upstage",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 20250514 thinking 16k": {
+        "display_name": "claude-opus-4-20250514-thinking-16k",
+        "arena_score": 1376.9315344016848,
+        "arena_rank": 162.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 6v": {
+        "display_name": "glm-4.6v",
+        "arena_score": 1376.5130939503294,
+        "arena_rank": 163.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "hunyuan turbos 20250416": {
+        "display_name": "hunyuan-turbos-20250416",
+        "arena_score": 1376.4123170977996,
+        "arena_rank": 164.0,
+        "arena_date": "2026-09-13",
+        "organization": "tencent",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v3 0324": {
+        "display_name": "deepseek-v3-0324",
+        "arena_score": 1375.0081310119167,
+        "arena_rank": 165.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 mini": {
+        "display_name": "gpt-5-mini-high",
+        "arena_score": 1372.960829107249,
+        "arena_rank": 166.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 4 nano": {
+        "display_name": "gpt-5.4-nano-high",
+        "arena_score": 1372.8636699025517,
+        "arena_rank": 167.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek r1": {
+        "display_name": "deepseek-r1",
+        "arena_score": 1372.5975456954359,
+        "arena_rank": 168.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "kimi k2 0711": {
+        "display_name": "kimi-k2-0711-preview",
+        "arena_score": 1370.8077217525542,
+        "arena_rank": 169.0,
+        "arena_date": "2026-09-13",
+        "organization": "moonshot",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral medium 2505": {
+        "display_name": "mistral-medium-2505",
+        "arena_score": 1369.9966603685566,
+        "arena_rank": 170.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 5 flash lite preview 06 17": {
+        "display_name": "gemini-2.5-flash-lite-preview-06-17-thinking",
+        "arena_score": 1369.150020574071,
+        "arena_rank": 171.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 3 mini": {
+        "display_name": "grok-3-mini-beta",
+        "arena_score": 1364.1555275588792,
+        "arena_rank": 180.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 next 80b a3b": {
+        "display_name": "qwen3-next-80b-a3b-thinking",
+        "arena_score": 1367.779188148761,
+        "arena_rank": 173.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 max": {
+        "display_name": "qwen2.5-max",
+        "arena_score": 1366.5744058814537,
+        "arena_rank": 174.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 235b a22b": {
+        "display_name": "qwen3-235b-a22b",
+        "arena_score": 1366.1099291152295,
+        "arena_rank": 175.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt oss 120b": {
+        "display_name": "gpt-oss-120b",
+        "arena_score": 1365.8660337558201,
+        "arena_rank": 176.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "o1 2024 12 17": {
+        "display_name": "o1-2024-12-17",
+        "arena_score": 1365.7359126175597,
+        "arena_rank": 177.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "opus 4 20250514": {
+        "display_name": "claude-opus-4-20250514",
+        "arena_score": 1365.6731015706812,
+        "arena_rank": 178.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "amazon nova experimental chat 10 09": {
+        "display_name": "amazon-nova-experimental-chat-10-09",
+        "arena_score": 1364.2787609580357,
+        "arena_rank": 179.0,
+        "arena_date": "2026-09-13",
+        "organization": "amazon",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "granite 4 2 30b": {
+        "display_name": "granite-4.2-30b",
+        "arena_score": 1363.284931361607,
+        "arena_rank": 181.0,
+        "arena_date": "2026-09-13",
+        "organization": "ibm",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "nova 2 lite": {
+        "display_name": "nova-2-lite",
+        "arena_score": 1362.620213087203,
+        "arena_rank": 182.0,
+        "arena_date": "2026-09-13",
+        "organization": "amazon",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "ling flash 2 0": {
+        "display_name": "ling-flash-2.0",
+        "arena_score": 1361.4484224485655,
+        "arena_rank": 183.0,
+        "arena_date": "2026-09-13",
+        "organization": "ant-group",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "minimax m2 5": {
+        "display_name": "minimax-m2.5",
+        "arena_score": 1358.9003855569676,
+        "arena_rank": 184.0,
+        "arena_date": "2026-09-13",
+        "organization": "minimax",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 3 27b it": {
+        "display_name": "gemma-3-27b-it",
+        "arena_score": 1357.6692920244916,
+        "arena_rank": 185.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mercury 2": {
+        "display_name": "mercury-2",
+        "arena_score": 1357.5754488622858,
+        "arena_rank": 186.0,
+        "arena_date": "2026-09-13",
+        "organization": "inception-ai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 coder 480b a35b instruct": {
+        "display_name": "qwen3-coder-480b-a35b-instruct",
+        "arena_score": 1356.4519914385157,
+        "arena_rank": 187.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "intellect 3": {
+        "display_name": "intellect-3",
+        "arena_score": 1356.1549136497508,
+        "arena_rank": 188.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 0 flash 001": {
+        "display_name": "gemini-2.0-flash-001",
+        "arena_score": 1353.9896463367593,
+        "arena_rank": 189.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "o4 mini 2025 04 16": {
+        "display_name": "o4-mini-2025-04-16",
+        "arena_score": 1353.2297725559238,
+        "arena_rank": 190.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "o1": {
+        "display_name": "o1-preview",
+        "arena_score": 1352.6758627275242,
+        "arena_rank": 191.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 7 flash": {
+        "display_name": "glm-4.7-flash",
+        "arena_score": 1352.23360236133,
+        "arena_rank": 192.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "step 3": {
+        "display_name": "step-3",
+        "arena_score": 1350.4970156715583,
+        "arena_rank": 193.0,
+        "arena_date": "2026-09-13",
+        "organization": "stepfun",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "sonnet 4 20250514 thinking 32k": {
+        "display_name": "claude-sonnet-4-20250514-thinking-32k",
+        "arena_score": 1350.0280395035693,
+        "arena_rank": 194.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "nvidia nemotron 3 nano 30b a3b bf16": {
+        "display_name": "nvidia-nemotron-3-nano-30b-a3b-bf16",
+        "arena_score": 1348.4376238350076,
+        "arena_rank": 195.0,
+        "arena_date": "2026-09-13",
+        "organization": "nvidia",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "minimax m1": {
+        "display_name": "minimax-m1",
+        "arena_score": 1342.6452288494124,
+        "arena_rank": 196.0,
+        "arena_date": "2026-09-13",
+        "organization": "minimax",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "minimax m2": {
+        "display_name": "minimax-m2",
+        "arena_score": 1342.120997954032,
+        "arena_rank": 197.0,
+        "arena_date": "2026-09-13",
+        "organization": "minimax",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "trinity large": {
+        "display_name": "trinity-large-preview",
+        "arena_score": 1338.4936247907456,
+        "arena_rank": 202.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 1 mini 2025 04 14": {
+        "display_name": "gpt-4.1-mini-2025-04-14",
+        "arena_score": 1340.2121984142298,
+        "arena_rank": 199.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 32b": {
+        "display_name": "qwen3-32b",
+        "arena_score": 1340.0130573184333,
+        "arena_rank": 200.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "sonnet 4 20250514": {
+        "display_name": "claude-sonnet-4-20250514",
+        "arena_score": 1339.2918319283708,
+        "arena_rank": 201.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral small 2506": {
+        "display_name": "mistral-small-2506",
+        "arena_score": 1338.4890304586554,
+        "arena_rank": 203.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "nvidia llama 3 3 nemotron super 49b v1 5": {
+        "display_name": "nvidia-llama-3.3-nemotron-super-49b-v1.5",
+        "arena_score": 1338.0330502424229,
+        "arena_rank": 204.0,
+        "arena_date": "2026-09-13",
+        "organization": "nvidia",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "o3 mini": {
+        "display_name": "o3-mini",
+        "arena_score": 1319.1356771693231,
+        "arena_rank": 221.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "step 1o turbo 202506": {
+        "display_name": "step-1o-turbo-202506",
+        "arena_score": 1335.7335704969046,
+        "arena_rank": 206.0,
+        "arena_date": "2026-09-13",
+        "organization": "stepfun",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 3 12b it": {
+        "display_name": "gemma-3-12b-it",
+        "arena_score": 1334.1476371464328,
+        "arena_rank": 207.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 5v": {
+        "display_name": "glm-4.5v",
+        "arena_score": 1332.9339150127141,
+        "arena_rank": 208.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v3": {
+        "display_name": "deepseek-v3",
+        "arena_score": 1332.39447803502,
+        "arena_rank": 209.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "ring flash 2 0": {
+        "display_name": "ring-flash-2.0",
+        "arena_score": 1332.1999235381875,
+        "arena_rank": 210.0,
+        "arena_date": "2026-09-13",
+        "organization": "ant-group",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "command a 03 2025": {
+        "display_name": "command-a-03-2025",
+        "arena_score": 1330.8694482687717,
+        "arena_rank": 211.0,
+        "arena_date": "2026-09-13",
+        "organization": "cohere",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 plus 0111": {
+        "display_name": "glm-4-plus-0111",
+        "arena_score": 1330.722526025713,
+        "arena_rank": 212.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "nvidia nemotron 3 5 lightning 30b a3b nvfp4": {
+        "display_name": "nvidia-nemotron-3.5-lightning-30b-a3b-nvfp4",
+        "arena_score": 1330.7215065549576,
+        "arena_rank": 213.0,
+        "arena_date": "2026-09-13",
+        "organization": "nvidia",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 2 0 flash lite preview 02 05": {
+        "display_name": "gemini-2.0-flash-lite-preview-02-05",
+        "arena_score": 1329.4879678126993,
+        "arena_rank": 214.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwq 32b": {
+        "display_name": "qwq-32b-preview",
+        "arena_score": 1161.6968377375458,
+        "arena_rank": 326.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen plus 0125": {
+        "display_name": "qwen-plus-0125",
+        "arena_score": 1326.303555418854,
+        "arena_rank": 216.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "step 2 16k exp 202412": {
+        "display_name": "step-2-16k-exp-202412",
+        "arena_score": 1320.8000914794873,
+        "arena_rank": 217.0,
+        "arena_date": "2026-09-13",
+        "organization": "stepfun",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 5 nano": {
+        "display_name": "gpt-5-nano-high",
+        "arena_score": 1319.7230596037255,
+        "arena_rank": 218.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "hunyuan turbos 20250226": {
+        "display_name": "hunyuan-turbos-20250226",
+        "arena_score": 1319.6401788164271,
+        "arena_rank": 219.0,
+        "arena_date": "2026-09-13",
+        "organization": "tencent",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 nemotron ultra 253b v1": {
+        "display_name": "llama-3.1-nemotron-ultra-253b-v1",
+        "arena_score": 1319.4690061736985,
+        "arena_rank": 220.0,
+        "arena_date": "2026-09-13",
+        "organization": "nvidia",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 1 5 pro 002": {
+        "display_name": "gemini-1.5-pro-002",
+        "arena_score": 1319.0350499728063,
+        "arena_rank": 222.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "o1 mini": {
+        "display_name": "o1-mini",
+        "arena_score": 1316.9763171542445,
+        "arena_rank": 223.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen3 30b a3b": {
+        "display_name": "qwen3-30b-a3b",
+        "arena_score": 1316.9714522678294,
+        "arena_rank": 224.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "granite 4 2 8b": {
+        "display_name": "granite-4.2-8b",
+        "arena_score": 1316.7847316399266,
+        "arena_rank": 225.0,
+        "arena_date": "2026-09-13",
+        "organization": "ibm",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "3 7 sonnet 20250219 thinking 32k": {
+        "display_name": "claude-3-7-sonnet-20250219-thinking-32k",
+        "arena_score": 1314.406352632073,
+        "arena_rank": 226.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "olmo 3 1 32b instruct": {
+        "display_name": "olmo-3.1-32b-instruct",
+        "arena_score": 1311.833730412696,
+        "arena_rank": 227.0,
+        "arena_date": "2026-09-13",
+        "organization": "allenai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "hunyuan turbo 0110": {
+        "display_name": "hunyuan-turbo-0110",
+        "arena_score": 1311.3321359415395,
+        "arena_rank": 228.0,
+        "arena_date": "2026-09-13",
+        "organization": "tencent",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 3 nemotron 49b super v1": {
+        "display_name": "llama-3.3-nemotron-49b-super-v1",
+        "arena_score": 1308.2862372453587,
+        "arena_rank": 229.0,
+        "arena_date": "2026-09-13",
+        "organization": "nvidia",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 3n e4b it": {
+        "display_name": "gemma-3n-e4b-it",
+        "arena_score": 1305.3054247653934,
+        "arena_rank": 230.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 2 2024 08 13": {
+        "display_name": "grok-2-2024-08-13",
+        "arena_score": 1304.4790128521936,
+        "arena_rank": 231.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "yi lightning": {
+        "display_name": "yi-lightning",
+        "arena_score": 1301.440885931414,
+        "arena_rank": 232.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4o 2024 05 13": {
+        "display_name": "gpt-4o-2024-05-13",
+        "arena_score": 1300.340739279973,
+        "arena_rank": 233.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "olmo 3 32b think": {
+        "display_name": "olmo-3-32b-think",
+        "arena_score": 1299.713990906864,
+        "arena_rank": 234.0,
+        "arena_date": "2026-09-13",
+        "organization": "allenai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "3 7 sonnet 20250219": {
+        "display_name": "claude-3-7-sonnet-20250219",
+        "arena_score": 1299.2832142562586,
+        "arena_rank": 235.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 plus 1127": {
+        "display_name": "qwen2.5-plus-1127",
+        "arena_score": 1299.0462445751732,
+        "arena_rank": 236.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "3 5 sonnet 20241022": {
+        "display_name": "claude-3-5-sonnet-20241022",
+        "arena_score": 1297.8351347501598,
+        "arena_rank": 237.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "granite 4 2 3b": {
+        "display_name": "granite-4.2-3b",
+        "arena_score": 1297.4851530847727,
+        "arena_rank": 238.0,
+        "arena_date": "2026-09-13",
+        "organization": "ibm",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "molmo 2 8b": {
+        "display_name": "molmo-2-8b",
+        "arena_score": 1294.1761698935795,
+        "arena_rank": 239.0,
+        "arena_date": "2026-09-13",
+        "organization": "allenai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v2 5 1210": {
+        "display_name": "deepseek-v2.5-1210",
+        "arena_score": 1293.8220223404517,
+        "arena_rank": 240.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "granite 4 1 8b": {
+        "display_name": "granite-4.1-8b",
+        "arena_score": 1292.0757372652884,
+        "arena_rank": 241.0,
+        "arena_date": "2026-09-13",
+        "organization": "ibm",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "athene v2 chat": {
+        "display_name": "athene-v2-chat",
+        "arena_score": 1291.3588865990375,
+        "arena_rank": 242.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 3 4b it": {
+        "display_name": "gemma-3-4b-it",
+        "arena_score": 1290.7301483308265,
+        "arena_rank": 243.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 plus": {
+        "display_name": "glm-4-plus",
+        "arena_score": 1289.5623603405934,
+        "arena_rank": 244.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "hunyuan large 2025 02 10": {
+        "display_name": "hunyuan-large-2025-02-10",
+        "arena_score": 1287.8479776322097,
+        "arena_rank": 245.0,
+        "arena_date": "2026-09-13",
+        "organization": "tencent",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt oss 20b": {
+        "display_name": "gpt-oss-20b",
+        "arena_score": 1287.3185781419006,
+        "arena_rank": 246.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 4 maverick 17b 128e instruct": {
+        "display_name": "llama-4-maverick-17b-128e-instruct",
+        "arena_score": 1287.1711021995966,
+        "arena_rank": 247.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 1 5 flash 002": {
+        "display_name": "gemini-1.5-flash-002",
+        "arena_score": 1286.55509875479,
+        "arena_rank": 248.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4o mini 2024 07 18": {
+        "display_name": "gpt-4o-mini-2024-07-18",
+        "arena_score": 1286.319304629852,
+        "arena_rank": 249.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 1 nano 2025 04 14": {
+        "display_name": "gpt-4.1-nano-2025-04-14",
+        "arena_score": 1284.7233663940924,
+        "arena_rank": 250.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mercury": {
+        "display_name": "mercury",
+        "arena_score": 1284.142981518307,
+        "arena_rank": 251.0,
+        "arena_date": "2026-09-13",
+        "organization": "inception-ai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 405b instruct bf16": {
+        "display_name": "llama-3.1-405b-instruct-bf16",
+        "arena_score": 1283.599915293005,
+        "arena_rank": 252.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 nemotron 70b instruct": {
+        "display_name": "llama-3.1-nemotron-70b-instruct",
+        "arena_score": 1282.5632262973454,
+        "arena_rank": 253.0,
+        "arena_date": "2026-09-13",
+        "organization": "nvidia",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4o 2024 08 06": {
+        "display_name": "gpt-4o-2024-08-06",
+        "arena_score": 1282.4460859472922,
+        "arena_rank": 254.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen max 0919": {
+        "display_name": "qwen-max-0919",
+        "arena_score": 1281.7903929319427,
+        "arena_rank": 255.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 405b instruct fp8": {
+        "display_name": "llama-3.1-405b-instruct-fp8",
+        "arena_score": 1281.7060719986325,
+        "arena_rank": 256.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "3 5 sonnet 20240620": {
+        "display_name": "claude-3-5-sonnet-20240620",
+        "arena_score": 1280.8278917242067,
+        "arena_rank": 257.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "grok 2 mini 2024 08 13": {
+        "display_name": "grok-2-mini-2024-08-13",
+        "arena_score": 1280.5964256995205,
+        "arena_rank": 258.0,
+        "arena_date": "2026-09-13",
+        "organization": "xai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 4 scout 17b 16e instruct": {
+        "display_name": "llama-4-scout-17b-16e-instruct",
+        "arena_score": 1279.2885411912946,
+        "arena_rank": 259.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini advanced 0514": {
+        "display_name": "gemini-advanced-0514",
+        "arena_score": 1278.465471096618,
+        "arena_rank": 260.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral small 3 1 24b instruct 2503": {
+        "display_name": "mistral-small-3.1-24b-instruct-2503",
+        "arena_score": 1277.394621231215,
+        "arena_rank": 261.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 3 70b instruct": {
+        "display_name": "llama-3.3-70b-instruct",
+        "arena_score": 1273.9755482664095,
+        "arena_rank": 262.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "hunyuan standard 2025 02 10": {
+        "display_name": "hunyuan-standard-2025-02-10",
+        "arena_score": 1273.893170815357,
+        "arena_rank": 263.0,
+        "arena_date": "2026-09-13",
+        "organization": "tencent",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 1 5 pro 001": {
+        "display_name": "gemini-1.5-pro-001",
+        "arena_score": 1273.4007471276118,
+        "arena_rank": 264.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 turbo 2024 04 09": {
+        "display_name": "gpt-4-turbo-2024-04-09",
+        "arena_score": 1271.599438095353,
+        "arena_rank": 265.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek v2 5": {
+        "display_name": "deepseek-v2.5",
+        "arena_score": 1271.1599647688065,
+        "arena_rank": 266.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "olmo 3 1 32b think": {
+        "display_name": "olmo-3.1-32b-think",
+        "arena_score": 1270.3339837615952,
+        "arena_rank": 267.0,
+        "arena_date": "2026-09-13",
+        "organization": "allenai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 72b instruct": {
+        "display_name": "qwen2.5-72b-instruct",
+        "arena_score": 1268.9217295058986,
+        "arena_rank": 268.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral large 2407": {
+        "display_name": "mistral-large-2407",
+        "arena_score": 1266.0533006454382,
+        "arena_rank": 269.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral large 2411": {
+        "display_name": "mistral-large-2411",
+        "arena_score": 1265.2278497617326,
+        "arena_rank": 270.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "athene 70b 0725": {
+        "display_name": "athene-70b-0725",
+        "arena_score": 1265.0476142500322,
+        "arena_rank": 271.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 1106": {
+        "display_name": "gpt-4-1106-preview",
+        "arena_score": 1263.3457859823257,
+        "arena_rank": 272.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "hunyuan large vision": {
+        "display_name": "hunyuan-large-vision",
+        "arena_score": 1263.0531744061734,
+        "arena_rank": 273.0,
+        "arena_date": "2026-09-13",
+        "organization": "tencent",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 0125": {
+        "display_name": "gpt-4-0125-preview",
+        "arena_score": 1262.1121251086613,
+        "arena_rank": 274.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "3 opus 20240229": {
+        "display_name": "claude-3-opus-20240229",
+        "arena_score": 1261.9091028782664,
+        "arena_rank": 275.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 70b instruct": {
+        "display_name": "llama-3.1-70b-instruct",
+        "arena_score": 1260.811746256272,
+        "arena_rank": 276.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "amazon nova pro v1 0": {
+        "display_name": "amazon-nova-pro-v1.0",
+        "arena_score": 1258.6125880948182,
+        "arena_rank": 277.0,
+        "arena_date": "2026-09-13",
+        "organization": "amazon",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 tulu 3 70b": {
+        "display_name": "llama-3.1-tulu-3-70b",
+        "arena_score": 1255.6199818427378,
+        "arena_rank": 278.0,
+        "arena_date": "2026-09-13",
+        "organization": "allenai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "3 5 haiku 20241022": {
+        "display_name": "claude-3-5-haiku-20241022",
+        "arena_score": 1255.1121497389308,
+        "arena_rank": 279.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "magistral medium 2506": {
+        "display_name": "magistral-medium-2506",
+        "arena_score": 1254.8533588877685,
+        "arena_rank": 280.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "reka core 20240904": {
+        "display_name": "reka-core-20240904",
+        "arena_score": 1248.287516834114,
+        "arena_rank": 281.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "ibm granite h small": {
+        "display_name": "ibm-granite-h-small",
+        "arena_score": 1239.7934173304827,
+        "arena_rank": 282.0,
+        "arena_date": "2026-09-13",
+        "organization": "ibm",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 1 5 flash 001": {
+        "display_name": "gemini-1.5-flash-001",
+        "arena_score": 1239.2081159948139,
+        "arena_rank": 283.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "jamba 1 5 large": {
+        "display_name": "jamba-1.5-large",
+        "arena_score": 1236.93139387566,
+        "arena_rank": 284.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral small 24b instruct 2501": {
+        "display_name": "mistral-small-24b-instruct-2501",
+        "arena_score": 1233.4814884188556,
+        "arena_rank": 285.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 2 27b it": {
+        "display_name": "gemma-2-27b-it",
+        "arena_score": 1231.2823947135128,
+        "arena_rank": 286.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 5 coder 32b instruct": {
+        "display_name": "qwen2.5-coder-32b-instruct",
+        "arena_score": 1229.9444348241448,
+        "arena_rank": 287.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "command r plus 08 2024": {
+        "display_name": "command-r-plus-08-2024",
+        "arena_score": 1228.805292131643,
+        "arena_rank": 288.0,
+        "arena_date": "2026-09-13",
+        "organization": "cohere",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "amazon nova lite v1 0": {
+        "display_name": "amazon-nova-lite-v1.0",
+        "arena_score": 1228.3965523309837,
+        "arena_rank": 289.0,
+        "arena_date": "2026-09-13",
+        "organization": "amazon",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 nemotron 51b instruct": {
+        "display_name": "llama-3.1-nemotron-51b-instruct",
+        "arena_score": 1227.9005290033322,
+        "arena_rank": 290.0,
+        "arena_date": "2026-09-13",
+        "organization": "nvidia",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 2 9b it simpo": {
+        "display_name": "gemma-2-9b-it-simpo",
+        "arena_score": 1226.971379670152,
+        "arena_rank": 291.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "glm 4 0520": {
+        "display_name": "glm-4-0520",
+        "arena_score": 1225.8158960742753,
+        "arena_rank": 292.0,
+        "arena_date": "2026-09-13",
+        "organization": "zai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini 1 5 flash 8b 001": {
+        "display_name": "gemini-1.5-flash-8b-001",
+        "arena_score": 1225.7594079446462,
+        "arena_rank": 293.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "nemotron 4 340b instruct": {
+        "display_name": "nemotron-4-340b-instruct",
+        "arena_score": 1224.7211180951565,
+        "arena_rank": 294.0,
+        "arena_date": "2026-09-13",
+        "organization": "nvidia",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "c4ai aya expanse 32b": {
+        "display_name": "c4ai-aya-expanse-32b",
+        "arena_score": 1223.9096484913625,
+        "arena_rank": 295.0,
+        "arena_date": "2026-09-13",
+        "organization": "cohere",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 70b instruct": {
+        "display_name": "llama-3-70b-instruct",
+        "arena_score": 1220.703798080389,
+        "arena_rank": 296.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "3 sonnet 20240229": {
+        "display_name": "claude-3-sonnet-20240229",
+        "arena_score": 1217.9457296203066,
+        "arena_rank": 297.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "olmo 2 0325 32b instruct": {
+        "display_name": "olmo-2-0325-32b-instruct",
+        "arena_score": 1217.8670829483735,
+        "arena_rank": 298.0,
+        "arena_date": "2026-09-13",
+        "organization": "allenai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "reka flash 20240904": {
+        "display_name": "reka-flash-20240904",
+        "arena_score": 1217.8266917990043,
+        "arena_rank": 299.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "phi 4": {
+        "display_name": "phi-4",
+        "arena_score": 1216.6030849323192,
+        "arena_rank": 300.0,
+        "arena_date": "2026-09-13",
+        "organization": "microsoft",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "amazon nova micro v1 0": {
+        "display_name": "amazon-nova-micro-v1.0",
+        "arena_score": 1208.332121448068,
+        "arena_rank": 301.0,
+        "arena_date": "2026-09-13",
+        "organization": "amazon",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 2 9b it": {
+        "display_name": "gemma-2-9b-it",
+        "arena_score": 1207.297033213283,
+        "arena_rank": 302.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 0314": {
+        "display_name": "gpt-4-0314",
+        "arena_score": 1205.9155701316472,
+        "arena_rank": 303.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "command r plus": {
+        "display_name": "command-r-plus",
+        "arena_score": 1203.7379517516592,
+        "arena_rank": 304.0,
+        "arena_date": "2026-09-13",
+        "organization": "cohere",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen2 72b instruct": {
+        "display_name": "qwen2-72b-instruct",
+        "arena_score": 1203.179383492048,
+        "arena_rank": 305.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "hunyuan standard 256k": {
+        "display_name": "hunyuan-standard-256k",
+        "arena_score": 1201.8374489793218,
+        "arena_rank": 306.0,
+        "arena_date": "2026-09-13",
+        "organization": "tencent",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "3 haiku 20240307": {
+        "display_name": "claude-3-haiku-20240307",
+        "arena_score": 1194.5882217336668,
+        "arena_rank": 307.0,
+        "arena_date": "2026-09-13",
+        "organization": "anthropic",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 tulu 3 8b": {
+        "display_name": "llama-3.1-tulu-3-8b",
+        "arena_score": 1193.202201788784,
+        "arena_rank": 308.0,
+        "arena_date": "2026-09-13",
+        "organization": "allenai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek coder v2": {
+        "display_name": "deepseek-coder-v2",
+        "arena_score": 1191.0981365337652,
+        "arena_rank": 309.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "ministral 8b 2410": {
+        "display_name": "ministral-8b-2410",
+        "arena_score": 1190.8263651779482,
+        "arena_rank": 310.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "command r 08 2024": {
+        "display_name": "command-r-08-2024",
+        "arena_score": 1187.265698940724,
+        "arena_rank": 311.0,
+        "arena_date": "2026-09-13",
+        "organization": "cohere",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "jamba 1 5 mini": {
+        "display_name": "jamba-1.5-mini",
+        "arena_score": 1186.5829475628111,
+        "arena_rank": 312.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 1 8b instruct": {
+        "display_name": "llama-3.1-8b-instruct",
+        "arena_score": 1186.4819805354384,
+        "arena_rank": 313.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 4 0613": {
+        "display_name": "gpt-4-0613",
+        "arena_score": 1185.9131079809376,
+        "arena_rank": 314.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "c4ai aya expanse 8b": {
+        "display_name": "c4ai-aya-expanse-8b",
+        "arena_score": 1185.009684488671,
+        "arena_rank": 315.0,
+        "arena_date": "2026-09-13",
+        "organization": "cohere",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral large 2402": {
+        "display_name": "mistral-large-2402",
+        "arena_score": 1176.384140434631,
+        "arena_rank": 316.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen1 5 110b chat": {
+        "display_name": "qwen1.5-110b-chat",
+        "arena_score": 1174.4776239788946,
+        "arena_rank": 317.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "yi 1 5 34b chat": {
+        "display_name": "yi-1.5-34b-chat",
+        "arena_score": 1172.8651482738633,
+        "arena_rank": 318.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "reka flash 21b 20240226 online": {
+        "display_name": "reka-flash-21b-20240226-online",
+        "arena_score": 1170.339382566252,
+        "arena_rank": 319.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen1 5 72b chat": {
+        "display_name": "qwen1.5-72b-chat",
+        "arena_score": 1166.0589954356856,
+        "arena_rank": 320.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 8b instruct": {
+        "display_name": "llama-3-8b-instruct",
+        "arena_score": 1165.5101372454733,
+        "arena_rank": 321.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral": {
+        "display_name": "mistral-medium",
+        "arena_score": 1165.0449707212374,
+        "arena_rank": 322.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "reka flash 21b 20240226": {
+        "display_name": "reka-flash-21b-20240226",
+        "arena_score": 1164.894969909827,
+        "arena_rank": 323.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "command r": {
+        "display_name": "command-r",
+        "arena_score": 1163.0412164850306,
+        "arena_rank": 324.0,
+        "arena_date": "2026-09-13",
+        "organization": "cohere",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mixtral 8x22b instruct v0 1": {
+        "display_name": "mixtral-8x22b-instruct-v0.1",
+        "arena_score": 1161.8932017547397,
+        "arena_rank": 325.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "internlm2 5 20b chat": {
+        "display_name": "internlm2_5-20b-chat",
+        "arena_score": 1158.351681103797,
+        "arena_rank": 327.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 2 2b it": {
+        "display_name": "gemma-2-2b-it",
+        "arena_score": 1155.6786659570816,
+        "arena_rank": 328.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "granite 3 1 8b instruct": {
+        "display_name": "granite-3.1-8b-instruct",
+        "arena_score": 1149.4218041779318,
+        "arena_rank": 329.0,
+        "arena_date": "2026-09-13",
+        "organization": "ibm",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini pro dev api": {
+        "display_name": "gemini-pro-dev-api",
+        "arena_score": 1148.754801424556,
+        "arena_rank": 330.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "zephyr orpo 141b a35b v0 1": {
+        "display_name": "zephyr-orpo-141b-A35b-v0.1",
+        "arena_score": 1143.5989503616543,
+        "arena_rank": 331.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "phi 3 medium 4k instruct": {
+        "display_name": "phi-3-medium-4k-instruct",
+        "arena_score": 1137.456375385073,
+        "arena_rank": 332.0,
+        "arena_date": "2026-09-13",
+        "organization": "microsoft",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen1 5 32b chat": {
+        "display_name": "qwen1.5-32b-chat",
+        "arena_score": 1137.10892207392,
+        "arena_rank": 333.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "starling lm 7b": {
+        "display_name": "starling-lm-7b-beta",
+        "arena_score": 1131.9494940200982,
+        "arena_rank": 334.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mixtral 8x7b instruct v0 1": {
+        "display_name": "mixtral-8x7b-instruct-v0.1",
+        "arena_score": 1131.4646239574126,
+        "arena_rank": 335.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemini pro": {
+        "display_name": "gemini-pro",
+        "arena_score": 1130.444761519023,
+        "arena_rank": 336.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "yi 34b chat": {
+        "display_name": "yi-34b-chat",
+        "arena_score": 1128.376498970416,
+        "arena_rank": 337.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen1 5 14b chat": {
+        "display_name": "qwen1.5-14b-chat",
+        "arena_score": 1127.599869646996,
+        "arena_rank": 338.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "granite 3 1 2b instruct": {
+        "display_name": "granite-3.1-2b-instruct",
+        "arena_score": 1127.303700397245,
+        "arena_rank": 339.0,
+        "arena_date": "2026-09-13",
+        "organization": "ibm",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 3 5 turbo 0125": {
+        "display_name": "gpt-3.5-turbo-0125",
+        "arena_score": 1124.8268048604073,
+        "arena_rank": 340.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "tulu 2 dpo 70b": {
+        "display_name": "tulu-2-dpo-70b",
+        "arena_score": 1120.9411260971688,
+        "arena_rank": 341.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "wizardlm 70b": {
+        "display_name": "wizardlm-70b",
+        "arena_score": 1119.4267665894754,
+        "arena_rank": 342.0,
+        "arena_date": "2026-09-13",
+        "organization": "microsoft",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "dbrx instruct": {
+        "display_name": "dbrx-instruct-preview",
+        "arena_score": 1118.7747506955811,
+        "arena_rank": 343.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 2 70b chat": {
+        "display_name": "llama-2-70b-chat",
+        "arena_score": 1115.133787911054,
+        "arena_rank": 344.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "nous hermes 2 mixtral 8x7b dpo": {
+        "display_name": "nous-hermes-2-mixtral-8x7b-dpo",
+        "arena_score": 1111.944900033013,
+        "arena_rank": 345.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "phi 3 small 8k instruct": {
+        "display_name": "phi-3-small-8k-instruct",
+        "arena_score": 1109.7290379132273,
+        "arena_rank": 346.0,
+        "arena_date": "2026-09-13",
+        "organization": "microsoft",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 2 3b instruct": {
+        "display_name": "llama-3.2-3b-instruct",
+        "arena_score": 1109.4397862806138,
+        "arena_rank": 347.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "starling lm 7b alpha": {
+        "display_name": "starling-lm-7b-alpha",
+        "arena_score": 1107.5668358280627,
+        "arena_rank": 348.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "openchat 3 5 0106": {
+        "display_name": "openchat-3.5-0106",
+        "arena_score": 1106.51435579435,
+        "arena_rank": 349.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "vicuna 33b": {
+        "display_name": "vicuna-33b",
+        "arena_score": 1105.1657709963288,
+        "arena_rank": 350.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "deepseek llm 67b chat": {
+        "display_name": "deepseek-llm-67b-chat",
+        "arena_score": 1104.93535513245,
+        "arena_rank": 351.0,
+        "arena_date": "2026-09-13",
+        "organization": "deepseek",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "snowflake arctic instruct": {
+        "display_name": "snowflake-arctic-instruct",
+        "arena_score": 1100.8810069128276,
+        "arena_rank": 352.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama2 70b steerlm chat": {
+        "display_name": "llama2-70b-steerlm-chat",
+        "arena_score": 1097.996246312452,
+        "arena_rank": 353.0,
+        "arena_date": "2026-09-13",
+        "organization": "nvidia",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "openchat 3 5": {
+        "display_name": "openchat-3.5",
+        "arena_score": 1096.9378845078618,
+        "arena_rank": 354.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "granite 3 0 8b instruct": {
+        "display_name": "granite-3.0-8b-instruct",
+        "arena_score": 1096.3518064011887,
+        "arena_rank": 355.0,
+        "arena_date": "2026-09-13",
+        "organization": "ibm",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt 3 5 turbo 1106": {
+        "display_name": "gpt-3.5-turbo-1106",
+        "arena_score": 1094.026695029672,
+        "arena_rank": 356.0,
+        "arena_date": "2026-09-13",
+        "organization": "openai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 1 1 7b it": {
+        "display_name": "gemma-1.1-7b-it",
+        "arena_score": 1093.8781532770047,
+        "arena_rank": 357.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "openhermes 2 5 mistral 7b": {
+        "display_name": "openhermes-2.5-mistral-7b",
+        "arena_score": 1092.40482610956,
+        "arena_rank": 358.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral 7b instruct v0 2": {
+        "display_name": "mistral-7b-instruct-v0.2",
+        "arena_score": 1089.4704205438516,
+        "arena_rank": 359.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 2 13b chat": {
+        "display_name": "llama-2-13b-chat",
+        "arena_score": 1084.3624627390097,
+        "arena_rank": 360.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen1 5 7b chat": {
+        "display_name": "qwen1.5-7b-chat",
+        "arena_score": 1083.3652051526108,
+        "arena_rank": 361.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "solar 10 7b instruct v1 0": {
+        "display_name": "solar-10.7b-instruct-v1.0",
+        "arena_score": 1082.9927602598025,
+        "arena_rank": 362.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "dolphin 2 2 1 mistral 7b": {
+        "display_name": "dolphin-2.2.1-mistral-7b",
+        "arena_score": 1080.8784429964353,
+        "arena_rank": 363.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "phi 3 mini 4k instruct june 2024": {
+        "display_name": "phi-3-mini-4k-instruct-june-2024",
+        "arena_score": 1079.8604547038672,
+        "arena_rank": 364.0,
+        "arena_date": "2026-09-13",
+        "organization": "microsoft",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "granite 3 0 2b instruct": {
+        "display_name": "granite-3.0-2b-instruct",
+        "arena_score": 1079.7551232424498,
+        "arena_rank": 365.0,
+        "arena_date": "2026-09-13",
+        "organization": "ibm",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "wizardlm 13b": {
+        "display_name": "wizardlm-13b",
+        "arena_score": 1076.4428965900247,
+        "arena_rank": 366.0,
+        "arena_date": "2026-09-13",
+        "organization": "microsoft",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "phi 3 mini 4k instruct": {
+        "display_name": "phi-3-mini-4k-instruct",
+        "arena_score": 1073.2112889235098,
+        "arena_rank": 367.0,
+        "arena_date": "2026-09-13",
+        "organization": "microsoft",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "zephyr 7b": {
+        "display_name": "zephyr-7b-beta",
+        "arena_score": 1069.3267658240302,
+        "arena_rank": 368.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mpt 30b chat": {
+        "display_name": "mpt-30b-chat",
+        "arena_score": 1068.5137928770341,
+        "arena_rank": 369.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "codellama 34b instruct": {
+        "display_name": "codellama-34b-instruct",
+        "arena_score": 1065.3886823206587,
+        "arena_rank": 370.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "zephyr 7b alpha": {
+        "display_name": "zephyr-7b-alpha",
+        "arena_score": 1058.274055398935,
+        "arena_rank": 371.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "vicuna 13b": {
+        "display_name": "vicuna-13b",
+        "arena_score": 1057.562518314627,
+        "arena_rank": 372.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "codellama 70b instruct": {
+        "display_name": "codellama-70b-instruct",
+        "arena_score": 1057.1467162494773,
+        "arena_rank": 373.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 7b it": {
+        "display_name": "gemma-7b-it",
+        "arena_score": 1056.0594812175061,
+        "arena_rank": 374.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 3 2 1b instruct": {
+        "display_name": "llama-3.2-1b-instruct",
+        "arena_score": 1054.5401616106462,
+        "arena_rank": 375.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "falcon 180b chat": {
+        "display_name": "falcon-180b-chat",
+        "arena_score": 1054.2581284426312,
+        "arena_rank": 376.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 2 7b chat": {
+        "display_name": "llama-2-7b-chat",
+        "arena_score": 1053.3030543322348,
+        "arena_rank": 377.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "guanaco 33b": {
+        "display_name": "guanaco-33b",
+        "arena_score": 1053.2829940254774,
+        "arena_rank": 378.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen 14b chat": {
+        "display_name": "qwen-14b-chat",
+        "arena_score": 1050.9319112159294,
+        "arena_rank": 379.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "phi 3 mini 128k instruct": {
+        "display_name": "phi-3-mini-128k-instruct",
+        "arena_score": 1050.293848865494,
+        "arena_rank": 380.0,
+        "arena_date": "2026-09-13",
+        "organization": "microsoft",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "smollm2 1 7b instruct": {
+        "display_name": "smollm2-1.7b-instruct",
+        "arena_score": 1041.9246511435933,
+        "arena_rank": 381.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "stripedhyena nous 7b": {
+        "display_name": "stripedhyena-nous-7b",
+        "arena_score": 1038.3442105904237,
+        "arena_rank": 382.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "olmo 7b instruct": {
+        "display_name": "olmo-7b-instruct",
+        "arena_score": 1031.7152342839638,
+        "arena_rank": 383.0,
+        "arena_date": "2026-09-13",
+        "organization": "allenai",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "vicuna 7b": {
+        "display_name": "vicuna-7b",
+        "arena_score": 1030.850800325343,
+        "arena_rank": 384.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "palm 2": {
+        "display_name": "palm-2",
+        "arena_score": 1027.1418016328205,
+        "arena_rank": 385.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mistral 7b instruct": {
+        "display_name": "mistral-7b-instruct",
+        "arena_score": 1023.4118673881351,
+        "arena_rank": 386.0,
+        "arena_date": "2026-09-13",
+        "organization": "mistral",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 1 1 2b it": {
+        "display_name": "gemma-1.1-2b-it",
+        "arena_score": 1022.1280423731871,
+        "arena_rank": 387.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gemma 2b it": {
+        "display_name": "gemma-2b-it",
+        "arena_score": 1002.0511832799568,
+        "arena_rank": 388.0,
+        "arena_date": "2026-09-13",
+        "organization": "google",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "qwen1 5 4b chat": {
+        "display_name": "qwen1.5-4b-chat",
+        "arena_score": 997.1386421729198,
+        "arena_rank": 389.0,
+        "arena_date": "2026-09-13",
+        "organization": "alibaba",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "koala 13b": {
+        "display_name": "koala-13b",
+        "arena_score": 989.5121418586723,
+        "arena_rank": 390.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "chatglm3 6b": {
+        "display_name": "chatglm3-6b",
+        "arena_score": 971.9417875464158,
+        "arena_rank": 391.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "gpt4all 13b snoozy": {
+        "display_name": "gpt4all-13b-snoozy",
+        "arena_score": 956.0842850718582,
+        "arena_rank": 392.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "mpt 7b chat": {
+        "display_name": "mpt-7b-chat",
+        "arena_score": 955.1219701446848,
+        "arena_rank": 393.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "rwkv 4 raven 14b": {
+        "display_name": "RWKV-4-Raven-14B",
+        "arena_score": 948.2888425537872,
+        "arena_rank": 394.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "chatglm2 6b": {
+        "display_name": "chatglm2-6b",
+        "arena_score": 938.5306847048585,
+        "arena_rank": 395.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "alpaca 13b": {
+        "display_name": "alpaca-13b",
+        "arena_score": 932.7134453257311,
+        "arena_rank": 396.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "chatglm 6b": {
+        "display_name": "chatglm-6b",
+        "arena_score": 918.3672843304844,
+        "arena_rank": 397.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "oasst pythia 12b": {
+        "display_name": "oasst-pythia-12b",
+        "arena_score": 915.969209268439,
+        "arena_rank": 398.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "fastchat t5 3b": {
+        "display_name": "fastchat-t5-3b",
+        "arena_score": 894.3017750473384,
+        "arena_rank": 399.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "stablelm tuned alpha 7b": {
+        "display_name": "stablelm-tuned-alpha-7b",
+        "arena_score": 866.4758776587304,
+        "arena_rank": 400.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "dolly v2 12b": {
+        "display_name": "dolly-v2-12b",
+        "arena_score": 851.0302276964123,
+        "arena_rank": 401.0,
+        "arena_date": "2026-09-13",
+        "organization": "",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      },
+      "llama 13b": {
+        "display_name": "llama-13b",
+        "arena_score": 833.4128952595117,
+        "arena_rank": 402.0,
+        "arena_date": "2026-09-13",
+        "organization": "meta",
+        "source": "LMArena",
+        "licence": "CC BY 4.0"
+      }
+    }
+  }
+}

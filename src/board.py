@@ -209,8 +209,12 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                     "mentions": row.get("mentions") or 0,
                     "engagement": row.get("engagement") or 0,
                     "region": row.get("region", "global"),
-                    "global_rank": row.get("rank"),
-                    "rank_note": row.get("rank_note"),
+                    # Tranco 전체 순위는 뺐다 — reddit.com 순위는 레딧 전체의 것이지
+                    # AI 대화의 것이 아니라서, 사용자가 "애매하다"고 한 바로 그 지점이다.
+                    # 대신 각 커뮤니티가 실제로 공개하는 숫자를 단위와 함께 싣는다.
+                    "signal_kind": row.get("signal_kind"),
+                    "signal_value": row.get("signal_value"),
+                    "note": row.get("note"),
                 })
             if not cards:
                 empty_reason = "커뮤니티 신호를 수집하지 못했습니다."

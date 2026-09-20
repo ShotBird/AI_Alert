@@ -25,13 +25,42 @@ WS = re.compile(r"\s+")
 TITLE_THRESHOLD = 0.78
 # 매체마다 같은 사건에 다른 제목을 단다. 문자 단위 유사도만으로는 안 잡히므로
 # 내용어가 얼마나 겹치는지도 함께 본다.
-TOKEN_THRESHOLD = 0.60
+#
+# 2026-09-21 실측(오늘자 뉴스 묶음 100건, 서로 다른 출처 쌍만): 0.60은 실제로
+# 있었던 교차 출처 중복을 전부 놓쳤다. 예를 들어
+#   [The Verge] "Security researchers used Claude to help them hack into OpenAI"
+#   [Ars Technica] "Researchers used Claude to hack OpenAI"
+# 는 같은 사건인데 jaccard=0.56로 0.60에 근소하게 못 미쳤고,
+#   [TechCrunch] "Google's Gemini is the latest AI model to hack other companies"
+#   [Techmeme]   "Google says it didn't consider Gemini's hacks worthy of disclosure..."
+# 는 jaccard=0.13까지 떨어진다 — Techmeme 특유의 길고 인용조 제목 때문에 분모(합집합)가
+# 커져서다. 반대로 MIN_SHARED(내용어가 몇 개 겹치는가)는 오늘 데이터에서
+# STOPWORDS 보강("ai"·"was"·"were"·"been" 추가, 아래 참고) 이후 3개 이상 겹치는
+# 쌍이 전부 같은 사건이었다 — 즉 판별력은 비율(jaccard)이 아니라 겹치는 개수에서
+# 나온다. 그래서 jaccard 문턱은 실측된 최소 참 양성(0.13)보다 살짝 낮춰 안전
+# 여유만 두고, MIN_SHARED를 주 판별 기준으로 삼는다.
+TOKEN_THRESHOLD = 0.12
 MIN_SHARED = 3
 
 STOPWORDS = {
-    "the", "a", "an", "is", "are", "to", "of", "in", "on", "for", "with", "and",
-    "at", "by", "from", "as", "its", "it", "this", "that", "new", "says", "say",
-    "will", "can", "how", "why", "what", "가", "이", "의", "를", "을", "에", "는",
+    "the", "a", "an", "is", "are", "was", "were", "been", "to", "of", "in", "on",
+    "for", "with", "and", "at", "by", "from", "as", "its", "it", "this", "that",
+    "new", "says", "say",
+    "will", "can", "how", "why", "what",
+    # "ai"는 이 섹션 제목 거의 전부에 등장해 변별력이 없다 — 있으나 없으나
+    # 겹친다. 포함시켜두면 서로 다른 사건도 "ai"만으로 겹친 것처럼 보여 오탐이
+    # 난다 (실측 사례: 전자신문 "CAIO 서밋..." vs AI타임스 "재귀적 자기개선..."이
+    # {도입, ai, 비용}으로 3개 겹쳐 보였으나 "ai"를 빼면 2개로 떨어져 정상적으로
+    # 다른 사건으로 판정된다).
+    "ai",
+    # "went"·"rogue"는 AI 사고 기사 제목에 흔한 상투어("AI가 폭주했다" 류)라
+    # 특정 사건을 가리키지 않는다. 실측 오탐(2026-09-21): 구글 제미나이가 3개
+    # 회사를 해킹한 사건과 전혀 다른 사건인 "OpenAI 모델이 폭주해 허깅페이스를
+    # 해킹했다"가 {went, hacked, rogue} 3개가 겹친다는 이유로 한 묶음이 될
+    # 뻔했다 — 겹친 단어 중 사건을 특정하는 고유명사(제미나이/구글/허깅페이스
+    # 등)가 하나도 없었다. "went"·"rogue"를 빼면 진짜 특정 사건 쌍만 남는다.
+    "went", "rogue",
+    "가", "이", "의", "를", "을", "에", "는",
     "은", "도", "로", "와", "과", "한", "하는", "했다", "밝혔다",
 }
 
@@ -101,11 +130,19 @@ def build_clusters(items):
             continue
 
         # 2단계: 제목이 충분히 비슷하면 같은 사건으로 본다
+        # 묶음을 처음 만든 항목의 제목하고만 비교하면 안 된다 — 실측 사례
+        # (2026-09-21, Anthropic 생물학 연구소 기사): 로이터의 한 URL 이 약한
+        # 제목("Anthropic creates AI powered wetlab")으로 먼저 묶음을 만들었고,
+        # 같은 URL 의 다른 제목 변형("Anthropic sets up biology lab...")이 URL
+        # 일치로 그 묶음에 조용히 합류했다. 그 뒤로 TechCrunch 의 진짜 같은
+        # 사건 기사가 들어와도 묶음의 "대표 제목"은 여전히 처음 그대로라 비교가
+        # 실패했다. 그래서 묶음 안의 모든 항목과 비교해 하나라도 맞으면 합친다.
         hit = None
         for c in clusters:
             if c["section"] != item["section"]:
                 continue
-            if _same_event(item["_norm"], item["_tok"], c["_norm"], c["_tok"]):
+            if any(_same_event(item["_norm"], item["_tok"], m["_norm"], m["_tok"])
+                   for m in c["items"]):
                 hit = c
                 break
 
@@ -113,8 +150,7 @@ def build_clusters(items):
             hit["items"].append(item)
             by_url.setdefault(item["_canon"], hit)
         else:
-            c = dict(section=item["section"], _norm=item["_norm"],
-                     _tok=item["_tok"], items=[item])
+            c = dict(section=item["section"], items=[item])
             clusters.append(c)
             by_url[item["_canon"]] = c
 

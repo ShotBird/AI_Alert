@@ -14,6 +14,7 @@ from datetime import datetime, timedelta, timezone
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
+from src import benchmarks                    # noqa: E402
 from src import board as board_mod            # noqa: E402
 from src import collect as collect_mod        # noqa: E402
 from src import community as community_mod    # noqa: E402
@@ -32,6 +33,7 @@ from src.sources import (MODEL_WORDS, PRODUCT_TERMS,  # noqa: E402
 BOARDS = os.path.join(HERE, "boards")
 COUNTER = os.path.join(HERE, "state", "api-usage.json")
 RANK_CACHE = os.path.join(HERE, "state", "domain-ranks.json")
+BENCH_CACHE = os.path.join(HERE, "state", "benchmarks.json")
 
 
 def load_env(path=os.path.join(HERE, ".env")):
@@ -212,6 +214,19 @@ def main():
         except Exception as exc:
             notes.append(f"마일스톤 실패: {type(exc).__name__}")
             print(f"[마일스톤] 실패: {type(exc).__name__}")
+
+    # 벤치마크 점수. 별도 섹션이 아니라 벤더 행에 붙는 주석이다 —
+    # 커버리지가 낮아(오늘 3/14) 섹션으로 만들면 대부분 빈칸이 된다.
+    if vendor_rows and not args.dry:
+        try:
+            index, b_notes = benchmarks.load_scores(budget, BENCH_CACHE)
+            notes.extend(b_notes)
+            notes.extend(benchmarks.annotate(vendor_rows, index))
+            hit = sum(1 for r in vendor_rows if r.get("benchmarks"))
+            print(f"[벤치마크] {hit}/{len(vendor_rows)}개 모델에 점수")
+        except Exception as exc:
+            notes.append(f"벤치마크 실패: {type(exc).__name__}")
+            print(f"[벤치마크] 실패: {type(exc).__name__}")
 
     keyword_rows, k_notes = keywords_mod.extract(items)
     notes.extend(k_notes)

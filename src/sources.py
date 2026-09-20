@@ -41,8 +41,15 @@ SOURCES = [
          url="https://arstechnica.com/ai/feed/"),
     dict(id="techmeme", region="global", name="Techmeme", section="top_headlines", kind="rss",
          url="https://www.techmeme.com/feed.xml"),
+    # 2026-09-21 실측: `/search`(관련도순)는 전부 그날그날의 최신 글이 아니라
+    # "역대 인기글"을 준다 — 60건 중 4일 이내인 것이 1건뿐이었다. 그래서 HN
+    # 항목이 날짜 창(run.py의 4일 컷오프)에서 전부 잘려나가 뉴스 섹션에 한 번도
+    # 도달하지 못했다. `/search_by_date`(최신순)로 바꾸면 같은 60건이 최근
+    # 11시간치로 좁혀진다. query=AI가 본문·URL까지 걸리는 느슨한 검색이라
+    # (relevance.py 주석 참고) 관련 없는 글이 많이 섞이므로, 4일 창을 웬만큼
+    # 채우려면 hitsPerPage를 늘려야 한다 — 500건이 실측상 대략 3일치였다.
     dict(id="hn", region="global", name="Hacker News", section="top_headlines", kind="hn",
-         url="https://hn.algolia.com/api/v1/search?tags=story&hitsPerPage=60&query=AI"),
+         url="https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=500&query=AI"),
     dict(id="geeknews", region="kr", name="GeekNews", section="top_headlines", kind="atom",
          url="https://news.hada.io/rss/news"),
     dict(id="etnews_ai", region="kr", name="전자신문", section="top_headlines", kind="rss", tz=9,
