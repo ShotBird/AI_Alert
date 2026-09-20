@@ -47,7 +47,7 @@ MAX_PER_SOURCE = 2
 
 SECTION_TITLES = {
     "model_updates": "모델 업데이트",
-    "github_skills": "GitHub 스킬",
+    "github_skills": "GitHub 급상승",
     "top_headlines": "뉴스",
     "communities": "AI 커뮤니티",
     "keywords": "오늘의 키워드",
@@ -131,6 +131,7 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                     "id": f"v_{board_date}_{seq:03d}",
                     "title": row["vendor"],
                     "family": row.get("family"),
+                    "headline": row.get("headline"),
                     "model": row["model"],
                     "url": row["url"],
                     "days_since": row["days"],
@@ -179,6 +180,7 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                     "stars": row["stars"],
                     "stars_delta": row["stars_delta"],
                     "category": row["category"],
+                    "kind": row.get("kind", "스킬"),
                     "updated_at": row.get("pushed_at") or None,
                     # 영어 원문 설명. LLM 키가 생기면 summary_ko 가 위에 붙는다.
                     "desc": row.get("desc") or None,
@@ -249,7 +251,14 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                     seq += 1
                     card = _card(cluster, seq, board_date, prev_keys)
                     card["region"] = cluster.get("region", "global")
-                    card["note_ko"] = news_notes.get(card["dedup_key"])
+                    hit = news_notes.get(card["dedup_key"]) or {}
+                    if isinstance(hit, str):        # 옛 형식: 한 줄 문자열
+                        hit = {"note": hit}
+                    card["note_ko"] = hit.get("note")
+                    # 해외 기사는 한국어 제목을 기본으로 둔다. 없으면 원문이 남는다 —
+                    # 빈 제목보다 원문이 낫다.
+                    if card["region"] == "global":
+                        card["title_ko"] = hit.get("title_ko")
                     cards.append(card)
                     taken += 1
             if not cards:

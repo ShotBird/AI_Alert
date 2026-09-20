@@ -46,7 +46,9 @@ def canonical_url(url):
              if k.lower() not in TRACKING]
     path = parts.path.rstrip("/") or "/"
     return urlunsplit((
-        parts.scheme.lower().replace("http", "https", 1) if parts.scheme else "https",
+        # http 든 https 든 같은 글로 보려고 스킴을 하나로 맞춘다.
+        # 예전에는 replace("http","https") 를 썼는데 https 가 httpss 가 됐다.
+        "https",
         parts.netloc.lower().removeprefix("www."),
         path,
         urlencode(sorted(query)),

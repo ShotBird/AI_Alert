@@ -252,6 +252,33 @@ def _is_family_release(title, family):
     return bool(pat.search(title))
 
 
+def _model_name(title, family):
+    """제목에서 **모델 이름만** 뽑는다.
+
+    한 발표가 모델 둘을 싣는 일이 흔하다 —
+    "Introducing Claude Fable 5.1 and Claude Mythos 5.1" 하나에서 계열 두 줄이 나오는데,
+    양쪽 다 제목 전체를 싣고 있어서 같은 줄이 두 번 나온 것처럼 보였다.
+    계열 이름 주변만 잘라내면 각 줄이 자기 모델을 가리킨다.
+    """
+    if not title:
+        return title
+    # 계열명 앞에 제품명 한 토막(Claude, Gemini …)까지 끌어오고, 뒤로 버전을 붙인다.
+    pat = re.compile(
+        r"([A-Za-z가-힣][\w.\-]*\s+)?" + re.escape(family) + r"[\s\-_]?v?[\d.]+[A-Za-z\d.\-]*",
+        re.I)
+    m = pat.search(title)
+    if m:
+        name = m.group(0).strip(" .,:")
+        # "Introducing Gemini 3.8" 처럼 동사가 앞 토막으로 딸려온다. 떼어낸다.
+        for verb in ("introducing", "announcing", "launching", "meet",
+                     "presenting", "shipping"):
+            if name.lower().startswith(verb + " "):
+                name = name[len(verb) + 1:]
+        return name.strip()
+    # 계열이 안 보이면 원문이 낫다 — 지어내지 않는다.
+    return title
+
+
 def _family_rows(vendor, candidates, now):
     """계열별로 가장 최근 것. 회사 한 줄을 계열 여러 줄로 편다.
 
@@ -271,7 +298,9 @@ def _family_rows(vendor, candidates, now):
         if best is None:
             continue
         days = max(0, int((now - best["at"]).total_seconds() // 86400))
-        out.append(dict(vendor=vendor["name"], family=fam, model=best["name"],
+        out.append(dict(vendor=vendor["name"], family=fam,
+                        model=_model_name(best["name"], fam),
+                        headline=best["name"],
                         url=best["url"], days=days,
                         at=best["at"].date().isoformat(),
                         via=best["via"], channel=best.get("channel"),

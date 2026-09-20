@@ -23,7 +23,17 @@ from .budget import BudgetExceeded
 API = "https://api.github.com"
 UA = "ai-alert/0.1 (personal daily digest)"
 
-TOPICS = ["agent-skills", "claude-skills"]
+# 종류별 토픽. 화면의 첫 축이 이 키가 되고, 부문(디자인·코드리뷰…)이 두 번째 축이다.
+# 새 섹션을 만들지 않고 축을 얹는 쪽을 택했다 — 수집·랭킹·화면이 이미 다 있다.
+KINDS = {
+    "스킬": ["agent-skills", "claude-skills", "claude-code-skills"],
+    "MCP 서버": ["mcp", "mcp-server", "model-context-protocol"],
+    "에이전트 프레임워크": ["ai-agent", "agent-framework", "llm-agent"],
+    "CLI·개발도구": ["ai-cli", "llm-tools", "ai-coding"],
+}
+TOPICS = [t for v in KINDS.values() for t in v]
+
+_TOPIC_KIND = {t: k for k, v in KINDS.items() for t in v}
 
 # 모음집 판별. LLM 분류가 붙기 전까지 쓰는 규칙 기반 1차 필터다.
 COLLECTION_RE = re.compile(
@@ -168,12 +178,31 @@ def top_rising(token, budget, candidates=60, want=20, cache=None):
                 seen.add(name)
                 ok, _why = _usable(repo)
                 if ok:
+                    repo["_kind"] = _TOPIC_KIND.get(topic, "스킬")
                     pool.append(repo)
             if len(items) < 100:
                 break
 
     # 후보마다 core 를 한 번씩 쓴다. 무인증은 시간당 60회뿐이라 여기서 끊긴다.
-    pool = pool[:candidates]
+    # 그냥 앞에서부터 자르면 먼저 검색한 종류(스킬)가 자리를 다 먹고
+    # MCP·프레임워크가 한 건도 안 남는다. 종류별로 번갈아 뽑는다.
+    by_kind = {}
+    for repo in pool:
+        by_kind.setdefault(repo.get("_kind", "스킬"), []).append(repo)
+    interleaved, idx = [], 0
+    while len(interleaved) < candidates:
+        added = False
+        for kind in KINDS:
+            bucket = by_kind.get(kind) or []
+            if idx < len(bucket):
+                interleaved.append(bucket[idx])
+                added = True
+                if len(interleaved) >= candidates:
+                    break
+        if not added:
+            break
+        idx += 1
+    pool = interleaved
 
     def row(repo, delta):
         return dict(
@@ -185,6 +214,7 @@ def top_rising(token, budget, candidates=60, want=20, cache=None):
             stars=repo.get("stargazers_count") or 0,
             stars_delta=delta,
             category=_classify(repo),
+            kind=repo.get("_kind", "스킬"),
         )
 
     rows, limited = [], False
@@ -225,10 +255,10 @@ def top_rising(token, budget, candidates=60, want=20, cache=None):
     # 증가분으로 줄 세워 20개를 보여주고, 부문을 누르면 그 부문 안에서 20개를 본다.
     per_cat, kept = {}, []
     for r in rows:
-        cat = r["category"]
-        if per_cat.get(cat, 0) >= want:
+        key = (r["kind"], r["category"])
+        if per_cat.get(key, 0) >= want:
             continue
-        per_cat[cat] = per_cat.get(cat, 0) + 1
+        per_cat[key] = per_cat.get(key, 0) + 1
         kept.append(r)
 
     thin = [c for c, n in per_cat.items() if n < want]

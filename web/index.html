@@ -371,7 +371,14 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .v-model a { color: var(--link); text-decoration: none; }
+  .v-model .v-name { color: var(--ink-soft); }
+  .v-src {
+    color: var(--link);
+    text-decoration: none;
+    font-size: 12px;
+    padding: 0 2px;
+  }
+  .v-src:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
   .v-when {
     display: flex;
     gap: 7px;
@@ -935,7 +942,8 @@
   function fmtWhen(c) {
     const d = c.updated_at;
     if (!d) return { date: "—", rel: "소식 없음", quiet: true };
-    const [, m, day] = d.split("-");
+    const [y, m, day] = d.split("-");
+    const thisYear = String(new Date().getFullYear());
     const n = c.days_since;
     let rel;
     if (n === 0) rel = "오늘";
@@ -943,15 +951,23 @@
     else if (n < 30) rel = n + "일";
     else if (n < 365) rel = Math.floor(n / 30) + "개월";
     else rel = (n / 365).toFixed(1) + "년";
-    return { date: `${m}/${day}`, rel, quiet: false, stale: n >= 90 };
+    // 올해가 아니면 년도까지 적는다. 같은 해면 월일만 — 자릿수가 짧을수록 읽기 쉽다.
+    const date = y === thisYear ? `${m}/${day}` : `${y.slice(2)}.${m}/${day}`;
+    return { date, rel, quiet: false, stale: n >= 90 };
   }
 
   function vendorTableHTML(cards) {
     const rows = cards.map(c => {
       const w = fmtWhen(c);
+      // 모델 이름은 글자만 두고, 근거 페이지는 아이콘 하나로 접는다.
+      // 제목 전체를 링크로 깔면 줄이 길어져 표가 읽히지 않는다.
+      const link = c.url
+        ? ` <a class="v-src" href="${esc(c.url)}" target="_blank" rel="noopener"
+              title="${esc(c.headline || c.model || "")} — ${esc(c.via || "출처")}"
+              aria-label="근거 페이지 열기">↗</a>`
+        : "";
       const model = c.model
-        ? (c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.model)}</a>`
-                 : esc(c.model))
+        ? `<span class="v-name">${esc(c.model)}</span>${link}`
         : `<span class="v-none">—</span>`;
       const relCls = w.quiet ? "v-none" : (w.stale ? "v-stale" : (c.days_since <= 1 ? "v-fresh" : ""));
       return `<div class="v-row">
