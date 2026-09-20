@@ -7,15 +7,24 @@
 적으면 그건 정보가 아니라 오보다. 대신 "마지막 갱신 이후 며칠"을 보여준다 —
 오래 조용한 회사가 곧 뭔가 낼 가능성이 높다는 것은 사용자가 직접 읽어낼 몫이다.
 
-출처가 벤더마다 다르다는 사실도 숨기지 않는다. 티켓 09 에서 확인한 대로
-가중치를 공개하는 회사는 Hugging Face 로 당일 잡히지만, Anthropic·OpenAI·xAI 는
-클로즈드라 발표문이나 뉴스로만 알 수 있다.
+**"자기 페이지를 먼저 본다"는 규칙은 그대로 적용하면 오히려 나빠진다.** 실측 결과:
+
+  - Qwen 공식 블로그 RSS 의 최신 글은 2025-09 인데 HF 는 2026-09-20 이다. 1년 차이다.
+    가중치를 공개하는 회사에게는 **HF 가 블로그보다 빠른 진짜 발표 채널**이다.
+  - 반대로 xAI 는 HF 에 2025년 grok-2 만 있고 실제 최신은 x.ai/news 의 Grok 4.6 이다.
+
+그래서 벤더를 두 갈래로 나눈다.
+
+  클로즈드(xAI·Anthropic·OpenAI) → 자기 페이지/피드가 유일한 진실. HF 는 참고만
+  오픈웨이트(Qwen·DeepSeek·Meta…)  → HF 가 본진. 블로그는 뒤처진다
 """
 
 import json
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
+
+from . import vendor_pages
 
 HF_API = "https://huggingface.co/api/models"
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
@@ -24,15 +33,20 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
 # 현황판에 고정으로 올리는 회사들. 소식이 없어도 줄은 남는다 —
 # "이 회사는 조용하다"도 정보이기 때문이다.
 VENDORS = [
-    dict(id="anthropic", name="Anthropic", hf=None,
+    dict(id="anthropic", name="Anthropic", hf=None, closed=True, page=None,
          terms=["claude", "앤트로픽", "anthropic", "sonnet", "opus", "haiku"]),
-    dict(id="openai", name="OpenAI", hf=None,
+    # OpenAI 는 클로즈드가 본체이고 HF 에는 오픈웨이트(gpt-oss, whisper)만 올린다.
+    # 발표문 쪽이 더 최신이면 그쪽이 이긴다 — 여기는 바닥값일 뿐이다.
+    dict(id="openai", name="OpenAI", hf="openai", closed=True, page=None,
          terms=["gpt", "오픈ai", "openai", "chatgpt", "o3", "o4"]),
     dict(id="google", name="Google", hf="google",
          terms=["gemini", "제미나이", "gemma"]),
     dict(id="meta", name="Meta", hf="meta-llama",
          terms=["llama", "라마"]),
-    dict(id="xai", name="xAI", hf=None,
+    # 저자명이 `xai-org` 다. `xai`/`x-ai` 로는 0건이 나와서 한동안 "소식 없음"이었다.
+    # 다만 여기 올라오는 건 뒤늦게 공개하는 오픈웨이트(grok-1, grok-2)라
+    # 실제 최신 모델(Grok 4.x, 클로즈드)보다 한참 뒤처진다. 발표문이 있으면 그게 이긴다.
+    dict(id="xai", name="xAI", hf="xai-org", closed=True, page="xai",
          terms=["grok", "그록"]),
     dict(id="deepseek", name="DeepSeek", hf="deepseek-ai",
          terms=["deepseek", "딥시크"]),
@@ -119,41 +133,80 @@ def _from_items(vendor, items):
     return best
 
 
+RELEASE_WORDS = ("introduc", "announc", "launch", "releas", "unveil",
+                 "now available", "available now", "출시", "공개", "발표")
+
+
+def _looks_release(title):
+    low = (title or "").lower()
+    return any(w in low for w in RELEASE_WORDS)
+
+
+def _from_page(vendor):
+    """벤더 자기 뉴스 페이지에서 가장 최근 '출시'로 보이는 글."""
+    if not vendor.get("page"):
+        return None
+    posts = vendor_pages.latest_posts(vendor["page"])
+    for post in posts:                      # 이미 최신순
+        if _looks_release(post["title"]):
+            return dict(name=post["title"], url=post["url"], at=post["at"],
+                        via=vendor["name"], channel="page")
+    if posts:                               # 출시가 없으면 가장 최근 글이라도
+        p = posts[0]
+        return dict(name=p["title"], url=p["url"], at=p["at"],
+                    via=vendor["name"], channel="page")
+    return None
+
+
 def vendor_status(items, now=None):
     """벤더별 현황 행과 notes."""
     now = now or datetime.now(timezone.utc)
-    rows, notes, hf_failures = [], [], 0
+    rows, notes, page_fail = [], [], []
 
     for vendor in VENDORS:
-        hit = None
-        if vendor["hf"]:
-            hit = _hf_latest(vendor["hf"])
-            if hit is None:
-                hf_failures += 1
+        closed = vendor.get("closed")
 
-        # 뉴스·발표문 쪽이 더 최신이면 그쪽을 쓴다. 클로즈드 벤더는 이쪽뿐이다.
+        # ① 자기 페이지 / 자기 피드 — 벤더가 직접 말한 것
+        own = _from_page(vendor)
+        if vendor.get("page") and own is None:
+            page_fail.append(vendor["name"])
         from_news = _from_items(vendor, items)
-        if from_news and (hit is None or from_news["at"] > hit["at"]):
-            hit = from_news
+        if from_news:
+            from_news["channel"] = "feed"
+            if own is None or from_news["at"] > own["at"]:
+                own = from_news
+
+        # ② Hugging Face — 가중치를 공개하는 회사에게는 여기가 본진이다
+        hf = _hf_latest(vendor["hf"]) if vendor["hf"] else None
+        if hf:
+            hf["channel"] = "hf"
+
+        # 클로즈드 회사는 HF 에 뒤늦은 오픈웨이트만 올라온다.
+        # 자기 입으로 말한 게 있으면 그게 이긴다 — 날짜가 더 옛날이어도.
+        if closed and own is not None:
+            hit = own
+        elif own is not None and hf is not None:
+            hit = own if own["at"] >= hf["at"] else hf
+        else:
+            hit = own or hf
 
         if hit is None:
-            rows.append(dict(vendor=vendor["name"], model=None, url=None,
-                             days=None, at=None, via=None,
+            rows.append(dict(vendor=vendor["name"], model=None, url=None, days=None,
+                             at=None, via=None, channel=None,
                              weights=bool(vendor["hf"])))
             continue
 
         days = max(0, int((now - hit["at"]).total_seconds() // 86400))
-        # 경과일만 있으면 "19일 전"이 언제인지 매번 세어야 한다. 날짜도 같이 싣는다.
         rows.append(dict(vendor=vendor["name"], model=hit["name"], url=hit["url"],
                          days=days, at=hit["at"].date().isoformat(),
-                         via=hit["via"], weights=bool(vendor["hf"])))
+                         via=hit["via"], channel=hit.get("channel"),
+                         weights=bool(vendor["hf"])))
 
-    # 최근에 움직인 회사를 위로. 소식이 없는 회사는 맨 아래에 남긴다.
     rows.sort(key=lambda r: (r["days"] is None, r["days"] if r["days"] is not None else 0))
 
-    if hf_failures:
-        notes.append(f"Hugging Face 조회 {hf_failures}건 실패 — "
-                     "해당 회사는 발표문·뉴스 기준으로만 표시됩니다.")
+    if page_fail:
+        notes.append("벤더 페이지를 못 읽은 곳: " + ", ".join(page_fail)
+                     + " — 해당 회사는 피드·HF 기준으로 표시됩니다.")
     notes.append("모델 업데이트는 '현황'이지 '계획'이 아닙니다. "
                  "벤더가 출시 일정을 공표하지 않으므로 마지막 갱신 이후 경과일만 보여줍니다.")
     return rows, notes

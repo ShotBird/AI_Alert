@@ -51,22 +51,38 @@ def _classify(repo):
     여기 있는 건 그때까지 쓰는 근사값이다.
     """
     blob = f"{repo.get('description') or ''} {' '.join(repo.get('topics') or [])}".lower()
+    # 구체적인 것부터 본다. "code review" 가 "backend" 보다 먼저 걸려야
+    # alibaba/open-code-review 가 인프라로 뭉뚱그려지지 않는다.
     table = [
-        ("디자인·비주얼", ("design", "diagram", "ui", "ux", "figma", "slide", "ppt", "video", "image")),
-        ("글쓰기·콘텐츠", ("writing", "writer", "content", "novel", "blog", "copy", "humaniz")),
-        ("메모리·컨텍스트", ("memory", "context", "rag", "knowledge", "recall")),
-        ("마케팅·SEO", ("seo", "marketing", "growth", "ads", "social")),
-        ("비즈니스·금융", ("finance", "invoice", "legal", "ecommerce", "business", "accounting")),
-        ("인프라·백엔드", ("terraform", "aws", "kubernetes", "docker", "postgres", "database",
-                        "backend", "devops", "cloud", "golang", "dotnet")),
-        ("연구·과학", ("research", "paper", "science", "arxiv", "bio", "chem")),
-        ("보안", ("security", "pentest", "ctf", "vulnerab", "audit")),
-        ("브라우저 자동화", ("browser", "scrap", "crawl", "playwright", "selenium")),
-        ("스킬 제작", ("skill-creator", "skill creator", "authoring", "template", "scaffold")),
-        ("계획·오케스트레이션", ("plan", "planning", "orchestrat", "workflow", "roadmap", "task")),
+        ("다이어그램",     ("diagram", "mermaid", "flowchart", "architecture diagram", "excalidraw")),
+        ("디자인·UI",     ("design", "figma", "design-system", "design token", "ux", "wireframe", "css")),
+        ("슬라이드·문서",  ("slide", "ppt", "powerpoint", "pptx", "keynote", "docx", "pdf", "report")),
+        ("이미지·영상",    ("image", "video", "photo", "render", "thumbnail", "sora", "diffusion")),
+        ("코드리뷰",       ("code review", "code-review", "review", "pr review", "lint", "refactor")),
+        ("테스트·품질",    ("test", "testing", "tdd", "coverage", "e2e", "playwright test", "qa")),
+        ("프론트엔드",     ("react", "vue", "svelte", "solidjs", "next.js", "frontend", "tailwind", "web performance")),
+        ("백엔드·API",    ("api", "rest", "graphql", "backend", "microservice", "grpc", "fastapi", "django")),
+        ("데이터베이스",   ("postgres", "mysql", "sqlite", "mongodb", "redis", "database", "sql", "migration")),
+        ("인프라·배포",    ("terraform", "kubernetes", "docker", "aws", "gcp", "azure", "devops", "ci/cd", "deploy")),
+        ("보안",          ("security", "pentest", "ctf", "vulnerab", "audit", "exploit", "owasp")),
+        ("브라우저 자동화", ("browser", "playwright", "selenium", "puppeteer", "automation")),
+        ("크롤링·수집",    ("scrap", "crawl", "spider", "extract", "rss")),
+        ("RAG·검색",      ("rag", "retrieval", "vector", "embedding", "semantic search", "index")),
+        ("메모리·컨텍스트", ("memory", "context", "knowledge", "recall", "session", "compaction")),
+        ("글쓰기",        ("writing", "writer", "novel", "screenplay", "copywriting", "humaniz", "blog post")),
+        ("번역·언어",     ("translat", "i18n", "localization", "번역")),
+        ("마케팅·SEO",    ("seo", "marketing", "growth", "ads", "social media", "newsletter")),
+        ("데이터·분석",    ("analytics", "dashboard", "pandas", "notebook", "visualiz", "chart", "etl")),
+        ("금융·회계",     ("finance", "invoice", "accounting", "trading", "stock", "tax", "budget")),
+        ("법률·규정",     ("legal", "contract", "compliance", "gdpr", "license")),
+        ("연구·논문",     ("research", "paper", "arxiv", "citation", "literature")),
+        ("과학·바이오",    ("bio", "chem", "genom", "protein", "physics", "medical", "clinical")),
+        ("스킬 제작",      ("skill-creator", "skill creator", "authoring", "scaffold", "boilerplate", "generator")),
+        ("에이전트 운영",  ("orchestrat", "multi-agent", "swarm", "subagent", "mcp server", "tool use")),
+        ("계획·관리",     ("plan", "planning", "roadmap", "task", "ticket", "issue", "project management", "sprint")),
     ]
     for label, needles in table:
-        # 단어 경계로 본다. 부분 문자열로 보면 "ui" 가 build/guide/require 에 걸린다.
+        # 단어 경계로 본다. 부분 문자열로 보면 "ui" 가 build/guide 에 걸린다.
         if any(re.search(r"(?<![a-z])" + re.escape(n), blob) for n in needles):
             return label
     return "기타"
@@ -158,7 +174,8 @@ def top_rising(token, budget, candidates=40, want=5, cache=None):
             repo=repo["full_name"],
             title=repo["full_name"],
             url=repo.get("html_url"),
-            summary_src=repo.get("description") or "",
+            desc=(repo.get("description") or "").strip(),
+            pushed_at=(repo.get("pushed_at") or "")[:10],
             stars=repo.get("stargazers_count") or 0,
             stars_delta=delta,
             category=_classify(repo),

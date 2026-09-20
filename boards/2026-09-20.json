@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "board_date": "2026-09-20",
-  "generated_at": "2026-09-20T14:22:20.133647Z",
+  "generated_at": "2026-09-20T14:35:27.593493Z",
   "status": "ok",
   "previous_board_date": "2026-09-20",
   "generator": {
@@ -9,17 +9,15 @@
     "model": null,
     "counts": {
       "collected": 1629,
-      "clustered": 107,
-      "published": 31
+      "clustered": 104,
+      "published": 26
     },
     "api_budget": {
-      "github_core": "103/900",
-      "github_search": "16/30",
+      "github_core": "108/900",
+      "github_search": "26/30",
       "tranco": "38/40"
     },
     "notes": [
-      "GitHub 토큰이 없어 후보 수를 줄였습니다 (무인증 core 시간당 60회).",
-      "GitHub 시간당 호출 한도(무인증 60회)를 다 써서 주간 증가분 대신 누적 스타로 줄을 세웠습니다. GH_READ_TOKEN 을 넣으면 5,000회로 늘어납니다.",
       "오늘 수집한 항목 중 다른 곳에서 커뮤니티를 가리킨 링크가 없음 (화제 유입량 0). 전체 트래픽 순위로만 줄을 세움",
       "화제 유입량은 오늘 수집한 항목이 가리키는 링크 기준이고, 전체 트래픽 순위(Tranco)는 AI 화제 전용 지표가 아니라 사이트 전체 규모다.",
       "모델 업데이트는 '현황'이지 '계획'이 아닙니다. 벤더가 출시 일정을 공표하지 않으므로 마지막 갱신 이후 경과일만 보여줍니다.",
@@ -117,35 +115,158 @@
           "keyword_ko": null,
           "mentions": 8,
           "source_count": 3,
+          "items": [
+            {
+              "title": "Show GN: Daijin - ESP32 음성 장치에 Claude를 두뇌로 붙여 집과 원격 장치를 제어하는 음성 에이전트",
+              "url": "https://news.hada.io/topic?id=33977",
+              "source": "GeekNews"
+            },
+            {
+              "title": "[창간기획] AI가 바꾸는 현장 - 전자신문 기자들이 직접 만든 AI 뉴스 에이전트 'ETA 2.0' 고도화",
+              "url": "https://www.etnews.com/20260914000437",
+              "source": "전자신문"
+            },
+            {
+              "title": "[CAIO 서밋 2026] “모델보다 실행”…AI 에이전트 운영체계가 AX 성패 가른다",
+              "url": "https://www.etnews.com/20260918000266",
+              "source": "전자신문"
+            },
+            {
+              "title": "[CAIO 서밋 2026] AI 도입 다음은 '운영'…에이전트·보안·GPU 비용 해법 제시",
+              "url": "https://www.etnews.com/20260920000018",
+              "source": "전자신문"
+            },
+            {
+              "title": "AI스페라, AITEM에 MS 에이전트 적용…보안 자동 고도화",
+              "url": "https://www.etnews.com/20260918000214",
+              "source": "전자신문"
+            },
+            {
+              "title": "유라클, '2026 AI 서밋' 개최…“AI 에이전트, 코드 넘어 모듈로”",
+              "url": "https://www.etnews.com/20260918000055",
+              "source": "전자신문"
+            }
+          ],
           "change": "continuing",
           "dedup_key": "에이전트"
         },
         {
           "id": "k_2026-09-20_002",
-          "keyword": "오픈",
-          "keyword_ko": null,
-          "mentions": 8,
-          "source_count": 2,
-          "change": "continuing",
-          "dedup_key": "오픈"
-        },
-        {
-          "id": "k_2026-09-20_003",
           "keyword": "앤트로픽",
           "keyword_ko": null,
           "mentions": 8,
           "source_count": 2,
+          "items": [
+            {
+              "title": "“AI 속도조절은 담합”…앤트로픽·오픈AI 등 4곳 피소",
+              "url": "https://www.etnews.com/20260920000077",
+              "source": "전자신문"
+            },
+            {
+              "title": "앤트로픽, 자체 생물학 연구소 설립…시뮬레이션 넘어 실제 실험 진출",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215504",
+              "source": "AI타임스"
+            },
+            {
+              "title": "중국, 앤트로픽 겨냥 “미 정보기관에 사용자 데이터 넘길 수도”",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215495",
+              "source": "AI타임스"
+            },
+            {
+              "title": "\"안전 핑계 대고 밀실 담합\"…앤트로픽·오픈AI 등 4곳, 소비자에게 피소",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215502",
+              "source": "AI타임스"
+            },
+            {
+              "title": "오픈AI, 기업 시장 점유율 역전…앤트로픽, IPO전 신형 모델 출시 검토",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215494",
+              "source": "AI타임스"
+            },
+            {
+              "title": "앤트로픽 IPO에 월가 신중론...1000억달러 매출 속 '적자 전환' 우려",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215484",
+              "source": "AI타임스"
+            }
+          ],
           "change": "continuing",
           "dedup_key": "앤트로픽"
         },
         {
-          "id": "k_2026-09-20_004",
-          "keyword": "OpenAI",
+          "id": "k_2026-09-20_003",
+          "keyword": "오픈",
           "keyword_ko": null,
-          "mentions": 6,
-          "source_count": 4,
+          "mentions": 8,
+          "source_count": 2,
+          "items": [
+            {
+              "title": "“AI 속도조절은 담합”…앤트로픽·오픈AI 등 4곳 피소",
+              "url": "https://www.etnews.com/20260920000077",
+              "source": "전자신문"
+            },
+            {
+              "title": "\"안전 핑계 대고 밀실 담합\"…앤트로픽·오픈AI 등 4곳, 소비자에게 피소",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215502",
+              "source": "AI타임스"
+            },
+            {
+              "title": "오픈AI 2030년까지 386조 소진… 컴퓨팅 비용 폭증에 투자 유치 압박",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215500",
+              "source": "AI타임스"
+            },
+            {
+              "title": "오픈AI, 기업 시장 점유율 역전…앤트로픽, IPO전 신형 모델 출시 검토",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215494",
+              "source": "AI타임스"
+            },
+            {
+              "title": "술레이만 \"오픈AI의 '셀프 프롬프트 인젝션'은 매우 심각한 상황\"",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215486",
+              "source": "AI타임스"
+            },
+            {
+              "title": "[9월18일] AI가 다음 AI에게 지시를 남겼다…오픈AI서 드러난 ‘셀프 프롬프트 인젝션’",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215440",
+              "source": "AI타임스"
+            }
+          ],
           "change": "continuing",
-          "dedup_key": "openai"
+          "dedup_key": "오픈"
+        },
+        {
+          "id": "k_2026-09-20_004",
+          "keyword": "companies",
+          "keyword_ko": null,
+          "mentions": 5,
+          "source_count": 3,
+          "items": [
+            {
+              "title": "Google’s Gemini is the latest AI model to hack other companies",
+              "url": "https://techcrunch.com/2026/09/19/googles-gemini-is-the-latest-ai-model-to-hack-other-companies/",
+              "source": "TechCrunch"
+            },
+            {
+              "title": "World model companies are keeping a lot of secrets",
+              "url": "https://techcrunch.com/2026/09/18/world-model-companies-are-keeping-a-lot-of-secrets/",
+              "source": "TechCrunch"
+            },
+            {
+              "title": "Gemini went rogue, hacked three companies, and Google hid it",
+              "url": "https://www.theverge.com/ai-artificial-intelligence/997795/google-gemini-rogue-ai-hack",
+              "source": "The Verge"
+            },
+            {
+              "title": "US policy analysts, lawmakers, and others say several state-level AI chatbot safety bills included language that could provide loopholes for tech companies (Katie McQue/NPR)",
+              "url": "https://www.techmeme.com/260920/p6#a260920p6",
+              "source": "Techmeme"
+            },
+            {
+              "title": "Google says it didn't consider Gemini's hacks worthy of disclosure because Gemini acted \"appropriately\" and stopped after determining it hacked real companies (Terrence O'Brien/The Verge)",
+              "url": "https://www.techmeme.com/260919/p9#a260919p9",
+              "source": "Techmeme"
+            }
+          ],
+          "change": "new",
+          "dedup_key": "companies"
         },
         {
           "id": "k_2026-09-20_005",
@@ -153,7 +274,34 @@
           "keyword_ko": null,
           "mentions": 5,
           "source_count": 4,
-          "change": "new",
+          "items": [
+            {
+              "title": "Google’s Gemini is the latest AI model to hack other companies",
+              "url": "https://techcrunch.com/2026/09/19/googles-gemini-is-the-latest-ai-model-to-hack-other-companies/",
+              "source": "TechCrunch"
+            },
+            {
+              "title": "Google’s new ‘CC’ is an AI agent that helps families run their households",
+              "url": "https://techcrunch.com/2026/09/18/googles-new-cc-is-an-ai-agent-that-helps-families-run-their-households/",
+              "source": "TechCrunch"
+            },
+            {
+              "title": "Gemini went rogue, hacked three companies, and Google hid it",
+              "url": "https://www.theverge.com/ai-artificial-intelligence/997795/google-gemini-rogue-ai-hack",
+              "source": "The Verge"
+            },
+            {
+              "title": "Google announces new experimental \"CC\" AI agent for families",
+              "url": "https://arstechnica.com/google/2026/09/google-announces-new-experimental-cc-ai-agent-for-families/",
+              "source": "Ars Technica"
+            },
+            {
+              "title": "Google says it didn't consider Gemini's hacks worthy of disclosure because Gemini acted \"appropriately\" and stopped after determining it hacked real companies (Terrence O'Brien/The Verge)",
+              "url": "https://www.techmeme.com/260919/p9#a260919p9",
+              "source": "Techmeme"
+            }
+          ],
+          "change": "continuing",
           "dedup_key": "google"
         }
       ]
@@ -167,7 +315,7 @@
         {
           "id": "v_2026-09-20_006",
           "title": "Alibaba Qwen",
-          "model": "Qwen-Image-2.1-PE-I2I",
+          "model": "Qwen/Qwen-Image-2.1-PE-I2I",
           "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-PE-I2I",
           "days_since": 0,
           "updated_at": "2026-09-20",
@@ -214,7 +362,7 @@
           "days_since": 10,
           "updated_at": "2026-09-10",
           "via": "OpenAI",
-          "open_weights": false,
+          "open_weights": true,
           "summary_ko": null,
           "heat": -10.0,
           "source_count": 1,
@@ -230,7 +378,7 @@
         {
           "id": "v_2026-09-20_009",
           "title": "DeepSeek",
-          "model": "DeepSeek-V4.1-Flash",
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash",
           "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash",
           "days_since": 10,
           "updated_at": "2026-09-10",
@@ -292,6 +440,27 @@
         },
         {
           "id": "v_2026-09-20_012",
+          "title": "xAI",
+          "model": "Introducing Grok 4.6",
+          "url": "https://x.ai/news/grok-4-6",
+          "days_since": 39,
+          "updated_at": "2026-08-12",
+          "via": "xAI",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -39.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "xAI"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:xAI",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_013",
           "title": "Upstage",
           "model": "Solar-Open2-250B",
           "url": "https://huggingface.co/upstage/Solar-Open2-250B",
@@ -312,7 +481,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-20_013",
+          "id": "v_2026-09-20_014",
           "title": "Mistral",
           "model": "Shieldstral-1.0-3B",
           "url": "https://huggingface.co/mistralai/Shieldstral-1.0-3B",
@@ -333,7 +502,7 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-20_014",
+          "id": "v_2026-09-20_015",
           "title": "Moonshot",
           "model": "Kimi-K3",
           "url": "https://huggingface.co/moonshotai/Kimi-K3",
@@ -354,9 +523,9 @@
           "published_at": null
         },
         {
-          "id": "v_2026-09-20_015",
+          "id": "v_2026-09-20_016",
           "title": "Meta",
-          "model": "Llama-Prompt-Guard-2-86M",
+          "model": "meta-llama/Llama-Prompt-Guard-2-86M",
           "url": "https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-86M",
           "days_since": 510,
           "updated_at": "2025-04-28",
@@ -373,27 +542,6 @@
           "change": "continuing",
           "dedup_key": "vendor:Meta",
           "published_at": null
-        },
-        {
-          "id": "v_2026-09-20_016",
-          "title": "xAI",
-          "model": null,
-          "url": null,
-          "days_since": null,
-          "updated_at": null,
-          "via": null,
-          "open_weights": false,
-          "summary_ko": null,
-          "heat": -999.0,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "-"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "vendor:xAI",
-          "published_at": null
         }
       ]
     },
@@ -401,109 +549,8 @@
       "id": "github_skills",
       "title": "GitHub 스킬",
       "briefing_ko": [],
-      "empty_reason": null,
-      "cards": [
-        {
-          "id": "c_2026-09-20_017",
-          "title": "anthropics/skills",
-          "summary_ko": null,
-          "url": "https://github.com/anthropics/skills",
-          "heat": 15.75,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "new",
-          "dedup_key": "anthropics/skills",
-          "published_at": null,
-          "repo": "anthropics/skills",
-          "stars": 177262,
-          "stars_delta": null,
-          "category": "기타"
-        },
-        {
-          "id": "c_2026-09-20_018",
-          "title": "DietrichGebert/ponytail",
-          "summary_ko": null,
-          "url": "https://github.com/DietrichGebert/ponytail",
-          "heat": 15.46,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "new",
-          "dedup_key": "DietrichGebert/ponytail",
-          "published_at": null,
-          "repo": "DietrichGebert/ponytail",
-          "stars": 142876,
-          "stars_delta": null,
-          "category": "기타"
-        },
-        {
-          "id": "c_2026-09-20_019",
-          "title": "addyosmani/agent-skills",
-          "summary_ko": null,
-          "url": "https://github.com/addyosmani/agent-skills",
-          "heat": 14.97,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "new",
-          "dedup_key": "addyosmani/agent-skills",
-          "published_at": null,
-          "repo": "addyosmani/agent-skills",
-          "stars": 97459,
-          "stars_delta": null,
-          "category": "기타"
-        },
-        {
-          "id": "c_2026-09-20_020",
-          "title": "nexu-io/open-design",
-          "summary_ko": null,
-          "url": "https://github.com/nexu-io/open-design",
-          "heat": 14.96,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "new",
-          "dedup_key": "nexu-io/open-design",
-          "published_at": null,
-          "repo": "nexu-io/open-design",
-          "stars": 97230,
-          "stars_delta": null,
-          "category": "디자인·비주얼"
-        },
-        {
-          "id": "c_2026-09-20_021",
-          "title": "tt-a1i/archify",
-          "summary_ko": null,
-          "url": "https://github.com/tt-a1i/archify",
-          "heat": 14.5,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "GitHub"
-            }
-          ],
-          "change": "new",
-          "dedup_key": "tt-a1i/archify",
-          "published_at": null,
-          "repo": "tt-a1i/archify",
-          "stars": 67992,
-          "stars_delta": null,
-          "category": "디자인·비주얼"
-        }
-      ]
+      "empty_reason": "GitHub 응답이 없어 오늘은 비어 있습니다.",
+      "cards": []
     },
     {
       "id": "top_headlines",
@@ -512,27 +559,11 @@
       "empty_reason": null,
       "cards": [
         {
-          "id": "c_2026-09-20_022",
-          "title": "6 days left to get ahead at TechCrunch Disrupt 2026",
-          "summary_ko": null,
-          "url": "https://techcrunch.com/2026/09/20/6-days-left-to-get-ahead-at-techcrunch-disrupt-2026/",
-          "heat": 2.96,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "TechCrunch"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "httpss://techcrunch.com/2026/09/20/6-days-left-to-get-ahead-at-techcrunch-disrupt-2026",
-          "published_at": "2026-09-20T14:00:00Z"
-        },
-        {
-          "id": "c_2026-09-20_023",
+          "id": "c_2026-09-20_017",
           "title": "US policy analysts, lawmakers, and others say several state-level AI chatbot safety bills included language that could provide loopholes for tech companies (Katie McQue/NPR)",
           "summary_ko": null,
           "url": "https://www.techmeme.com/260920/p6#a260920p6",
-          "heat": 2.5,
+          "heat": 2.48,
           "source_count": 1,
           "sources": [
             {
@@ -544,11 +575,11 @@
           "published_at": "2026-09-20T09:05:02Z"
         },
         {
-          "id": "c_2026-09-20_024",
+          "id": "c_2026-09-20_018",
           "title": "“문장 생성 버렸다”…판단 전용 AI ‘제브’에 개발자 반응 폭발",
           "summary_ko": null,
           "url": "https://www.aitimes.com/news/articleView.html?idxno=215506",
-          "heat": 2.46,
+          "heat": 2.44,
           "source_count": 1,
           "sources": [
             {
@@ -560,11 +591,11 @@
           "published_at": "2026-09-20T08:40:45Z"
         },
         {
-          "id": "c_2026-09-20_025",
+          "id": "c_2026-09-20_019",
           "title": "과기부, 연구자가 지켜야 할 ‘AI 활용’ 7대 권고사항 제시",
           "summary_ko": null,
           "url": "https://www.aitimes.com/news/articleView.html?idxno=215505",
-          "heat": 2.44,
+          "heat": 2.42,
           "source_count": 1,
           "sources": [
             {
@@ -576,11 +607,11 @@
           "published_at": "2026-09-20T08:25:00Z"
         },
         {
-          "id": "c_2026-09-20_026",
+          "id": "c_2026-09-20_020",
           "title": "[창간기획] AI가 바꾸는 현장 - 전자신문 기자들이 직접 만든 AI 뉴스 에이전트 'ETA 2.0' 고도화",
           "summary_ko": null,
           "url": "https://www.etnews.com/20260914000437",
-          "heat": 2.41,
+          "heat": 2.39,
           "source_count": 1,
           "sources": [
             {
@@ -590,6 +621,22 @@
           "change": "continuing",
           "dedup_key": "httpss://etnews.com/20260914000437",
           "published_at": "2026-09-20T08:00:00Z"
+        },
+        {
+          "id": "c_2026-09-20_021",
+          "title": "Cache-to-Cache: LLM 간 직접 의미 전달 (2025)",
+          "summary_ko": null,
+          "url": "https://news.hada.io/topic?id=33983",
+          "heat": 2.22,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "GeekNews"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "httpss://news.hada.io/topic?id=33983",
+          "published_at": "2026-09-20T05:52:25Z"
         }
       ]
     },
@@ -600,7 +647,7 @@
       "empty_reason": null,
       "cards": [
         {
-          "id": "c_2026-09-20_027",
+          "id": "c_2026-09-20_022",
           "title": "X(트위터)",
           "summary_ko": null,
           "url": "https://x.com",
@@ -621,7 +668,7 @@
           "rank_note": null
         },
         {
-          "id": "c_2026-09-20_028",
+          "id": "c_2026-09-20_023",
           "title": "Reddit",
           "summary_ko": null,
           "url": "https://reddit.com",
@@ -642,7 +689,7 @@
           "rank_note": null
         },
         {
-          "id": "c_2026-09-20_029",
+          "id": "c_2026-09-20_024",
           "title": "Discord",
           "summary_ko": null,
           "url": "https://discord.com",
@@ -663,7 +710,7 @@
           "rank_note": null
         },
         {
-          "id": "c_2026-09-20_030",
+          "id": "c_2026-09-20_025",
           "title": "Threads",
           "summary_ko": null,
           "url": "https://threads.com",
@@ -684,7 +731,7 @@
           "rank_note": null
         },
         {
-          "id": "c_2026-09-20_031",
+          "id": "c_2026-09-20_026",
           "title": "Hugging Face",
           "summary_ko": null,
           "url": "https://huggingface.co",

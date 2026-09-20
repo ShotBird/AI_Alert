@@ -85,7 +85,10 @@ def extract(items, want=5, min_mentions=2):
             keyword_ko=None,          # LLM 이 붙을 때 채워진다
             mentions=n,
             source_count=len(sources),
-            sample_titles=[i["title"] for i in carriers[key][:3]],
+            # "8개 항목에서 언급됐다"고만 쓰면 그 8개가 뭔지 볼 방법이 없다.
+            # 화면이 바로 펼칠 수 있게 항목 자체를 들려 보낸다.
+            items=[dict(title=i["title"], url=i["url"], source=i["source_name"])
+                   for i in carriers[key][:6]],
         ))
         if len(rows) >= want:
             break

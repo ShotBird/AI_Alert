@@ -120,7 +120,8 @@ def main():
     before = len(items)
     items = [i for i in items
              if i["section"] != "top_headlines"
-             or relevance.is_relevant(i["title"], i["source_id"])]
+             or (relevance.is_relevant(i["title"], i["source_id"])
+                 and not relevance.is_promo(i["title"]))]
     off_topic = before - len(items)
     if off_topic:
         print(f"[관련성] AI와 무관한 뉴스 {off_topic}건 제외")

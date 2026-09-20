@@ -117,6 +117,20 @@ def _tier_score(n_strong, n_medium, n_weak):
     return 0.0
 
 
+# 신뢰 소스라도 이건 뉴스가 아니다.
+# TechCrunch 의 AI 카테고리에는 자기네 컨퍼런스 홍보가 섞여 들어온다.
+# "6 days left to get ahead at TechCrunch Disrupt 2026" 이 실제로 뉴스 1위로 올라왔다.
+# 신뢰 점수 바닥값보다 이 배제가 먼저다 — 소스를 믿는 것과 광고를 싣는 것은 다르다.
+PROMO = re.compile(
+    r"(disrupt \d{4}|days? left|last chance|early bird|save \$|ticket|tickets|"
+    r"register now|join us at|sponsored|webinar|리크루팅|채용 설명회|"
+    r"컨퍼런스 참가|사전등록|얼리버드|할인 마감|이벤트 응모)", re.I)
+
+
+def is_promo(title):
+    return bool(PROMO.search(title or ""))
+
+
 def score(title, source_id=None):
     """제목의 AI 관련도. 0.0(무관) ~ 1.0(확실).
 

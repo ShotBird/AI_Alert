@@ -129,56 +129,70 @@
 
   /* ── 오늘의 키워드 스트립: 헤더 바로 아래, 구획 바로가기보다 위. 일반 카드 섹션과
      의도적으로 다른, 작고 가로 스크롤되는 한 줄짜리 특수 레이아웃. ───────────────── */
-  .kw-strip { padding-block: 2px 4px; }
-  .kw-strip:empty { display: none; }
+  /* ── 오늘의 키워드 띠 ──────────────────────────────────────────────────────
+     아래 섹션 바로가기와 **모양을 반드시 다르게** 둔다. 둘 다 둥근 알약이었을 때
+     사용자가 구분하지 못했다. 규칙: 둥근 알약 = 이동, 각진 테두리 칩 = 데이터. */
+  .kw-strip {
+    background: var(--surface);
+    border-radius: var(--r-card);
+    padding: 14px 18px 16px;
+    margin-top: 6px;
+  }
+  .kw-strip:empty { display: none; padding: 0; }
   .kw-strip-label {
     font-size: 12px;
     font-weight: 600;
     color: var(--ink-mute);
-    text-transform: uppercase;
     letter-spacing: 0.02em;
-    margin: 0 0 8px;
+    margin: 0 0 10px;
   }
   .kw-row {
     display: flex;
+    flex-wrap: wrap;          /* 가로 스크롤 대신 줄바꿈. 스크롤은 있는 줄도 모른다 */
     gap: 8px;
-    overflow-x: auto;
-    padding-block: 0 4px;
-    scrollbar-width: none;
+    padding: 0;
   }
-  .kw-row::-webkit-scrollbar { display: none; }
   .kw-pill {
     flex: 0 0 auto;
-    display: flex;
-    align-items: baseline;
+    display: inline-flex;
+    align-items: center;
     gap: 6px;
     font-family: inherit;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
-    padding: 8px 16px;
-    border: none;
-    border-radius: var(--r-pill);
-    background: var(--surface);
+    line-height: 1.2;
+    padding: 7px 11px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-chip);   /* 10px — 알약(980px)과 한눈에 갈린다 */
+    background: transparent;
     color: var(--ink);
     cursor: pointer;
-    /* 그림자 없음. */
   }
   .kw-pill:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
-  .kw-pill[aria-expanded="true"] { background: var(--mist); }
+  .kw-pill[aria-expanded="true"] {
+    border-color: var(--ink);
+    background: var(--mist);
+  }
   .kw-word.new { color: var(--tint-green); }
   .kw-n {
     font-weight: 400;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--ink-mute);
     font-variant-numeric: tabular-nums;
   }
-  .kw-empty {
-    font-size: 14px;
-    color: var(--ink-mute);
-    margin: 0;
+  .kw-empty { font-size: 14px; color: var(--ink-mute); margin: 0; }
+
+  /* 펼침: 그 키워드가 실제로 어느 기사에서 나왔는지 보여준다 */
+  #kwDetail:not(:empty) { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--hairline); }
+  .kwd-head { font-size: 13px; color: var(--ink-mute); margin: 0 0 8px; }
+  .kwd-head b { color: var(--ink); font-weight: 600; }
+  .kwd-list { display: grid; gap: 9px; }
+  .kwd-item { display: grid; grid-template-columns: auto 1fr; gap: 8px; align-items: baseline; }
+  .kwd-src { font-size: 12px; color: var(--ink-mute); white-space: nowrap; }
+  .kwd-item a {
+    font-size: 14px; line-height: 1.35; color: var(--ink); text-decoration: none;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
-  #kwDetail:not(:empty) { margin-top: 10px; }
-  #kwDetail .cards { display: grid; gap: 12px; }
 
   /* ── 섹션 바로가기 (풀 필 버튼 언어) ──────────────────────────────────── */
   nav.jump {
@@ -372,9 +386,65 @@
   .v-when i.v-stale { color: var(--tint-orange); }  /* 석 달 넘게 조용한 곳 */
   .v-none { color: var(--ink-mute); }
 
+  /* GitHub 스킬 · 커뮤니티: 같은 표 언어, 열 비율만 다르다 */
+  .g-row { grid-template-columns: minmax(0, 1.45fr) minmax(64px, 0.9fr) auto; }
+  .c-row { grid-template-columns: minmax(80px, 1fr) minmax(0, 1.2fr) auto; }
+  .g-repo { overflow: hidden; }
+  .g-repo a { color: var(--ink); text-decoration: none; font-weight: 600;
+              display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .g-repo i { font-style: normal; font-size: 12px; color: var(--ink-mute);
+              display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .g-item { border-bottom: 1px solid var(--hairline); }
+  .g-item:last-child { border-bottom: 0; }
+  .g-item .v-row { border-bottom: 0; padding-block: 9px 2px; }
+  .g-desc {
+    display: flex; gap: 7px; align-items: baseline;
+    padding-bottom: 9px;
+    font-size: 13px; line-height: 1.35; color: var(--ink-mute);
+  }
+  .g-desc > span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .g-when { color: var(--ink-soft); font-variant-numeric: tabular-nums; flex: 0 0 auto; }
+  .g-cat { font-size: 13px; color: var(--ink-mute);
+           overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .v-when b.g-up { color: var(--tint-green); font-weight: 600; }
+  .c-dom { font-size: 13px; color: var(--ink-mute);
+           overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .v-co a { color: var(--ink); text-decoration: none; }
+
+  /* 뉴스: 제목이 곧 내용이라 자르지 않는다. 카드 배경과 여백만 걷어낸다. */
+  .n-list {
+    background: var(--surface);
+    border-radius: var(--r-card);
+    padding: 4px 18px 8px;
+  }
+  .n-row { padding-block: 11px; border-bottom: 1px solid var(--hairline); }
+  .n-row:last-child { border-bottom: 0; }
+  .n-title {
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 1.38;
+    font-weight: 600;
+  }
+  .n-sum { margin: 4px 0 0; font-size: 14px; line-height: 1.4; color: var(--ink-soft); }
+  .n-meta {
+    margin-top: 5px;
+    font-size: 12px;
+    color: var(--ink-mute);
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px;
+    font-variant-numeric: tabular-nums;
+  }
+  .n-meta b { font-weight: 600; color: var(--ink-soft); }
+  .n-meta i.n-new { font-style: normal; font-weight: 600; color: var(--tint-green); }
+  .n-dot { color: var(--hairline); }
+
   @media (max-width: 360px) {
     .v-row { grid-template-columns: minmax(70px, 1fr) minmax(0, 1.6fr) auto; gap: 8px; }
     .v-model { font-size: 14px; }
+    .g-row { grid-template-columns: minmax(0, 1.3fr) minmax(52px, 0.8fr) auto; }
+    .c-row { grid-template-columns: minmax(70px, 1fr) minmax(0, 1fr) auto; }
   }
 
   /* ── 하단 ──────────────────────────────────────────────────────────────── */
@@ -498,33 +568,101 @@
     return bits.join("");
   }
 
-  function plainCardHTML(c) {
-    const summary = c.summary_ko ? `<p class="summary">${esc(c.summary_ko)}</p>` : "";
-    const href = c.url ? esc(c.url) : "#";
-    return `<article class="card">
-      <div class="card-top">${badge(c.change)}</div>
-      <p class="title"><a href="${href}" target="_blank" rel="noopener noreferrer">${esc(c.title || "")}</a></p>
-      ${summary}
-      <div class="meta">${plainMeta(c)}</div>
-    </article>`;
+  // 시각을 "3시간 전"으로. 뉴스 행에 날짜 전체를 적으면 자리만 먹는다.
+  function ago(iso) {
+    if (!iso) return "";
+    const t = Date.parse(iso);
+    if (Number.isNaN(t)) return "";
+    const h = Math.floor((Date.now() - t) / 3600000);
+    if (h < 1) return "방금";
+    if (h < 24) return h + "시간";
+    const d = Math.floor(h / 24);
+    return d < 30 ? d + "일" : Math.floor(d / 30) + "개월";
   }
 
-  function githubCardHTML(c) {
-    const summary = c.summary_ko ? `<p class="summary">${esc(c.summary_ko)}</p>` : "";
+  // ── 뉴스: 카드 대신 행 ────────────────────────────────────────────────────
+  // 제목이 곧 내용이라 잘라내면 손해다. 제목은 두 줄까지 살리고, 카드 배경과
+  // 안쪽 여백을 걷어내 그 아래 메타를 한 줄로 붙인다.
+  function newsRowHTML(c) {
     const href = c.url ? esc(c.url) : "#";
+    const summary = c.summary_ko ? `<p class="n-sum">${esc(c.summary_ko)}</p>` : "";
+    const names = (Array.isArray(c.sources) ? c.sources : [])
+      .map(s => s && s.name).filter(Boolean);
     const bits = [];
-    if (c.category) bits.push(`<span class="strong">${esc(c.category)}</span>`);
-    if (typeof c.stars === "number") {
-      const delta = typeof c.stars_delta === "number" && c.stars_delta > 0 ? ` (+${N(c.stars_delta)})` : "";
-      bits.push(`<span>★ ${N(c.stars)}${delta}</span>`);
+    if (c.change === "new") bits.push(`<i class="n-new">신규</i>`);
+    if (names.length) bits.push(esc(names.slice(0, 2).join(" · ")));
+    if (typeof c.source_count === "number" && c.source_count > 1) {
+      bits.push(`<b>출처 ${c.source_count}곳</b>`);
     }
-    if (typeof c.heat === "number") bits.push(`<span>화제도 ${c.heat.toFixed(1)}</span>`);
-    return `<article class="card">
-      <div class="card-top">${badge(c.change)}</div>
-      <p class="title"><a href="${href}" target="_blank" rel="noopener noreferrer">${esc(c.repo || c.title || "")}</a></p>
+    const when = ago(c.published_at);
+    if (when) bits.push(when);
+    return `<div class="n-row">
+      <a class="n-title" href="${href}" target="_blank" rel="noopener noreferrer">${esc(c.title || "")}</a>
       ${summary}
-      <div class="meta">${bits.join("")}</div>
-    </article>`;
+      <div class="n-meta">${bits.join('<span class="n-dot">·</span>')}</div>
+    </div>`;
+  }
+
+  // ── GitHub 스킬: 레포 | 부문 | 증가 + 설명 한 줄 ─────────────────────────
+  function githubRowHTML(c) {
+    const full = String(c.repo || c.title || "");
+    const slash = full.lastIndexOf("/");
+    const owner = slash > 0 ? full.slice(0, slash) : "";
+    const name = slash > 0 ? full.slice(slash + 1) : full;
+    const href = c.url ? esc(c.url) : "#";
+    const num = typeof c.stars_delta === "number"
+      ? `<b class="g-up">+${N(c.stars_delta)}</b>`
+      : `<b>${N(c.stars || 0)}</b>`;
+    const sub = typeof c.stars_delta === "number" && typeof c.stars === "number"
+      ? `<i>${N(c.stars)}</i>` : `<i>누적</i>`;
+    // 한국어 요약이 있으면 그게 우선, 없으면 GitHub 이 준 영어 설명을 그대로 쓴다.
+    // 둘 다 없을 때만 줄을 지운다 — 빈 줄을 남기면 표가 들쭉날쭉해진다.
+    const line = c.summary_ko || c.desc || "";
+    const when = c.updated_at ? `<span class="g-when">${esc(c.updated_at.slice(5).replace("-", "/"))}</span>` : "";
+    const detail = line || when
+      ? `<div class="g-desc">${when}${line ? `<span>${esc(line)}</span>` : ""}</div>`
+      : "";
+    return `<div class="g-item">
+      <div class="v-row g-row">
+        <span class="g-repo">
+          <a href="${href}" target="_blank" rel="noopener noreferrer">${esc(name)}</a>
+          ${owner ? `<i>${esc(owner)}</i>` : ""}
+        </span>
+        <span class="g-cat">${esc(c.category || "—")}</span>
+        <span class="v-when">${num}${sub}</span>
+      </div>
+      ${detail}
+    </div>`;
+  }
+
+  function githubTableHTML(cards) {
+    const rising = cards.some(c => typeof c.stars_delta === "number");
+    return `<div class="v-table">
+      <div class="v-row g-row v-head">
+        <span>레포</span><span>부문</span><span>${rising ? "주간 ★" : "누적 ★"}</span>
+      </div>
+      ${cards.map(githubRowHTML).join("")}
+    </div>`;
+  }
+
+  // ── 커뮤니티: 커뮤니티 | 전체 순위 | 유입 ──────────────────────────────────
+  function communityTableHTML(cards) {
+    const rows = cards.map(c => {
+      const rank = typeof c.global_rank === "number"
+        ? `<b>${N(c.global_rank)}위</b>`
+        : `<b class="v-none">—</b>`;
+      const gravity = c.mentions ? `<i class="v-fresh">유입 ${N(c.mentions)}</i>` : `<i>—</i>`;
+      const href = c.url ? esc(c.url) : "#";
+      return `<div class="v-row c-row">
+        <span class="v-co"><a href="${href}" target="_blank" rel="noopener noreferrer">${esc(c.title || "")}</a></span>
+        <span class="c-dom">${esc(c.domain || "")}</span>
+        <span class="v-when">${rank}${gravity}</span>
+      </div>`;
+    }).join("");
+    return `<div class="v-table">
+      <div class="v-row c-row v-head"><span>커뮤니티</span><span>도메인</span><span>전체 순위</span></div>
+      ${rows}
+    </div>`;
   }
 
   function reactionBar(label, value, peak) {
@@ -538,6 +676,23 @@
   }
 
   function keywordCardHTML(c) {
+    // "8개 항목에서 언급됐습니다" 만 있으면 그 8개가 무엇인지 볼 방법이 없었다.
+    // 이제 항목 자체를 펼쳐 보여준다 — 숫자보다 제목이 알고 싶은 것이다.
+    const items = Array.isArray(c.items) ? c.items : [];
+    const n = typeof c.mentions === "number" ? c.mentions : items.length;
+    const ko = c.keyword_ko ? ` <span class="kw-ko">${esc(c.keyword_ko)}</span>` : "";
+    const src = typeof c.source_count === "number" && c.source_count > 1
+      ? ` · 출처 ${c.source_count}곳` : "";
+    const head = `<p class="kwd-head"><b>${esc(c.keyword || "")}</b>${ko} — 오늘 ${n}개 항목${src}</p>`;
+
+    const list = items.length
+      ? `<div class="kwd-list">${items.map(it => `<div class="kwd-item">
+          <span class="kwd-src">${esc((it && it.source) || "")}</span>
+          <a href="${it && it.url ? esc(it.url) : "#"}" target="_blank" rel="noopener noreferrer">${esc((it && it.title) || "")}</a>
+        </div>`).join("")}</div>`
+      : `<p class="kw-empty">이 키워드가 걸린 항목을 실어 보내지 못했습니다.</p>`;
+
+    // 한국 반응(네이버·카카오)은 데이터가 있을 때만 덧붙인다.
     const korea = c.korea || {};
     const naver = korea.naver || {};
     const kakao = korea.kakao || {};
@@ -547,23 +702,12 @@
     ].filter(([, v]) => typeof v === "number");
     const peak = rows.reduce((m, [, v]) => Math.max(m, v), 0);
     const bars = rows.map(([lab, v]) => reactionBar(lab, v, peak)).join("");
-    const picks = Array.isArray(korea.picks) ? korea.picks : [];
-    const mentions = typeof c.mentions === "number"
-      ? `<p class="summary">오늘 ${c.mentions}개 항목에서 언급됐습니다.</p>` : "";
-    return `<article class="card">
-      <div class="card-top">${badge(c.change)}</div>
-      <div class="kw-head">
-        <h3 class="kw-term">${esc(c.keyword || "")}</h3>
-        ${c.keyword_ko ? `<span class="kw-ko">${esc(c.keyword_ko)}</span>` : ""}
-      </div>
-      ${mentions}
-      ${bars ? `<div class="reaction">${bars}</div>` : ""}
-      ${picks.length ? `<div class="picks">${picks.map(p => `<div><a href="${p && p.url ? esc(p.url) : "#"}" target="_blank" rel="noopener noreferrer">${esc((p && p.title) || "")}</a> <span class="src">${esc((p && p.source) || "")}</span></div>`).join("")}</div>` : ""}
-    </article>`;
+
+    return `${head}${list}${bars ? `<div class="reaction">${bars}</div>` : ""}`;
   }
 
   function cardHTML(c) {
-    if (isGithubCard(c)) return githubCardHTML(c);
+    if (isGithubCard(c)) return newsRowHTML(c);
     if (isKeywordCard(c)) return keywordCardHTML(c);
     return plainCardHTML(c);
   }
@@ -595,7 +739,7 @@
     const btn = document.getElementById("kwPill-" + idx);
     if (btn) btn.setAttribute("aria-expanded", "true");
     const card = kwState.cards[idx];
-    detail.innerHTML = card ? `<div class="cards">${keywordCardHTML(card)}</div>` : "";
+    detail.innerHTML = card ? keywordCardHTML(card) : "";
   }
 
   function renderKeywordStrip(section) {
@@ -679,6 +823,12 @@
       body = `<div class="empty">${esc(s.empty_reason || "오늘은 비어 있습니다.")}</div>`;
     } else if (cards.every(isVendorCard)) {
       body = vendorTableHTML(cards);
+    } else if (s.id === "github_skills") {
+      body = githubTableHTML(cards);
+    } else if (s.id === "communities") {
+      body = communityTableHTML(cards);
+    } else if (s.id === "top_headlines") {
+      body = `<div class="n-list">${cards.map(newsRowHTML).join("")}</div>`;
     } else {
       body = `<div class="cards">${cards.map(cardHTML).join("")}</div>`;
     }

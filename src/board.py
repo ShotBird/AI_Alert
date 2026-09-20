@@ -143,6 +143,9 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                     "stars": row["stars"],
                     "stars_delta": row["stars_delta"],
                     "category": row["category"],
+                    "updated_at": row.get("pushed_at") or None,
+                    # 영어 원문 설명. LLM 키가 생기면 summary_ko 가 위에 붙는다.
+                    "desc": row.get("desc") or None,
                 })
             if not cards:
                 empty_reason = "GitHub 응답이 없어 오늘은 비어 있습니다."
@@ -181,6 +184,7 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                     "keyword_ko": row.get("keyword_ko"),
                     "mentions": row.get("mentions") or 0,
                     "source_count": row.get("source_count") or 0,
+                    "items": row.get("items") or [],
                     "change": ("continuing" if row["keyword"].lower() in prev_keys
                                else "new"),
                     "dedup_key": row["keyword"].lower(),
