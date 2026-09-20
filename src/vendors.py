@@ -23,7 +23,7 @@ import json
 import re
 import urllib.error
 import urllib.request
-from datetime import datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 from . import vendor_pages
 
@@ -135,11 +135,21 @@ def _from_items(vendor, items):
 
 
 # 미래를 가리키는 말. 이게 있으면 '일어난 일'이 아니라 '예정'이다.
+#
+# 2026-09-21 실측(수집 항목 2,099건): 벤더 이름이 든 제목 691건 중 이 목록에
+# 걸린 것이 **4건**뿐이었다. 목록이 좁은 탓도 있었다 — "teased"는 있는데
+# "teases"가 없고, "plans to"는 있는데 "planning to"가 없었다. 어형만 넓힌다.
+# 넓혀도 쓰레기가 들어오지 않는 이유는 아래 `_pick_when` 이 **날짜·기간을
+# 못 뽑으면 후보를 통째로 버리기** 때문이다.
 FORWARD_WORDS = (
     "예정", "검토", "전망", "예상", "계획", "출시될", "공개될", "준비", "임박",
     "다음 달", "내달", "연내", "상반기", "하반기", "소문", "루머", "유출",
-    "coming", "expected", "will launch", "will release", "set to", "plans to",
-    "reportedly", "rumor", "teased", "preview of", "soon",
+    "예고", "앞두", "차기", "로드맵", "티저", "사전 예약",
+    "coming", "expected", "will launch", "will release", "will arrive",
+    "will ship", "will be available", "set to", "plans to", "planning to",
+    "to launch", "to release", "to debut", "slated", "due in", "upcoming",
+    "reportedly", "rumor", "rumour", "tease", "preview of", "soon",
+    "roadmap", "in the works",
 )
 
 # "이건 모델 얘기다" 신호. 하나는 있어야 예정으로 인정한다.
@@ -150,64 +160,195 @@ MODEL_HINTS = ("모델", "model", "llm", "버전", "version", "preview",
 NOT_MODEL = ("seat", "pricing", "plan", "business", "enterprise tier",
              "요금", "구독", "좌석", "채용", "파트너십", "투자", "ipo")
 
-# 날짜로 읽을 만한 것. 없으면 날짜 없이 라벨만 단다.
-_DATE_PATTERNS = (
-    re.compile(r"(\d{4})[.\-/년]\s?(\d{1,2})[.\-/월]\s?(\d{1,2})"),
-    re.compile(r"(\d{1,2})월\s?(\d{1,2})일"),
-    re.compile(r"(?:on|by)\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+(\d{1,2})",
-               re.I),
+# ── '언제' 뽑기 ──────────────────────────────────────────────────────────────
+# 다음 예정 칸은 **날짜 칸**이다. 예전에는 label 에 제목 전체를 넣어서, 후보가
+# 하나만 걸려도 좁은 표 칸에 기사 헤드라인이 통째로 들어갔다. 칸에는 "10/15",
+# "4분기", "연내" 같은 짧은 말만 넣고 헤드라인은 next_url 링크(↗)로만 닿게 한다.
+#
+# 그래서 규칙이 하나 더 생긴다: **날짜든 기간이든 못 뽑으면 후보가 아니다.**
+# "언제인지 모르는 예정"은 예정표에 적을 내용이 없다.
+
+_MONTHS = "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec"
+_MONTH_NO = {m.lower(): i + 1 for i, m in enumerate(_MONTHS.split("|"))}
+
+# 영어 달 이름은 앞에 시점을 가리키는 말이 있어야 인정한다. 그냥 두면 오늘
+# 피드에 실제로 있는 "March 20 ChatGPT outage" 가 '다음 예정 3/20' 으로,
+# "New in ChatGPT for Business: April 2025" 가 '2025.4' 로 올라온다.
+_EN_LEAD = r"(?:on|by|in|from|starting|beginning|during|early|late|mid)\s+"
+
+_P_YMD = re.compile(r"(20\d{2})[.\-/년]\s?(\d{1,2})[.\-/월]\s?(\d{1,2})")
+_P_KO_MD = re.compile(r"(\d{1,2})월\s?(\d{1,2})일")
+_P_EN_DAY = re.compile(_EN_LEAD + r"(" + _MONTHS + r")[a-z]*\.?\s+(\d{1,2})\b", re.I)
+_P_EN_MON = re.compile(_EN_LEAD + r"(" + _MONTHS + r")[a-z]*\.?(?:\s+(20\d{2}))?\b", re.I)
+_P_KO_Q = re.compile(r"([1-4])\s?분기")
+_P_EN_Q = re.compile(r"\bQ([1-4])\b")
+_P_KO_MON = re.compile(r"(\d{1,2})월(?!\s?\d)")
+
+# 이미 앞날인 것이 확실한 말들. 끝나는 날을 따로 계산하지 않는다.
+_OPEN_PERIODS = (
+    ("내년 상반기", "내년 상반기"), ("내년 하반기", "내년 하반기"),
+    ("내년 초", "내년 초"), ("내년", "내년"),
+    ("연내", "연내"), ("올해 안", "연내"), ("올해 말", "연말"), ("연말", "연말"),
+    ("이달 말", "이달 말"), ("내달", "내달"), ("다음 달", "내달"), ("다음달", "내달"),
+    ("다음 주", "다음 주"), ("다음주", "다음 주"),
+    ("early next year", "내년 초"), ("next year", "내년"),
+    ("later this year", "연내"), ("end of the year", "연말"), ("year-end", "연말"),
+    ("next month", "내달"), ("next week", "다음 주"),
+    ("coming weeks", "몇 주 내"), ("coming days", "며칠 내"),
+    ("coming months", "몇 달 내"),
 )
 
 
-def _pick_date(title):
-    """제목에서 날짜를 건져낸다. 못 건지면 None — 지어내지 않는다."""
-    for pat in _DATE_PATTERNS:
-        m = pat.search(title)
-        if not m:
-            continue
-        g = m.groups()
-        if len(g) == 3:
-            return f"{g[0]}-{int(g[1]):02d}-{int(g[2]):02d}"
-        if len(g) == 2 and g[0].isdigit():
-            return f"{int(g[0]):02d}/{int(g[1]):02d}"
-        if len(g) == 2:
-            return f"{g[0]} {g[1]}"
+def _month_end(year, month):
+    return (date(year + (month == 12), 1 if month == 12 else month + 1, 1)
+            - timedelta(days=1))
+
+
+def _when(label, until, iso=None):
+    return dict(label=label, date=iso, until=until)
+
+
+def _read_when(title, today):
+    """제목에서 '언제'를 읽는다. dict(label=표시용 짧은 말, date=ISO, until=기간 끝).
+
+    `until` 은 "이 말이 가리키는 기간의 마지막 날"이다. 앞날인지 판정하는 데만 쓴다.
+    이미 앞날인 것이 분명한 말(연내·내년·내달)에는 None 을 둔다. 못 읽으면 None.
+    """
+    low = title.lower()
+
+    m = _P_YMD.search(title)                       # 2026-10-15 · 2026년 10월 15일
+    if m:
+        try:
+            d = date(int(m.group(1)), int(m.group(2)), int(m.group(3)))
+        except ValueError:
+            d = None
+        if d:
+            return _when(f"{d.month}/{d.day}", d, d.isoformat())
+
+    m = _P_KO_MD.search(title)                     # 10월 15일
+    if m:
+        try:
+            d = date(today.year, int(m.group(1)), int(m.group(2)))
+        except ValueError:
+            d = None
+        if d:
+            return _when(f"{d.month}/{d.day}", d, d.isoformat())
+
+    m = _P_EN_DAY.search(title)                    # on October 15
+    if m:
+        try:
+            d = date(today.year, _MONTH_NO[m.group(1)[:3].lower()], int(m.group(2)))
+        except ValueError:
+            d = None
+        if d:
+            return _when(f"{d.month}/{d.day}", d, d.isoformat())
+
+    m = _P_KO_Q.search(title) or _P_EN_Q.search(title)      # 4분기 · Q4
+    if m:
+        q = int(m.group(1))
+        if "내년" in title or "next year" in low:
+            return _when(f"내년 {q}분기", None)
+        return _when(f"{q}분기", _month_end(today.year, q * 3))
+
+    # "내년 상반기" 는 아래 _OPEN_PERIODS 가 그대로 받는다. 올해 상·하반기만
+    # 여기서 끝나는 날을 계산한다 — 9월에 "상반기"는 이미 지나간 말이다.
+    if ("상반기" in title or "하반기" in title) and "내년" not in title:
+        half = "상반기" if "상반기" in title else "하반기"
+        return _when(half, _month_end(today.year, 6 if half == "상반기" else 12))
+
+    for needle, label in _OPEN_PERIODS:
+        if needle in title or needle in low:
+            return _when(label, None)
+
+    m = _P_EN_MON.search(title)                    # in November · in November 2026
+    if m:
+        year = int(m.group(2)) if m.group(2) else today.year
+        month = _MONTH_NO[m.group(1)[:3].lower()]
+        return _when(f"{month}월" if year == today.year else f"{year}.{month}",
+                     _month_end(year, month))
+
+    m = _P_KO_MON.search(title)                    # 10월 (일자 없이)
+    if m:
+        month = int(m.group(1))
+        if 1 <= month <= 12:
+            return _when(f"{month}월", _month_end(today.year, month))
+
     return None
 
 
-def _next_expected(vendor, items):
+def _pick_when(title, now=None):
+    """제목에서 **앞날의** 날짜·기간만 뽑는다. 지난 날짜는 예정이 아니다."""
+    if not title:
+        return None
+    today = (now or datetime.now(timezone.utc)).date()
+    got = _read_when(title, today)
+    if not got:
+        return None
+    if got["until"] is not None and got["until"] < today:
+        # 지나간 날짜다. "[9월18일] …" 같은 날짜 머리표가 예정으로 올라오는 걸 막는다.
+        return None
+    return got
+
+
+# 오래전 기사에서 '예정'을 긁어오면 계획이 아니라 역사다. OpenAI 피드 하나가
+# 2015년치까지 1,210건을 준다 — 창이 없으면 10년 전 "coming soon" 이 오늘의
+# 예정이 된다. 현황판(마지막 갱신)과 달리 예정은 최근에 나온 말만 유효하다.
+NEXT_WINDOW_DAYS = 60
+
+
+def _next_expected(vendor, items, now=None):
     """다음 예정. 벤더 자기 채널이면 '확정', 언론 관측이면 '예정'."""
+    now = now or datetime.now(timezone.utc)
+    cutoff = now - timedelta(days=NEXT_WINDOW_DAYS)
     best = None
     for item in items:
         title = item.get("title") or ""
         low = title.lower()
+        at = item.get("published_at")
+        if at is None or at < cutoff:
+            continue
+        # **회사 판정은 제목으로만** 한다. 본문까지 보면 "구글도 비슷한 걸 준비 중"
+        # 한 줄 때문에 남의 회사 기사가 그 회사의 예정으로 붙는다.
         if not any(t in low for t in vendor["terms"]):
             continue
-        if not any(w in low for w in FORWARD_WORDS):
+        # 반면 **언제인지는 본문에 있다.** 루머 기사 제목은 "Meta to give Muse its
+        # own mailbox" 처럼 미래형만 싣고 날짜는 리드 문단에 적는다. 제목만 보던
+        # 동안 이 칸은 구조적으로 채워질 수 없었다.
+        blob = (title + " " + (item.get("summary") or "")).strip()
+        low_blob = blob.lower()
+        if not any(w in low_blob for w in FORWARD_WORDS):
             continue
         # 모델 얘기여야 한다. 제품명만 보면 "ChatGPT Business 좌석" 같은
         # 요금·기능 공지가 '다음 모델 예정'으로 올라온다.
-        if not any(w in low for w in MODEL_HINTS):
+        if not any(w in low_blob for w in MODEL_HINTS):
             continue
+        # 요금·좌석·채용 얘기는 **제목으로** 거른다. 본문까지 보면 거의 모든
+        # 기사가 어딘가에서 'plan' 이나 'business' 를 말하므로 다 걸린다.
         if any(w in low for w in NOT_MODEL):
             continue
         # 여러 회사가 든 업계 기사는 어느 한 곳의 예정이 아니다
         if _mentions_many(title):
             continue
+        # 언제인지 못 말하면 예정표에 적을 것이 없다
+        when = _pick_when(blob, now)
+        if when is None:
+            continue
         own_channel = (item.get("source_name") or "") == vendor["name"]
         cand = dict(
-            label=title,
+            label=when["label"],             # 표에 들어갈 짧은 말: 10/15 · 4분기 · 연내
+            headline=title,                  # 근거 헤드라인. 칸이 아니라 링크로 닿는다
             url=item.get("url"),
-            date=_pick_date(title),
+            date=when["date"],
             confidence="확정" if own_channel else "예정",
-            at=item.get("published_at"),
+            at=at,
         )
         # 확정이 예정을 이기고, 같은 등급이면 최신이 이긴다
         if best is None:
             best = cand
         elif cand["confidence"] == "확정" and best["confidence"] != "확정":
             best = cand
-        elif cand["confidence"] == best["confidence"] and cand["at"] and best["at"]                 and cand["at"] > best["at"]:
+        elif (cand["confidence"] == best["confidence"]
+                and cand["at"] and best["at"] and cand["at"] > best["at"]):
             best = cand
     return best
 
@@ -263,8 +404,13 @@ def _model_name(title, family):
     if not title:
         return title
     # 계열명 앞에 제품명 한 토막(Claude, Gemini …)까지 끌어오고, 뒤로 버전을 붙인다.
+    #
+    # 버전 앞에 이름 한 토막이 더 붙는 모델이 있다 — `GPT-Live-1`, `Qwen-Image-2.1`.
+    # 숫자만 기다리면 이런 것들은 아예 안 걸려서 제목 전체가 표에 실렸다
+    # ("OpenAI launches GPT-Live-1 for full-duplex voice agents" 가 모델명 칸에 있었다).
     pat = re.compile(
-        r"([A-Za-z가-힣][\w.\-]*\s+)?" + re.escape(family) + r"[\s\-_]?v?[\d.]+[A-Za-z\d.\-]*",
+        r"([A-Za-z가-힣][\w.\-]*\s+)?" + re.escape(family)
+        + r"(?:[\s\-_](?:[A-Za-z]{2,12})){0,2}[\s\-_]?v?[\d.]+[A-Za-z\d.\-]*",
         re.I)
     m = pat.search(title)
     if m:
@@ -277,7 +423,24 @@ def _model_name(title, family):
 
 # 앞머리 동사. "Introducing Gemini 3.8" 에서 모델은 뒤쪽뿐이다.
 _LEAD_VERBS = ("introducing", "announcing", "launching", "meet", "presenting",
-               "shipping", "say hello to", "welcome", "bringing")
+               "shipping", "say hello to", "welcome", "bringing", "releases",
+               "release", "launches", "unveils", "announces", "introduces",
+               "debuts", "출시", "공개", "발표",
+               # 원형도 붙는다 — "to launch Gemini 4" 에서 앞 토막으로 딸려왔다
+               "launch", "unveil", "announce", "introduce", "debut", "ship",
+               "present", "reveals", "reveal")
+
+# "<회사> launches <모델>" 처럼 동사 앞에 회사 이름이 한두 토막 붙는 형태.
+_VENDOR_VERB_RE = re.compile(
+    r"^[\w.\-]+(?:\s+[\w.\-]+)?\s+"
+    r"(?:launch\w*|releas\w*|unveil\w*|announc\w*|introduc\w*|debut\w*|ship\w*)\s+",
+    re.I)
+
+# 계열명 앞 토막으로 딸려오는 접속사·관사. 모델 이름의 일부가 아니다 —
+# "Introducing Claude Fable 5.1 and Claude Mythos 5.1" 에서 두 번째 줄이
+# `and Mythos 5.1` 로 나왔다.
+_LEAD_STOPWORDS = ("and", "or", "with", "the", "a", "an", "plus", "&",
+                   "for", "to", "in", "of", "그리고", "및", "와", "과")
 
 
 def _strip_noise(name):
@@ -288,10 +451,19 @@ def _strip_noise(name):
     # 표에서 접두사는 같은 말을 두 번 하는 것이고, 좁은 폰에서 모델명을 밀어낸다.
     if "/" in name and " " not in name.split("/")[0]:
         name = name.split("/", 1)[1]
-    low = name.lower()
-    for verb in _LEAD_VERBS:
-        if low.startswith(verb + " "):
-            name = name[len(verb) + 1:]
+
+    name = _VENDOR_VERB_RE.sub("", name, count=1)
+
+    # 앞머리 군더더기는 한 겹이 아니다 — "Meta and Llama 4" 는 동사와 접속사가
+    # 겹쳐 붙는다. 더 뗄 것이 없을 때까지 돈다. 다만 전부 떼고 빈 문자열이
+    # 되는 일은 막는다 — 이름이 없는 것보다 군더더기 붙은 이름이 낫다.
+    for _ in range(4):
+        low = name.lower()
+        for word in _LEAD_VERBS + _LEAD_STOPWORDS:
+            if low.startswith(word + " ") and len(name) > len(word) + 1:
+                name = name[len(word) + 1:]
+                break
+        else:
             break
     return name.strip(" .,:-")
 
@@ -404,7 +576,7 @@ def vendor_status(items, now=None):
             hit = own or hf
 
         if hit is None:
-            nxt = _next_expected(vendor, items)
+            nxt = _next_expected(vendor, items, now)
             rows.append(dict(vendor=vendor["name"], family=None, model=None, url=None, days=None,
                              at=None, via=None, channel=None,
                              weights=bool(vendor["hf"]),
@@ -414,7 +586,7 @@ def vendor_status(items, now=None):
                              next_url=(nxt or {}).get("url")))
             continue
 
-        nxt = _next_expected(vendor, items)
+        nxt = _next_expected(vendor, items, now)
         fam_rows = _family_rows(vendor, _all_candidates(vendor, items), now)
         if fam_rows:
             for fr in fam_rows:
@@ -442,4 +614,14 @@ def vendor_status(items, now=None):
                      + " — 해당 회사는 피드·HF 기준으로 표시됩니다.")
     notes.append("모델 업데이트는 '현황'이지 '계획'이 아닙니다. "
                  "벤더가 출시 일정을 공표하지 않으므로 마지막 갱신 이후 경과일만 보여줍니다.")
+
+    # '다음 예정'이 전부 비는 날이 대부분이다. 빈칸을 설명 없이 두면 수집이
+    # 고장 난 것처럼 보이므로, 왜 비었는지를 숫자로 적는다.
+    # 2026-09-21 실측: 벤더 이름이 든 제목 691건 중 앞날의 날짜·기간을 말한 것 0건.
+    filled = sum(1 for r in rows if r.get("next_label"))
+    if not filled:
+        notes.append(
+            f"'다음 예정'이 모두 비어 있습니다 — 최근 {NEXT_WINDOW_DAYS}일 수집분에 "
+            "앞으로의 모델 일정(날짜·분기·'연내')을 적은 제목이 한 건도 없었습니다. "
+            "칸을 채우려고 기준을 낮추면 틀린 날짜가 올라가므로 빈칸으로 둡니다.")
     return rows, notes

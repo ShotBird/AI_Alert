@@ -228,6 +228,20 @@
     margin: 0 0 14px;
   }
 
+  /* 섹션 주석 — 목록이 짧은 이유. 본문보다 작고 조용하게, 그러나 보이게. */
+  .s-notes {
+    margin: 10px 0 0; padding: 0; list-style: none;
+    display: grid; gap: 5px;
+  }
+  .s-notes li {
+    font-size: 13px; line-height: 1.45; color: var(--ink-mute);
+    padding-left: 13px; position: relative;
+  }
+  .s-notes li::before {
+    content: ""; position: absolute; left: 0; top: 8px;
+    width: 5px; height: 1px; background: var(--hairline);
+  }
+
   .briefing {
     border-top: 1px solid var(--hairline);
     border-bottom: 1px solid var(--hairline);
@@ -382,22 +396,51 @@
   .v-co {
     font-weight: 600;
     color: var(--ink);
-    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
+  /* 모델 업데이트의 회사 칸만 두 줄을 허용한다 ("Alibaba Qwen" 이 잘렸다).
+     GitHub·커뮤니티 표의 .v-co 는 한 줄 말줄임 그대로 둔다. */
+  .m-row .v-co {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.25;
+  }
+  /* 이름과 ↗ 를 한 상자에 넣고 말줄임을 걸었더니, 모델명이 길면 **말줄임이
+     아이콘까지 먹어서** 링크가 화면에 없고 눌리지도 않았다. 잘려야 하는 것은
+     이름뿐이다. 그래서 둘을 나란한 칸으로 만들고 말줄임은 이름에만 건다. */
   .v-model {
     color: var(--ink-soft);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    display: flex;
+    align-items: flex-start;   /* 두 줄이 되어도 ↗ 는 첫 줄에 남는다 */
+    gap: 3px;
+    min-width: 0;            /* 이게 없으면 grid 칸이 내용만큼 벌어져 표가 밀린다 */
   }
-  .v-model .v-name { color: var(--ink-soft); }
+  /* 한 줄 말줄임으로는 폰에서 `Qwen-Image-2.1-PE-I2I`(155px)가 87px 칸에
+     들어가지 않아 대부분 잘렸다. 모델명은 이 표에서 가장 중요한 글자이므로
+     자르는 대신 **두 줄까지 흐르게** 둔다. 이름이 짧은 행의 높이는 그대로다. */
+  .v-model .v-name {
+    color: var(--ink-soft);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;   /* Qwen-Image-2.1-PE-I2I 는 두 줄로도 안 들어간다 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+    line-height: 1.25;
+    min-width: 0;
+  }
   .v-src {
+    flex: 0 0 auto;          /* 이름이 아무리 길어도 아이콘 자리는 먼저 확보된다 */
     color: var(--link);
     text-decoration: none;
-    font-size: 12px;
-    padding: 0 2px;
+    font-size: 13px;
+    /* 손가락이 닿을 넓이를 주되, 음수 여백으로 행 높이는 그대로 둔다 */
+    padding: 9px 6px;
+    margin: -9px -2px;
   }
   .v-src:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
   .v-when {
@@ -550,12 +593,41 @@
 
   /* ── 모델 업데이트 표: 회사 · 최신 모델 · 갱신 · 다음 예정 4열.
      .v-row 기본 3열을 g-row/c-row 가 같이 쓰므로 여기만 모디파이어로 넓힌다. */
-  .m-row { grid-template-columns: minmax(92px, 1.05fr) minmax(0, 1.25fr) auto auto; gap: 9px; }
+  /* 열 4개인데 눈에는 6덩어리로 보였다 — 헤더는 왼쪽에 붙고 값은 오른쪽에 붙어
+     있었고, 열 사이에 경계가 없어 "갱신" 아래 09/20 과 "오늘" 이 서로 다른 열처럼
+     읽혔다. 경계선을 실제로 긋고, 헤더를 그 열의 값과 같은 쪽에 붙인다. */
+  /* **열 폭은 고정이어야 한다.** 행마다 grid 가 따로 계산되므로 `auto` 를 쓰면
+     헤더의 "갱신" 폭과 데이터의 "09/20 오늘" 폭이 서로 달라지고, 결과적으로
+     헤더와 셀이 눈으로 안 맞는다 — 실제로 최신 모델 열이 헤더 126~229,
+     첫 행 126~151 이었다. fr 과 고정 px 만 쓰면 모든 행이 같은 자리에 선다. */
+  .m-row {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) 92px;
+    gap: 0;
+    align-items: start;      /* 두 줄짜리 칸이 생기면 baseline 은 어긋난다 */
+  }
+  .m-row > * { padding-inline: 7px; }
+  .m-row > *:first-child { padding-left: 0; }
+  .m-row > *:last-child { padding-right: 0; }
+  .m-row > * + * { border-left: 1px solid var(--hairline); }
+  /* 헤더는 그 열의 값과 같은 변에 붙인다. 날짜·예정은 오른쪽 정렬이다. */
+  .m-row.v-head > *:nth-child(3) { text-align: right; }
+  .m-row.v-head { border-bottom: 1px solid var(--hairline); }
   .m-row .v-when i { min-width: 0; }   /* 상대 시간 칸의 고정폭이 회사 이름을 밀어냈다 */
-  .m-row .v-when, .m-row .v-next { font-size: 13px; }
-  .m-row .v-when b, .m-row .v-next b { font-size: 13px; }
+  .m-row .v-when { font-size: 13px; gap: 5px; }
+  /* 다음 예정 아랫줄 — 회사 이름과 왼쪽을 맞춰 "이 회사의 것"임을 보인다 */
   .v-next {
-    display: flex; gap: 6px; align-items: baseline; justify-content: flex-end;
+    display: flex; align-items: baseline; gap: 5px;
+    justify-content: flex-start;   /* 옛 규칙의 flex-end 를 덮는다 — 아랫줄은 왼쪽에 붙어야 회사와 이어진다 */
+    font-size: 13px; padding: 0 0 9px; margin-top: -3px;
+    font-variant-numeric: tabular-nums;
+  }
+  .v-next-lab { font-size: 11px; color: var(--ink-mute); }
+  .v-item.has-next .v-row { padding-bottom: 4px; }
+  .m-row .v-when b, .m-row .v-next b { font-size: 13px; }
+  /* 표의 오른쪽 칸이던 시절의 규칙이다. 이제는 행 아래 한 줄이라
+     오른쪽 정렬이면 회사 이름과 끊겨 보인다. */
+  .v-next {
+    display: flex; gap: 6px; align-items: baseline; justify-content: flex-start;
     white-space: nowrap; font-variant-numeric: tabular-nums;
   }
   .v-next b { font-weight: 400; color: var(--ink-soft); }
@@ -563,31 +635,73 @@
   .v-next i.fix { color: var(--tint-green); }   /* 확정 — 회사가 날짜를 말한 것 */
   .v-next i.exp { color: var(--tint-orange); }  /* 예정 — 관측·소문 */
 
-  /* ── 1년 마일스톤: 가로로 흐르는 축 하나. 폰 폭에 1년을 우겨넣으면 글자가 겹치므로
-     축 자체를 넓게 두고 가로 스크롤한다. 열리면 '오늘'로 자동 스크롤한다. */
+  /* ── 1년 마일스톤 ──────────────────────────────────────────────────────────
+     가로 스크롤 축이었다. 40개를 담으려고 레일을 4,720px 까지 늘렸는데,
+     폰 화면에 한 번에 보이는 건 그 7% 뿐이었다. 사용자 말대로 "사람이 볼 수준"이
+     아니었다 — 1년을 보여주겠다면서 1년을 못 보게 만든 설계다.
+
+     그래서 둘로 갈랐다. **띠**는 스크롤 없이 한 화면에 1년을 다 담아 리듬만
+     보여주고(점이 겹쳐도 상관없다 — 밀도가 곧 정보다), **목록**은 세로로
+     읽는다. 폰에서 자연스러운 방향은 세로 하나뿐이다. */
   .ms-wrap {
-    background: var(--surface); border-radius: var(--r-card);
-    padding: 12px 0 12px; margin-bottom: 10px;
-    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    background: var(--surface);
+    border-radius: var(--r-card);
+    padding: 14px 18px 8px;
+    margin-bottom: 10px;
   }
-  .ms-label { font-size: 13px; color: var(--ink-mute); padding: 0 18px 10px; }
-  .ms-rail { position: relative; height: 196px; margin: 0 18px; }
-  .ms-axis { position: absolute; left: 0; right: 0; top: 92px; height: 1px; background: var(--hairline); }
-  .ms-tick { position: absolute; top: 88px; width: 1px; height: 5px; background: var(--hairline); }
-  .ms-mon { position: absolute; top: 96px; font-size: 11px; color: var(--ink-mute); transform: translateX(-50%); }
-  .ms-today { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--tint-green); }
-  .ms-today span { position: absolute; top: -2px; left: 4px; font-size: 11px; color: var(--tint-green); white-space: nowrap; }
-  .ms-dot { position: absolute; top: 89px; width: 7px; height: 7px; border-radius: 50%; background: var(--action); transform: translate(-50%, 0); }
-  .ms-pt { position: absolute; transform: translateX(-50%); width: 88px; text-align: center; }
-  .ms-pt a, .ms-pt span.ms-m {
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
-    font-size: 11px; line-height: 1.22; color: var(--ink); text-decoration: none; overflow-wrap: anywhere;
+  .ms-label {
+    font-size: 12px; font-weight: 600; color: var(--ink-mute);
+    letter-spacing: 0.02em; margin: 0 0 12px;
   }
-  .ms-pt .ms-d { display: block; font-size: 11px; color: var(--ink-mute); font-variant-numeric: tabular-nums; }
-  .ms-r0 { top: 56px; } .ms-r1 { top: 104px; }
-  .ms-r2 { top: 28px; } .ms-r3 { top: 132px; }
-  .ms-r4 { top: 0; }    .ms-r5 { top: 160px; }
-  .ms-empty { font-size: 14px; color: var(--ink-mute); padding: 0 18px 4px; margin: 0; }
+
+  /* 띠: 1/1 왼쪽 끝, 12/31 오른쪽 끝. 가로 스크롤 없음. */
+  .ms-bar { position: relative; height: 34px; margin-bottom: 14px; }
+  .ms-axis { position: absolute; left: 0; right: 0; top: 11px; height: 1px; background: var(--hairline); }
+  .ms-tick { position: absolute; top: 8px; width: 1px; height: 7px; background: var(--hairline); }
+  .ms-mon {
+    position: absolute; top: 19px; font-size: 10px; color: var(--ink-mute);
+    transform: translateX(-50%); font-variant-numeric: tabular-nums;
+  }
+  .ms-dot {
+    position: absolute; top: 8px; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--action); transform: translateX(-50%);
+  }
+  .ms-today { position: absolute; top: 2px; height: 19px; width: 2px; background: var(--tint-green); transform: translateX(-50%); }
+  .ms-today span {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    font-size: 10px; font-weight: 600; color: var(--tint-green); white-space: nowrap;
+  }
+
+  /* 목록: 달마다 한 줄. 빈 달은 아예 나오지 않는다. */
+  .ms-months { display: grid; gap: 2px; }
+  .ms-mrow {
+    display: grid; grid-template-columns: 34px 1fr; gap: 10px;
+    align-items: baseline; padding-block: 7px;
+    border-top: 1px solid var(--hairline);
+  }
+  .ms-mrow:first-child { border-top: 0; }
+  .ms-mname { font-size: 12px; color: var(--ink-mute); font-variant-numeric: tabular-nums; }
+  .ms-items { display: flex; flex-wrap: wrap; gap: 4px 12px; }
+  .ms-i {
+    font-size: 13px; line-height: 1.35; color: var(--ink); text-decoration: none;
+    display: inline-flex; gap: 5px; align-items: baseline;
+  }
+  .ms-i b {
+    font-weight: 400; font-size: 11px; color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
+  }
+  .ms-i.soon { color: var(--tint-orange); }      /* 아직 안 온 날 — 예정 */
+  .ms-dot.soon { background: var(--tint-orange); }
+  .ms-tag {
+    font-style: normal; font-size: 10px; font-weight: 600;
+    color: var(--tint-orange); margin-left: 4px;
+  }
+  .ms-tag.fix { color: var(--tint-green); }
+  .ms-empty { font-size: 14px; color: var(--ink-mute); margin: 0 0 6px; }
+  .ms-months:not(.open) .ms-hid { display: none; }
+  .gh-more { margin-top: 10px; }
+  .ms-note { font-weight: 400; color: var(--ink-mute); letter-spacing: 0; }
+  .ms-note::before { content: " · "; }
 
   .n-meta b { font-weight: 600; color: var(--ink-soft); }
   .n-meta i.n-new { font-style: normal; font-weight: 600; color: var(--tint-green); }
@@ -595,7 +709,8 @@
 
   @media (max-width: 360px) {
     .v-row { grid-template-columns: minmax(70px, 1fr) minmax(0, 1.6fr) auto; gap: 8px; }
-    .m-row { grid-template-columns: minmax(78px, 1fr) minmax(0, 1.05fr) auto auto; gap: 6px; }
+    .m-row { grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr) 84px; }
+    .m-row > * { padding-inline: 7px; }
     .v-model { font-size: 14px; }
     .g-row { grid-template-columns: minmax(0, 1.3fr) minmax(52px, 0.8fr) auto; }
     .c-row { grid-template-columns: minmax(70px, 1fr) minmax(0, 1fr) auto; }
@@ -950,6 +1065,16 @@
         updateGithubDOM();
         return;
       }
+      const msMore = e.target.closest("#msMoreBtn");
+      if (msMore) {
+        const box = document.getElementById("msMonths");
+        if (box) {
+          const open = box.classList.toggle("open");
+          msMore.setAttribute("aria-expanded", String(open));
+          msMore.textContent = open ? "접기" : msMore.dataset.label;
+        }
+        return;
+      }
       const origBtn = e.target.closest(".n-orig-btn");
       if (origBtn) {
         toggleNewsOriginal(origBtn);
@@ -1078,15 +1203,16 @@
 
   // 다음 예정: 회사가 날짜를 말한 것(확정)과 관측·소문(예정)을 색으로 가른다.
   // 아무것도 못 찾았으면 빈칸이 아니라 "—" 를 둔다 — 빈칸은 버그처럼 보인다.
-  function nextCellHTML(c) {
+  function nextLineHTML(c) {
     const label = c.next_label || c.next_date;
-    if (!label) return `<span class="v-next"><span class="v-none">—</span></span>`;
+    if (!label) return "";
     const fixed = c.next_confidence === "확정";
     const tag = `<i class="${fixed ? "fix" : "exp"}">${fixed ? "확정" : "예정"}</i>`;
     const link = c.next_url
       ? ` <a class="v-src" href="${esc(c.next_url)}" target="_blank" rel="noopener" aria-label="근거 열기">↗</a>`
       : "";
-    return `<span class="v-next"><b>${esc(label)}</b>${tag}${link}</span>`;
+    return `<div class="v-next"><span class="v-next-lab">다음 예정</span>`
+         + `<b>${esc(label)}</b>${tag}${link}</div>`;
   }
 
   function vendorTableHTML(cards) {
@@ -1101,65 +1227,122 @@
         ? `<span class="v-name">${esc(c.model)}</span>${link}`
         : `<span class="v-none">—</span>`;
       const relCls = w.quiet ? "v-none" : (w.stale ? "v-stale" : (c.days_since <= 1 ? "v-fresh" : ""));
-      return `<div class="v-row m-row">
-        <span class="v-co">${esc(c.title || "")}</span>
-        <span class="v-model">${model}</span>
-        <span class="v-when"><b>${esc(w.date)}</b><i class="${relCls}">${esc(w.rel)}</i></span>
-        ${nextCellHTML(c)}
+      // '다음 예정'은 **값이 있을 때만 아랫줄**로 붙인다. 열로 두었더니 폰 폭에서
+      // 회사와 모델이 "Alibaba Q…" "Q…" 까지 잘렸는데, 정작 그 열은 대부분 "—" 였다.
+      // 거의 비어 있는 열에 폭을 내주고 늘 있는 정보를 잘라내는 건 거꾸로다.
+      const next = nextLineHTML(c);
+      return `<div class="v-item${next ? " has-next" : ""}">
+        <div class="v-row m-row">
+          <span class="v-co">${esc(c.title || "")}</span>
+          <span class="v-model">${model}</span>
+          <span class="v-when"><b>${esc(w.date)}</b><i class="${relCls}">${esc(w.rel)}</i></span>
+        </div>${next}
       </div>`;
     }).join("");
     return `<div class="v-table">
-      <div class="v-row m-row v-head"><span>회사</span><span>최신 모델</span><span>갱신</span><span>다음 예정</span></div>
+      <div class="v-row m-row v-head"><span>회사</span><span>최신 모델</span><span>갱신</span></div>
       ${rows}
     </div>`;
   }
 
   // ── 1년 마일스톤 ─────────────────────────────────────────────────────────
-  // 1/1 부터 12/31 까지 한 축. 점은 (월/일) + 모델명만 — 발표 제목을 실으면
-  // 축이 글자로 덮인다. 가까운 점끼리 겹치므로 네 줄로 엇갈려 놓는다.
-  const MS_ROWS = ["ms-r0", "ms-r3", "ms-r1", "ms-r4", "ms-r2", "ms-r5"];
+  // 띠 하나 + 달별 목록. 가로 스크롤은 쓰지 않는다 — 1년을 보여주겠다면서
+  // 한 번에 7%만 보이던 게 이전 설계였다.
   const MS_MONTH_LENGTHS = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  const MS_RECENT_ITEMS = 8;   // 접힌 상태에서 보여줄 최근 출시 건수
 
   function milestoneHTML(ms) {
     if (!ms) return "";
     const points = Array.isArray(ms.points) ? ms.points : [];
     const total = ms.total_days || 365;
     const year = ms.year || new Date().getFullYear();
+    const today = typeof ms.today_day_of_year === "number" ? ms.today_day_of_year : null;
+    // 40건만 실은 날에는 그렇게 적는다. "1년"이라 써 놓고 최근 몇 달만
+    // 보여주면서 아무 말도 안 하면, 앞쪽이 비어 있는 게 사실인지 버그인지 알 수 없다.
+    const note = ms.note ? `<span class="ms-note">${esc(ms.note)}</span>` : "";
+    const head = `<p class="ms-label">${year}년 모델 출시 · ${points.length}건${note}</p>`;
     if (!points.length) {
-      return `<div class="ms-wrap"><p class="ms-label">${year}년 모델 출시 마일스톤</p><p class="ms-empty">올해 축에 올릴 모델 출시를 찾지 못했습니다.</p></div>`;
+      return `<div class="ms-wrap">${head}`
+           + `<p class="ms-empty">올해 축에 올릴 모델 출시를 찾지 못했습니다.</p></div>`;
     }
+
     const pct = d => (Math.max(1, Math.min(total, d)) / total) * 100;
-    // 점이 많을수록 축을 길게 편다. 폭이 고정이면 출시가 몰린 주에서 라벨이 서로 덮는다.
-    const railWidth = Math.max(1600, points.length * 142);
     const leap = total === 366;
-    const months = [];
+
+    // 달 눈금. 폰 폭에서는 12개 이름이 다 안 들어가므로 숫자만 쓰고,
+    // 좁으면 홀수 달만 적는다 — 눈금선은 12개 그대로 둔다.
+    const narrow = typeof window !== "undefined" && window.innerWidth < 420;
+    const ticks = [];
     let acc = 1;
     for (let i = 0; i < 12; i++) {
-      months.push(`<span class="ms-tick" style="left:${pct(acc)}%"></span><span class="ms-mon" style="left:${pct(acc)}%">${i + 1}월</span>`);
+      const left = pct(acc);
+      ticks.push(`<span class="ms-tick" style="left:${left}%"></span>`);
+      if (!narrow || i % 2 === 0) {
+        ticks.push(`<span class="ms-mon" style="left:${left}%">${i + 1}</span>`);
+      }
       acc += MS_MONTH_LENGTHS[i] + (i === 1 && leap ? 1 : 0);
     }
-    const today = typeof ms.today_day_of_year === "number"
-      ? `<span class="ms-today" style="left:${pct(ms.today_day_of_year)}%"><span>오늘</span></span>` : "";
-    const dots = points.map(p => `<span class="ms-dot" style="left:${pct(p.day_of_year)}%"></span>`).join("");
-    const labels = points.map((p, i) => {
-      const inner = `<span class="ms-d">${esc(p.label || "")}</span>${esc(p.model || "")}`;
-      const body = p.url
-        ? `<a href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">${inner}</a>`
-        : `<span class="ms-m">${inner}</span>`;
-      return `<span class="ms-pt ${MS_ROWS[i % MS_ROWS.length]}" style="left:${pct(p.day_of_year)}%">${body}</span>`;
-    }).join("");
-    return `<div class="ms-wrap" id="msWrap">
-      <p class="ms-label">${year}년 모델 출시 마일스톤 · ${points.length}건</p>
-      <div class="ms-rail" style="min-width:${railWidth}px"><span class="ms-axis"></span>${months}${today}${dots}${labels}</div>
-    </div>`;
-  }
 
-  // 열리자마자 1월이 보이면 쓸모가 없다. '오늘'이 화면에 오도록 한 번 밀어 둔다.
-  function scrollMilestoneToToday() {
-    const wrap = document.getElementById("msWrap");
-    const mark = wrap && wrap.querySelector(".ms-today");
-    if (!wrap || !mark) return;
-    wrap.scrollLeft = Math.max(0, mark.offsetLeft - wrap.clientWidth * 0.62);
+    const dots = points
+      .map(p => `<span class="ms-dot${p.future ? " soon" : ""}" style="left:${pct(p.day_of_year)}%"></span>`)
+      .join("");
+    const todayMark = today !== null
+      ? `<span class="ms-today" style="left:${pct(today)}%"><span>오늘</span></span>` : "";
+
+    const bar = `<div class="ms-bar"><span class="ms-axis"></span>`
+              + `${ticks.join("")}${dots}${todayMark}</div>`;
+
+    // 달별 목록. 출시가 없는 달은 줄 자체를 만들지 않는다 —
+    // 빈 줄 열두 개는 1년이 아니라 여백만 보여준다.
+    const byMonth = new Map();
+    points.forEach(p => {
+      const mth = Number(String(p.date || "").split("-")[1] || 0);
+      if (!mth) return;
+      if (!byMonth.has(mth)) byMonth.set(mth, []);
+      byMonth.get(mth).push(p);
+    });
+
+    // 접힌 상태에서는 **가장 최근 8건**만 남긴다. 달 단위로 잘라 봤더니
+    // 출시가 최근 두 달에 몰려 있어 전혀 줄지 않았다(698px). 세는 단위를
+    // 달에서 건으로 바꿔야 실제로 짧아진다.
+    // 예정은 접지 않는다 — 축에서 가장 궁금한 쪽이 오른쪽이고, 몇 건 되지도 않는다.
+    const recent = new Set([
+      ...points.filter(p => p.future),
+      ...[...points].filter(p => !p.future)
+                    .sort((a, b) => (a.date < b.date ? 1 : -1))
+                    .slice(0, MS_RECENT_ITEMS),
+    ]);
+    const hiddenCount = points.length - recent.size;
+
+    const months = [...byMonth.keys()].sort((a, b) => a - b);
+    const rows = months.map(mth => {
+      const group = byMonth.get(mth);
+      const items = group.map(p => {
+        // 앞날은 색으로도 글자로도 구분한다. 색만으로는 '확정'과 '예정'이
+        // 갈리지 않는데, 소문을 일어난 일처럼 읽으면 그건 오보다.
+        const soon = p.future ? " soon" : "";
+        const hid = recent.has(p) ? "" : " ms-hid";
+        const tag = p.future
+          ? `<i class="ms-tag${p.confidence === "확정" ? " fix" : ""}">${esc(p.confidence || "예정")}</i>`
+          : "";
+        const inner = `<b>${esc(p.label || "")}</b>${esc(p.model || "")}${tag}`;
+        return p.url
+          ? `<a class="ms-i${soon}${hid}" href="${esc(p.url)}" target="_blank" rel="noopener noreferrer">${inner}</a>`
+          : `<span class="ms-i${soon}${hid}">${inner}</span>`;
+      }).join("");
+      // 이 달에 보일 것이 하나도 없으면 달 줄 자체를 숨긴다.
+      const rowHid = group.some(p => recent.has(p)) ? "" : " ms-hid";
+      return `<div class="ms-mrow${rowHid}"><span class="ms-mname">${mth}월</span>`
+           + `<span class="ms-items">${items}</span></div>`;
+    }).join("");
+
+    const more = hiddenCount
+      ? `<button type="button" class="gh-more" id="msMoreBtn" aria-expanded="false"
+          data-label="더보기 (${hiddenCount}건 더)">더보기 (${hiddenCount}건 더)</button>`
+      : "";
+
+    return `<div class="ms-wrap">${head}${bar}`
+         + `<div class="ms-months" id="msMonths">${rows}</div>${more}</div>`;
   }
 
   // ── 일반 카드: 위 어느 표에도 해당하지 않는 섹션이 새로 생겼을 때의 안전망.
@@ -1200,7 +1383,13 @@
       body = `<div class="cards">${cards.map(cardHTML).join("")}</div>`;
     }
     const ms = milestoneHTML(s.milestone);
-    return `<section id="${anchor}"><h2>${esc(s.title || "")}</h2>${briefing}${ms}${body}</section>`;
+    // 섹션 주석: "왜 이만큼뿐인가"를 적는 자리다. 목록이 짧은 이유를 말하지 않으면
+    // 사용자는 짧은 것과 고장난 것을 구별할 수 없다 — 실제로 구별하지 못했다.
+    // 본문 **아래**에 둔다. 읽기 전에 변명부터 읽힐 이유는 없다.
+    const notes = Array.isArray(s.notes) && s.notes.length
+      ? `<ul class="s-notes">${s.notes.map(n => `<li>${esc(n)}</li>`).join("")}</ul>`
+      : "";
+    return `<section id="${anchor}"><h2>${esc(s.title || "")}</h2>${briefing}${ms}${body}${notes}</section>`;
   }
 
   // ── 상태/헤더 렌더링 ──────────────────────────────────────────────────────
@@ -1241,7 +1430,6 @@
     renderKeywordStrip(keywordSection);
     renderNav(otherSections);
     el.board.innerHTML = otherSections.map(sectionHTML).join("");
-    scrollMilestoneToToday();
   }
 
   function renderFatalError() {

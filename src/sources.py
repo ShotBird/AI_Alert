@@ -63,6 +63,21 @@ SOURCES = [
     # ── 커뮤니티 활동 ────────────────────────────────────────────────────────
     # HF Daily Papers 는 추천수가 달린 실제 커뮤니티 신호다. 모델 API 와 달리
     # "사람들이 오늘 뭘 읽고 있나"를 보여준다.
+    # ── 루머·미출시 소식 ────────────────────────────────────────────────────
+    # "다음 예정" 칸이 늘 비어 있던 이유는 필터가 아니라 소스였다. 주요 언론과
+    # 벤더 공식 블로그는 **일어난 일만** 싣는다. 앞으로 나올 것을 말하는 매체를
+    # 따로 넣어야 그 칸에 들어갈 문장이 생긴다.
+    # 셋 다 직접 받아서 항목이 들어오는 것과 robots.txt 를 확인했다 (2026-09-21).
+    # Android Authority 는 `Disallow: /*/feed/` 라 뺐다.
+    dict(id="testingcatalog", region="global", name="TestingCatalog",
+         section="top_headlines", kind="rss", rumor=True,
+         url="https://www.testingcatalog.com/rss/"),
+    dict(id="the_decoder", region="global", name="The Decoder",
+         section="top_headlines", kind="rss", rumor=True,
+         url="https://the-decoder.com/feed/"),
+    dict(id="9to5google", region="global", name="9to5Google",
+         section="top_headlines", kind="rss", rumor=True,
+         url="https://9to5google.com/feed/"),
     dict(id="hf_papers", region="global", name="Hugging Face", section="top_headlines",
          kind="hfpaper", url="https://huggingface.co/api/daily_papers?limit=30"),
 ]
