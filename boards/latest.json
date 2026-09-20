@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "board_date": "2026-09-20",
-  "generated_at": "2026-09-20T14:06:55.088329Z",
+  "generated_at": "2026-09-20T14:07:26.891251Z",
   "status": "ok",
   "previous_board_date": "2026-09-20",
   "generator": {
@@ -13,11 +13,12 @@
       "published": 15
     },
     "api_budget": {
-      "github_core": "60/900",
-      "github_search": "6/30",
+      "github_core": "80/900",
+      "github_search": "8/30",
       "tranco": "38/40"
     },
     "notes": [
+      "GitHub 토큰이 없어 후보 수를 줄였습니다 (무인증 core 시간당 60회).",
       "오늘 수집한 항목 중 다른 곳에서 커뮤니티를 가리킨 링크가 없음 (화제 유입량 0). 전체 트래픽 순위로만 줄을 세움",
       "화제 유입량은 오늘 수집한 항목이 가리키는 링크 기준이고, 전체 트래픽 순위(Tranco)는 AI 화제 전용 지표가 아니라 사이트 전체 규모다.",
       "ANTHROPIC_API_KEY가 없어 요약을 건너뜁니다. 키가 생기면 자동으로 채워집니다."
@@ -129,7 +130,7 @@
           "title": "StepFun, 차세대 플래그십 AI 모델 Step 5 Preview 공개",
           "summary_ko": null,
           "url": "https://news.hada.io/topic?id=33999",
-          "heat": 5.39,
+          "heat": 5.38,
           "source_count": 1,
           "sources": [
             {
@@ -152,7 +153,7 @@
               "name": "GeekNews"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "httpss://news.hada.io/topic?id=33957",
           "published_at": "2026-09-19T22:52:23Z"
         },
@@ -168,7 +169,7 @@
               "name": "AI타임스"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "httpss://aitimes.com/news/articleView.html?idxno=215494",
           "published_at": "2026-09-19T10:46:59Z"
         },
@@ -184,7 +185,7 @@
               "name": "AI타임스"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "httpss://aitimes.com/news/articleView.html?idxno=215470",
           "published_at": "2026-09-18T08:49:22Z"
         }
@@ -279,7 +280,7 @@
               "name": "GeekNews"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "httpss://news.hada.io/topic?id=33983",
           "published_at": "2026-09-20T05:52:25Z"
         }
