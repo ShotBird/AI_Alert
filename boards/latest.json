@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "board_date": "2026-09-21",
-  "generated_at": "2026-09-20T15:15:25.780097Z",
+  "generated_at": "2026-09-20T15:17:49.980386Z",
   "status": "ok",
   "previous_board_date": "2026-09-21",
   "generator": {
@@ -9,15 +9,15 @@
     "model": null,
     "counts": {
       "collected": 2099,
-      "clustered": 155,
+      "clustered": 154,
       "published": 95
     },
     "api_budget": {
-      "github_core": "3/1200",
-      "github_search": "48/200",
+      "github_core": "4/1200",
+      "github_search": "60/200",
       "tranco": "14/40",
       "discord": "12/60",
-      "benchmarks": "6/20"
+      "benchmarks": "9/20"
     },
     "notes": [
       "GitHub 토큰이 없어 후보 수를 줄였습니다 (무인증 core 시간당 60회).",
@@ -1102,7 +1102,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "affaan-m/ECC",
           "published_at": null,
           "repo": "affaan-m/ECC",
@@ -1126,7 +1126,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "NousResearch/hermes-agent",
           "published_at": null,
           "repo": "NousResearch/hermes-agent",
@@ -1150,7 +1150,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "n8n-io/n8n",
           "published_at": null,
           "repo": "n8n-io/n8n",
@@ -1174,7 +1174,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "anthropics/skills",
           "published_at": null,
           "repo": "anthropics/skills",
@@ -1198,7 +1198,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "Snailclimb/JavaGuide",
           "published_at": null,
           "repo": "Snailclimb/JavaGuide",
@@ -1222,7 +1222,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "langgenius/dify",
           "published_at": null,
           "repo": "langgenius/dify",
@@ -1246,7 +1246,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "open-webui/open-webui",
           "published_at": null,
           "repo": "open-webui/open-webui",
@@ -1270,11 +1270,11 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "DietrichGebert/ponytail",
           "published_at": null,
           "repo": "DietrichGebert/ponytail",
-          "stars": 142902,
+          "stars": 142903,
           "stars_delta": null,
           "category": "기타",
           "kind": "스킬",
@@ -1294,7 +1294,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "farion1231/cc-switch",
           "published_at": null,
           "repo": "farion1231/cc-switch",
@@ -1318,11 +1318,11 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "Graphify-Labs/graphify",
           "published_at": null,
           "repo": "Graphify-Labs/graphify",
-          "stars": 119793,
+          "stars": 119794,
           "stars_delta": null,
           "category": "슬라이드·문서",
           "kind": "MCP 서버",
@@ -1342,11 +1342,11 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "addyosmani/agent-skills",
           "published_at": null,
           "repo": "addyosmani/agent-skills",
-          "stars": 97486,
+          "stars": 97487,
           "stars_delta": null,
           "category": "기타",
           "kind": "스킬",
@@ -1366,7 +1366,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "nexu-io/open-design",
           "published_at": null,
           "repo": "nexu-io/open-design",
@@ -1390,7 +1390,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "koala73/worldmonitor",
           "published_at": null,
           "repo": "koala73/worldmonitor",
@@ -1414,11 +1414,11 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "Panniantong/Agent-Reach",
           "published_at": null,
           "repo": "Panniantong/Agent-Reach",
-          "stars": 83734,
+          "stars": 83737,
           "stars_delta": null,
           "category": "백엔드·API",
           "kind": "MCP 서버",
@@ -1438,7 +1438,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "lobehub/lobehub",
           "published_at": null,
           "repo": "lobehub/lobehub",
@@ -1462,11 +1462,11 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "D4Vinci/Scrapling",
           "published_at": null,
           "repo": "D4Vinci/Scrapling",
-          "stars": 82573,
+          "stars": 82574,
           "stars_delta": null,
           "category": "브라우저 자동화",
           "kind": "MCP 서버",
@@ -1486,7 +1486,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "shareAI-lab/learn-claude-code",
           "published_at": null,
           "repo": "shareAI-lab/learn-claude-code",
@@ -1510,7 +1510,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "thedaviddias/Front-End-Checklist",
           "published_at": null,
           "repo": "thedaviddias/Front-End-Checklist",
@@ -1534,7 +1534,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "career-ops-hq/career-ops",
           "published_at": null,
           "repo": "career-ops-hq/career-ops",
@@ -1558,11 +1558,11 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "tt-a1i/archify",
           "published_at": null,
           "repo": "tt-a1i/archify",
-          "stars": 68033,
+          "stars": 68036,
           "stars_delta": null,
           "category": "다이어그램",
           "kind": "스킬",
@@ -1582,7 +1582,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "ZhuLinsen/daily_stock_analysis",
           "published_at": null,
           "repo": "ZhuLinsen/daily_stock_analysis",
@@ -1606,7 +1606,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "hugohe3/ppt-master",
           "published_at": null,
           "repo": "hugohe3/ppt-master",
@@ -1630,7 +1630,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "CherryHQ/cherry-studio",
           "published_at": null,
           "repo": "CherryHQ/cherry-studio",
@@ -1654,11 +1654,11 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "blader/humanizer",
           "published_at": null,
           "repo": "blader/humanizer",
-          "stars": 50525,
+          "stars": 50527,
           "stars_delta": null,
           "category": "글쓰기",
           "kind": "스킬",
@@ -1678,7 +1678,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "K-Dense-AI/scientific-agent-skills",
           "published_at": null,
           "repo": "K-Dense-AI/scientific-agent-skills",
@@ -1702,7 +1702,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "reactive-resume/reactive-resume",
           "published_at": null,
           "repo": "reactive-resume/reactive-resume",
@@ -1726,7 +1726,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "cathrynlavery/diagram-design",
           "published_at": null,
           "repo": "cathrynlavery/diagram-design",
@@ -1750,11 +1750,11 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "alibaba/open-code-review",
           "published_at": null,
           "repo": "alibaba/open-code-review",
-          "stars": 38211,
+          "stars": 38213,
           "stars_delta": null,
           "category": "코드리뷰",
           "kind": "스킬",
@@ -1774,7 +1774,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "CopilotKit/CopilotKit",
           "published_at": null,
           "repo": "CopilotKit/CopilotKit",
@@ -1798,7 +1798,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "esengine/DeepSeek-Reasonix",
           "published_at": null,
           "repo": "esengine/DeepSeek-Reasonix",
@@ -1822,7 +1822,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "Gitlawb/openclaude",
           "published_at": null,
           "repo": "Gitlawb/openclaude",
@@ -1846,7 +1846,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "iOfficeAI/AionUi",
           "published_at": null,
           "repo": "iOfficeAI/AionUi",
@@ -1870,7 +1870,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "feder-cr/AIHawk",
           "published_at": null,
           "repo": "feder-cr/AIHawk",
@@ -1894,7 +1894,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "virgiliojr94/book-to-skill",
           "published_at": null,
           "repo": "virgiliojr94/book-to-skill",
@@ -1918,7 +1918,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "Kuddev/pebrel",
           "published_at": null,
           "repo": "Kuddev/pebrel",
@@ -1942,7 +1942,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "dark-hxx/CLI-Manager",
           "published_at": null,
           "repo": "dark-hxx/CLI-Manager",
@@ -1966,7 +1966,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "modelstudioai/cli",
           "published_at": null,
           "repo": "modelstudioai/cli",
@@ -1990,7 +1990,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "Spielewoy/multi-cli",
           "published_at": null,
           "repo": "Spielewoy/multi-cli",
@@ -2014,7 +2014,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "claudioemmanuel/squeez",
           "published_at": null,
           "repo": "claudioemmanuel/squeez",
@@ -2038,7 +2038,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "Soulmate-Halo/qiling-soulmate",
           "published_at": null,
           "repo": "Soulmate-Halo/qiling-soulmate",
@@ -2062,7 +2062,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "vibheksoni/t3router",
           "published_at": null,
           "repo": "vibheksoni/t3router",
@@ -2086,7 +2086,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "Linked-API/linkedin-cli",
           "published_at": null,
           "repo": "Linked-API/linkedin-cli",
@@ -2110,7 +2110,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "Digital-Threads/aimux",
           "published_at": null,
           "repo": "Digital-Threads/aimux",
@@ -2134,7 +2134,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "lacymorrow/lacy",
           "published_at": null,
           "repo": "lacymorrow/lacy",
@@ -2158,7 +2158,7 @@
               "name": "GitHub"
             }
           ],
-          "change": "new",
+          "change": "continuing",
           "dedup_key": "IRISX-AI/IRIS-Mini",
           "published_at": null,
           "repo": "IRISX-AI/IRIS-Mini",
@@ -2183,12 +2183,12 @@
           "title": "Qwen-Image-2.1: Compact, efficient, and unified image creation",
           "summary_ko": null,
           "url": "https://qwen.ai/blog?id=qwen-image-2.1",
-          "heat": 5.0,
+          "heat": 5.01,
           "source_count": 1,
           "sources": [
             {
               "name": "Hacker News",
-              "engagement": 136
+              "engagement": 143
             }
           ],
           "change": "continuing",
@@ -2203,7 +2203,7 @@
           "title": "Migrating the GitHub Copilot Runtime to Rust, Using Copilot",
           "summary_ko": null,
           "url": "https://github.blog/ai-and-ml/generative-ai/migrating-the-github-copilot-runtime-to-rust-using-copilot/",
-          "heat": 3.26,
+          "heat": 3.25,
           "source_count": 1,
           "sources": [
             {
