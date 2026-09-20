@@ -1,7 +1,7 @@
 # 05. 일일 보드 스키마와 다섯 섹션의 내용 확정
 
 Type: grilling
-Status: resolved
+Status: → GitHub Issue #5 (상태·라벨은 거기가 정본이다)
 Blocked by: 01
 
 ## Question

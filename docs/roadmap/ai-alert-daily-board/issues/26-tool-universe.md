@@ -1,7 +1,7 @@
 # 26. GitHub 섹션을 스킬 너머로 — MCP·프레임워크·CLI
 
 Type: task
-Status: claimed
+Status: → GitHub Issue #26 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

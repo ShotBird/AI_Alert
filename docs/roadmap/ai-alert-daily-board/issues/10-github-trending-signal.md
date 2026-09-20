@@ -1,7 +1,7 @@
 # 10. GitHub "급상승" 신호를 어떻게 만들 것인가
 
 Type: grilling
-Status: resolved
+Status: → GitHub Issue #10 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

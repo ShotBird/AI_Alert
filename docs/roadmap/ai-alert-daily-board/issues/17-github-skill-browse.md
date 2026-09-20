@@ -1,7 +1,7 @@
 # 17. GitHub 스킬 — 부문 블록 + Top 20 + 한 줄 분석
 
 Type: task
-Status: claimed
+Status: → GitHub Issue #17 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

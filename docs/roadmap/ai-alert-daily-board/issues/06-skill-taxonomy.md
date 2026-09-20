@@ -1,7 +1,7 @@
 # 06. GitHub 스킬 부문 택소노미 확정
 
 Type: grilling
-Status: resolved
+Status: → GitHub Issue #6 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

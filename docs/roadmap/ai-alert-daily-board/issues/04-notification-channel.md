@@ -1,7 +1,7 @@
 # 04. 알림 채널 확정
 
 Type: research
-Status: resolved
+Status: → GitHub Issue #4 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

@@ -1,7 +1,7 @@
 # 22. 진짜 '앱'으로 설치되게 하기
 
 Type: research
-Status: claimed
+Status: → GitHub Issue #22 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

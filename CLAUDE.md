@@ -4,7 +4,9 @@
 
 ### Issue tracker
 
-Issues and specs live as committed markdown under `docs/roadmap/<feature-slug>/`; no external tracker. See `docs/agents/issue-tracker.md`.
+**GitHub Issues** (`hans10102-droid/AI_Alert`), driven with `gh`. That is where state lives — open/closed, labels, assignee.
+
+The long-form reasoning for a ticket may additionally live as committed markdown at `docs/roadmap/<feature-slug>/issues/<NN>-<slug>.md`. Those files were the tracker until 2026-09-21 and were migrated in order, so **ticket number == issue number**. They no longer carry status; their `Status:` line points at the issue. See `docs/agents/issue-tracker.md`.
 
 ### Triage labels
 

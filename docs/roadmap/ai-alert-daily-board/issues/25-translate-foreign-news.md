@@ -1,7 +1,7 @@
 # 25. 해외 뉴스를 한국어로 기본 제공
 
 Type: task
-Status: claimed
+Status: → GitHub Issue #25 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

@@ -1,7 +1,7 @@
 # 24. 오늘의 키워드에서 일반어 걷어내기
 
 Type: task
-Status: claimed
+Status: → GitHub Issue #24 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

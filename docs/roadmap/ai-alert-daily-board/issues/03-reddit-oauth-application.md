@@ -1,7 +1,7 @@
 # 03. Reddit OAuth 승인 신청 (및 Threads keyword_search 신청 여부 판단)
 
 Type: task
-Status: open
+Status: → GitHub Issue #3 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

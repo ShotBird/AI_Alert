@@ -1,7 +1,7 @@
 # 09. RSS 없는 벤더(Anthropic·xAI·Meta·DeepSeek)를 어떻게 잡을 것인가
 
 Type: grilling
-Status: resolved
+Status: → GitHub Issue #9 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

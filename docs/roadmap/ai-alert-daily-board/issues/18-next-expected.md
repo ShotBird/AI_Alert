@@ -1,7 +1,7 @@
 # 18. 모델 업데이트 — '다음 예정' 열
 
 Type: task
-Status: claimed
+Status: → GitHub Issue #18 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

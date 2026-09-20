@@ -1,31 +1,64 @@
-# Issue tracker: Local Markdown (committed)
+# Issue tracker: GitHub Issues
 
-Issues and specs for this repo live as markdown files under `docs/roadmap/`, committed to git alongside the code. There is no external tracker; `gh`/`glab` are not used.
+Issues live in this repo's **GitHub Issues** (`hans10102-droid/AI_Alert`), driven with the `gh` CLI.
+This is the canonical tracker: open/closed state, labels and assignment live there and nowhere else.
+
+## History
+
+Until 2026-09-21 this repo used a local-markdown tracker under `docs/roadmap/<feature-slug>/issues/`.
+All 31 tickets were migrated to GitHub Issues on that date, in order, so **ticket number ==
+issue number** (`27-news-hotness.md` is issue `#27`). The markdown files stay in the repo as the
+written reasoning behind each decision — they are still worth reading and still get committed —
+but they no longer carry status. The `Status:` line in each file points at its issue instead.
 
 ## Conventions
 
-- One feature per directory: `docs/roadmap/<feature-slug>/`
-- The spec is `docs/roadmap/<feature-slug>/spec.md`
-- Implementation issues are one file per ticket at `docs/roadmap/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01`, never a single combined tickets file
-- Triage state is recorded as a `Status:` line near the top of each issue file (see `triage-labels.md` for the role strings)
-- Comments and conversation history append to the bottom of the file under a `## Comments` heading
-- Every issue/spec change is committed to git together with the work it describes
+- One feature per directory for the long-form material: `docs/roadmap/<feature-slug>/`
+- The spec is `docs/roadmap/<feature-slug>/spec.md`; the wayfinder map is `map.md`
+- A ticket's **state** is the GitHub issue: open/closed, labels, assignee
+- A ticket's **reasoning** may additionally live at
+  `docs/roadmap/<feature-slug>/issues/<NN>-<slug>.md`, committed with the work it describes.
+  When both exist, the issue links to the file and the file names the issue.
+
+## Labels
+
+Type: `type:research`, `type:task`, `type:grilling`, `type:prototype`
+State beyond open/closed: `status:claimed`, `status:in-progress`, `status:open`
+Triage roles (see `triage-labels.md`): `needs-triage`, `needs-info`, `ready-for-agent`,
+`ready-for-human`, `wontfix`
+
+## Commands
+
+```bash
+gh issue list --state open                       # 지금 열려 있는 것
+gh issue view 27                                 # 하나 읽기
+gh issue create --title "..." --body-file f.md --label type:task
+gh issue comment 27 --body "..."                 # 결과 기록
+gh issue close 27 --reason completed
+```
 
 ## When a skill says "publish to the issue tracker"
 
-Create a new file under `docs/roadmap/<feature-slug>/` (creating the directory if needed), then commit it.
+`gh issue create`. If the ticket carries long reasoning worth keeping in the repo, also write
+`docs/roadmap/<feature-slug>/issues/<NN>-<slug>.md` and cross-link the two.
 
 ## When a skill says "fetch the relevant ticket"
 
-Read the file at the referenced path. The user will normally pass the path or the issue number directly.
+`gh issue view <number>`. The user normally passes the number directly.
 
 ## Wayfinding operations
 
-Used by `/wayfinder`. The **map** is a file with one **child** file per ticket.
+Used by `/wayfinder`. The **map** is an issue labelled `wayfinder:map`; each ticket is an issue
+linked from it. Blocking is expressed with GitHub's native "blocked by" relationship where
+available, otherwise as a `Blocked by: #N` line in the body. The **frontier** is the open,
+unblocked, unassigned tickets:
 
-- **Map**: `docs/roadmap/<effort>/map.md` (the Destination / Notes / Decisions-so-far / Not-yet-specified / Out-of-scope body).
-- **Child ticket**: `docs/roadmap/<effort>/issues/NN-<slug>.md`, numbered from `01`, with the question in the body. A `Type:` line records the ticket type (`research`/`prototype`/`grilling`/`task`); a `Status:` line records `claimed`/`resolved`.
-- **Blocking**: a `Blocked by: NN, NN` line near the top. A ticket is unblocked when every file it lists is `resolved`.
-- **Frontier**: scan `docs/roadmap/<effort>/issues/` for files that are open, unblocked, and unclaimed; first by number wins.
-- **Claim**: set `Status: claimed` and save before any work.
-- **Resolve**: append the answer under an `## Answer` heading, set `Status: resolved`, then append a context pointer (gist + link) to the map's Decisions-so-far in `map.md`.
+```bash
+gh issue list --state open --search "no:assignee"
+```
+
+A session **claims** a ticket by assigning it to itself before doing any work:
+
+```bash
+gh issue edit <number> --add-assignee @me
+```

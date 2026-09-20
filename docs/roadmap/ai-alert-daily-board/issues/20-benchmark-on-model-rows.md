@@ -1,7 +1,7 @@
 # 20. 모델 업데이트 행에 벤치마크 점수 붙이기
 
 Type: task
-Status: claimed
+Status: → GitHub Issue #20 (상태·라벨은 거기가 정본이다)
 Blocked by: 14
 
 ## Question

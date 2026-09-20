@@ -1,7 +1,7 @@
 # 23. AI 커뮤니티의 정의를 다시 잡기
 
 Type: research
-Status: claimed
+Status: → GitHub Issue #23 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

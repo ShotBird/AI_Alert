@@ -1,7 +1,7 @@
 # 07. PWA 화면 시안
 
 Type: prototype
-Status: resolved
+Status: → GitHub Issue #7 (상태·라벨은 거기가 정본이다)
 Blocked by: 05
 
 ## Question

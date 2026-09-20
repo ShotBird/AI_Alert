@@ -1,7 +1,7 @@
 # 13. AI 커뮤니티 Top5 — 트래픽이 모이는 곳
 
 Type: task
-Status: resolved
+Status: → GitHub Issue #13 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

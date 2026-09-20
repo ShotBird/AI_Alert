@@ -1,7 +1,7 @@
 # 19. 모델 업데이트 — 메인스트림 계열 분리
 
 Type: task
-Status: claimed
+Status: → GitHub Issue #19 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

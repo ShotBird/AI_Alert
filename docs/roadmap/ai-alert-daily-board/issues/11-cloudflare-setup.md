@@ -1,7 +1,7 @@
 # 11. 외부 서비스 준비 (Cloudflare + GitHub + Anthropic 키)
 
 Type: task
-Status: in-progress
+Status: → GitHub Issue #11 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

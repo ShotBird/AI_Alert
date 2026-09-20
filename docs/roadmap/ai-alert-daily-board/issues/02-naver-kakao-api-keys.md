@@ -1,7 +1,7 @@
 # 02. 네이버·카카오 검색 API 키 발급
 
 Type: task
-Status: resolved
+Status: → GitHub Issue #2 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

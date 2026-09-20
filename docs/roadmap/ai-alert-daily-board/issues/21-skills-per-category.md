@@ -1,7 +1,7 @@
 # 21. GitHub 스킬 — 부문별 20개
 
 Type: task
-Status: claimed
+Status: → GitHub Issue #21 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

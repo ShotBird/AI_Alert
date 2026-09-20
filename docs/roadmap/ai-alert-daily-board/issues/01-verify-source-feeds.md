@@ -1,7 +1,7 @@
 # 01. 소스 피드 실동작 검증
 
 Type: research
-Status: resolved
+Status: → GitHub Issue #1 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

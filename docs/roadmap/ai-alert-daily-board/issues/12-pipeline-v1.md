@@ -1,7 +1,7 @@
 # 12. 수집 → 보드 JSON 파이프라인 v1
 
 Type: task
-Status: resolved
+Status: → GitHub Issue #12 (상태·라벨은 거기가 정본이다)
 Blocked by: 01, 05, 06, 09, 10
 
 ## Question

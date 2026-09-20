@@ -1,7 +1,7 @@
 # 14. 모델별 벤치마크 점수
 
 Type: research
-Status: claimed
+Status: → GitHub Issue #14 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question

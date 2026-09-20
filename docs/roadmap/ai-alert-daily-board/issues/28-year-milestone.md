@@ -1,7 +1,7 @@
 # 28. 모델 업데이트 위 1년 마일스톤
 
 Type: task
-Status: claimed
+Status: → GitHub Issue #28 (상태·라벨은 거기가 정본이다)
 Blocked by: (없음)
 
 ## Question
