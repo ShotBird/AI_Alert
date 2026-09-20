@@ -138,7 +138,27 @@ def _items_hf(raw, tz=0):
     return out
 
 
-PARSERS = {"rss": _items_rss, "atom": _items_atom, "hn": _items_hn, "hf": _items_hf}
+def _items_hfpaper(raw, tz=0):
+    """Hugging Face Daily Papers. 추천수가 달려 있어 반응 수치로 쓸 수 있다."""
+    data = json.loads(raw)
+    out = []
+    for row in data or []:
+        paper = row.get("paper") or {}
+        title = _clean(paper.get("title"))
+        pid = paper.get("id") or ""
+        if not title or not pid:
+            continue
+        out.append(dict(
+            title=title,
+            url=f"https://huggingface.co/papers/{pid}",
+            published_at=_parse_date(row.get("publishedAt"), tz),
+            engagement=paper.get("upvotes") or 0,
+        ))
+    return out
+
+
+PARSERS = {"rss": _items_rss, "atom": _items_atom, "hn": _items_hn,
+           "hf": _items_hf, "hfpaper": _items_hfpaper}
 
 
 def collect(sources):
@@ -168,6 +188,7 @@ def collect(sources):
                 source_id=src["id"],
                 source_name=src["name"],
                 section=src["section"],
+                region=src.get("region", "global"),
                 published_at=p.get("published_at"),
                 engagement=p.get("engagement") or 0,
                 comments=p.get("comments") or 0,

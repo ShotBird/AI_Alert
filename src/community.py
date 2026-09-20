@@ -55,25 +55,29 @@ FAIL_TTL_DAYS = 1
 # aliases 는 같은 커뮤니티가 쓰는 다른 도메인이다 (화제 유입량 매칭에만 쓰고,
 # Tranco 조회는 domain 하나로만 한다).
 COMMUNITIES = [
-    # AI·개발 담론이 실제로 벌어지는 곳으로 좁힌 목록이다.
-    # 전체 트래픽만으로 줄을 세우면 Medium·Stack Overflow 같은 범용 사이트가
-    # 올라오는데, 그건 "AI 커뮤니티"가 아니라 그냥 큰 웹사이트다.
-    # AI 특정성은 우리가 측정할 수 없으므로 **후보를 고르는 단계에서** 넣는다.
-    dict(domain="reddit.com", name="Reddit", aliases=["old.reddit.com"]),
-    dict(domain="news.ycombinator.com", name="Hacker News", aliases=["ycombinator.com"]),
-    dict(domain="x.com", name="X(트위터)", aliases=["twitter.com"]),
-    dict(domain="threads.com", name="Threads", aliases=["threads.net"]),
-    dict(domain="huggingface.co", name="Hugging Face"),
-    dict(domain="discord.com", name="Discord", aliases=["discord.gg"]),
-    dict(domain="lobste.rs", name="Lobsters"),
-    dict(domain="kaggle.com", name="Kaggle"),
-    dict(domain="news.hada.io", name="GeekNews", aliases=["hada.io"]),
-    dict(domain="arca.live", name="아카라이브"),
-    dict(domain="dcinside.com", name="디시인사이드", aliases=["gall.dcinside.com"]),
-    dict(domain="clien.net", name="클리앙"),
-    dict(domain="velog.io", name="velog"),
-    dict(domain="zenn.dev", name="Zenn"),
-    dict(domain="qiita.com", name="Qiita"),
+    # 해외 ────────────────────────────────────────────────────────────────────
+    dict(domain="huggingface.co", name="Hugging Face", region="global",
+         aliases=["hf.co"]),
+    dict(domain="reddit.com", name="Reddit", region="global", aliases=["old.reddit.com"]),
+    dict(domain="news.ycombinator.com", name="Hacker News", region="global",
+         aliases=["ycombinator.com"]),
+    dict(domain="x.com", name="X(트위터)", region="global", aliases=["twitter.com"]),
+    dict(domain="threads.com", name="Threads", region="global", aliases=["threads.net"]),
+    dict(domain="discord.com", name="Discord", region="global", aliases=["discord.gg"]),
+    dict(domain="lobste.rs", name="Lobsters", region="global"),
+    dict(domain="kaggle.com", name="Kaggle", region="global"),
+    dict(domain="zenn.dev", name="Zenn", region="global"),
+    dict(domain="qiita.com", name="Qiita", region="global"),
+
+    # 국내 ────────────────────────────────────────────────────────────────────
+    # 국내는 후보 자체가 적다. 해외와 같은 표에 섞으면 규모에 밀려 한 곳도 안 보인다.
+    dict(domain="news.hada.io", name="GeekNews", region="kr", aliases=["hada.io"]),
+    dict(domain="arca.live", name="아카라이브", region="kr"),
+    dict(domain="dcinside.com", name="디시인사이드", region="kr",
+         aliases=["gall.dcinside.com"]),
+    dict(domain="clien.net", name="클리앙", region="kr"),
+    dict(domain="velog.io", name="velog", region="kr"),
+    dict(domain="okky.kr", name="OKKY", region="kr"),
 ]
 
 
@@ -196,7 +200,7 @@ def _fetch_rank(domain, budget, notes):
     return ranks[0].get("rank"), None
 
 
-def top_communities(items, budget, cache_path, want=5):
+def top_communities(items, budget, cache_path, want=3):
     """AI 커뮤니티 Top5 행과 보드 notes 를 만든다.
 
     사용자 질문이 "AI 트래픽이 가장 많이 모이는 커뮤니티"였으므로
@@ -239,6 +243,7 @@ def top_communities(items, budget, cache_path, want=5):
         rows.append(dict(
             domain=domain,
             name=c["name"],
+            region=c.get("region", "global"),
             mentions=g["mentions"],
             engagement=g["engagement"],
             rank=rank,
@@ -248,12 +253,17 @@ def top_communities(items, budget, cache_path, want=5):
     _save_cache(cache_path, cache)
 
     # 순위가 낮을수록(숫자가 작을수록) 큰 사이트다. 순위를 모르는 곳은 맨 뒤로.
-    rows.sort(key=lambda r: (
-        0 if r["mentions"] else 1,           # 오늘 화제가 흘러간 곳을 먼저
-        -r["mentions"],
-        r["rank"] if r["rank"] is not None else 10 ** 9,
-    ))
-    rows = rows[:want]
+    # 지역별로 따로 뽑는다. 한 표에 섞으면 국내는 규모에 밀려 한 곳도 못 올라온다.
+    def order(r):
+        return (0 if r["mentions"] else 1,
+                -r["mentions"],
+                r["rank"] if r["rank"] is not None else 10 ** 9)
+
+    picked = []
+    for region in ("global", "kr"):
+        part = sorted([r for r in rows if r["region"] == region], key=order)
+        picked.extend(part[:want])
+    rows = picked
 
     if rows and all(r["rank"] is None for r in rows):
         notes.append("Tranco 전체 트래픽 순위를 하나도 못 가져옴 — "

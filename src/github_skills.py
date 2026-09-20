@@ -138,7 +138,7 @@ def weekly_delta(full_name, token, budget, cache=None):
     return value
 
 
-def top_rising(token, budget, candidates=40, want=5, cache=None):
+def top_rising(token, budget, candidates=60, want=20, cache=None):
     """부문 배지가 달린 상위 급상승 스킬."""
     pool, seen, notes = [], set(), []
 

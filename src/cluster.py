@@ -133,5 +133,8 @@ def _finalize(cluster):
     cluster["sources"] = sorted({i["source_name"] for i in items})
     cluster["source_count"] = len(cluster["sources"])
     cluster["is_release"] = any(i.get("is_release") for i in items)
+    # 국내 소스가 하나라도 물려 있으면 국내로 본다. 같은 사건을 양쪽이 다뤘다면
+    # 한국 독자에게는 국내 기사가 더 쓸모 있다.
+    cluster["region"] = "kr" if any(i.get("region") == "kr" for i in items) else "global"
     cluster["engagement"] = max((i.get("engagement") or 0) for i in items)
     cluster["comments"] = max((i.get("comments") or 0) for i in items)

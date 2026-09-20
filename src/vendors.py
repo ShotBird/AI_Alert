@@ -20,6 +20,7 @@
 """
 
 import json
+import re
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
@@ -133,6 +134,84 @@ def _from_items(vendor, items):
     return best
 
 
+# 미래를 가리키는 말. 이게 있으면 '일어난 일'이 아니라 '예정'이다.
+FORWARD_WORDS = (
+    "예정", "검토", "전망", "예상", "계획", "출시될", "공개될", "준비", "임박",
+    "다음 달", "내달", "연내", "상반기", "하반기", "소문", "루머", "유출",
+    "coming", "expected", "will launch", "will release", "set to", "plans to",
+    "reportedly", "rumor", "teased", "preview of", "soon",
+)
+
+# "이건 모델 얘기다" 신호. 하나는 있어야 예정으로 인정한다.
+MODEL_HINTS = ("모델", "model", "llm", "버전", "version", "preview",
+               "가중치", "weights", "출시", "release", "launch", "공개")
+
+# 모델이 아니라 요금·좌석·기능 공지. 예정 칸에 올라오면 안 된다.
+NOT_MODEL = ("seat", "pricing", "plan", "business", "enterprise tier",
+             "요금", "구독", "좌석", "채용", "파트너십", "투자", "ipo")
+
+# 날짜로 읽을 만한 것. 없으면 날짜 없이 라벨만 단다.
+_DATE_PATTERNS = (
+    re.compile(r"(\d{4})[.\-/년]\s?(\d{1,2})[.\-/월]\s?(\d{1,2})"),
+    re.compile(r"(\d{1,2})월\s?(\d{1,2})일"),
+    re.compile(r"(?:on|by)\s+(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[a-z]*\s+(\d{1,2})",
+               re.I),
+)
+
+
+def _pick_date(title):
+    """제목에서 날짜를 건져낸다. 못 건지면 None — 지어내지 않는다."""
+    for pat in _DATE_PATTERNS:
+        m = pat.search(title)
+        if not m:
+            continue
+        g = m.groups()
+        if len(g) == 3:
+            return f"{g[0]}-{int(g[1]):02d}-{int(g[2]):02d}"
+        if len(g) == 2 and g[0].isdigit():
+            return f"{int(g[0]):02d}/{int(g[1]):02d}"
+        if len(g) == 2:
+            return f"{g[0]} {g[1]}"
+    return None
+
+
+def _next_expected(vendor, items):
+    """다음 예정. 벤더 자기 채널이면 '확정', 언론 관측이면 '예정'."""
+    best = None
+    for item in items:
+        title = item.get("title") or ""
+        low = title.lower()
+        if not any(t in low for t in vendor["terms"]):
+            continue
+        if not any(w in low for w in FORWARD_WORDS):
+            continue
+        # 모델 얘기여야 한다. 제품명만 보면 "ChatGPT Business 좌석" 같은
+        # 요금·기능 공지가 '다음 모델 예정'으로 올라온다.
+        if not any(w in low for w in MODEL_HINTS):
+            continue
+        if any(w in low for w in NOT_MODEL):
+            continue
+        # 여러 회사가 든 업계 기사는 어느 한 곳의 예정이 아니다
+        if _mentions_many(title):
+            continue
+        own_channel = (item.get("source_name") or "") == vendor["name"]
+        cand = dict(
+            label=title,
+            url=item.get("url"),
+            date=_pick_date(title),
+            confidence="확정" if own_channel else "예정",
+            at=item.get("published_at"),
+        )
+        # 확정이 예정을 이기고, 같은 등급이면 최신이 이긴다
+        if best is None:
+            best = cand
+        elif cand["confidence"] == "확정" and best["confidence"] != "확정":
+            best = cand
+        elif cand["confidence"] == best["confidence"] and cand["at"] and best["at"]                 and cand["at"] > best["at"]:
+            best = cand
+    return best
+
+
 RELEASE_WORDS = ("introduc", "announc", "launch", "releas", "unveil",
                  "now available", "available now", "출시", "공개", "발표")
 
@@ -191,16 +270,26 @@ def vendor_status(items, now=None):
             hit = own or hf
 
         if hit is None:
+            nxt = _next_expected(vendor, items)
             rows.append(dict(vendor=vendor["name"], model=None, url=None, days=None,
                              at=None, via=None, channel=None,
-                             weights=bool(vendor["hf"])))
+                             weights=bool(vendor["hf"]),
+                             next_label=(nxt or {}).get("label"),
+                             next_date=(nxt or {}).get("date"),
+                             next_confidence=(nxt or {}).get("confidence"),
+                             next_url=(nxt or {}).get("url")))
             continue
 
         days = max(0, int((now - hit["at"]).total_seconds() // 86400))
+        nxt = _next_expected(vendor, items)
         rows.append(dict(vendor=vendor["name"], model=hit["name"], url=hit["url"],
                          days=days, at=hit["at"].date().isoformat(),
                          via=hit["via"], channel=hit.get("channel"),
-                         weights=bool(vendor["hf"])))
+                         weights=bool(vendor["hf"]),
+                         next_label=(nxt or {}).get("label"),
+                         next_date=(nxt or {}).get("date"),
+                         next_confidence=(nxt or {}).get("confidence"),
+                         next_url=(nxt or {}).get("url")))
 
     rows.sort(key=lambda r: (r["days"] is None, r["days"] if r["days"] is not None else 0))
 
