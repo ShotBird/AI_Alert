@@ -157,8 +157,8 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
           section_notes=None):
     """`notes` 는 보드 전체용(generator.notes), `section_notes` 는 섹션별이다.
 
-    사고: 수집기마다 정직한 설명을 만들어 돌려주는데(github_skills 의 "부문 N곳이
-    20개를 못 채웠습니다", timeline 의 "최근 N건만 축에 올렸습니다" …) 받는 쪽에
+    사고: 수집기마다 정직한 설명을 만들어 돌려주는데(github_skills 의 "N/108칸이
+    20개를 채웠습니다", timeline 의 "최근 N건만 축에 올렸습니다" …) 받는 쪽에
     섹션별 통로가 없어서 전부 generator.notes 한 자루에 들어갔다. generator.notes 를
     그리는 화면은 없으므로, 사용자는 짧은 목록만 보고 이유는 못 봤다.
     여기서 섹션마다 제 몫의 설명을 달아 내보낸다. 보드 전체용 notes 를 모든 섹션에
@@ -354,7 +354,11 @@ def write(board, boards_dir, keep_days=14):
     dated = os.path.join(boards_dir, f"{board['board_date']}.json")
     for path in (dated, os.path.join(boards_dir, "latest.json")):
         with open(path, "w", encoding="utf-8") as fh:
-            json.dump(board, fh, ensure_ascii=False, indent=2)
+            # 들여쓰기를 뺀다. 이 파일은 사람이 읽는 것이 아니라 **폰이 매일 아침
+            # 내려받는 것**이고, GitHub 섹션이 부문별 20줄로 차면서 indent=2 의
+            # 공백만 150KB 였다. 정보는 한 글자도 잃지 않는다.
+            # 사람이 읽어야 할 때는 `python -m json.tool` 이 있다.
+            json.dump(board, fh, ensure_ascii=False, separators=(",", ":"))
 
     # 색인: 90일치 상태만. 파이프라인이 얼마나 자주 성공하는지 확인용.
     index_path = os.path.join(boards_dir, "index.json")

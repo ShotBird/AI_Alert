@@ -294,6 +294,17 @@ class _Pacer:
             self.stamps = [t for t in self.stamps if now - t < SEARCH_WINDOW]
         self.stamps.append(now)
 
+    def cooldown(self):
+        """403 을 맞았다. 다음 호출 전에 한 창을 통째로 쉰다.
+
+        사고(2026-09-21 실측): 9/62초를 지켰는데도 20분짜리 회차 중간에 403 이
+        세 번 떨어졌다(GitHub 의 2차 제한으로 보인다). 그런데 실패한 칸은
+        개수가 그대로라 바로 다음 순번에 **또 같은 칸이 뽑혀** 곧장 다시 두드렸고,
+        그 칸의 질의 3개를 연달아 403 으로 날렸다. 실패는 "더 빨리 다시 해보라"는
+        뜻이 아니다 — 창을 채워 두어 다음 wait() 가 반드시 쉬게 한다."""
+        now = self.clock()
+        self.stamps = [now] * self.burst
+
 
 class _SearchStop(Exception):
     """검색 예산이 끝났다. 남은 계획을 조용히 접는다."""
@@ -488,6 +499,7 @@ def _gap_fill(buckets, pool, seen, token, budget, notes, pacer, want, max_reques
             break
         spent += 1
         if items is None:
+            pacer.cooldown()
             misses += 1
             if misses >= 5:
                 notes.append("GitHub 검색이 연속으로 거절해 칸 채우기를 멈췄습니다.")

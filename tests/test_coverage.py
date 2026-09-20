@@ -666,6 +666,17 @@ check("검색이 계속 거절하면 일찍 멈춘다 (140번 두드리지 않�
 check("실패 140줄을 섹션 노트에 쏟지 않는다",
       len(_flood_notes) <= 2, f"{_flood_notes}")
 
+# 사고: 403 이 떨어져도 그 칸은 개수가 그대로라 바로 다음 순번에 또 뽑혔고,
+# 곧장 다시 두드려 그 칸의 질의 세 개를 연달아 403 으로 날렸다(실측 9회).
+# 실패는 "더 빨리 다시 해보라"가 아니다.
+_cool = []
+_cool_pacer = gh_mod._Pacer(3, sleeper=_cool.append, clock=lambda: 0.0)
+_cool_pacer.wait()
+_cool_pacer.cooldown()
+_cool_pacer.wait()
+check("403 뒤에는 한 창을 쉬고 다시 두드린다",
+      len(_cool) == 1 and _cool[0] > 0, f"{_cool}")
+
 # 짧은 칸이라고 다 같은 이야기가 아니다. 셋을 섞어 "못 채웠습니다" 한 줄로 적으면
 # 고칠 수 있는 것(분류)과 없는 것(세상에 없음)과 다음 회차 몫(예산)이 구별되지 않는다.
 _A = ("스킬", "법률·규정")        # 겨냥해 봤더니 GitHub 전체가 3건 — 진짜 니치
