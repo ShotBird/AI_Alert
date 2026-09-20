@@ -79,3 +79,43 @@ Blocked by: (없음)
 - [ ] NCP 가입이 카드를 요구하는지 확인 → 요구하면 여기서 멈추고 보고
 - [ ] `.env`에 네이버 API HUB 키, `KAKAO_REST_API_KEY` 채워짐
 - [ ] 두 API가 실제로 응답하는지 호출 확인 (에이전트가 수행)
+
+---
+
+## 키를 어디서 찾는가 (공식 문서 기준)
+
+등록과 키 확인이 **별개 단계**다. 애플리케이션을 만들어도 키는 자동으로 보이지 않고, 따로 열어야 한다.
+
+### 네이버 API HUB
+
+1. 네이버 클라우드 플랫폼 콘솔 접속
+2. 우측 상단 **리전 & 플랫폼** → 리전·플랫폼 선택 후 **[적용]**
+3. 좌측 상단 **Menu** → **All Services** → **Application Services** → **NAVER API HUB**
+4. 좌측 **Application** 메뉴
+5. **Application Management** 화면에서 **Application을 선택**
+6. **API 관리** 하위의 **[인증 정보]** 버튼 클릭
+7. 팝업에 **Client ID**와 **Client Secret**이 나온다
+
+Client Secret이 노출되면 같은 경로의 **[재발급]**으로 교체한다.
+
+**호출 방식 — 구버전과 다르다:**
+
+```
+GET https://naverapihub.apigw.ntruss.com/search/v1/news?query=...&display=10&sort=date
+X-NCP-APIGW-API-KEY-ID: {Client ID}
+X-NCP-APIGW-API-KEY: {Client Secret}
+```
+
+인터넷 예제 대부분은 구버전 `openapi.naver.com/v1/search/...` + `X-Naver-Client-Id` 헤더를 쓴다.
+**그건 이제 틀린 경로다.** 호스트도 헤더 이름도 다르다. 구버전 예제를 그대로 베끼면 인증이 실패한다.
+
+### 카카오
+
+1. `developers.kakao.com` → **내 애플리케이션** → 해당 앱 선택
+2. **앱 설정 → 앱 키**
+3. 키가 네 종류(네이티브 앱 / REST API / JavaScript / Admin) 나온다. 필요한 건 **REST API 키**
+
+### 확인된 한도 재정리
+
+- 검색 API: 하루 **25,000회** (문서 재확인)
+- 검색어 트렌드: 월 30,000건 무료
