@@ -3,56 +3,288 @@
   "diagram_type": "dataflow",
   "meta": {
     "title": "AI Alert 파이프라인 구조",
-    "quality_profile": "showcase",
-    "viewBox": [1240, 700],
+    "quality_profile": "standard",
+    "viewBox": [
+      1560,
+      880
+    ],
     "views": [
-      { "id": "main-path", "label": "본 흐름", "focus": ["feeds", "collect", "pipeline", "assemble", "board", "pwa"], "note": "피드에서 모아 걸러내고 묶어 점수를 매긴 뒤 보드 한 장으로 굳혀 폰이 읽는다." },
-      { "id": "vendor-branch", "label": "벤더 채널 분기", "focus": ["hf", "vendorpage", "vendors"], "note": "클로즈드 벤더는 자기 페이지가 유일한 진실이고, 가중치를 공개하는 회사는 Hugging Face 가 본진이다." },
-      { "id": "budget-gate", "label": "예산 게이트", "focus": ["extapi", "budget", "assemble"], "note": "카운터를 읽지 못하면 호출하지 않는다. 안전장치가 고장나면 뚫리는 게 아니라 멈춘다." }
+      {
+        "id": "main-path",
+        "label": "본 흐름",
+        "focus": [
+          "feeds",
+          "collect",
+          "pipeline",
+          "assemble",
+          "board",
+          "pwa"
+        ],
+        "note": "피드에서 모아 걸러내고 묶어 점수를 매긴 뒤 보드 한 장으로 굳혀 폰이 읽는다."
+      },
+      {
+        "id": "vendor-branch",
+        "label": "벤더 채널 분기",
+        "focus": [
+          "hf",
+          "vendorpage",
+          "vendors"
+        ],
+        "note": "클로즈드 벤더는 자기 페이지가 유일한 진실이고, 가중치를 공개하는 회사는 Hugging Face 가 본진이다."
+      },
+      {
+        "id": "budget-gate",
+        "label": "예산 게이트",
+        "focus": [
+          "extapi",
+          "budget",
+          "assemble"
+        ],
+        "note": "카운터를 읽지 못하면 호출하지 않는다. 안전장치가 고장나면 뚫리는 게 아니라 멈춘다."
+      }
     ]
   },
   "stages": [
-    { "label": "외부 소스" },
-    { "label": "수집·게이트" },
-    { "label": "선별·묶음" },
-    { "label": "섹션 조립" },
-    { "label": "소비" }
+    {
+      "label": "외부 소스"
+    },
+    {
+      "label": "수집·게이트"
+    },
+    {
+      "label": "선별·묶음"
+    },
+    {
+      "label": "섹션 조립"
+    },
+    {
+      "label": "소비"
+    }
   ],
   "nodes": [
-    { "id": "hf", "type": "external", "label": "Hugging Face", "sublabel": "api/models", "stage": 0, "row": 0, "tag": "오픈웨이트 본진" },
-    { "id": "vendorpage", "type": "external", "label": "벤더 뉴스 페이지", "sublabel": "x.ai/news", "stage": 0, "row": 1, "tag": "클로즈드" },
-    { "id": "feeds", "type": "external", "label": "RSS · Atom", "sublabel": "15개 · 검증된 것만", "stage": 0, "row": 2, "tag": "1,600여 건" },
-    { "id": "extapi", "type": "external", "label": "GitHub · Tranco", "sublabel": "스타 히스토리 · 도메인 순위", "stage": 0, "row": 4, "tag": "종량제" },
-
-    { "id": "collect", "type": "backend", "label": "수집·정규화", "sublabel": "collect.py", "stage": 1, "row": 2, "tag": "소스별 격리" },
-    { "id": "budget", "type": "security", "label": "예산 게이트", "sublabel": "budget.py", "stage": 1, "row": 4, "tag": "fail-closed" },
-
-    { "id": "vendors", "type": "backend", "label": "벤더 현황판", "sublabel": "vendors.py", "stage": 2, "row": 0, "tag": "채널 분기" },
-    { "id": "pipeline", "type": "backend", "label": "선별·묶음·화제도", "sublabel": "relevance · cluster · rank", "stage": 2, "row": 2, "tag": "출처 개수 우선" },
-
-    { "id": "assemble", "type": "backend", "label": "보드 조립", "sublabel": "board.py · 5개 섹션", "stage": 3, "row": 2, "tag": "05 계약" },
-    { "id": "summarize", "type": "cloud", "label": "요약·브리핑", "sublabel": "summarize.py · Sonnet 5", "stage": 3, "row": 4, "tag": "키 있을 때만" },
-
-    { "id": "board", "type": "database", "label": "latest.json", "sublabel": "boards/ · 14일 보관", "stage": 4, "row": 2, "tag": "12KB" },
-    { "id": "pwa", "type": "frontend", "label": "홈화면 웹앱", "sublabel": "web/index.html", "stage": 4, "row": 3, "tag": "아이폰" }
+    {
+      "id": "hf",
+      "type": "external",
+      "label": "Hugging Face",
+      "sublabel": "api/models",
+      "stage": 0,
+      "row": 0,
+      "tag": "오픈웨이트 본진"
+    },
+    {
+      "id": "vendorpage",
+      "type": "external",
+      "label": "벤더 뉴스 페이지",
+      "sublabel": "x.ai/news",
+      "stage": 0,
+      "row": 1,
+      "tag": "클로즈드"
+    },
+    {
+      "id": "feeds",
+      "type": "external",
+      "label": "RSS · Atom",
+      "sublabel": "15개 · 검증된 것만",
+      "stage": 0,
+      "row": 2,
+      "tag": "1,600여 건"
+    },
+    {
+      "id": "extapi",
+      "type": "external",
+      "label": "GitHub · Tranco",
+      "sublabel": "스타 히스토리 · 도메인 순위",
+      "stage": 0,
+      "row": 4,
+      "tag": "종량제"
+    },
+    {
+      "id": "collect",
+      "type": "backend",
+      "label": "수집·정규화",
+      "sublabel": "collect.py",
+      "stage": 1,
+      "row": 2,
+      "tag": "소스별 격리"
+    },
+    {
+      "id": "budget",
+      "type": "security",
+      "label": "예산 게이트",
+      "sublabel": "budget.py",
+      "stage": 2,
+      "row": 4,
+      "tag": "fail-closed"
+    },
+    {
+      "id": "vendors",
+      "type": "backend",
+      "label": "벤더 현황판",
+      "sublabel": "vendors.py",
+      "stage": 2,
+      "row": 0,
+      "tag": "채널 분기"
+    },
+    {
+      "id": "pipeline",
+      "type": "backend",
+      "label": "선별·묶음·화제도",
+      "sublabel": "relevance · cluster · rank",
+      "stage": 2,
+      "row": 2,
+      "tag": "출처 개수 우선"
+    },
+    {
+      "id": "assemble",
+      "type": "backend",
+      "label": "보드 조립",
+      "sublabel": "board.py · 5개 섹션",
+      "stage": 3,
+      "row": 2,
+      "tag": "05 계약"
+    },
+    {
+      "id": "summarize",
+      "type": "cloud",
+      "label": "요약·브리핑",
+      "sublabel": "summarize.py · Sonnet 5",
+      "stage": 3,
+      "row": 4,
+      "tag": "키 있을 때만"
+    },
+    {
+      "id": "board",
+      "type": "database",
+      "label": "latest.json",
+      "sublabel": "boards/ · 14일 보관",
+      "stage": 4,
+      "row": 2,
+      "tag": "12KB"
+    },
+    {
+      "id": "pwa",
+      "type": "frontend",
+      "label": "홈화면 웹앱",
+      "sublabel": "web/index.html",
+      "stage": 4,
+      "row": 4,
+      "tag": "아이폰"
+    }
   ],
   "flows": [
-    { "id": "hf-in", "from": "hf", "to": "vendors", "label": "신규 모델", "classification": "가중치 공개 회사의 실제 발표 채널" },
-    { "id": "page-in", "from": "vendorpage", "to": "vendors", "label": "자기 발표문", "classification": "클로즈드 벤더의 유일한 진실", "variant": "emphasis" },
-    { "id": "feeds-in", "from": "feeds", "to": "collect", "label": "원문 제목·링크", "classification": "RSS · Atom · HN · HF", "variant": "emphasis" },
-    { "id": "api-in", "from": "extapi", "to": "budget", "label": "호출 요청", "classification": "결제수단이 연결된 종량제 API" },
-
-    { "id": "collect-pipe", "from": "collect", "to": "pipeline", "label": "정규화된 항목", "classification": "제목 · 링크 · 시각" },
-    { "id": "collect-vendors", "from": "collect", "to": "vendors", "label": "출시로 보이는 항목", "classification": "제품명 + 출시 동사" },
-
-    { "id": "gate-pass", "from": "budget", "to": "assemble", "label": "상한 통과분만", "classification": "무료 구간의 2% 이하", "variant": "security" },
-    { "id": "pipe-assemble", "from": "pipeline", "to": "assemble", "label": "묶음 105개", "classification": "섹션당 5개만 실린다", "variant": "emphasis" },
-    { "id": "vendors-assemble", "from": "vendors", "to": "assemble", "label": "벤더 현황 11행", "classification": "최신 모델 · 경과일" },
-
-    { "id": "sum-req", "from": "assemble", "to": "summarize", "label": "섹션별 카드", "classification": "요청 5건", "variant": "dashed" },
-    { "id": "sum-back", "from": "summarize", "to": "assemble", "label": "한국어 요약", "classification": "키 없으면 제목만 남는다", "variant": "dashed" },
-
-    { "id": "write", "from": "assemble", "to": "board", "label": "보드 기록", "classification": "상태 · 소스별 성패 포함", "variant": "emphasis" },
-    { "id": "read", "from": "board", "to": "pwa", "label": "fetch 1회", "classification": "없으면 어제 것 + 스테일 배지" }
+    {
+      "id": "hf-in",
+      "from": "hf",
+      "to": "vendors",
+      "label": "신규 모델",
+      "classification": "가중치 공개 회사의 실제 발표 채널"
+    },
+    {
+      "id": "page-in",
+      "from": "vendorpage",
+      "to": "vendors",
+      "label": "자기 발표문",
+      "classification": "클로즈드 벤더의 유일한 진실",
+      "variant": "emphasis"
+    },
+    {
+      "id": "feeds-in",
+      "from": "feeds",
+      "to": "collect",
+      "label": "제목·링크",
+      "classification": "RSS · Atom · HN · HF",
+      "variant": "emphasis",
+      "labelAt": [
+        208,
+        428
+      ]
+    },
+    {
+      "id": "api-in",
+      "from": "extapi",
+      "to": "budget",
+      "label": "호출",
+      "classification": "결제수단이 연결된 종량제 API"
+    },
+    {
+      "id": "collect-pipe",
+      "from": "collect",
+      "to": "pipeline",
+      "label": "항목",
+      "classification": "제목 · 링크 · 시각"
+    },
+    {
+      "id": "collect-vendors",
+      "from": "collect",
+      "to": "vendors",
+      "label": "출시 항목",
+      "classification": "제품명 + 출시 동사"
+    },
+    {
+      "id": "gate-pass",
+      "from": "budget",
+      "to": "assemble",
+      "label": "통과분만",
+      "classification": "무료 구간의 2% 이하",
+      "variant": "security"
+    },
+    {
+      "id": "pipe-assemble",
+      "from": "pipeline",
+      "to": "assemble",
+      "label": "묶음 105개",
+      "classification": "섹션당 5개만 실린다",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vendors-assemble",
+      "from": "vendors",
+      "to": "assemble",
+      "label": "현황 11행",
+      "classification": "최신 모델 · 경과일"
+    },
+    {
+      "id": "sum-req",
+      "from": "assemble",
+      "to": "summarize",
+      "label": "카드",
+      "classification": "요청 5건",
+      "variant": "dashed",
+      "labelAt": [
+        745,
+        428
+      ]
+    },
+    {
+      "id": "write",
+      "from": "assemble",
+      "to": "board",
+      "label": "보드 기록",
+      "variant": "emphasis",
+      "labelAt": [
+        853,
+        428
+      ]
+    },
+    {
+      "id": "read",
+      "from": "board",
+      "to": "pwa",
+      "label": "읽기",
+      "route": "bottom-channel",
+      "labelSegment": 0
+    },
+    {
+      "id": "sum-write",
+      "from": "summarize",
+      "to": "board",
+      "label": "요약 저장",
+      "classification": "키 없으면 이 경로를 건너뛴다",
+      "variant": "dashed",
+      "labelAt": [
+        853,
+        542
+      ]
+    }
   ]
 }

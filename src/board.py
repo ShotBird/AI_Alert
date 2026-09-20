@@ -106,7 +106,7 @@ def _card(cluster, seq, board_date, prev_keys):
 
 def build(clusters_by_section, github_rows, sources_status, budget_report,
           boards_dir, now=None, notes=None, community_rows=None,
-          vendor_rows=None, keyword_rows=None):
+          vendor_rows=None, keyword_rows=None, milestone=None):
     now = now or datetime.now(timezone.utc)
     board_date = now.astimezone().date().isoformat()
 
@@ -266,9 +266,14 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                                 if sid == "model_updates"
                                 else "수집된 항목이 없습니다.")
 
+        extra = {}
+        if sid == "model_updates" and milestone:
+            # 마일스톤은 현황판 위에 올라가는 1년 축이다. 섹션에 얹어 보낸다.
+            extra["milestone"] = milestone
         sections.append({
             "id": sid,
             "title": SECTION_TITLES[sid],
+            **extra,
             "briefing_ko": [],          # 섹션 브리핑도 LLM 몫
             "empty_reason": empty_reason,
             "cards": cards,

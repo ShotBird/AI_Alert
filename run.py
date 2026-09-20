@@ -21,6 +21,7 @@ from src import github_skills                 # noqa: E402
 from src import keywords as keywords_mod      # noqa: E402
 from src import relevance                     # noqa: E402
 from src import summarize                     # noqa: E402
+from src import timeline                      # noqa: E402
 from src import vendors                       # noqa: E402
 from src.budget import Budget, BudgetUnavailable   # noqa: E402
 from src.cluster import build_clusters        # noqa: E402
@@ -202,6 +203,16 @@ def main():
             notes.append(f"벤더 현황 실패: {type(exc).__name__}")
             print(f"[벤더] 실패: {type(exc).__name__}")
 
+    milestone = None
+    if not args.dry:
+        try:
+            milestone, m_notes = timeline.build(all_items, now)
+            notes.extend(m_notes)
+            print(f"[마일스톤] 올해 출시 {len(milestone['points'])}건")
+        except Exception as exc:
+            notes.append(f"마일스톤 실패: {type(exc).__name__}")
+            print(f"[마일스톤] 실패: {type(exc).__name__}")
+
     keyword_rows, k_notes = keywords_mod.extract(items)
     notes.extend(k_notes)
     print(f"[키워드] {len(keyword_rows)}개")
@@ -210,7 +221,8 @@ def main():
                              budget.report(), BOARDS, now, notes,
                              community_rows=community_rows,
                              vendor_rows=vendor_rows,
-                             keyword_rows=keyword_rows)
+                             keyword_rows=keyword_rows,
+                             milestone=milestone)
     # 요약. 키가 없으면 조용히 건너뛰고 카드는 제목만으로 완성돼 보인다.
     if not args.dry:
         try:

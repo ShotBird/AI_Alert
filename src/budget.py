@@ -24,7 +24,8 @@ LIMITS = {
     "github_core": 1200,
     "github_search": 200,
     "anthropic": 60,        # 요약 호출
-    "tranco": 40,           # 도메인 순위. 공짜지만 연속 호출에 429 를 준다
+    "tranco": 40,
+    "discord": 60,          # 초대 링크 조회. 무료이고 인증도 없다           # 도메인 순위. 공짜지만 연속 호출에 429 를 준다
 }
 
 

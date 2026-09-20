@@ -1,0 +1,19 @@
+{
+  "_comment": "해외 기사 → 한국어 제목(title_ko)과 한 줄 해설(note). dedup_key 로 찾는다. LLM 키가 없는 동안 쓰는 씨앗 캐시이고, summarize.py 가 켜지면 자동으로 덮인다. 제목은 직역이 아니라 한국 독자가 한 줄로 알아들을 수 있게 옮긴다.",
+  "https://techmeme.com/260920/p6": {
+    "title_ko": "미국 주별 AI 챗봇 안전법에 빠져나갈 구멍이 있다는 지적",
+    "note": "여러 주가 내놓은 법안 문구가 기술기업에 예외를 열어준다는 분석. 규제가 생겨도 실효가 없을 수 있다는 쪽."
+  },
+  "https://techcrunch.com/2026/09/19/flock-reportedly-tries-to-shrink-workforce-with-employee-buyouts": {
+    "title_ko": "Flock, 희망퇴직으로 인력 감축 추진 보도",
+    "note": "감시 카메라 업체 Flock 이 자발적 퇴직 형태로 규모를 줄이려 한다는 보도."
+  },
+  "https://theverge.com/ai-artificial-intelligence/997833/meta-muse-creepy": {
+    "title_ko": "메타의 Muse 가 섬뜩한 이유는 생각과 다르다",
+    "note": "메타의 개인용 AI 에이전트 Muse 평가. 기술 자체보다 어디까지 들여다보는지가 문제라는 지적."
+  },
+  "https://theverge.com/science/997834/ai-cyberattack-energy-critical-infrastructure": {
+    "title_ko": "에너지 인프라의 최대 보안 위협은 AI 가 아니라 여전히 사람",
+    "note": "전력망 공격 사례를 보면 자율적인 AI 공격보다 사람의 실수와 내부자가 여전히 주된 경로라는 분석."
+  }
+}
