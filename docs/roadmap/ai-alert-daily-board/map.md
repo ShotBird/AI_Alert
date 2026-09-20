@@ -33,7 +33,7 @@ charted: 2026-09-20
 | 커뮤니티 소스 | 네이버·카카오 검색 API + GeekNews + Hacker News. Reddit·Threads 승인은 병행 신청 |
 | 오늘의 키워드 | 별도 수집 없음. 다른 섹션이 모은 제목 전체에서 LLM이 주제 클러스터 추출 |
 | 배포 범위 | 개인용. 앱스토어·타인 공유·로그인 없음 |
-| 이슈 관리 | `docs/spd-roadmap/` 마크다운, git 커밋 |
+| 이슈 관리 | `docs/roadmap/` 마크다운, git 커밋 |
 
 ## Decisions so far
 
