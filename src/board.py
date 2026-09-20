@@ -130,6 +130,7 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                 cards.append({
                     "id": f"v_{board_date}_{seq:03d}",
                     "title": row["vendor"],
+                    "family": row.get("family"),
                     "model": row["model"],
                     "url": row["url"],
                     "days_since": row["days"],
@@ -145,7 +146,7 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                     "source_count": 1,
                     "sources": [{"name": row["via"] or "-"}],
                     "change": "new" if (row["days"] or 99) <= 1 else "continuing",
-                    "dedup_key": f"vendor:{row['vendor']}",
+                    "dedup_key": f"vendor:{row['vendor']}:{row.get('family') or '-'}",
                     "published_at": None,
                 })
             if not cards:

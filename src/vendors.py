@@ -34,32 +34,32 @@ UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
 # 현황판에 고정으로 올리는 회사들. 소식이 없어도 줄은 남는다 —
 # "이 회사는 조용하다"도 정보이기 때문이다.
 VENDORS = [
-    dict(id="anthropic", name="Anthropic", hf=None, closed=True, page=None,
+    dict(id="anthropic", families=["Opus", "Sonnet", "Haiku", "Fable", "Mythos"], name="Anthropic", hf=None, closed=True, page=None,
          terms=["claude", "앤트로픽", "anthropic", "sonnet", "opus", "haiku"]),
     # OpenAI 는 클로즈드가 본체이고 HF 에는 오픈웨이트(gpt-oss, whisper)만 올린다.
     # 발표문 쪽이 더 최신이면 그쪽이 이긴다 — 여기는 바닥값일 뿐이다.
-    dict(id="openai", name="OpenAI", hf="openai", closed=True, page=None,
+    dict(id="openai", families=["GPT", "o3", "o4"], name="OpenAI", hf="openai", closed=True, page=None,
          terms=["gpt", "오픈ai", "openai", "chatgpt", "o3", "o4"]),
-    dict(id="google", name="Google", hf="google",
+    dict(id="google", families=["Gemini", "Gemma"], name="Google", hf="google",
          terms=["gemini", "제미나이", "gemma"]),
-    dict(id="meta", name="Meta", hf="meta-llama",
+    dict(id="meta", families=["Llama"], name="Meta", hf="meta-llama",
          terms=["llama", "라마"]),
     # 저자명이 `xai-org` 다. `xai`/`x-ai` 로는 0건이 나와서 한동안 "소식 없음"이었다.
     # 다만 여기 올라오는 건 뒤늦게 공개하는 오픈웨이트(grok-1, grok-2)라
     # 실제 최신 모델(Grok 4.x, 클로즈드)보다 한참 뒤처진다. 발표문이 있으면 그게 이긴다.
-    dict(id="xai", name="xAI", hf="xai-org", closed=True, page="xai",
+    dict(id="xai", families=["Grok"], name="xAI", hf="xai-org", closed=True, page="xai",
          terms=["grok", "그록"]),
-    dict(id="deepseek", name="DeepSeek", hf="deepseek-ai",
+    dict(id="deepseek", families=["DeepSeek-V", "DeepSeek-R"], name="DeepSeek", hf="deepseek-ai",
          terms=["deepseek", "딥시크"]),
-    dict(id="qwen", name="Alibaba Qwen", hf="Qwen",
+    dict(id="qwen", families=["Qwen"], name="Alibaba Qwen", hf="Qwen",
          terms=["qwen", "큐원"]),
-    dict(id="moonshot", name="Moonshot", hf="moonshotai",
+    dict(id="moonshot", families=["Kimi"], name="Moonshot", hf="moonshotai",
          terms=["kimi", "moonshot", "문샷", "키미"]),
-    dict(id="mistral", name="Mistral", hf="mistralai",
+    dict(id="mistral", families=["Mistral", "Magistral", "Devstral"], name="Mistral", hf="mistralai",
          terms=["mistral", "미스트랄", "magistral", "devstral"]),
-    dict(id="zai", name="Z.ai (GLM)", hf="zai-org",
+    dict(id="zai", families=["GLM"], name="Z.ai (GLM)", hf="zai-org",
          terms=["glm", "zhipu", "z.ai"]),
-    dict(id="upstage", name="Upstage", hf="upstage",
+    dict(id="upstage", families=["Solar"], name="Upstage", hf="upstage",
          terms=["solar", "업스테이지", "upstage"]),
 ]
 
@@ -237,6 +237,94 @@ def _from_page(vendor):
     return None
 
 
+def _is_family_release(title, family):
+    """이 제목이 그 계열의 **버전 출시**인가.
+
+    계열 이름만 찾으면 "Grok Bot now works with X" 같은 기능 소식이 걸린다.
+    계열명 바로 뒤에 버전 같은 토큰이 와야 인정한다 — Grok 4.6, Qwen3, GLM-5.3.
+    """
+    if not title:
+        return False
+    # 계열명 뒤에 한 토막(Image, Flash, K …)까지는 허용하고 그다음에 버전 숫자를 본다.
+    # Qwen-Image-2.1 · Kimi-K3 는 통과하고, "Grok Bot now works with X" 는 걸린다.
+    pat = re.compile(
+        re.escape(family) + r"[\s\-_/]?(?:[A-Za-z]{1,10}[\s\-_/]?)?v?\d", re.I)
+    return bool(pat.search(title))
+
+
+def _family_rows(vendor, candidates, now):
+    """계열별로 가장 최근 것. 회사 한 줄을 계열 여러 줄로 편다.
+
+    지금까지는 회사당 한 줄이라 "그 회사가 마지막에 낸 아무거나"가 대표가 됐다.
+    그래서 Meta 가 가드레일 모델로 대표되는 일이 벌어졌다.
+    계열이 안 잡히면 빈 목록을 돌려주고, 호출한 쪽이 회사 줄로 되돌린다.
+    """
+    fams = vendor.get("families") or []
+    out = []
+    for fam in fams:
+        best = None
+        for cand in candidates:
+            if not _is_family_release(cand.get("name") or "", fam):
+                continue
+            if best is None or cand["at"] > best["at"]:
+                best = cand
+        if best is None:
+            continue
+        days = max(0, int((now - best["at"]).total_seconds() // 86400))
+        out.append(dict(vendor=vendor["name"], family=fam, model=best["name"],
+                        url=best["url"], days=days,
+                        at=best["at"].date().isoformat(),
+                        via=best["via"], channel=best.get("channel"),
+                        weights=bool(vendor["hf"])))
+    out.sort(key=lambda r: r["days"])
+    return out
+
+
+def _all_candidates(vendor, items):
+    """이 회사의 후보 전부 — 자기 페이지 · 피드 · HF 를 한 통에."""
+    cands = []
+    if vendor.get("page"):
+        for post in vendor_pages.latest_posts(vendor["page"]):
+            cands.append(dict(name=post["title"], url=post["url"], at=post["at"],
+                              via=vendor["name"], channel="page"))
+    for item in items:
+        if not item.get("is_release"):
+            continue
+        low = (item.get("title") or "").lower()
+        if not any(t in low for t in vendor["terms"]):
+            continue
+        if _mentions_many(item["title"]) or item.get("published_at") is None:
+            continue
+        cands.append(dict(name=item["title"], url=item["url"],
+                          at=item["published_at"], via=item["source_name"],
+                          channel="feed"))
+    if vendor["hf"]:
+        for m in _hf_recent(vendor["hf"]):
+            cands.append(m)
+    return cands
+
+
+def _hf_recent(author, limit=25):
+    """HF 최신 목록. 계열을 가르려면 한 건이 아니라 여러 건이 필요하다."""
+    url = f"{HF_API}?author={author}&sort=createdAt&direction=-1&limit={limit}"
+    try:
+        data = _get(url)
+    except (urllib.error.HTTPError, urllib.error.URLError, ValueError):
+        return []
+    out = []
+    for m in data or []:
+        rid, created = m.get("id") or "", m.get("createdAt")
+        if not rid or not created:
+            continue
+        try:
+            when = datetime.fromisoformat(created.replace("Z", "+00:00"))
+        except ValueError:
+            continue
+        out.append(dict(name=rid.split("/", 1)[-1], url=f"https://huggingface.co/{rid}",
+                        at=when, via="Hugging Face", channel="hf"))
+    return out
+
+
 def vendor_status(items, now=None):
     """벤더별 현황 행과 notes."""
     now = now or datetime.now(timezone.utc)
@@ -271,7 +359,7 @@ def vendor_status(items, now=None):
 
         if hit is None:
             nxt = _next_expected(vendor, items)
-            rows.append(dict(vendor=vendor["name"], model=None, url=None, days=None,
+            rows.append(dict(vendor=vendor["name"], family=None, model=None, url=None, days=None,
                              at=None, via=None, channel=None,
                              weights=bool(vendor["hf"]),
                              next_label=(nxt or {}).get("label"),
@@ -280,9 +368,19 @@ def vendor_status(items, now=None):
                              next_url=(nxt or {}).get("url")))
             continue
 
-        days = max(0, int((now - hit["at"]).total_seconds() // 86400))
         nxt = _next_expected(vendor, items)
-        rows.append(dict(vendor=vendor["name"], model=hit["name"], url=hit["url"],
+        fam_rows = _family_rows(vendor, _all_candidates(vendor, items), now)
+        if fam_rows:
+            for fr in fam_rows:
+                fr.update(next_label=(nxt or {}).get("label"),
+                          next_date=(nxt or {}).get("date"),
+                          next_confidence=(nxt or {}).get("confidence"),
+                          next_url=(nxt or {}).get("url"))
+            rows.extend(fam_rows)
+            continue
+
+        days = max(0, int((now - hit["at"]).total_seconds() // 86400))
+        rows.append(dict(vendor=vendor["name"], family=None, model=hit["name"], url=hit["url"],
                          days=days, at=hit["at"].date().isoformat(),
                          via=hit["via"], channel=hit.get("channel"),
                          weights=bool(vendor["hf"]),

@@ -386,6 +386,66 @@
   .v-when i.v-stale { color: var(--tint-orange); }  /* 석 달 넘게 조용한 곳 */
   .v-none { color: var(--ink-mute); }
 
+  /* GitHub 스킬 부문 칩: kw-pill과 같은 각진 칩 언어, 더 작게 */
+  .gh-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+  .gh-chip {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    padding: 6px 10px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-chip);
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .gh-chip:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+  .gh-chip[aria-pressed="true"] {
+    border-color: var(--ink);
+    background: var(--mist);
+    color: var(--ink);
+  }
+  .gh-chip-n {
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
+  }
+  .gh-chip[aria-pressed="true"] .gh-chip-n { color: var(--ink-soft); }
+
+  .gh-more {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid var(--hairline);
+    border-radius: var(--r-chip);
+    background: transparent;
+    color: var(--link);
+    cursor: pointer;
+  }
+  .gh-more:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+
+  /* 뉴스 · 커뮤니티: 국내/해외 그룹 라벨. kw-strip-label과 같은 언어 */
+  .n-group { margin-bottom: 16px; }
+  .n-group:last-child { margin-bottom: 0; }
+  .n-group-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-mute);
+    letter-spacing: 0.02em;
+    margin: 0 0 8px;
+  }
+
   /* GitHub 스킬 · 커뮤니티: 같은 표 언어, 열 비율만 다르다 */
   .g-row { grid-template-columns: minmax(0, 1.45fr) minmax(64px, 0.9fr) auto; }
   .c-row { grid-template-columns: minmax(80px, 1fr) minmax(0, 1.2fr) auto; }
@@ -580,12 +640,26 @@
     return d < 30 ? d + "일" : Math.floor(d / 30) + "개월";
   }
 
+  // ── 국내/해외 분리: 뉴스·커뮤니티 공통. region이 "global"이면 해외, 그 외(=kr,
+  // 누락 포함)는 전부 국내로 묶는다 — 카드가 조용히 사라지는 일이 없게 한다.
+  function regionSplitHTML(cards, renderGroup) {
+    const global = cards.filter(c => c.region === "global");
+    const kr = cards.filter(c => c.region !== "global");
+    const parts = [];
+    if (global.length) parts.push(`<div class="n-group"><p class="n-group-label">해외</p>${renderGroup(global)}</div>`);
+    if (kr.length) parts.push(`<div class="n-group"><p class="n-group-label">국내</p>${renderGroup(kr)}</div>`);
+    return parts.join("");
+  }
+
   // ── 뉴스: 카드 대신 행 ────────────────────────────────────────────────────
   // 제목이 곧 내용이라 잘라내면 손해다. 제목은 두 줄까지 살리고, 카드 배경과
   // 안쪽 여백을 걷어내 그 아래 메타를 한 줄로 붙인다.
+  // 해외(global) 기사만 한국어 분석(note_ko, 없으면 summary_ko)을 제목 아래 덧붙인다 —
+  // 국내 기사는 이미 한국어라 번역 줄이 필요 없다.
   function newsRowHTML(c) {
     const href = c.url ? esc(c.url) : "#";
-    const summary = c.summary_ko ? `<p class="n-sum">${esc(c.summary_ko)}</p>` : "";
+    const note = c.region === "global" ? (c.note_ko || c.summary_ko || "") : "";
+    const summary = note ? `<p class="n-sum">${esc(note)}</p>` : "";
     const names = (Array.isArray(c.sources) ? c.sources : [])
       .map(s => s && s.name).filter(Boolean);
     const bits = [];
@@ -604,6 +678,8 @@
   }
 
   // ── GitHub 스킬: 레포 | 부문 | 증가 + 설명 한 줄 ─────────────────────────
+  function ghCategory(c) { return (c && c.category) || "기타"; }
+
   function githubRowHTML(c) {
     const full = String(c.repo || c.title || "");
     const slash = full.lastIndexOf("/");
@@ -615,9 +691,10 @@
       : `<b>${N(c.stars || 0)}</b>`;
     const sub = typeof c.stars_delta === "number" && typeof c.stars === "number"
       ? `<i>${N(c.stars)}</i>` : `<i>누적</i>`;
-    // 한국어 요약이 있으면 그게 우선, 없으면 GitHub 이 준 영어 설명을 그대로 쓴다.
-    // 둘 다 없을 때만 줄을 지운다 — 빈 줄을 남기면 표가 들쭉날쭉해진다.
-    const line = c.summary_ko || c.desc || "";
+    // 한국어 분석(note_ko)이 최우선, 없으면 요약(summary_ko), 그것도 없으면
+    // GitHub 이 준 영어 설명(desc)을 그대로 쓴다. 셋 다 없을 때만 줄을 지운다 —
+    // 빈 줄을 남기면 표가 들쭉날쭉해진다.
+    const line = c.note_ko || c.summary_ko || c.desc || "";
     const when = c.updated_at ? `<span class="g-when">${esc(c.updated_at.slice(5).replace("-", "/"))}</span>` : "";
     const detail = line || when
       ? `<div class="g-desc">${when}${line ? `<span>${esc(line)}</span>` : ""}</div>`
@@ -628,21 +705,98 @@
           <a href="${href}" target="_blank" rel="noopener noreferrer">${esc(name)}</a>
           ${owner ? `<i>${esc(owner)}</i>` : ""}
         </span>
-        <span class="g-cat">${esc(c.category || "—")}</span>
+        <span class="g-cat">${esc(ghCategory(c))}</span>
         <span class="v-when">${num}${sub}</span>
       </div>
       ${detail}
     </div>`;
   }
 
-  function githubTableHTML(cards) {
-    const rising = cards.some(c => typeof c.stars_delta === "number");
+  function githubTableHTML(visibleCards, headerBasisCards) {
+    const basis = headerBasisCards || visibleCards;
+    const rising = basis.some(c => typeof c.stars_delta === "number");
     return `<div class="v-table">
       <div class="v-row g-row v-head">
         <span>레포</span><span>부문</span><span>${rising ? "주간 ★" : "누적 ★"}</span>
       </div>
-      ${cards.map(githubRowHTML).join("")}
+      ${visibleCards.map(githubRowHTML).join("")}
     </div>`;
+  }
+
+  // ── GitHub 스킬: 부문 칩 + Top 20 + 더보기 ────────────────────────────────
+  // 20장을 한 번에 쏟아내면 스크롤이 끝없어진다. 부문별로 걸러 보고, 5개만
+  // 먼저 보여주다 더보기로 나머지(최대 20개)를 편다. 상태는 이 섹션 전용으로
+  // 모듈 스코프에 두고, 칩/더보기를 누르면 #ghWrap 안쪽만 다시 그린다.
+  const ghState = { cards: [], category: "all", expanded: false };
+
+  function ghCategoryCounts(cards) {
+    const counts = new Map();
+    cards.forEach(c => {
+      const cat = ghCategory(c);
+      counts.set(cat, (counts.get(cat) || 0) + 1);
+    });
+    return Array.from(counts.entries());
+  }
+
+  function ghFilteredCards() {
+    if (ghState.category === "all") return ghState.cards;
+    return ghState.cards.filter(c => ghCategory(c) === ghState.category);
+  }
+
+  function ghChipsHTML() {
+    const cats = ghCategoryCounts(ghState.cards);
+    const allBtn = `<button type="button" class="gh-chip" data-cat="all" aria-pressed="${ghState.category === "all"}">전체<span class="gh-chip-n">${ghState.cards.length}</span></button>`;
+    const catBtns = cats.map(([cat, n]) => `<button type="button" class="gh-chip" data-cat="${esc(cat)}" aria-pressed="${ghState.category === cat}">${esc(cat)}<span class="gh-chip-n">${n}</span></button>`).join("");
+    return `<div class="gh-chips" role="group" aria-label="부문 선택">${allBtn}${catBtns}</div>`;
+  }
+
+  function ghBodyHTML() {
+    const filtered = ghFilteredCards();
+    const cap = Math.min(filtered.length, 20);
+    const visible = filtered.slice(0, ghState.expanded ? cap : Math.min(5, cap));
+    const table = filtered.length
+      ? githubTableHTML(visible, filtered)
+      : `<div class="empty">이 부문에는 항목이 없습니다.</div>`;
+    const canExpand = cap > 5;
+    const moreBtn = canExpand
+      ? `<button type="button" class="gh-more" id="ghMoreBtn" aria-expanded="${ghState.expanded}">${ghState.expanded ? "접기" : `더보기 (${cap - 5}개 더)`}</button>`
+      : "";
+    return `${table}${moreBtn}`;
+  }
+
+  function ghWrapInnerHTML() {
+    return `${ghChipsHTML()}<div id="ghBody">${ghBodyHTML()}</div>`;
+  }
+
+  function renderGithubSection(cards) {
+    ghState.cards = cards;
+    ghState.expanded = false;
+    const cats = new Set(ghCategoryCounts(cards).map(([c]) => c));
+    if (ghState.category !== "all" && !cats.has(ghState.category)) ghState.category = "all";
+    return `<div id="ghWrap">${ghWrapInnerHTML()}</div>`;
+  }
+
+  function updateGithubDOM() {
+    const wrap = document.getElementById("ghWrap");
+    if (wrap) wrap.innerHTML = ghWrapInnerHTML();
+  }
+
+  // 이벤트 위임: el.board 자체는 교체되지 않으므로(innerHTML만 바뀐다) 한 번만 건다.
+  function bindGithubEvents() {
+    el.board.addEventListener("click", e => {
+      const chip = e.target.closest(".gh-chip");
+      if (chip) {
+        ghState.category = chip.dataset.cat;
+        ghState.expanded = false;
+        updateGithubDOM();
+        return;
+      }
+      const more = e.target.closest("#ghMoreBtn");
+      if (more) {
+        ghState.expanded = !ghState.expanded;
+        updateGithubDOM();
+      }
+    });
   }
 
   // ── 커뮤니티: 커뮤니티 | 전체 순위 | 유입 ──────────────────────────────────
@@ -824,11 +978,11 @@
     } else if (cards.every(isVendorCard)) {
       body = vendorTableHTML(cards);
     } else if (s.id === "github_skills") {
-      body = githubTableHTML(cards);
+      body = renderGithubSection(cards);
     } else if (s.id === "communities") {
-      body = communityTableHTML(cards);
+      body = regionSplitHTML(cards, group => communityTableHTML(group));
     } else if (s.id === "top_headlines") {
-      body = `<div class="n-list">${cards.map(newsRowHTML).join("")}</div>`;
+      body = regionSplitHTML(cards, group => `<div class="n-list">${group.map(newsRowHTML).join("")}</div>`);
     } else {
       body = `<div class="cards">${cards.map(cardHTML).join("")}</div>`;
     }
@@ -884,6 +1038,7 @@
   }
 
   (async function init() {
+    bindGithubEvents();
     const { board, fetchFailed } = await loadBoard();
     if (!board) {
       renderFatalError();

@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "board_date": "2026-09-20",
-  "generated_at": "2026-09-20T14:45:28.320959Z",
+  "generated_at": "2026-09-20T14:47:40.503445Z",
   "status": "ok",
   "previous_board_date": "2026-09-20",
   "generator": {
@@ -10,7 +10,7 @@
     "counts": {
       "collected": 1659,
       "clustered": 121,
-      "published": 30
+      "published": 33
     },
     "api_budget": {
       "github_core": "133/900",
@@ -157,47 +157,6 @@
         },
         {
           "id": "k_2026-09-20_002",
-          "keyword": "오픈",
-          "keyword_ko": null,
-          "mentions": 8,
-          "source_count": 2,
-          "items": [
-            {
-              "title": "“AI 속도조절은 담합”…앤트로픽·오픈AI 등 4곳 피소",
-              "url": "https://www.etnews.com/20260920000077",
-              "source": "전자신문"
-            },
-            {
-              "title": "\"안전 핑계 대고 밀실 담합\"…앤트로픽·오픈AI 등 4곳, 소비자에게 피소",
-              "url": "https://www.aitimes.com/news/articleView.html?idxno=215502",
-              "source": "AI타임스"
-            },
-            {
-              "title": "오픈AI 2030년까지 386조 소진… 컴퓨팅 비용 폭증에 투자 유치 압박",
-              "url": "https://www.aitimes.com/news/articleView.html?idxno=215500",
-              "source": "AI타임스"
-            },
-            {
-              "title": "오픈AI, 기업 시장 점유율 역전…앤트로픽, IPO전 신형 모델 출시 검토",
-              "url": "https://www.aitimes.com/news/articleView.html?idxno=215494",
-              "source": "AI타임스"
-            },
-            {
-              "title": "술레이만 \"오픈AI의 '셀프 프롬프트 인젝션'은 매우 심각한 상황\"",
-              "url": "https://www.aitimes.com/news/articleView.html?idxno=215486",
-              "source": "AI타임스"
-            },
-            {
-              "title": "[9월18일] AI가 다음 AI에게 지시를 남겼다…오픈AI서 드러난 ‘셀프 프롬프트 인젝션’",
-              "url": "https://www.aitimes.com/news/articleView.html?idxno=215440",
-              "source": "AI타임스"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "오픈"
-        },
-        {
-          "id": "k_2026-09-20_003",
           "keyword": "앤트로픽",
           "keyword_ko": null,
           "mentions": 8,
@@ -236,6 +195,47 @@
           ],
           "change": "continuing",
           "dedup_key": "앤트로픽"
+        },
+        {
+          "id": "k_2026-09-20_003",
+          "keyword": "오픈",
+          "keyword_ko": null,
+          "mentions": 8,
+          "source_count": 2,
+          "items": [
+            {
+              "title": "“AI 속도조절은 담합”…앤트로픽·오픈AI 등 4곳 피소",
+              "url": "https://www.etnews.com/20260920000077",
+              "source": "전자신문"
+            },
+            {
+              "title": "\"안전 핑계 대고 밀실 담합\"…앤트로픽·오픈AI 등 4곳, 소비자에게 피소",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215502",
+              "source": "AI타임스"
+            },
+            {
+              "title": "오픈AI 2030년까지 386조 소진… 컴퓨팅 비용 폭증에 투자 유치 압박",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215500",
+              "source": "AI타임스"
+            },
+            {
+              "title": "오픈AI, 기업 시장 점유율 역전…앤트로픽, IPO전 신형 모델 출시 검토",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215494",
+              "source": "AI타임스"
+            },
+            {
+              "title": "술레이만 \"오픈AI의 '셀프 프롬프트 인젝션'은 매우 심각한 상황\"",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215486",
+              "source": "AI타임스"
+            },
+            {
+              "title": "[9월18일] AI가 다음 AI에게 지시를 남겼다…오픈AI서 드러난 ‘셀프 프롬프트 인젝션’",
+              "url": "https://www.aitimes.com/news/articleView.html?idxno=215440",
+              "source": "AI타임스"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "오픈"
         },
         {
           "id": "k_2026-09-20_004",
@@ -320,6 +320,7 @@
         {
           "id": "v_2026-09-20_006",
           "title": "Alibaba Qwen",
+          "family": "Qwen",
           "model": "Qwen/Qwen-Image-2.1-PE-I2I",
           "url": "https://huggingface.co/Qwen/Qwen-Image-2.1-PE-I2I",
           "days_since": 0,
@@ -339,12 +340,13 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "vendor:Alibaba Qwen",
+          "dedup_key": "vendor:Alibaba Qwen:Qwen",
           "published_at": null
         },
         {
           "id": "v_2026-09-20_007",
           "title": "DeepSeek",
+          "family": "DeepSeek-V",
           "model": "DeepSeek-V4.1-Flash: Pushing the Limits of KV Cache Compression",
           "url": "https://huggingface.co/papers/2609.19969",
           "days_since": 3,
@@ -364,12 +366,13 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "vendor:DeepSeek",
+          "dedup_key": "vendor:DeepSeek:DeepSeek-V",
           "published_at": null
         },
         {
           "id": "v_2026-09-20_008",
           "title": "Google",
+          "family": "Gemini",
           "model": "Introducing Gemini 3.8 Live and 3.8 Live Extended Thinking",
           "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-8-live-gemini-3-8-live-extended-thinking/",
           "days_since": 4,
@@ -389,16 +392,17 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "vendor:Google",
+          "dedup_key": "vendor:Google:Gemini",
           "published_at": null
         },
         {
           "id": "v_2026-09-20_009",
           "title": "OpenAI",
-          "model": "Introducing ChatGPT for Financial Services",
-          "url": "https://openai.com/index/introducing-chatgpt-financial-services",
-          "days_since": 10,
-          "updated_at": "2026-09-10",
+          "family": "GPT",
+          "model": "Introducing ChatGPT Images 2.5",
+          "url": "https://openai.com/index/introducing-chatgpt-images-2-5",
+          "days_since": 12,
+          "updated_at": "2026-09-08",
           "next_label": null,
           "next_date": null,
           "next_confidence": null,
@@ -406,7 +410,7 @@
           "via": "OpenAI",
           "open_weights": true,
           "summary_ko": null,
-          "heat": -10.0,
+          "heat": -12.0,
           "source_count": 1,
           "sources": [
             {
@@ -414,12 +418,13 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "vendor:OpenAI",
+          "dedup_key": "vendor:OpenAI:GPT",
           "published_at": null
         },
         {
           "id": "v_2026-09-20_010",
           "title": "Anthropic",
+          "family": "Fable",
           "model": "Introducing Claude Fable 5.1 and Claude Mythos 5.1",
           "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
           "days_since": 19,
@@ -439,12 +444,65 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "vendor:Anthropic",
+          "dedup_key": "vendor:Anthropic:Fable",
           "published_at": null
         },
         {
           "id": "v_2026-09-20_011",
+          "title": "Anthropic",
+          "family": "Mythos",
+          "model": "Introducing Claude Fable 5.1 and Claude Mythos 5.1",
+          "url": "https://www.anthropic.com/claude-fable-and-mythos-5-1",
+          "days_since": 19,
+          "updated_at": "2026-09-01",
+          "next_label": null,
+          "next_date": null,
+          "next_confidence": null,
+          "next_url": null,
+          "via": "Anthropic",
+          "open_weights": false,
+          "summary_ko": null,
+          "heat": -19.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Anthropic"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Anthropic:Mythos",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_012",
+          "title": "xAI",
+          "family": "Grok",
+          "model": "Grok 4.6 on Microsoft Foundry",
+          "url": "https://x.ai/news/grok-4-6-microsoft-foundry",
+          "days_since": 25,
+          "updated_at": "2026-08-26",
+          "next_label": null,
+          "next_date": null,
+          "next_confidence": null,
+          "next_url": null,
+          "via": "xAI",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -25.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "xAI"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:xAI:Grok",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_013",
           "title": "Z.ai (GLM)",
+          "family": "GLM",
           "model": "GLM-5.3-Flash-BF16",
           "url": "https://huggingface.co/zai-org/GLM-5.3-Flash-BF16",
           "days_since": 26,
@@ -464,37 +522,13 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "vendor:Z.ai (GLM)",
+          "dedup_key": "vendor:Z.ai (GLM):GLM",
           "published_at": null
         },
         {
-          "id": "v_2026-09-20_012",
-          "title": "xAI",
-          "model": "Introducing Grok 4.6",
-          "url": "https://x.ai/news/grok-4-6",
-          "days_since": 39,
-          "updated_at": "2026-08-12",
-          "next_label": null,
-          "next_date": null,
-          "next_confidence": null,
-          "next_url": null,
-          "via": "xAI",
-          "open_weights": true,
-          "summary_ko": null,
-          "heat": -39.0,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "xAI"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "vendor:xAI",
-          "published_at": null
-        },
-        {
-          "id": "v_2026-09-20_013",
+          "id": "v_2026-09-20_014",
           "title": "Upstage",
+          "family": "Solar",
           "model": "Solar-Open2-250B",
           "url": "https://huggingface.co/upstage/Solar-Open2-250B",
           "days_since": 60,
@@ -514,37 +548,39 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "vendor:Upstage",
-          "published_at": null
-        },
-        {
-          "id": "v_2026-09-20_014",
-          "title": "Mistral",
-          "model": "Shieldstral-1.0-3B",
-          "url": "https://huggingface.co/mistralai/Shieldstral-1.0-3B",
-          "days_since": 66,
-          "updated_at": "2026-07-16",
-          "next_label": null,
-          "next_date": null,
-          "next_confidence": null,
-          "next_url": null,
-          "via": "Hugging Face",
-          "open_weights": true,
-          "summary_ko": null,
-          "heat": -66.0,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "Hugging Face"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "vendor:Mistral",
+          "dedup_key": "vendor:Upstage:Solar",
           "published_at": null
         },
         {
           "id": "v_2026-09-20_015",
+          "title": "Mistral",
+          "family": "Mistral",
+          "model": "Introducing Mistral OCR 4",
+          "url": "https://mistral.ai/news/ocr-4/",
+          "days_since": 89,
+          "updated_at": "2026-06-23",
+          "next_label": null,
+          "next_date": null,
+          "next_confidence": null,
+          "next_url": null,
+          "via": "Mistral",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -89.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Mistral"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Mistral:Mistral",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_016",
           "title": "Moonshot",
+          "family": "Kimi",
           "model": "Kimi-K3",
           "url": "https://huggingface.co/moonshotai/Kimi-K3",
           "days_since": 99,
@@ -564,16 +600,17 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "vendor:Moonshot",
+          "dedup_key": "vendor:Moonshot:Kimi",
           "published_at": null
         },
         {
-          "id": "v_2026-09-20_016",
-          "title": "Meta",
-          "model": "meta-llama/Llama-Prompt-Guard-2-86M",
-          "url": "https://huggingface.co/meta-llama/Llama-Prompt-Guard-2-86M",
-          "days_since": 510,
-          "updated_at": "2025-04-28",
+          "id": "v_2026-09-20_017",
+          "title": "Google",
+          "family": "Gemma",
+          "model": "diffusiongemma-26B-A4B-it",
+          "url": "https://huggingface.co/google/diffusiongemma-26B-A4B-it",
+          "days_since": 103,
+          "updated_at": "2026-06-09",
           "next_label": null,
           "next_date": null,
           "next_confidence": null,
@@ -581,7 +618,7 @@
           "via": "Hugging Face",
           "open_weights": true,
           "summary_ko": null,
-          "heat": -510.0,
+          "heat": -103.0,
           "source_count": 1,
           "sources": [
             {
@@ -589,7 +626,59 @@
             }
           ],
           "change": "continuing",
-          "dedup_key": "vendor:Meta",
+          "dedup_key": "vendor:Google:Gemma",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_018",
+          "title": "Mistral",
+          "family": "Devstral",
+          "model": "Introducing: Devstral 2 and Mistral Vibe CLI.",
+          "url": "https://mistral.ai/news/devstral-2-vibe-cli/",
+          "days_since": 285,
+          "updated_at": "2025-12-09",
+          "next_label": null,
+          "next_date": null,
+          "next_confidence": null,
+          "next_url": null,
+          "via": "Mistral",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -285.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Mistral"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Mistral:Devstral",
+          "published_at": null
+        },
+        {
+          "id": "v_2026-09-20_019",
+          "title": "Meta",
+          "family": "Llama",
+          "model": "meta-llama/Llama-Guard-4-12B",
+          "url": "https://huggingface.co/meta-llama/Llama-Guard-4-12B",
+          "days_since": 515,
+          "updated_at": "2025-04-23",
+          "next_label": null,
+          "next_date": null,
+          "next_confidence": null,
+          "next_url": null,
+          "via": "Hugging Face",
+          "open_weights": true,
+          "summary_ko": null,
+          "heat": -515.0,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "Hugging Face"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "vendor:Meta:Llama",
           "published_at": null
         }
       ]
@@ -608,7 +697,7 @@
       "empty_reason": null,
       "cards": [
         {
-          "id": "c_2026-09-20_017",
+          "id": "c_2026-09-20_020",
           "title": "US policy analysts, lawmakers, and others say several state-level AI chatbot safety bills included language that could provide loopholes for tech companies (Katie McQue/NPR)",
           "summary_ko": null,
           "url": "https://www.techmeme.com/260920/p6#a260920p6",
@@ -626,25 +715,7 @@
           "note_ko": null
         },
         {
-          "id": "c_2026-09-20_018",
-          "title": "Meta’s Muse is creepy, but maybe not for the reasons you think",
-          "summary_ko": null,
-          "url": "https://www.theverge.com/ai-artificial-intelligence/997833/meta-muse-creepy",
-          "heat": 1.61,
-          "source_count": 1,
-          "sources": [
-            {
-              "name": "The Verge"
-            }
-          ],
-          "change": "continuing",
-          "dedup_key": "httpss://theverge.com/ai-artificial-intelligence/997833/meta-muse-creepy",
-          "published_at": "2026-09-19T20:44:40Z",
-          "region": "global",
-          "note_ko": null
-        },
-        {
-          "id": "c_2026-09-20_019",
+          "id": "c_2026-09-20_021",
           "title": "Flock reportedly tries to shrink workforce with employee buyouts",
           "summary_ko": null,
           "url": "https://techcrunch.com/2026/09/19/flock-reportedly-tries-to-shrink-workforce-with-employee-buyouts/",
@@ -662,7 +733,25 @@
           "note_ko": null
         },
         {
-          "id": "c_2026-09-20_020",
+          "id": "c_2026-09-20_022",
+          "title": "Meta’s Muse is creepy, but maybe not for the reasons you think",
+          "summary_ko": null,
+          "url": "https://www.theverge.com/ai-artificial-intelligence/997833/meta-muse-creepy",
+          "heat": 1.6,
+          "source_count": 1,
+          "sources": [
+            {
+              "name": "The Verge"
+            }
+          ],
+          "change": "continuing",
+          "dedup_key": "httpss://theverge.com/ai-artificial-intelligence/997833/meta-muse-creepy",
+          "published_at": "2026-09-19T20:44:40Z",
+          "region": "global",
+          "note_ko": null
+        },
+        {
+          "id": "c_2026-09-20_023",
           "title": "Humans, not rogue AI, are still the biggest cybersecurity risk to energy systems",
           "summary_ko": null,
           "url": "https://www.theverge.com/science/997834/ai-cyberattack-energy-critical-infrastructure",
@@ -680,7 +769,7 @@
           "note_ko": null
         },
         {
-          "id": "c_2026-09-20_021",
+          "id": "c_2026-09-20_024",
           "title": "“문장 생성 버렸다”…판단 전용 AI ‘제브’에 개발자 반응 폭발",
           "summary_ko": null,
           "url": "https://www.aitimes.com/news/articleView.html?idxno=215506",
@@ -698,7 +787,7 @@
           "note_ko": null
         },
         {
-          "id": "c_2026-09-20_022",
+          "id": "c_2026-09-20_025",
           "title": "과기부, 연구자가 지켜야 할 ‘AI 활용’ 7대 권고사항 제시",
           "summary_ko": null,
           "url": "https://www.aitimes.com/news/articleView.html?idxno=215505",
@@ -716,7 +805,7 @@
           "note_ko": null
         },
         {
-          "id": "c_2026-09-20_023",
+          "id": "c_2026-09-20_026",
           "title": "[창간기획] AI가 바꾸는 현장 - 전자신문 기자들이 직접 만든 AI 뉴스 에이전트 'ETA 2.0' 고도화",
           "summary_ko": null,
           "url": "https://www.etnews.com/20260914000437",
@@ -734,7 +823,7 @@
           "note_ko": null
         },
         {
-          "id": "c_2026-09-20_024",
+          "id": "c_2026-09-20_027",
           "title": "Cache-to-Cache: LLM 간 직접 의미 전달 (2025)",
           "summary_ko": null,
           "url": "https://news.hada.io/topic?id=33983",
@@ -760,7 +849,7 @@
       "empty_reason": null,
       "cards": [
         {
-          "id": "c_2026-09-20_025",
+          "id": "c_2026-09-20_028",
           "title": "Reddit",
           "summary_ko": null,
           "url": "https://reddit.com",
@@ -782,7 +871,7 @@
           "rank_note": null
         },
         {
-          "id": "c_2026-09-20_026",
+          "id": "c_2026-09-20_029",
           "title": "Hugging Face",
           "summary_ko": null,
           "url": "https://huggingface.co",
@@ -804,7 +893,7 @@
           "rank_note": null
         },
         {
-          "id": "c_2026-09-20_027",
+          "id": "c_2026-09-20_030",
           "title": "Hacker News",
           "summary_ko": null,
           "url": "https://news.ycombinator.com",
@@ -826,7 +915,7 @@
           "rank_note": "예산 소진"
         },
         {
-          "id": "c_2026-09-20_028",
+          "id": "c_2026-09-20_031",
           "title": "GeekNews",
           "summary_ko": null,
           "url": "https://news.hada.io",
@@ -848,7 +937,7 @@
           "rank_note": "예산 소진"
         },
         {
-          "id": "c_2026-09-20_029",
+          "id": "c_2026-09-20_032",
           "title": "아카라이브",
           "summary_ko": null,
           "url": "https://arca.live",
@@ -870,7 +959,7 @@
           "rank_note": "예산 소진"
         },
         {
-          "id": "c_2026-09-20_030",
+          "id": "c_2026-09-20_033",
           "title": "디시인사이드",
           "summary_ko": null,
           "url": "https://dcinside.com",
