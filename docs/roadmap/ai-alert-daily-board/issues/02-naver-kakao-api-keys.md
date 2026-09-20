@@ -1,7 +1,7 @@
 # 02. 네이버·카카오 검색 API 키 발급
 
 Type: task
-Status: open
+Status: resolved
 Blocked by: (없음)
 
 ## Question
