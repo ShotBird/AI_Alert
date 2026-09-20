@@ -84,24 +84,45 @@ def _usable(repo):
     return True, None
 
 
-def weekly_delta(full_name, token, budget):
-    """지난 7일 스타 증가분. 못 구하면 None."""
+class RateLimited(Exception):
+    """GitHub 레이트리밋. 데이터가 없는 것과 구별해야 한다.
+
+    이 둘을 같은 None 으로 뭉개는 바람에 섹션이 "응답이 없어 비어 있습니다"라고
+    거짓말을 했다. 실제로는 우리가 시간당 60회를 다 쓴 것이었다.
+    """
+
+
+def weekly_delta(full_name, token, budget, cache=None):
+    """지난 7일 스타 증가분. 데이터가 없으면 None, 한도 초과면 RateLimited."""
+    if cache is not None and full_name in cache:
+        return cache[full_name]
+
     budget.check("github_core")
     try:
         hist = _get(f"{API}/repos/{full_name}/stargazers/history?per_page=2", token)
-    except (urllib.error.HTTPError, urllib.error.URLError, ValueError):
+    except urllib.error.HTTPError as exc:
+        # 403 + Remaining: 0 이면 한도 초과다. 권한 문제와도 구별된다.
+        if exc.code in (403, 429) and exc.headers.get("X-RateLimit-Remaining") == "0":
+            raise RateLimited(exc.headers.get("X-RateLimit-Resource") or "core") from exc
+        return None
+    except (urllib.error.URLError, ValueError):
         return None
     finally:
         budget.spend("github_core")
+
     if not isinstance(hist, list) or not hist:
         return None
     # 최신순. [0]은 진행 중인 주라 짧고, [1]이 직전 한 주 전체다.
     if len(hist) >= 2:
-        return (hist[0].get("total") or 0) + (hist[1].get("total") or 0)
-    return hist[0].get("total") or 0
+        value = (hist[0].get("total") or 0) + (hist[1].get("total") or 0)
+    else:
+        value = hist[0].get("total") or 0
+    if cache is not None:
+        cache[full_name] = value
+    return value
 
 
-def top_rising(token, budget, candidates=40, want=5):
+def top_rising(token, budget, candidates=40, want=5, cache=None):
     """부문 배지가 달린 상위 급상승 스킬."""
     pool, seen, notes = [], set(), []
 
@@ -132,16 +153,8 @@ def top_rising(token, budget, candidates=40, want=5):
     # 후보를 너무 많이 잡으면 core 예산을 태운다. 누적 스타 상위부터 본다.
     pool = pool[:candidates]
 
-    rows = []
-    for repo in pool:
-        try:
-            delta = weekly_delta(repo["full_name"], token, budget)
-        except BudgetExceeded:
-            notes.append("core 예산 도달, 남은 후보는 건너뜀")
-            break
-        if delta is None:
-            continue
-        rows.append(dict(
+    def row(repo, delta):
+        return dict(
             repo=repo["full_name"],
             title=repo["full_name"],
             url=repo.get("html_url"),
@@ -149,7 +162,39 @@ def top_rising(token, budget, candidates=40, want=5):
             stars=repo.get("stargazers_count") or 0,
             stars_delta=delta,
             category=_classify(repo),
-        ))
+        )
 
-    rows.sort(key=lambda r: r["stars_delta"], reverse=True)
+    rows, limited = [], False
+    for repo in pool:
+        try:
+            delta = weekly_delta(repo["full_name"], token, budget, cache)
+        except BudgetExceeded:
+            notes.append("GitHub 호출 상한에 닿아 남은 후보는 건너뜁니다.")
+            break
+        except RateLimited:
+            limited = True
+            break
+        if delta is None:
+            continue
+        rows.append(row(repo, delta))
+
+    if limited:
+        # 여기서 빈 섹션을 돌려주면 화면이 "응답이 없다"고 거짓말을 한다.
+        # 증가분을 못 구한 것뿐이니, 누적 스타로 줄을 세우고 **그렇다고 밝힌다.**
+        # 티켓 10 이 누적 랭킹을 버린 이유(매일 같은 목록)는 여전히 유효하므로
+        # 이건 정상 동작이 아니라 폴백이라는 표시를 반드시 달고 나간다.
+        notes.append("GitHub 시간당 호출 한도(무인증 60회)를 다 써서 "
+                     "주간 증가분 대신 누적 스타로 줄을 세웠습니다. "
+                     "GH_READ_TOKEN 을 넣으면 5,000회로 늘어납니다.")
+        seen_repos = {r["repo"] for r in rows}
+        for repo in pool:
+            if len(rows) >= want:
+                break
+            if repo["full_name"] in seen_repos:
+                continue
+            rows.append(row(repo, None))
+
+    rows.sort(key=lambda r: (r["stars_delta"] is None,
+                             -(r["stars_delta"] or 0),
+                             -(r["stars"] or 0)))
     return rows[:want], notes

@@ -18,8 +18,10 @@ from src import board as board_mod            # noqa: E402
 from src import collect as collect_mod        # noqa: E402
 from src import community as community_mod    # noqa: E402
 from src import github_skills                 # noqa: E402
+from src import keywords as keywords_mod      # noqa: E402
 from src import relevance                     # noqa: E402
 from src import summarize                     # noqa: E402
+from src import vendors                       # noqa: E402
 from src.budget import Budget, BudgetUnavailable   # noqa: E402
 from src.cluster import build_clusters        # noqa: E402
 from src.rank import rank                     # noqa: E402
@@ -68,7 +70,7 @@ def looks_like_release(title):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry", action="store_true",
-                    help="외부 호출 없이 직전 보드만 다시 조립한다")
+                    help="외부 호출도 저장도 하지 않는다. 배선만 확인한다")
     ap.add_argument("--no-github", action="store_true",
                     help="GitHub 섹션을 건너뛴다 (core 예산 아끼기)")
     ap.add_argument("--days", type=int, default=4,
@@ -97,6 +99,11 @@ def main():
         for s in status:
             if not s["ok"]:
                 print(f"        실패: {s['id']} ({s['error']})")
+
+    # 현황판은 날짜 창 이전까지 본다. "이 회사의 최신 모델"은
+    # 최근 4일 안에 나온 것이 아니라 **마지막으로 나온 것**이기 때문이다.
+    # 창을 적용하면 조용한 회사가 전부 "소식 없음"이 되어 현황판의 뜻이 사라진다.
+    all_items = list(items)
 
     # 날짜 창. 피드가 과거 아카이브를 통째로 주는 경우가 있어서
     # (OpenAI 는 1,200건을 준다) 이게 없으면 몇 달 전 글이 오늘 것과 경쟁한다.
@@ -179,9 +186,30 @@ def main():
             notes.append(f"커뮤니티 섹션 실패: {type(exc).__name__}")
             print(f"[커뮤니티] 실패: {type(exc).__name__}")
 
+    vendor_rows = None
+    if not args.dry:
+        try:
+            for it in all_items:
+                if (it["source_id"].startswith("hf_")
+                        or looks_like_release(it["title"])):
+                    it["is_release"] = True
+            vendor_rows, v_notes = vendors.vendor_status(all_items, now)
+            notes.extend(v_notes)
+            filled = sum(1 for r in vendor_rows if r["model"])
+            print(f"[벤더] {filled}/{len(vendor_rows)}곳 현황 확인")
+        except Exception as exc:
+            notes.append(f"벤더 현황 실패: {type(exc).__name__}")
+            print(f"[벤더] 실패: {type(exc).__name__}")
+
+    keyword_rows, k_notes = keywords_mod.extract(items)
+    notes.extend(k_notes)
+    print(f"[키워드] {len(keyword_rows)}개")
+
     result = board_mod.build(by_section, github_rows, status,
                              budget.report(), BOARDS, now, notes,
-                             community_rows=community_rows)
+                             community_rows=community_rows,
+                             vendor_rows=vendor_rows,
+                             keyword_rows=keyword_rows)
     # 요약. 키가 없으면 조용히 건너뛰고 카드는 제목만으로 완성돼 보인다.
     if not args.dry:
         try:
@@ -194,6 +222,15 @@ def main():
             notes.append(f"요약 실패: {type(exc).__name__}")
             print(f"[요약] 실패: {type(exc).__name__}")
         result["generator"]["notes"] = notes
+
+    if args.dry:
+        # 저장하지 않는다. 한 번 이걸 빠뜨려서 멀쩡한 보드를 빈 것으로 덮어썼다.
+        # 외부 호출을 안 하는 모드가 결과물을 파괴하면 안전장치가 아니라 사고다.
+        print()
+        print("[dry] 저장하지 않았습니다. 기존 보드는 그대로입니다.")
+        for s_ in result["sections"]:
+            print(f"        {s_['title']}: {len(s_['cards'])}개")
+        return 0
 
     path = board_mod.write(result, BOARDS)
     budget.save()

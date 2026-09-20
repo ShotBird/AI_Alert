@@ -77,7 +77,8 @@ def _card(cluster, seq, board_date, prev_keys):
 
 
 def build(clusters_by_section, github_rows, sources_status, budget_report,
-          boards_dir, now=None, notes=None, community_rows=None):
+          boards_dir, now=None, notes=None, community_rows=None,
+          vendor_rows=None, keyword_rows=None):
     now = now or datetime.now(timezone.utc)
     board_date = now.astimezone().date().isoformat()
 
@@ -85,11 +86,36 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
     prev_keys = _previous_keys(prev)
 
     sections, seq = [], 0
-    for sid in ("model_updates", "github_skills", "top_headlines",
-                "communities", "keywords"):
+    # 키워드가 맨 앞이다. 화면에서도 헤더 바로 아래 작은 띠로 뜬다.
+    for sid in ("keywords", "model_updates", "github_skills", "top_headlines",
+                "communities"):
         cards, empty_reason = [], None
 
-        if sid == "github_skills":
+        if sid == "model_updates" and vendor_rows is not None:
+            # 뉴스가 아니라 현황판이다. 소식이 없는 회사도 줄은 남긴다 —
+            # "이 회사는 조용하다"도 정보이기 때문이다.
+            for row in vendor_rows:
+                seq += 1
+                cards.append({
+                    "id": f"v_{board_date}_{seq:03d}",
+                    "title": row["vendor"],
+                    "model": row["model"],
+                    "url": row["url"],
+                    "days_since": row["days"],
+                    "via": row["via"],
+                    "open_weights": row["weights"],
+                    "summary_ko": None,
+                    "heat": float(-(row["days"] if row["days"] is not None else 999)),
+                    "source_count": 1,
+                    "sources": [{"name": row["via"] or "-"}],
+                    "change": "new" if (row["days"] or 99) <= 1 else "continuing",
+                    "dedup_key": f"vendor:{row['vendor']}",
+                    "published_at": None,
+                })
+            if not cards:
+                empty_reason = "벤더 현황을 가져오지 못했습니다."
+
+        elif sid == "github_skills":
             for row in github_rows:
                 seq += 1
                 key = row["repo"]
@@ -101,7 +127,12 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                     # 스타 증가분을 그대로 넣으면 뉴스 화제도(한 자릿수)와 자릿수가
                     # 안 맞는다. 정렬 순서는 stars_delta 가 이미 정했으므로
                     # heat 는 로그로 눌러 비슷한 눈금에 올린다.
-                    "heat": round(math.log10(1 + row["stars_delta"]) * 3, 2),
+                    # 증가분을 못 구한 폴백에서는 None 이 온다. 그때는
+                    # 누적 스타로 줄을 세우되 자릿수는 같은 눈금에 올린다.
+                    "heat": round(math.log10(
+                        1 + (row["stars_delta"]
+                             if row["stars_delta"] is not None
+                             else (row.get("stars") or 0))) * 3, 2),
                     "source_count": 1,
                     "sources": [{"name": "GitHub"}],
                     "change": "continuing" if key in prev_keys else "new",
@@ -141,8 +172,20 @@ def build(clusters_by_section, github_rows, sources_status, budget_report,
                 empty_reason = "커뮤니티 신호를 수집하지 못했습니다."
 
         elif sid == "keywords":
-            empty_reason = ("키워드 추출은 LLM 호출이 필요합니다. "
-                            "ANTHROPIC_API_KEY가 설정되면 채워집니다.")
+            for row in (keyword_rows or []):
+                seq += 1
+                cards.append({
+                    "id": f"k_{board_date}_{seq:03d}",
+                    "keyword": row["keyword"],
+                    "keyword_ko": row.get("keyword_ko"),
+                    "mentions": row.get("mentions") or 0,
+                    "source_count": row.get("source_count") or 0,
+                    "change": ("continuing" if row["keyword"].lower() in prev_keys
+                               else "new"),
+                    "dedup_key": row["keyword"].lower(),
+                })
+            if not cards:
+                empty_reason = "오늘 반복해서 나온 주제가 없습니다."
 
         else:
             used = {}
