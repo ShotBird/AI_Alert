@@ -127,6 +127,59 @@
   .chip.warn   { color: var(--tint-orange); }
   .chip.stale  { color: var(--tint-orange); }
 
+  /* ── 오늘의 키워드 스트립: 헤더 바로 아래, 구획 바로가기보다 위. 일반 카드 섹션과
+     의도적으로 다른, 작고 가로 스크롤되는 한 줄짜리 특수 레이아웃. ───────────────── */
+  .kw-strip { padding-block: 2px 4px; }
+  .kw-strip:empty { display: none; }
+  .kw-strip-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin: 0 0 8px;
+  }
+  .kw-row {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-block: 0 4px;
+    scrollbar-width: none;
+  }
+  .kw-row::-webkit-scrollbar { display: none; }
+  .kw-pill {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--r-pill);
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+    /* 그림자 없음. */
+  }
+  .kw-pill:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+  .kw-pill[aria-expanded="true"] { background: var(--mist); }
+  .kw-word.new { color: var(--tint-green); }
+  .kw-n {
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
+  }
+  .kw-empty {
+    font-size: 14px;
+    color: var(--ink-mute);
+    margin: 0;
+  }
+  #kwDetail:not(:empty) { margin-top: 10px; }
+  #kwDetail .cards { display: grid; gap: 12px; }
+
   /* ── 섹션 바로가기 (풀 필 버튼 언어) ──────────────────────────────────── */
   nav.jump {
     display: flex;
@@ -281,6 +334,8 @@
     <div class="status-row" id="statusRow"></div>
   </header>
 
+  <div class="kw-strip" id="kwStrip"></div>
+
   <nav class="jump" id="jumpNav"></nav>
 
   <main id="board">
@@ -302,7 +357,11 @@
     statusRow: document.getElementById("statusRow"),
     jumpNav: document.getElementById("jumpNav"),
     board: document.getElementById("board"),
+    kwStrip: document.getElementById("kwStrip"),
   };
+
+  // 키워드 스트립 상태: 어떤 필이 펼쳐져 있는지만 기억한다.
+  const kwState = { cards: [], openIndex: -1 };
 
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
   const N = n => (typeof n === "number" ? n.toLocaleString("ko-KR") : n);
@@ -448,6 +507,63 @@
     return plainCardHTML(c);
   }
 
+  // ── 오늘의 키워드 스트립: 일반 흐름에서 빼내 헤더 바로 아래, 구획 바로가기보다
+  // 위에 그린다. 필을 탭하면 같은 keywordCardHTML() 카드를 아래에 펼쳐 보여준다 ──
+  function keywordPillHTML(c, i) {
+    const term = esc(c.keyword || c.keyword_ko || "");
+    const isNew = c.change === "new";
+    const mentions = typeof c.mentions === "number"
+      ? `<span class="kw-n">${N(c.mentions)}회</span>` : "";
+    return `<button type="button" class="kw-pill" id="kwPill-${i}" aria-expanded="false" aria-controls="kwDetail" data-idx="${i}">
+      <span class="kw-word${isNew ? " new" : ""}">${term}</span>${mentions}
+    </button>`;
+  }
+
+  function toggleKwDetail(idx) {
+    const detail = document.getElementById("kwDetail");
+    if (!detail) return;
+    const buttons = el.kwStrip.querySelectorAll(".kw-pill");
+    const opening = kwState.openIndex !== idx;
+    buttons.forEach(b => b.setAttribute("aria-expanded", "false"));
+    if (!opening) {
+      kwState.openIndex = -1;
+      detail.innerHTML = "";
+      return;
+    }
+    kwState.openIndex = idx;
+    const btn = document.getElementById("kwPill-" + idx);
+    if (btn) btn.setAttribute("aria-expanded", "true");
+    const card = kwState.cards[idx];
+    detail.innerHTML = card ? `<div class="cards">${keywordCardHTML(card)}</div>` : "";
+  }
+
+  function renderKeywordStrip(section) {
+    kwState.cards = [];
+    kwState.openIndex = -1;
+    if (!section) { el.kwStrip.innerHTML = ""; return; }
+    const cards = Array.isArray(section.cards) ? section.cards : [];
+    const label = esc(section.title || "오늘의 키워드");
+    if (!cards.length) {
+      const msg = esc(section.empty_reason || "오늘은 키워드가 없습니다.");
+      el.kwStrip.innerHTML = `<p class="kw-strip-label">${label}</p><p class="kw-empty">${msg}</p>`;
+      return;
+    }
+    kwState.cards = cards;
+    el.kwStrip.innerHTML = `
+      <p class="kw-strip-label">${label}</p>
+      <div class="kw-row" id="kwRow">${cards.map(keywordPillHTML).join("")}</div>
+      <div id="kwDetail"></div>
+    `;
+    const row = document.getElementById("kwRow");
+    if (row) {
+      row.addEventListener("click", e => {
+        const btn = e.target.closest(".kw-pill");
+        if (!btn) return;
+        toggleKwDetail(Number(btn.dataset.idx));
+      });
+    }
+  }
+
   function sectionHTML(s) {
     const anchor = "s-" + esc(s.id || "");
     const briefing = Array.isArray(s.briefing_ko) && s.briefing_ko.length
@@ -490,14 +606,20 @@
   function renderBoard(board, stale) {
     el.dateLine.textContent = formatGeneratedAt(board.generated_at);
     renderStatus(board, stale);
-    const sections = Array.isArray(board.sections) ? board.sections : [];
-    renderNav(sections);
-    el.board.innerHTML = sections.map(sectionHTML).join("");
+    const allSections = Array.isArray(board.sections) ? board.sections : [];
+    // "keywords" 섹션은 일반 흐름에서 빼내 헤더 바로 아래 전용 스트립으로 그린다.
+    // 나머지 섹션은 여전히 JSON 순서 그대로, 하드코딩 없이 일반 규칙으로 그린다.
+    const keywordSection = allSections.find(s => s && s.id === "keywords");
+    const otherSections = allSections.filter(s => !(s && s.id === "keywords"));
+    renderKeywordStrip(keywordSection);
+    renderNav(otherSections);
+    el.board.innerHTML = otherSections.map(sectionHTML).join("");
   }
 
   function renderFatalError() {
     el.dateLine.textContent = "";
     el.statusRow.innerHTML = `<span class="chip stale">불러오기 실패</span>`;
+    el.kwStrip.innerHTML = "";
     el.jumpNav.innerHTML = "";
     el.board.innerHTML = `<div class="empty">오늘 보드를 불러오지 못했습니다. 네트워크를 확인한 뒤 새로고침해 주세요.</div>`;
   }

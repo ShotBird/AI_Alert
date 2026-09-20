@@ -1,4 +1,4 @@
-# 11. 외부 서비스 준비 (Cloudflare + GitHub 토큰)
+# 11. 외부 서비스 준비 (Cloudflare + GitHub + Anthropic 키)
 
 Type: task
 Status: open
@@ -30,12 +30,31 @@ GitHub Actions가 만든 보드를 Cloudflare에 올리려면 계정과 토큰�
 3. 만료일은 1년으로 두고 달력에 적어둔다 (만료되면 GitHub 섹션이 조용히 빈다)
 4. 발급된 값을 **GitHub Actions 시크릿**에 `GH_READ_TOKEN`으로 등록
 
+## Anthropic API 키 — 이게 있어야 앱의 절반이 켜진다
+
+지금 비어 있는 것이 전부 이 키 하나에 걸려 있다.
+
+| 없을 때 | 있을 때 |
+|---|---|
+| 카드에 제목만 | 제목 + **한국어 한 줄 요약** |
+| 섹션 브리핑 없음 | 섹션마다 **3줄 브리핑** (이것만 읽고 덮어도 되는 것) |
+| 키워드가 빈도 기반 임시값 ("에이전트", "오픈") | 표기가 다른 같은 주제를 묶고 **한국어 이름**을 붙임 |
+
+1. `console.anthropic.com` 가입 → **API keys** → 새 키 발급
+2. 결제수단 등록이 필요하다. **사용 한도(spend limit)를 월 $5 정도로 걸어두면** 그 이상 청구되지 않는다
+3. 발급한 값을 **GitHub Actions 시크릿**에 `ANTHROPIC_API_KEY` 로 등록
+4. 로컬에서도 시험하려면 `.env` 에도 같은 줄을 넣는다
+
+예상 비용은 **월 약 ₩2,650** (Sonnet 5, 하루 40장 요약 + 섹션 브리핑 기준).
+NCP 때와 달리 여기는 **콘솔에서 하드 상한을 걸 수 있다** — 그게 이 키가 상대적으로 안전한 이유다.
+
 ## 해결 조건
 
 - [ ] Cloudflare 가입이 카드를 요구하는지 확인: ______
 - [ ] Pages 프로젝트 생성됨
 - [ ] `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`가 GitHub Actions 시크릿에 등록됨
 - [ ] `GH_READ_TOKEN` (공개 저장소 읽기 전용) 발급 후 Actions 시크릿에 등록
+- [ ] `ANTHROPIC_API_KEY` 발급 + 월 사용 한도 설정 + Actions 시크릿 등록
 
 ## Answer
 
