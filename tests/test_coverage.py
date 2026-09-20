@@ -1056,6 +1056,122 @@ check("국내 측정 대상에 아카라이브가 아닌 곳이 있다",
       f"{[c['id'] for c in _kr_measurable]}")
 
 
+# ── 유명 MCP 서버가 수집에서 통째로 빠지던 사고 (이슈 34) ───────────────────
+# 사용자 지적: "mcp서버 차트에 playwright가 없는 게 이상한데 뭔가?"
+# 원인은 필터가 아니라 **수집**이었다. microsoft/playwright-mcp 의 토픽은
+# ['mcp', 'playwright'] 뿐인데, 검색 토픽에서 `mcp` 를 뺀 탓에(7.8만 개짜리
+# 마케팅 태그라 쓰레기가 올라와서) 우리 눈에 아예 안 들어왔다.
+# 아래 셋은 그 사고가 되살아나면 각각 다른 자리에서 잡는다.
+
+_PLAYWRIGHT_MCP = {
+    "full_name": "microsoft/playwright-mcp",
+    "name": "playwright-mcp",
+    "description": "Playwright MCP server",
+    "topics": ["mcp", "playwright"],
+    "stargazers_count": 37390,
+    "html_url": "https://github.com/microsoft/playwright-mcp",
+    "pushed_at": "2026-09-20T00:00:00Z",
+    "archived": False,
+    "fork": False,
+}
+
+check("이름·설명으로 MCP 서버를 찾는 질의가 있다",
+      bool(getattr(gh_mod, "NAME_DESC_SEARCHES", None)),
+      "토픽만 쓰면 playwright-mcp 처럼 topic:mcp 만 단 레포가 통째로 빠진다")
+
+if getattr(gh_mod, "NAME_DESC_SEARCHES", None):
+    _queries = [q for q, _ in gh_mod.NAME_DESC_SEARCHES]
+    check("질의가 설명과 이름 양쪽을 본다",
+          any("in:description" in q for q in _queries)
+          and any("in:name" in q for q in _queries),
+          f"{_queries}")
+    # topic:mcp 를 되살리면 open-webui·netdata·JeecgBoot 가 MCP 서버가 된다.
+    # 실측으로 확인한 사실이라, 되돌리려는 시도를 여기서 막는다.
+    check("검색 토픽에 마케팅 태그 `mcp` 를 되살리지 않았다",
+          "mcp" not in gh_mod.KINDS["MCP 서버"],
+          "topic:mcp 상위 30건에 웹 UI·모니터링·로우코드 플랫폼이 섞인다")
+
+check("playwright-mcp 는 우리 필터를 통과한다",
+      gh_mod._usable(_PLAYWRIGHT_MCP)[0],
+      "걸러지는 게 아니라 수집되지 않는 것이 원인이었다")
+
+check("playwright-mcp 를 MCP 서버로 판정한다",
+      gh_mod._detect_kind(_PLAYWRIGHT_MCP, "스킬") == "MCP 서버",
+      f'판정={gh_mod._detect_kind(_PLAYWRIGHT_MCP, "스킬")} — '
+      "설명에 'MCP server' 라고 적혀 있는데 다른 종류로 갔다")
+
+check("playwright-mcp 를 브라우저 자동화로 분류한다",
+      gh_mod._classify(_PLAYWRIGHT_MCP) == "브라우저 자동화",
+      f"분류={gh_mod._classify(_PLAYWRIGHT_MCP)}")
+
+# 수집 경로 자체를 확인한다 — 네트워크 없이, 가짜 응답으로.
+_named_pool, _named_seen, _named_buckets = [], set(), {}
+_named_calls = []
+
+
+class _FakeBudget:
+    def check(self, key):
+        pass
+
+    def spend(self, key):
+        pass
+
+
+class _NoWaitPacer:
+    def wait(self):
+        _named_calls.append("wait")
+
+    def cooldown(self):
+        pass
+
+
+_orig_get = gh_mod._get
+try:
+    gh_mod._get = lambda url, token=None: (
+        _named_calls.append(url) or {"items": [_PLAYWRIGHT_MCP]}
+    )
+    _spent = gh_mod._search_named(None, _FakeBudget(), [], _NoWaitPacer(),
+                                  _named_pool, _named_seen, _named_buckets)
+finally:
+    gh_mod._get = _orig_get
+
+check("이름·설명 검색이 playwright-mcp 를 풀에 넣는다",
+      any(r.get("full_name") == "microsoft/playwright-mcp" for r in _named_pool),
+      f"풀 {len(_named_pool)}건")
+check("그 결과가 (MCP 서버, 브라우저 자동화) 칸에 들어간다",
+      ("MCP 서버", "브라우저 자동화") in _named_buckets,
+      f"칸 {list(_named_buckets)}")
+check("이름·설명 검색도 레이트리밋 페이서를 거친다",
+      _named_calls.count("wait") == len(gh_mod.NAME_DESC_SEARCHES),
+      "페이서를 건너뛰면 403 을 먹고 질의가 통째로 사라진다")
+
+
+
+# 토픽이 아예 없는 대형 레포가 통째로 빠지던 사고 (이슈 34, 2차).
+# 사용자 지적: "다른 카테고리도 점검같이해줘 / 비슷한 논리로 누락되었을 가능성".
+# 실측 결과 MCP 만의 문제가 아니었다 — CLI·개발도구 상위 19개 중 6개,
+# 에이전트 프레임워크 상위 20개 중 12개가 보드에 없었고, 셋 다 topics=[] 였다.
+check("네 종류 모두 이름·설명 질의를 갖는다",
+      {k for _, k in gh_mod.NAME_DESC_SEARCHES} == set(gh_mod.KINDS),
+      f"{sorted({k for _, k in gh_mod.NAME_DESC_SEARCHES})} — "
+      "토픽 없는 대형 레포는 이 그물로만 잡힌다")
+
+# 토픽이 비어 있어도 종류가 올바로 정해져야 한다. 안 그러면 질의로 데려와도
+# 엉뚱한 칸에 들어간다.
+_NO_TOPIC_CASES = [
+    ({"full_name": "cline/cline", "name": "cline",
+      "description": "Autonomous coding agent right in your IDE",
+      "topics": [], "stargazers_count": 68872}, "CLI·개발도구", "CLI·개발도구"),
+    ({"full_name": "openai/swarm", "name": "swarm",
+      "description": "Educational framework exploring ergonomic, lightweight "
+                     "multi-agent orchestration.",
+      "topics": [], "stargazers_count": 21996},
+     "에이전트 프레임워크", "에이전트 프레임워크"),
+]
+for _repo, _fallback, _want in _NO_TOPIC_CASES:
+    _got = gh_mod._detect_kind(_repo, _fallback)
+    check(f"토픽이 없는 {_repo['name']} 을 {_want} 로 본다", _got == _want, f"판정={_got}")
+
 print(f"\n{len(PASS)} 통과 / {len(FAIL)} 실패")
 if FAIL:
     print("실패:", ", ".join(FAIL))

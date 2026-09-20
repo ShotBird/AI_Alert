@@ -61,6 +61,39 @@ KINDS = {
 }
 TOPICS = [t for v in KINDS.values() for t in v]
 
+# 토픽만으로는 **가장 유명한 MCP 서버들이 통째로 빠진다.** 실측(2026-09-21):
+# `microsoft/playwright-mcp`(★37,390)의 토픽은 `['mcp', 'playwright']` 뿐이라
+# 우리가 쓰는 `mcp-server`·`model-context-protocol` 어디에도 안 걸린다.
+# `_usable()` 은 통과한다 — 걸러지는 게 아니라 수집되지 않는 것이다.
+#
+# 그렇다고 `topic:mcp` 를 되살릴 수는 없다. 7.8만 레포가 달고 있는 마케팅
+# 태그라 스타 순 상위에 open-webui(웹 UI)·netdata(모니터링)·JeecgBoot(자바
+# 로우코드)가 올라오고, 레포 자신에 아무 신호가 없으면 검색 토픽으로 떨어져
+# 전부 "MCP 서버"가 된다.
+#
+# 이름과 설명은 훨씬 정확하다. 실측상 두 질의의 통과분은 전부 진짜 MCP 서버였다.
+# 더 큰 사고가 같은 뿌리에 있었다. 1단계는 전부 `topic:` 검색인데
+# **가장 유명한 레포 상당수가 토픽을 아예 달지 않는다.** 실측(2026-09-21),
+# 종류별 상위 20 중 보드에 없던 것:
+#
+#   CLI·개발도구        opencode ★208,832 · openai/codex ★125,493 · cline ★68,872
+#                      openinterpreter ★68,390 · continue ★35,962   (6/19 누락)
+#   에이전트 프레임워크   TradingAgents ★107,751 · MetaGPT ★70,525
+#                      openai-agents-python ★29,582 · swarm ★21,996  (12/20 누락)
+#
+# 셋 다 `topics=[]` 다. 걸러진 게 아니라 **물어본 적이 없다.**
+# 그래서 종류마다 자연어 질의를 둔다. 토픽 훑기가 놓친 대표 레포를 줍는 그물이다.
+NAME_DESC_SEARCHES = [
+    ('"MCP server" in:description', "MCP 서버"),
+    ("mcp-server in:name", "MCP 서버"),
+    ('"claude skill" in:name,description', "스킬"),
+    ("agent skills in:description", "스킬"),
+    ('"agent framework" in:description', "에이전트 프레임워크"),
+    ("multi-agent framework in:description", "에이전트 프레임워크"),
+    ('"coding agent" in:description', "CLI·개발도구"),
+    ("ai cli tool in:name,description", "CLI·개발도구"),
+]
+
 _TOPIC_KIND = {t: k for k, v in KINDS.items() for t in v}
 
 # 종류 판정에 쓰는 **레포 자신의** 토픽. 검색에 쓴 토픽과 일부러 분리했다.
@@ -387,6 +420,33 @@ def _search_pool(token, budget, notes, pages, pacer, pool, seen, buckets):
     return spent
 
 
+def _search_named(token, budget, notes, pacer, pool, seen, buckets):
+    """이름·설명으로 찾는 1.5단계. 토픽 훑기가 놓치는 대표 레포를 줍는다."""
+    spent = 0
+    for query, fallback in NAME_DESC_SEARCHES:
+        try:
+            budget.check("github_search")
+        except BudgetExceeded:
+            notes.append("GitHub 검색 상한에 닿아 이름·설명 검색은 건너뜁니다.")
+            return spent
+        pacer.wait()
+        url = (f"{API}/search/repositories?q={urllib.parse.quote(query)}"
+               f"&sort=stars&order=desc&per_page=100&page=1")
+        try:
+            data = _get(url, token)
+        except (urllib.error.HTTPError, urllib.error.URLError, ValueError) as exc:
+            code = getattr(exc, "code", None)
+            pacer.cooldown()
+            notes.append(f"{query}: 검색 실패 ({type(exc).__name__}"
+                         f"{f' {code}' if code else ''}) — 이 질의는 빠졌습니다.")
+            continue
+        finally:
+            budget.spend("github_search")
+            spent += 1
+        _absorb(data.get("items", []), pool, seen, buckets, fallback)
+    return spent
+
+
 # ---------------------------------------------------------------------------
 # 2단계: 칸 채우기(gap fill)
 # ---------------------------------------------------------------------------
@@ -575,6 +635,7 @@ def top_rising(token, budget, candidates=60, want=20, cache=None,
 
     # 칸(종류 × 부문)으로 나눈다. 칸은 1·2단계가 같이 채우므로 풀과 함께 굴린다.
     pool, seen, buckets = [], set(), {}
+    named_spent = _search_named(token, budget, notes, pacer, pool, seen, buckets)
     base_spent = _search_pool(token, budget, notes, pages, pacer,
                               pool, seen, buckets)
     gap_spent, evidence = _gap_fill(buckets, pool, seen, token, budget, notes,
@@ -636,7 +697,7 @@ def top_rising(token, budget, candidates=60, want=20, cache=None,
             "나머지는 누적 스타 순이며 화면에 '누적'으로 표시됩니다 — "
             "증가분을 추정해 채워 넣지 않습니다.")
     notes.extend(_fill_notes(per_cat, evidence, want,
-                             base_spent + gap_spent, len(pool)))
+                             named_spent + base_spent + gap_spent, len(pool)))
     return rows, notes
 
 
