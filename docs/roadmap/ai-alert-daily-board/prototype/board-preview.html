@@ -1,0 +1,529 @@
+<title>AI Alert 보드 시안</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>
+  /* ── 토큰: DESIGN.md (Apple España) 그대로. 새 색을 만들지 않는다. ───────── */
+  :root {
+    --canvas:      #f5f5f7;  /* Pure Canvas */
+    --surface:     #ffffff;  /* Paper White */
+    --ink:         #1d1d1f;  /* Obsidian    */
+    --ink-soft:    #474747;  /* Slate       */
+    --ink-mute:    #707070;  /* Iron Gray   */
+    --hairline:    #d6d6d6;  /* Fog         */
+    --mist:        #e2e2e5;  /* Mist        */
+    --action:      #0071e3;  /* Signal Blue */
+    --link:        #0066cc;  /* Deep Link Blue */
+    --tint-green:  #03aa49;  /* Pulse Green */
+    --tint-violet: #8668ff;  /* Ultraviolet */
+    --tint-orange: #ed6300;  /* Ember Orange */
+    --tint-teal:   #00a1b3;  /* Lagoon Teal */
+
+    --r-card: 28px;
+    --r-pill: 980px;
+    --r-chip: 10px;
+
+    --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, "Helvetica Neue", system-ui, sans-serif;
+    --font-text:    -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  /* 다크: 새 색을 도입하지 않고 시스템 안의 역할만 뒤집는다.
+     Void(#000000)가 바탕, Obsidian(#1d1d1f)이 카드, Pure Canvas(#f5f5f7)가 글자.
+     Apple 제품 페이지의 검은 밴드가 실제로 쓰는 조합이라 시스템 밖으로 나가지 않는다. */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --canvas:   #000000;
+      --surface:  #1d1d1f;
+      --ink:      #f5f5f7;
+      --ink-soft: #d6d6d6;
+      --ink-mute: #707070;
+      --hairline: #333336;
+      --mist:     #333336;
+    }
+  }
+  :root[data-theme="dark"] {
+    --canvas:   #000000;
+    --surface:  #1d1d1f;
+    --ink:      #f5f5f7;
+    --ink-soft: #d6d6d6;
+    --ink-mute: #707070;
+    --hairline: #333336;
+    --mist:     #333336;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--canvas);
+    color: var(--ink);
+    font-family: var(--font-text);
+    font-size: 17px;          /* 본문은 17px 하나뿐 */
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 680px;
+    margin: 0 auto;
+    padding-inline: 20px;
+    padding-block: 0 64px;
+  }
+
+  /* ── 미리보기 배너 ─────────────────────────────────────────────────────── */
+  .preview-note {
+    background: var(--ink);
+    color: var(--canvas);
+    font-size: 14px;
+    padding: 10px 20px;
+    text-align: left;
+  }
+  .preview-note b { font-weight: 600; }
+
+  /* ── 헤더 ──────────────────────────────────────────────────────────────── */
+  header.board {
+    padding-block: 36px 8px;
+  }
+  .date-line {
+    font-size: 14px;
+    color: var(--ink-mute);
+    letter-spacing: 0.01em;
+    margin: 0 0 6px;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 39px;
+    line-height: 1.07;
+    letter-spacing: -0.005em;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  h1 .tint { color: var(--tint-green); }
+
+  .status-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .chip {
+    font-size: 14px;
+    padding: 5px 12px;
+    border-radius: var(--r-pill);
+    background: var(--mist);
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .chip.warn   { color: var(--tint-orange); }
+  .chip.stale  { color: var(--tint-orange); }
+
+  /* ── 섹션 바로가기 (풀 필 버튼 언어) ──────────────────────────────────── */
+  nav.jump {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-block: 18px 6px;
+    scrollbar-width: none;
+  }
+  nav.jump::-webkit-scrollbar { display: none; }
+  nav.jump a {
+    flex: 0 0 auto;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: var(--r-pill);
+    background: var(--mist);
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  /* ── 섹션 ──────────────────────────────────────────────────────────────── */
+  section { padding-block: 34px 0; scroll-margin-top: 16px; }
+
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.14;
+    letter-spacing: 0.007em;
+    margin: 0 0 14px;
+  }
+
+  .briefing {
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+    padding-block: 14px;
+    margin-bottom: 20px;
+  }
+  .briefing ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px; }
+  .briefing li { color: var(--ink-soft); font-size: 17px; }
+  .briefing li::before {
+    content: "—";
+    color: var(--ink-mute);
+    margin-right: 8px;
+  }
+
+  .cards { display: grid; gap: 12px; }
+
+  article.card {
+    background: var(--surface);
+    border-radius: var(--r-card);
+    padding: 22px 24px;
+    /* 그림자 없음. 깊이는 표면 대비로만. */
+  }
+
+  .card-top {
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+    margin-bottom: 6px;
+  }
+  .badge {
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge.new  { color: var(--tint-green); }
+  .badge.cont { color: var(--ink-mute); }
+
+  .title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 21px;
+    line-height: 1.33;
+    letter-spacing: 0.011em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .title a { color: var(--ink); text-decoration: none; }
+  .title a:hover { color: var(--link); }
+
+  .summary {
+    margin: 8px 0 0;
+    color: var(--ink-soft);
+  }
+
+  .meta {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--hairline);
+    font-size: 14px;
+    color: var(--ink-mute);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    font-variant-numeric: tabular-nums;
+  }
+  .meta .strong { color: var(--ink-soft); }
+
+  /* ── 키워드 카드 ───────────────────────────────────────────────────────── */
+  .kw-head { display: flex; gap: 8px; align-items: baseline; flex-wrap: wrap; }
+  .kw-term {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 24px;
+    letter-spacing: 0.009em;
+    margin: 0;
+  }
+  .kw-ko { color: var(--ink-mute); font-size: 17px; }
+
+  .reaction {
+    margin-top: 14px;
+    display: grid;
+    gap: 8px;
+  }
+  .rbar { display: grid; grid-template-columns: 74px 1fr auto; gap: 10px; align-items: center; font-size: 14px; }
+  .rbar .lab { color: var(--ink-mute); }
+  .rbar .track { height: 3px; background: var(--mist); border-radius: var(--r-pill); overflow: hidden; }
+  .rbar .fill  { height: 100%; background: var(--ink-soft); }
+  .rbar .num   { color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+  .picks { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--hairline); display: grid; gap: 8px; }
+  .picks a { color: var(--link); text-decoration: none; font-size: 14px; border-bottom: 1px solid var(--link); }
+  .picks .src { color: var(--ink-mute); font-size: 14px; }
+
+  /* ── 빈 섹션 ───────────────────────────────────────────────────────────── */
+  .empty {
+    background: var(--surface);
+    border-radius: var(--r-card);
+    padding: 22px 24px;
+    color: var(--ink-mute);
+    font-size: 17px;
+  }
+
+  /* ── 하단 설정 진입점 ──────────────────────────────────────────────────── */
+  .foot { padding-block: 40px 0; border-top: 1px solid var(--hairline); margin-top: 40px; }
+  .btn {
+    display: inline-block;
+    background: var(--action);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 17px;
+    padding: 12px 24px;
+    border-radius: var(--r-pill);
+    text-decoration: none;
+    border: 0;
+    cursor: pointer;
+    font-family: var(--font-text);
+  }
+  .foot p { color: var(--ink-mute); font-size: 14px; margin: 16px 0 0; }
+
+  /* ── 시안 조작판 ───────────────────────────────────────────────────────── */
+  .panel {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 5;
+    background: var(--canvas);
+    border-bottom: 1px solid var(--hairline);
+    padding: 10px 20px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .panel::-webkit-scrollbar { display: none; }
+  .panel button {
+    flex: 0 0 auto;
+    font-family: var(--font-text);
+    font-size: 14px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: var(--r-pill);
+    border: 1px solid var(--hairline);
+    background: transparent;
+    color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .panel button[aria-pressed="true"] {
+    background: var(--ink);
+    color: var(--canvas);
+    border-color: var(--ink);
+  }
+  .panel button:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+
+<div class="preview-note">
+  <b>시안 — 내용은 전부 가짜 데이터입니다.</b> 화면 구조와 디자인만 보시면 됩니다.
+</div>
+
+<div class="panel">
+  <button type="button" data-state="ok" aria-pressed="true">정상</button>
+  <button type="button" data-state="partial" aria-pressed="false">일부 소스 실패</button>
+  <button type="button" data-state="stale" aria-pressed="false">어제 것(스테일)</button>
+  <button type="button" data-theme-toggle aria-pressed="false">다크</button>
+</div>
+
+<div class="wrap">
+  <header class="board">
+    <p class="date-line" id="dateLine">2026년 9월 21일 월요일 · 오전 4시 02분 생성</p>
+    <h1>오늘의 <span class="tint">AI</span> 동향</h1>
+    <div class="status-row" id="statusRow"></div>
+  </header>
+
+  <nav class="jump">
+    <a href="#s-model">모델 업데이트</a>
+    <a href="#s-skill">GitHub 스킬</a>
+    <a href="#s-news">뉴스 Top5</a>
+    <a href="#s-kw">오늘의 키워드</a>
+  </nav>
+
+  <main id="board"></main>
+
+  <div class="foot">
+    <button class="btn" type="button">설정</button>
+    <p>알림 시각은 아이폰 단축어에서 바꿉니다. 여기서는 섹션 표시 여부만 조정합니다.</p>
+  </div>
+</div>
+
+<script>
+  // 스키마(티켓 05)를 그대로 따른 가짜 보드. 실제 파이프라인이 만들 모양과 같습니다.
+  const BOARD = {
+    schema_version: "1.0",
+    board_date: "2026-09-21",
+    generated_at: "2026-09-21T04:02:00+09:00",
+    status: "ok",
+    sections: [
+      {
+        id: "model_updates", title: "모델 업데이트", anchor: "s-model",
+        briefing_ko: [
+          "Mistral이 Large 3를 공개하며 128K 컨텍스트를 기본으로 올렸습니다.",
+          "Meta의 Llama 4.2가 Hugging Face에 먼저 올라왔고 공식 발표는 아직입니다.",
+          "OpenAI는 모델 대신 안전성 문서만 냈습니다. 출시 소식은 없습니다."
+        ],
+        cards: [
+          { change:"new", title:"Mistral Large 3 is here", summary_ko:"128K 컨텍스트가 기본이 됐고, 코드 벤치마크에서 전작을 크게 앞섭니다. 가중치는 공개되지 않습니다.", sources:"Mistral · HN 412 · TechCrunch", count:4, heat:"9.1" },
+          { change:"new", title:"Llama 4.2 weights appear on Hugging Face", summary_ko:"공식 발표 없이 가중치가 먼저 올라왔습니다. 70B와 8B 두 종류이고 라이선스는 이전과 같습니다.", sources:"Hugging Face · r/LocalLLaMA", count:3, heat:"8.4" },
+          { change:"cont", title:"Gemini 3 Flash pricing drops 40%", summary_ko:"어제 발표된 가격 인하가 오늘도 화제입니다. 배치 처리 기준으로는 절반 아래로 내려갑니다.", sources:"Google · Techmeme · HN 288", count:5, heat:"7.6" },
+          { change:"new", title:"DeepSeek-V4 base model released", summary_ko:"MoE 구조를 유지하면서 활성 파라미터를 줄였습니다. 추론 비용이 관건이라는 평가입니다.", sources:"Hugging Face · HN 196", count:2, heat:"6.2" },
+          { change:"cont", title:"Qwen3.5 adds native tool calling", summary_ko:"도구 호출이 모델 내장으로 들어갔습니다. 한국어 성능은 아직 별도 보고가 없습니다.", sources:"Hugging Face · AI타임스", count:2, heat:"5.5" }
+        ]
+      },
+      {
+        id: "github_skills", title: "GitHub 스킬", anchor: "s-skill",
+        briefing_ko: [
+          "계획·기획 부문이 오늘 가장 활발합니다. 신규 레포 세 개가 한꺼번에 떴습니다.",
+          "디자인 부문은 어제와 같은 목록이라 변화가 없습니다.",
+          "백엔드 쪽은 MCP 서버 형태가 계속 늘고 있습니다."
+        ],
+        cards: [
+          { change:"new", title:"wayfinder-skills", summary_ko:"큰 작업을 지도와 티켓으로 쪼개 진행하는 스킬 묶음입니다. 계획 부문에서 오늘 가장 많이 언급됐습니다.", sources:"계획 · ★ 1,204 (+180)", count:1, heat:"8.8" },
+          { change:"new", title:"figma-to-code-skill", summary_ko:"피그마 파일을 읽어 컴포넌트 코드로 옮기는 스킬입니다. 토큰 이름을 보존하는 게 특징입니다.", sources:"디자인 · ★ 892 (+140)", count:1, heat:"8.1" },
+          { change:"cont", title:"anthropics/skills", summary_ko:"공식 예제 스킬 모음입니다. 어제에 이어 계속 상위권이지만 증가세는 둔해졌습니다.", sources:"모음 · ★ 21,400 (+95)", count:1, heat:"6.9" },
+          { change:"new", title:"pg-migration-skill", summary_ko:"포스트그레스 스키마 변경을 무중단으로 적용하는 절차를 담았습니다. 롤백 시나리오가 꼼꼼합니다.", sources:"백엔드 · ★ 640 (+88)", count:1, heat:"6.4" },
+          { change:"cont", title:"react-perf-audit", summary_ko:"리렌더 원인을 찾아 보고서로 내주는 스킬입니다. 사흘째 프론트엔드 1위입니다.", sources:"프론트엔드 · ★ 1,530 (+41)", count:1, heat:"5.9" }
+        ]
+      },
+      {
+        id: "top_headlines", title: "뉴스 Top5", anchor: "s-news",
+        briefing_ko: [
+          "EU AI법 2단계 시행이 내일부터입니다. 범용 모델 사업자에게 문서 의무가 생깁니다.",
+          "반도체 공급 얘기가 다시 올라왔습니다. 메모리 가격이 학습 비용을 밀어올린다는 분석입니다.",
+          "국내에서는 공공 부문 AI 도입 가이드라인 초안이 공개됐습니다."
+        ],
+        cards: [
+          { change:"new", title:"EU AI Act phase two takes effect tomorrow", summary_ko:"범용 모델 사업자에게 학습 데이터 요약 공개 의무가 생깁니다. 과징금 조항도 함께 발효됩니다.", sources:"Techmeme · Ars · HN 903 · 전자신문", count:7, heat:"9.6" },
+          { change:"new", title:"Memory prices push AI training costs up again", summary_ko:"HBM 공급이 빠듯해지면서 학습 단가가 다시 올랐다는 분석입니다. 내년 상반기까지 이어질 전망입니다.", sources:"The Verge · HN 561", count:4, heat:"8.2" },
+          { change:"cont", title:"Anthropic and OpenAI face consumer suits in four states", summary_ko:"구독 해지 절차를 문제 삼은 소송입니다. 모델 성능과는 무관한 소비자 보호 쟁점입니다.", sources:"AI타임스 · HN 334", count:3, heat:"7.1" },
+          { change:"new", title:"과기정통부, 공공 AI 도입 가이드라인 초안 공개", summary_ko:"공공기관이 외부 모델을 쓸 때 따라야 할 절차를 정리했습니다. 의견 수렴은 다음 달까지입니다.", sources:"전자신문 · GeekNews", count:2, heat:"6.8" },
+          { change:"cont", title:"Agentic coding tools cross 40% adoption in survey", summary_ko:"개발자 설문에서 에이전트형 도구 사용률이 처음 40%를 넘었습니다. 신뢰도는 여전히 낮게 나왔습니다.", sources:"HN 447 · GeekNews", count:3, heat:"6.3" }
+        ]
+      }
+    ],
+    keywords: [
+      { change:"new", term:"EU AI Act", ko:"EU 인공지능법", mentions:12,
+        naver:{blog:41200, cafe:88300}, kakao:{web:52100},
+        picks:[{t:"EU AI법 2단계, 우리 회사도 해당될까", s:"네이버 카페"},{t:"EU AI Act 시행 정리", s:"GeekNews"}] },
+      { change:"new", term:"agentic coding", ko:"에이전트형 코딩", mentions:9,
+        naver:{blog:56386, cafe:296181}, kakao:{web:122189},
+        picks:[{t:"클로드 코드로 사내 업무 자동화한 후기", s:"네이버 블로그"},{t:"에이전트 코딩 도구 비교", s:"GeekNews"}] },
+      { change:"cont", term:"HBM", ko:"고대역폭 메모리", mentions:7,
+        naver:{blog:18400, cafe:61200}, kakao:{web:33800},
+        picks:[{t:"HBM 공급난 언제까지 가나", s:"네이버 카페"},{t:"메모리 가격과 AI 원가", s:"다음 웹"}] },
+      { change:"cont", term:"Llama 4.2", ko:"라마 4.2", mentions:6,
+        naver:{blog:9800, cafe:24100}, kakao:{web:14600},
+        picks:[{t:"라마 4.2 로컬 구동 해봤습니다", s:"네이버 블로그"},{t:"Llama 4.2 첫인상", s:"GeekNews"}] },
+      { change:"new", term:"MCP server", ko:"MCP 서버", mentions:5,
+        naver:{blog:7200, cafe:15900}, kakao:{web:9400},
+        picks:[{t:"MCP 서버 직접 만들어보기", s:"네이버 블로그"},{t:"MCP 생태계 근황", s:"GeekNews"}] }
+    ]
+  };
+
+  const N = n => n.toLocaleString("ko-KR");
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+  const badge = c => c === "new"
+    ? '<span class="badge new">신규</span>'
+    : '<span class="badge cont">지속</span>';
+
+  function cardHTML(c) {
+    return `<article class="card">
+      <div class="card-top">${badge(c.change)}</div>
+      <p class="title"><a href="#">${esc(c.title)}</a></p>
+      <p class="summary">${esc(c.summary_ko)}</p>
+      <div class="meta">
+        <span class="strong">출처 ${c.count}곳</span>
+        <span>${esc(c.sources)}</span>
+        <span>화제도 ${c.heat}</span>
+      </div>
+    </article>`;
+  }
+
+  function kwHTML(k) {
+    const peak = Math.max(k.naver.cafe, k.naver.blog, k.kakao.web);
+    const bar = (lab, v) => `<div class="rbar">
+        <span class="lab">${lab}</span>
+        <span class="track"><span class="fill" style="width:${Math.round(v / peak * 100)}%"></span></span>
+        <span class="num">${N(v)}</span>
+      </div>`;
+    return `<article class="card">
+      <div class="card-top">${badge(k.change)}</div>
+      <div class="kw-head">
+        <h3 class="kw-term">${esc(k.term)}</h3>
+        <span class="kw-ko">${esc(k.ko)}</span>
+      </div>
+      <p class="summary">오늘 ${k.mentions}개 항목에서 언급됐습니다.</p>
+      <div class="reaction">
+        ${bar("네이버 카페", k.naver.cafe)}
+        ${bar("네이버 블로그", k.naver.blog)}
+        ${bar("다음 웹", k.kakao.web)}
+      </div>
+      <div class="picks">
+        ${k.picks.map(p => `<div><a href="#">${esc(p.t)}</a> <span class="src">${esc(p.s)}</span></div>`).join("")}
+      </div>
+    </article>`;
+  }
+
+  function sectionHTML(s, opts) {
+    const empty = opts.partial && s.id === "github_skills";
+    const body = empty
+      ? `<div class="empty">GitHub 응답이 없어 오늘은 비어 있습니다. 내일 다시 채워집니다.</div>`
+      : `<div class="cards">${s.cards.map(cardHTML).join("")}</div>`;
+    return `<section id="${s.anchor}">
+      <h2>${esc(s.title)}</h2>
+      <div class="briefing"><ul>${s.briefing_ko.map(b => `<li>${esc(b)}</li>`).join("")}</ul></div>
+      ${body}
+    </section>`;
+  }
+
+  function render(state) {
+    const partial = state === "partial";
+    const stale = state === "stale";
+
+    const chips = [];
+    if (stale) {
+      chips.push('<span class="chip stale">9월 20일 기준 · 오늘 보드가 아직 없습니다</span>');
+    } else if (partial) {
+      chips.push('<span class="chip warn">일부만 채워짐 · 소스 2곳 실패</span>');
+      chips.push('<span class="chip">항목 14개</span>');
+    } else {
+      chips.push('<span class="chip">항목 20개 · 출처 23곳</span>');
+    }
+    document.getElementById("statusRow").innerHTML = chips.join("");
+
+    document.getElementById("dateLine").textContent = stale
+      ? "2026년 9월 20일 일요일 · 어제 오전 4시 05분 생성"
+      : "2026년 9월 21일 월요일 · 오전 4시 02분 생성";
+
+    const kwSection = {
+      id: "keywords", title: "오늘의 키워드", anchor: "s-kw",
+      briefing_ko: [
+        "EU AI법이 오늘 가장 많이 언급된 주제입니다. 어제는 없던 키워드입니다.",
+        "에이전트형 코딩은 국내 카페 반응이 유독 큽니다.",
+        "HBM은 사흘째 이어지고 있어 흐름을 따라갈 만합니다."
+      ]
+    };
+
+    const sections = BOARD.sections.map(s => sectionHTML(s, { partial })).join("")
+      + `<section id="${kwSection.anchor}">
+          <h2>${esc(kwSection.title)}</h2>
+          <div class="briefing"><ul>${kwSection.briefing_ko.map(b => `<li>${esc(b)}</li>`).join("")}</ul></div>
+          <div class="cards">${BOARD.keywords.map(kwHTML).join("")}</div>
+        </section>`;
+
+    document.getElementById("board").innerHTML = sections;
+  }
+
+  document.querySelectorAll(".panel button[data-state]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".panel button[data-state]").forEach(b =>
+        b.setAttribute("aria-pressed", String(b === btn)));
+      render(btn.dataset.state);
+      window.scrollTo({ top: 0 });
+    });
+  });
+
+  const themeBtn = document.querySelector("[data-theme-toggle]");
+  themeBtn.addEventListener("click", () => {
+    const dark = document.documentElement.getAttribute("data-theme") === "dark";
+    document.documentElement.setAttribute("data-theme", dark ? "light" : "dark");
+    themeBtn.setAttribute("aria-pressed", String(!dark));
+    themeBtn.textContent = dark ? "다크" : "라이트";
+  });
+
+  render("ok");
+</script>
