@@ -1,7 +1,7 @@
 {
   "epoch": {
-    "fingerprint": "\"26ca4984a114fdc3f24845d5b2fcd6bf\"",
-    "fetched_at": "2026-09-20T20:55:03.243043+00:00",
+    "fingerprint": "\"65b76c074abd2ff9a6d1f4d3871c96a4\"",
+    "fetched_at": "2026-09-21T22:11:47.571029+00:00",
     "entries": {
       "gpt 6 astra": {
         "display_name": "GPT-6 Astra",
