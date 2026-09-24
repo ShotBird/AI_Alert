@@ -1,7 +1,7 @@
 {
   "epoch": {
-    "fingerprint": "\"52c866451f9f6e9dafdfd968cc40dd7f\"",
-    "fetched_at": "2026-09-23T21:38:46.874178+00:00",
+    "fingerprint": "\"02c77967a7b52be66e0e884c9ae5c593\"",
+    "fetched_at": "2026-09-24T21:39:55.949506+00:00",
     "entries": {
       "gpt 6 astra": {
         "display_name": "GPT-6 Astra",
@@ -2118,8 +2118,8 @@
     }
   },
   "lmarena": {
-    "fingerprint": "fb1d453984c478cdec61bb1a89db664b3f635933",
-    "fetched_at": "2026-09-23T21:38:49.159800+00:00",
+    "fingerprint": "1880dbebff5ba3e2dd3865ecf6fc43539c2099db",
+    "fetched_at": "2026-09-24T21:39:57.544465+00:00",
     "entries": {
       "fable 5 1 max": {
         "display_name": "claude-fable-5.1-max",
