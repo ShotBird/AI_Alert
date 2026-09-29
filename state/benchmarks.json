@@ -1,7 +1,7 @@
 {
   "epoch": {
-    "fingerprint": "\"39444c5dddb2489fd25bbc000165c659\"",
-    "fetched_at": "2026-09-28T23:25:41.670832+00:00",
+    "fingerprint": "\"044d2431a64e78846c79b2405e891b0c\"",
+    "fetched_at": "2026-09-29T22:25:27.406273+00:00",
     "entries": {
       "gpt 6 astra": {
         "display_name": "GPT-6 Astra",
@@ -2118,8 +2118,8 @@
     }
   },
   "lmarena": {
-    "fingerprint": "97912782b70c6df70c7a2f64e3b1003edf59cb0f",
-    "fetched_at": "2026-09-28T23:26:07.069446+00:00",
+    "fingerprint": "4c39810eebe1cb20145d0a81756a95b8f057cd03",
+    "fetched_at": "2026-09-29T22:25:28.849961+00:00",
     "entries": {
       "opus 5 5": {
         "display_name": "claude-opus-5.5-high",

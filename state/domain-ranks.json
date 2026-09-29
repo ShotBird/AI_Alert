@@ -1,31 +1,31 @@
 {
   "discord_midjourney": {
     "v": 2,
-    "value": 607058,
-    "note": "전체 회원 18,541,575명 중 3.3% 접속",
+    "value": 655017,
+    "note": "전체 회원 18,547,318명 중 3.5% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "discord_openai": {
     "v": 2,
-    "value": 78584,
-    "note": "전체 회원 857,471명 중 9.2% 접속",
+    "value": 80168,
+    "note": "전체 회원 857,439명 중 9.3% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "discord_stablediffusion": {
     "v": 2,
-    "value": 20472,
-    "note": "전체 회원 321,037명 중 6.4% 접속",
+    "value": 21355,
+    "note": "전체 회원 320,971명 중 6.7% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "discord_huggingface": {
     "v": 2,
-    "value": 13326,
-    "note": "전체 회원 239,764명 중 5.6% 접속",
+    "value": 13963,
+    "note": "전체 회원 239,923명 중 5.8% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "discord_learnaitogether": {
     "value": 101775,
@@ -35,17 +35,17 @@
   },
   "discord_eleutherai": {
     "v": 2,
-    "value": 4460,
-    "note": "전체 회원 39,561명 중 11.3% 접속",
+    "value": 4517,
+    "note": "전체 회원 39,569명 중 11.4% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "arca_aiart": {
     "v": 2,
     "value": null,
     "note": "조회 실패(HTTPError)",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "arca_chatgpt": {
     "value": 0,
@@ -57,14 +57,14 @@
     "value": null,
     "note": "조회 실패(HTTPError)",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "arca_aivideo": {
     "v": 2,
     "value": null,
     "note": "조회 실패(HTTPError)",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "arca_novelai": {
     "value": 0,
@@ -73,65 +73,65 @@
   },
   "discord_suno": {
     "v": 2,
-    "value": 25417,
-    "note": "전체 회원 394,876명 중 6.4% 접속",
+    "value": 27510,
+    "note": "전체 회원 394,798명 중 7.0% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "discord_anthropic": {
     "v": 2,
-    "value": 19976,
-    "note": "전체 회원 129,473명 중 15.4% 접속",
+    "value": 20852,
+    "note": "전체 회원 129,755명 중 16.1% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "discord_ollama": {
     "v": 2,
-    "value": 14129,
-    "note": "전체 회원 196,267명 중 7.2% 접속",
+    "value": 14501,
+    "note": "전체 회원 196,209명 중 7.4% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "discord_nousresearch": {
     "v": 2,
-    "value": 15046,
-    "note": "전체 회원 141,146명 중 10.7% 접속",
+    "value": 15550,
+    "note": "전체 회원 141,312명 중 11.0% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "discord_civitai": {
     "v": 2,
-    "value": 12429,
-    "note": "전체 회원 119,128명 중 10.4% 접속",
+    "value": 12964,
+    "note": "전체 회원 119,142명 중 10.9% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "discord_novelai": {
     "v": 2,
-    "value": 12006,
-    "note": "전체 회원 57,397명 중 20.9% 접속",
+    "value": 12070,
+    "note": "전체 회원 57,385명 중 21.0% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "discord_aihub": {
     "v": 2,
-    "value": 5393,
-    "note": "전체 회원 35,209명 중 15.3% 접속",
+    "value": 5780,
+    "note": "전체 회원 35,385명 중 16.3% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "discord_openrouter": {
     "v": 2,
-    "value": 6308,
-    "note": "전체 회원 54,263명 중 11.6% 접속",
+    "value": 6489,
+    "note": "전체 회원 54,292명 중 12.0% 접속",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   },
   "pytorch_kr": {
     "v": 2,
-    "value": 13,
-    "note": "최근 7일 글 93건의 하루 평균 · 새 글타래 41개 · 활동 이용자 186명",
+    "value": 14,
+    "note": "최근 7일 글 96건의 하루 평균 · 새 글타래 40개 · 활동 이용자 186명",
     "dropped": false,
-    "checked_at": "2026-09-28"
+    "checked_at": "2026-09-29"
   }
 }
