@@ -1,7 +1,7 @@
 {
   "epoch": {
-    "fingerprint": "\"3f1444bd094a7d8b97810e424d87d6fe\"",
-    "fetched_at": "2026-10-01T22:50:27.580797+00:00",
+    "fingerprint": "\"a8f5fc3b9eb1675414d2b02ce35707b3\"",
+    "fetched_at": "2026-10-02T22:20:02.451252+00:00",
     "entries": {
       "opus 5 5": {
         "display_name": "Claude Opus 5.5",
@@ -2134,8 +2134,8 @@
     }
   },
   "lmarena": {
-    "fingerprint": "47c3ea6a706f1cde7bc422ba27f8e935cc4d48da",
-    "fetched_at": "2026-10-01T22:50:29.338458+00:00",
+    "fingerprint": "7d2d9009b2ba84383deb6f1b70e66f85b7cda4e7",
+    "fetched_at": "2026-10-02T22:20:04.421876+00:00",
     "entries": {
       "gemini 4 argon": {
         "display_name": "gemini-4-argon-high",
