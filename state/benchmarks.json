@@ -1,7 +1,7 @@
 {
   "epoch": {
-    "fingerprint": "\"20ec959ad085803f15bf34f84a7942c0\"",
-    "fetched_at": "2026-10-03T21:08:34.744624+00:00",
+    "fingerprint": "\"c19cac698d886564db812dc898c6399b\"",
+    "fetched_at": "2026-10-04T21:26:52.332556+00:00",
     "entries": {
       "opus 5 5": {
         "display_name": "Claude Opus 5.5",
