@@ -1,9 +1,9 @@
 {
-  "date": "2026-10-10",
+  "date": "2026-10-11",
   "counts": {
-    "github_search": 169,
-    "github_core": 47,
+    "github_search": 168,
+    "github_core": 11,
     "discord": 13,
-    "benchmarks": 4
+    "benchmarks": 3
   }
 }
