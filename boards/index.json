@@ -1,5 +1,14 @@
 [
   {
+    "date": "2026-10-17",
+    "status": "ok",
+    "counts": {
+      "collected": 2402,
+      "clustered": 159,
+      "published": 2062
+    }
+  },
+  {
     "date": "2026-10-16",
     "status": "partial",
     "counts": {
